@@ -1,0 +1,292 @@
+@import url(reset.css);
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-grid.min.css");
+
+body{
+  font-family: 'Pretendard';
+  color: var(--typography);
+}
+
+/* padding */
+.pd-54{
+  padding: 54px 0;
+}
+.pd-81{
+  padding: 81px 0;
+}
+.content-pd{
+  padding: 50px 114px 135px;
+}
+
+
+/* Color */
+:root{
+  --primary-r:#e53945;
+  --primary-n:#1d3557;
+  --highlight-s:#457b9d;
+  --highlight-m:#a8dad8;
+  --background-g:#e0e9ef;
+  --background-w:#fff;
+  --typography:#161616;
+}
+
+/* 공동 gnb, 컨텐츠 */
+.common-wrap{
+  width: 100%;
+  height: 100%;
+}
+.gnb-body{
+  position: fixed;
+  width: 328px;
+  top: 0;
+  bottom: 0;
+  background: var(--primary-n);
+}
+.gnb-body .admin-profile{
+  height: 378px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--background-w);
+}
+.gnb-body .admin-profile h2{
+  margin-top: 21px;
+  font-size: 32px;
+}
+.gnb-body .admin-profile .profile-img-wrap{
+  position: relative;
+  margin: 0 auto;
+  width: 188px;
+  height: 188px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 4px var(--background-g) inset;
+}
+.gnb-body .admin-profile .profile-img-wrap img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.gnb-body .admin-profile .profile-menu{
+  margin-top: 44px;
+  gap: 26px;
+}
+.gnb-body .admin-profile .profile-menu li a{
+  display: inline-block;
+  width: 63px;
+  height: 63px;
+  background: var(--highlight-s);
+  border-radius: 10px;
+  position: relative;
+}
+.gnb-body .admin-profile .profile-menu li a i{
+  color: var(--background-w);
+  font-size: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.gnb-body .gnb-menu{
+  /* margin-left: 70px; */
+}
+.gnb-body .gnb-menu li{
+  height: 72px;
+  color: var(--background-w);
+}
+.gnb-body .gnb-menu li i{
+  color: var(--primary-r);
+  font-size: 27px;
+  margin-right: 40px;
+}
+
+
+.content-body{
+  position: relative;
+  margin-left:328px;
+  background: var(--background-g);
+}
+.content-body .content-top{
+  text-align: right;
+}
+.content-body .content-top .bookmark{
+  margin-top: 25px;
+}
+
+/* Logo */
+#main-logo{
+  display: inline-block;
+}
+#main-logo a img{
+  display: block;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+#main-logo a span{
+  display: none;
+}
+
+/* Title, Content, Menu font */
+.page-title{
+  font-size: 40px;
+  font-weight: 700;
+}
+.popup-title{
+  font-size: 32px;
+  font-weight: 500;
+}
+.content-title{
+  font-size: 28px;
+  font-weight: 600;
+}
+.content-text-1{
+  font-size: 24px;
+  font-weight: 500;
+}
+.content-text-2{
+  font-size: 20px;
+  font-weight: 500;
+}
+.content-text-3{
+  font-size: 18px;
+  font-weight: 500;
+}
+.main-menu{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 27px;
+}
+.sub-menu{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Buttons */
+.y-btn{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.big-btn{
+  width: 220px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.mid-btn{
+  width: 200px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.small-btn{
+  width: 142px;
+  height: 46.46px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.login-btn{
+  width: 465px;
+  height: 83px;
+  font-size: 36px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+.btn-navy{
+  background: var(--primary-n);
+  border: 3px solid var(--primary-n);
+  color: var(--background-w);
+}
+.btn-sky{
+  background: var(--highlight-s);
+  border: 3px solid var(--highlight-s);
+  color: var(--background-w);
+}
+.btn-red{
+  background: var(--primary-r);
+  border: 3px solid var(--primary-r);
+  color: var(--background-w);
+}
+.btn-navy:hover{
+  background: transparent;
+  color: var(--primary-n);
+}
+.btn-sky:hover{
+  background: transparent;
+  color: var(--highlight-s);
+}
+.btn-red:hover{
+  background: transparent;
+  color: var(--primary-r);
+}
+
+/* others */
+.lec_upload i,
+.lec_play i{
+  font-size: 30px;
+  color: var(--highlight-s);
+}
+.lec_upload:hover i,
+.lec_play:hover i{
+  color: var(--primary-r);
+}
+
+/* Tags */
+.mini-tag{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 35px;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+.new-tag{
+  background: var(--highlight-m);
+  color: var(--typography);
+}
+.hot-tag{
+  background: var(--primary-r);
+  color: var(--background-w);
+}
+.limit-tag{
+  background: var(--primary-n);
+  color: var(--background-w);
+}
+
+/* Bookmark */
+.bookmark label{
+  display: inline-block;
+  width: 81px;
+  height: 81px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  cursor: pointer;
+}
+.bookmark input:not(:checked),
+.bookmark input:checked{
+  display: none;
+}
+.bookmark input:not(:checked) + label i:before{
+  font-size: 40px;
+  line-height: 81px;
+  color:var(--background-g);
+  text-shadow:none;
+}
+.bookmark input:checked + label i:before{
+  font-size: 40px;
+  line-height: 81px;
+  color:var(--primary-r);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}

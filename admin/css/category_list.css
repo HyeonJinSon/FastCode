@@ -1,0 +1,34 @@
+.cate_list_btn_wrapper {
+  gap: 30px;
+}
+main table {
+  width: 100%;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+main table thead tr {
+  background: var(--highlight-s);
+  color: #fff;
+}
+main table thead tr th {
+  width: 33%;
+  padding: 28px 0;
+}
+main table thead tr th:first-child {
+  border-top-left-radius: 20px;
+}
+main table thead tr th:last-child {
+  border-top-right-radius: 20px;
+}
+main table tbody tr td {
+  text-align: center;
+  background: var(--background-w);
+  line-height: 54px;
+  height: 54px;
+  font-size: 24px;
+}
+main table tbody tr td:first-child {
+  padding-top: 27px;
+}
+main table tbody tr td:last-child {
+  padding-bottom: 27px;
+}

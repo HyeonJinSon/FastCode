@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>공동 스타일</title>
   <link rel="stylesheet" href="/css/common.css">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
+/>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
@@ -28,13 +32,13 @@
     </div>
     <div data-simplebar>
       <ul class="gnb-menu">
-        <li class="d-flex align-items-center">
-          <a href="#">
+        <li class="d-flex flex-column">
+          <a href="#" data-bs-toggle="collapse" role="button" class="menu-wrap" aria-expanded="true">
             <i class="fa-solid fa-wrench"></i>
             <span class="main-menu-ft">대시보드</span>
           </a>
         </li>
-        <li class="d-flex align-items-center">
+        <li class="d-flex flex-column">
           <a data-bs-toggle="collapse" role="button" href="#menuUserctrl" class="menu-wrap">
             <i class="fas fa-user-friends"></i>
             <span class="main-menu-ft">회원 관리</span>
@@ -51,8 +55,8 @@
             </ul>
           </div>
         </li>
-        <li class="d-flex align-items-center">
-          <a data-bs-toggle="collapse" role="button" href="#menuCoursectrl" >
+        <li class="d-flex flex-column">
+          <a data-bs-toggle="collapse" role="button" href="#menuCoursectrl" class="menu-wrap">
             <i class="fa-solid fa-book"></i>
             <span class="main-menu-ft">강좌 관리</span>
           </a>
@@ -64,8 +68,8 @@
             </ul>
           </div>
         </li>
-        <li class="d-flex align-items-center">
-          <a data-bs-toggle="collapse" role="button" href="#menuSalesctrl" >
+        <li class="d-flex flex-column">
+          <a data-bs-toggle="collapse" role="button" href="#menuSalesctrl" class="menu-wrap">
             <i class="fas fa-money-check-alt"></i>
             <span class="main-menu-ft">매출 관리</span>
           </a>
@@ -76,8 +80,8 @@
             </ul>
           </div>
         </li>
-        <li class="d-flex align-items-center">
-          <a data-bs-toggle="collapse" role="button" href="#menuEventctrl" >
+        <li class="d-flex flex-column">
+          <a data-bs-toggle="collapse" role="button" href="#menuEventctrl" class="menu-wrap">
             <i class="fas fa-bullhorn"></i>
             <span class="main-menu-ft">이벤트 관리</span>
           </a>
@@ -88,8 +92,8 @@
             </ul>
           </div>
         </li>
-        <li class="d-flex align-items-center">
-          <a data-bs-toggle="collapse" role="button" href="#menuBoardctrl">
+        <li class="d-flex flex-column">
+          <a data-bs-toggle="collapse" role="button" href="#menuBoardctrl" class="menu-wrap">
             <i class="fas fa-th-list"></i>
             <span class="main-menu-ft">게시판 관리</span>
           </a>
@@ -125,8 +129,8 @@
     <p class="content-text-2">컨텐츠 내용2</p>
     <p class="content-text-3">컨텐츠 내용3</p>
     <hr>
-    <h3 class="main-menu">메인메뉴</h3>
-    <h3 class="sub-menu">서브메뉴</h3>
+    <h3 class="main-menu-ft">메인메뉴</h3>
+    <h3 class="sub-menu-ft">서브메뉴</h3>
     <hr>
     <a class="y-btn big-btn btn-navy">button</a>
     <a class="y-btn big-btn btn-sky">BUTTON</a>
@@ -152,5 +156,6 @@
     <hr>
   </div>
 </div>
+<script src="menu.js"></script>
 </body>
 </html>

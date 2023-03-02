@@ -1,0 +1,28 @@
+main h2 + a {
+  margin: 54px 0 27px;
+}
+input,
+select {
+  padding: 15px 25px;
+  border: 1px solid var(--primary-n);
+  border-radius: 5px;
+}
+input:focus,
+select:focus {
+  border: 4px solid #3e88f1;
+  padding: 12px 11px;
+}
+#search_keyword::placeholder {
+    color: var(--primary-n);
+  font-size: 18px;
+  font-weight: 700;
+}
+main form + form > button {
+  text-align: right;
+}
+main #lec_list .lec_info_title {
+  margin-bottom: 25px;
+}
+main #lec_list h3 {
+  display: inline;
+}

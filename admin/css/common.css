@@ -144,7 +144,7 @@ body{
   width: 40px;
   height: 139px;
   right: -10px;
-  background: url(/img/li-bg.svg) no-repeat;
+  background: url(../img/li-bg.svg) no-repeat;
   transition: .35s ease;
 }
 .gnb-body .gnb-menu .menu-wrap[aria-expanded="true"] > i,

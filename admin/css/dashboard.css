@@ -1,0 +1,30 @@
+@import url(common.css);
+body{
+  background: var(--background-g);
+  padding-top: 151px;
+}
+main{
+  text-align: center;
+}
+main h2{
+  text-transform: uppercase;
+  margin: 36px 0 75px;
+}
+main input{
+  width: 706px;
+  height: 81px;
+  border: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+input[type="text"]{
+  margin-bottom: 27px;
+}
+input[type="password"]{
+  margin-bottom: 80px;
+}
+.bg-bottom{
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+}

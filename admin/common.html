@@ -6,17 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>공동 스타일</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
-/>
+  <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+  <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
 </head>
 
 <body>
 <div class="common-wrap">
-  <div class="gnb-body pd-54">
+  <div class="gnb-body">
+    <div class="h-100" data-simplebar>
     <div class="admin-profile">
       <div class="profile-img-wrap">
         <img src="/img/admin-profile.png" alt="admin-img">
@@ -30,7 +28,6 @@
         </ul>
       </div>
     </div>
-    <div data-simplebar>
       <ul class="gnb-menu">
         <li class="d-flex flex-column">
           <a href="#" data-bs-toggle="collapse" role="button" class="menu-wrap" aria-expanded="true">
@@ -45,13 +42,13 @@
           </a>
           <div class="collapse" id="menuUserctrl">
             <ul>
-              <li><a href="" class="sub-menu-ft">회원관리</a></li>
-              <li><a href="" class="sub-menu-ft">강사관리</a></li>
-              <li><a href="" class="sub-menu-ft">관리자관리</a></li>
-              <li><a href="" class="sub-menu-ft">회원그룹관리</a></li>
-              <li><a href="" class="sub-menu-ft">회원휴면/탈퇴관리</a></li>
-              <li><a href="" class="sub-menu-ft">개인정보조회기록</a></li>
-              <li><a href="" class="sub-menu-ft">메일발송관리</a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>강사관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>관리자관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원그룹관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원휴면/탈퇴관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>개인정보조회기록</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>메일발송관리</span></a></li>
             </ul>
           </div>
         </li>
@@ -62,9 +59,9 @@
           </a>
           <div class="collapse" id="menuCoursectrl">
             <ul>
-              <li><a href="" class="sub-menu-ft">과정카테고리</a></li>
-              <li><a href="" class="sub-menu-ft">강좌리스트</a></li>
-              <li><a href="" class="sub-menu-ft">강좌관리</a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>과정카테고리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>강좌리스트</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>강좌관리</span></a></li>
             </ul>
           </div>
         </li>
@@ -75,8 +72,8 @@
           </a>
           <div class="collapse" id="menuSalesctrl">
             <ul>
-              <li><a href="" class="sub-menu-ft">월별매출통계</a></li>
-              <li><a href="" class="sub-menu-ft">과정매출통계</a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>월별매출통계</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>과정매출통계</span></a></li>
             </ul>
           </div>
         </li>
@@ -87,8 +84,8 @@
           </a>
           <div class="collapse" id="menuEventctrl">
             <ul>
-              <li><a href="" class="sub-menu-ft">쿠폰관리</a></li>
-              <li><a href="" class="sub-menu-ft">프리패스</a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>쿠폰관리</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>프리패스</span></a></li>
             </ul>
           </div>
         </li>
@@ -99,10 +96,10 @@
           </a>
           <div class="collapse" id="menuBoardctrl">
             <ul>
-              <li><a href="" class="sub-menu-ft">공지사항 게시판</a></li>
-              <li><a href="" class="sub-menu-ft">수강후기 게시판</a></li>
-              <li><a href="" class="sub-menu-ft">수강문의 게시판</a></li>
-              <li><a href="" class="sub-menu-ft">커뮤니티 게시판</a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>공지사항 게시판</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>수강후기 게시판</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>수강문의 게시판</span></a></li>
+              <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>커뮤니티 게시판</span></a></li>
             </ul>
           </div>
         </li>
@@ -157,5 +154,10 @@
   </div>
 </div>
 <script src="menu.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new SimpleBar(document.querySelector("[data-simplebar]"));
+  });
+</script>
 </body>
 </html>

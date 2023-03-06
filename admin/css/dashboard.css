@@ -1,5 +1,5 @@
 @import url(common.css);
-body{
+/* body{
   background: var(--background-g);
   padding-top: 151px;
 }
@@ -27,4 +27,129 @@ input[type="password"]{
   position: absolute;
   width: 100vw;
   bottom: 0;
+} */
+
+body {
+  background: var(--background-g);
+}
+section {
+  color: var(--primary-n);
+  margin-bottom: 27px;
+}
+section h3{
+  margin-bottom: 12px;
+}
+#bookmark-menu {
+  margin-top: 30px;
+}
+#bookmark-menu h2 {
+  margin-bottom: 17px;
+}
+#bookmark-menu h2 i {
+  margin-right: 11px;
+}
+#bookmark-menu .bookmark-list {
+  gap: 30px;
+}
+#bookmark-menu .bookmark-list .bookmark-item {
+  width: 200px;
+  height: 135px;
+  border-radius: 20px;
+  background: var(--background-w);
+  text-align: center;
+}
+#bookmark-menu .bookmark-list .bookmark-item i {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+#bookmark-menu .bookmark-list .bookmark-item span {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--typography);
+}
+
+.dashboard-data{
+  position: relative;
+  height: 351px;
+  margin-bottom: 27px;
+}
+#course-data,#click-data,
+#newcourse{
+  position: absolute;
+  top: 0;
+}
+#course-data{
+  left: 0;
+  margin-right: 40px;
+}
+
+#click-data{
+  right: 0;
+}
+
+#course-data span,#click-data span,
+#newcourse span{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: 700;
+  color: #7A7A7A;
+}
+#course-data div{
+  width: 606px;
+  height: 312px;
+  border-radius: 20px;
+  background: var(--background-w);
+}
+#click-data div{
+  width: 706px;
+  height: 312px;
+  border-radius: 20px;
+  background: var(--background-w);
+}
+#newcourse{
+  left: 0;
+}
+#newcourse ul{
+  width: 820px;
+}
+#newcourse .newcourse-item{
+  display: block;
+  width: 100%;
+  height: 63px;
+  line-height: 63px;
+  border-radius: 10px;
+  background: var(--background-w);
+  padding-left: 30px;
+  margin-bottom: 20px;
+  color:#525252;
+}
+#newcourse .newcourse-item:last-child{
+  margin-bottom: 0;
+}
+
+#calendar-data{
+  right: 0;
+}
+#calendar-data #calendar{
+  background: var(--highlight-s);
+}
+#calendar-data .fc-theme-standard td,#calendar-data .fc-theme-standard th,#calendar-data .fc-theme-standard .fc-scrollgrid{
+  border:none;
+}
+#calendar-data .fc-daygrid-day.fc-day-today{
+  background: var(--primary-n);
+}
+#calendar-data #calendar h2{
+  color:var(--background-w);
+}
+#calendar-data #calendar .fc-col-header-cell-cushion{
+  color:var(--typography);
+  font-size: 14px;
+  font-weight: 500;
+}
+#calendar-data #calendar .fc-daygrid-day-number{
+  color:var(--background-w);
 }

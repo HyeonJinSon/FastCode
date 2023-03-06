@@ -1,16 +1,17 @@
 <?php 
     session_start();
     $_SESSION['AUID'];
+    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     $userid = $_POST["userid"];
     $passwd = $_POST["passwd"];
     $passwd = hash('sha512',$passwd);
 
-    $sql = "SELECT * from admins where userid='{$userid}' and passwd='{$passwd}'";
+    $sql = "SELECT * FROM admins WHERE userid='{$userid}' AND passwd='{$passwd}'";
     $result = $mysqli -> query($sql);
     $rs = $result ->fetch_object();
 
     if($rs){
-        $sql = "UPDATE admins set last_login=now() where idx = '{$rs->idx}'";
+        $sql = "UPDATE admins SET last_login = now() WHERE idx = '{$rs->idx}'";
         $result = $mysqli -> query($sql);
         $_SESSION['AUID'] = $rs->userid;
         $_SESSION['AUNAME'] = $rs->username;

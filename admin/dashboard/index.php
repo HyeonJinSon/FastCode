@@ -286,12 +286,12 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
             </ul>
             <span>더보기 &#43;</span>
         </section>
+        <section id="calendar-data">
+          <h3 class="main-menu-ft">일정</h3>
+          <div id="calendar"></div>
+          <span>더보기 &#43;</span>
+        </section>
       </div>
-      <section id="calendar-data">
-        <h3 class="main-menu-ft">일정</h3>
-        <div id="calendar"></div>
-        <span>더보기 &#43;</span>
-      </section>
 
     </div>
   </div>
@@ -299,14 +299,18 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       new SimpleBar(document.querySelector("[data-simplebar]"));
-
+      // 스크롤바
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
         initialView: 'dayGridMonth',
-        editable: false,
-        dayNames:["SU", "MO", "TU", "WE", "TH", "FR", "SA"],
+        events: '',//json 파일로 이벤트 생성
+        editable: true,
+        selectable: true,
+        
       });
       calendar.render();
+      //캘린더
     });
   </script>
 </body>

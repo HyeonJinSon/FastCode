@@ -26,23 +26,27 @@ select:focus {
   flex-direction: column;
   align-items: center;
 }
-/* .cate_add_btn_wrapper {
-  gap: 51px;
-}
-.cate_add_btn_wrapper button {
-  margin: 0 100px;
-} */
+
 dialog {
   text-align: center;
   border: none;
   padding: 80px 164px;
-  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
 }
+/* dialog::backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.7);
+} */
 dialog .modal-header h2 {
   margin-bottom: 50px;
 }
@@ -63,4 +67,16 @@ dialog .modal-body input::placeholder {
   color: var(--primary-n);
   font-size: 18px;
   font-weight: 700;
+}
+.modal_bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: none;
+  pointer-events: none;
+}
+.modal_bg.active{
+  background-color: rgba(0,0,0,.6);
 }

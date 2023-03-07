@@ -78,5 +78,5 @@ dialog .modal-body input::placeholder {
   pointer-events: none;
 }
 .modal_bg.active{
-  background-color: rgba(0,0,0,.6);
+  background: rgba(224, 233, 239, 0.9);
 }

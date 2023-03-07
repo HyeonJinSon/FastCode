@@ -278,13 +278,13 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
       <div class="dashboard-data">
         <section id="newcourse">
           <h3 class="main-menu-ft">신규 강좌</h3>
-            <ul>
-              <li class="newcourse-item content-text-1">Javascript 기초강의</li>
-              <li class="newcourse-item content-text-1">PHP 개발 환경 구축하기</li>
-              <li class="newcourse-item content-text-1">Figma 컴포넌트 활용하기</li>
-              <li class="newcourse-item content-text-1">Javascript와 JQuery 응용</li>
-            </ul>
-            <span>더보기 &#43;</span>
+          <ul>
+            <li class="newcourse-item content-text-1">Javascript 기초강의</li>
+            <li class="newcourse-item content-text-1">PHP 개발 환경 구축하기</li>
+            <li class="newcourse-item content-text-1">Figma 컴포넌트 활용하기</li>
+            <li class="newcourse-item content-text-1">Javascript와 JQuery 응용</li>
+          </ul>
+          <span>더보기 &#43;</span>
         </section>
         <section id="calendar-data">
           <h3 class="main-menu-ft">일정</h3>
@@ -303,11 +303,16 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: 'UTC',
-        initialView: 'dayGridMonth',
+        height: 312,
+        // initialView: 'dayGridMonth',
         events: '',//json 파일로 이벤트 생성
         editable: true,
         selectable: true,
-        
+        headerToolbar: {
+          start: 'title', // will normally be on the left. if RTL, will be on the right
+          center: '',
+          end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+        },
       });
       calendar.render();
       //캘린더

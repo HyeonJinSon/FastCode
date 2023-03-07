@@ -14,6 +14,16 @@
 
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";
+
+  $query = "SELECT * from category where step=1";
+
+  $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
+  // $rs = $result -> fetch_object();
+  // print_r($rs);
+  
+  while($rs = $result -> fetch_object()){
+      $cate1[]=$rs;
+  }
 ?>
 
           <main>
@@ -23,9 +33,16 @@
                 <div class="select_container col row col-md-4">
                   <select name="cate1" id="cate1" class="row">
                     <option selected>대분류</option>
+                    <?php 
+                        foreach($cate1 as $c){
+                    ?>
+                            <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
+                    <?php
+                        }
+                    ?>
                     <!-- {category1} -->
-                    <option value="프로그래밍">프로그래밍</option>
-                    <option value="디자인">디자인</option>
+                    <!-- <option value="프로그래밍">프로그래밍</option>
+                    <option value="디자인">디자인</option> -->
                   </select>
                   <button type="button" class="y-btn big-btn btn-navy modal_open" onclick="open_Modal(0)">대분류 등록</button> 
                 </div>
@@ -33,9 +50,9 @@
                   <select name="cate2" id="cate2">
                     <option selected>중분류</option>
                     <!-- {category2} category2.php -->
-                    <option value="프론트">프론트</option>
+                    <!-- <option value="프론트">프론트</option>
                     <option value="백">백</option>
-                    <option value="기타">기타</option>
+                    <option value="기타">기타</option> -->
                   </select>
                   <button type="button" class="y-btn big-btn btn-navy modal_open" onclick="open_Modal(1)">중분류 등록</button>
                 </div>
@@ -43,15 +60,17 @@
                   <select name="cate3" id="cate3">
                     <option selected>소분류</option>
                     <!-- {category3} category3.php -->
-                    <option value="html">html</option>
+                    <!-- <option value="html">html</option>
                     <option value="css">css</option>
-                    <option value="javascript">javascript</option>
+                    <option value="javascript">javascript</option> -->
                   </select>
                   <button type="button" class="y-btn big-btn btn-navy modal_open" onclick="open_Modal(2)">소분류 등록</button>
                 </div>
               </form>
             </div>
           </main>
+
+          <!-- cate1 Modal -->
           <dialog class="cate1Modal" id="cate1Modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -67,6 +86,8 @@
               </div>
             </div>
           </dialog>
+
+          <!-- cate2 Modal -->
           <dialog class="cate2Modal" id="cate2Modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -74,11 +95,18 @@
               </div>
               <div class="modal-body row">
                 <input type="text" name="name2" id="name2" placeholder="카테고리명" />
-                <select name="pcode" id="pcode2_1">
+                <select name="pcode" id="pcode2">
                   <option selected>대분류 선택</option>
+                  <?php 
+                        foreach($cate1 as $c){
+                    ?>
+                            <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
+                    <?php
+                        }
+                    ?>
                   <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
-                  <option value="프로그래밍">프로그래밍</option>
-                  <option value="디자인">디자인</option>
+                  <!-- <option value="프로그래밍">프로그래밍</option>
+                  <option value="디자인">디자인</option> -->
                 </select>
                 <input type="text" name="code2" id="code2" placeholder="코드 입력" />
               </div>
@@ -88,6 +116,8 @@
               </div>
             </div>
           </dialog>
+
+          <!-- cate3 Modal -->
           <dialog class="cate3Modal" id="cate3Modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -95,14 +125,21 @@
               </div>
               <div class="modal-body row">
                 <input type="text" name="name3" id="name3" placeholder="카테고리명" />
-                <select name="pcode3_1" id="pcode3_1">
+                <select name="pcode" id="pcode2_1">
                   <option selected>대분류 선택</option>
+                  <?php 
+                      foreach($cate1 as $c){
+                  ?>
+                          <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
+                  <?php
+                      }
+                  ?>
                   <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
-                  <option value="프로그래밍">프로그래밍</option>
-                  <option value="디자인">디자인</option>
+                  <!-- <option value="프로그래밍">프로그래밍</option>
+                  <option value="디자인">디자인</option> -->
                 </select>
-                <select name="pcode3_2" id="pcode3_2">
-                  <option selected>대분류를 먼저 선택해주세요</option>
+                <select name="pcode" id="pcode3">
+                  <option selected>중분류 선택</option>
                   <!-- {category2} category4.php  select#cate2에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게-->
                 </select>
                 <input type="text" name="code3" id="code3" placeholder="코드 입력" />
@@ -114,16 +151,16 @@
             </div>
           </dialog>
 
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+?>
+
     <script
-      src="https://code.jquery.com/jquery-3.6.3.min.js"
-      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-      crossorigin="anonymous"
-    ></script>
+      src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+    </script>
     <script
-      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
-      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
-      crossorigin="anonymous"
-    ></script>
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous">
+    </script>
     <script>
       //div.select-container:nth-child button 누르면 각각 dialog show()
       function open_Modal(idx){
@@ -134,13 +171,14 @@
       $(".modal_close").click(()=>{
         $('dialog').hide();
       });
+
       //cate1 change 할일  category2.php cate1에 아래 중분류 cate2를 #cate2에 html로 넣어주기
       //.select-container:nth-child(2) button show(), (option 중 가장 첫 번째가 선택된 경우 button hide())
-      $("#cate1").change(() => {
+      $("#cate1").change(function(){
         let cate1 = $(this).val();
         let data = {
-          cate1: cate1,
-        };
+          cate1: cate1
+        }
         $.ajax({
           async: false,
           type: "post",
@@ -149,16 +187,16 @@
           dataType: "html",
           success: function (return_data) {
             $("#cate2").html(return_data);
-          },
+          }
         });
-      });
+      }); // #cate1 change
 
       //cate2 change 할일  category3.php cate2에 아래 소분류 cate3를 #cate3에 html로 넣어주기
       //.select-container:nth-child(3) button show(), (option 중 가장 첫 번째가 선택된 경우 button hide())
-      $("#cate2").change(() => {
+      $("#cate2").change(function(){
         let cate2 = $(this).val();
         let data = {
-          cate2: cate2,
+          cate2: cate2
         };
         $.ajax({
           async: false,
@@ -168,15 +206,15 @@
           dataType: "html",
           success: function (return_data) {
             $("#cate3").html(return_data);
-          },
+          }
         });
-      });
+      }); //#cate2 change
 
       //pcode3_1 change 할일 > pcode3_1의 cate1 아래 중분류 cate2를 pcode3_2에 출력  category4.php
-      $("#pcode3_1").change(() => {
-        let cate1 = $(this).val();
+      $("#pcode2_1").change(function(){
+        let cate = $(this).val();
         let data = {
-          cate1: cate1,
+          cate: cate
         };
         $.ajax({
           async: false,
@@ -185,34 +223,34 @@
           url: "category4.php",
           dataType: "html",
           success: function (return_data) {
-            $("#pcode3_2").html(return_data);
+            $("#pcode3").html(return_data);
           },
         });
       });
 
       //function category_save(){}   save_category.php
       function category_save(step) {
-        let name = $("#name" + step).val();
-        let code = $("#code" + step).val();
-        let pcode = $("#pcode" + step + " option:selected").val();
+        let name = $('#name'+step).val();
+        let code = $('#code'+step).val();
+        let pcode = $('#pcode'+step+' option:selected').val();
 
         if(step>1 && !pcode){
-          alert('상위 분류를 선택해주세요.');
+          alert('상위 분류를 선택하세요');
           return;
         }
         if(!code){
-          alert('분류 코드를 입력해주세요.');
+          alert('분류 코드를 입력하세요');
           return;
         }
         if(!name){
-          alert('카테고리명을 입력해주세요.');
+          alert('카테고리명을 입력하세요');
           return;
         }
         let data = {
           name : name,
           code : code,
           pcode : pcode,
-          step : step,
+          step : step
         }
         $.ajax({
           async: false,
@@ -220,20 +258,22 @@
           data: data,
           url: "save_category.php",
           dataType: 'json',
+          error:function(){},
           success:function(return_data){
             if(return_data.result == 1){
-              alert('새 카테고리가 등록되었어요.').
+              alert('새 카테고리가 등록되었습니다').
               location.reload();
             }else if(return_data.result == -1){
-              alert('입력한 코드명 또는 카테고리명이 이미 존재하네요!');
+              alert('입력한 코드명 또는 카테고리명이 이미 존재합니다');
               location.reload();
             }else{
-              alert('카테고리 등록에 실패했어요!');
+              alert('카테고리 등록에 실패했습니다');
             }
           }
         });
       }
     </script>
+
 <?php
-  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+  include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
 ?>

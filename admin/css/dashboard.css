@@ -94,12 +94,12 @@ section h3 {
 #newcourse .newcourse-item {
   display: block;
   width: 100%;
-  height: 63px;
-  line-height: 63px;
+  height: 70px;
+  line-height: 70px;
   border-radius: 10px;
   background: var(--background-w);
   padding-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 19px;
   color: #525252;
 }
 #newcourse .newcourse-item:last-child {
@@ -108,8 +108,8 @@ section h3 {
 /* 달력 */
 #calendar {
   width: 493px;
-  height: 312px;
-  padding: 30px 25px 36px;
+  height: 337px;
+  padding: 25px 25px 20px;
   background: var(--highlight-s);
   border-radius: 20px;
   box-sizing: border-box;
@@ -125,14 +125,14 @@ section h3 {
 .cld-datetime {
   margin: auto;
   overflow: hidden;
-  margin-bottom: 23px;
+  margin-bottom: 20px;
 }
 .cld-datetime .today {
   margin: auto;
   text-align: center;
   color: var(--background-w);
   font-size: 24px;
-  line-height: 24px;
+  line-height: 29px;
   font-weight: 700;
 }
 .cld-nav {
@@ -166,7 +166,7 @@ section h3 {
 }
 .cld-day:not(:nth-of-type(7n)) {
   margin-right: 22px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .cld-day:nth-last-of-type(-n + 7) {
   margin-bottom: 0;
@@ -259,4 +259,8 @@ section h3 {
 }
 .today .cld-number.eventday:hover {
   background: #888;
+}
+
+.cld-day:nth-of-type(n + 43) {
+  display: none;
 }

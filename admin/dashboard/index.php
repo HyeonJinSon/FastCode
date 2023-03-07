@@ -298,10 +298,11 @@
   <script>
     // 스크롤바
     new SimpleBar(document.querySelector("[data-simplebar]"));
-    //달력
+    //달력 caleandar.js 
+    // https://github.com/jackducasse/caleandar
     let element = caleandar(document.querySelector('#calendar'));
-
-    caleandar(element, events, settings);
+    // caleandar(element, events, settings);
+    // 이벤트 넣을때 사용하면 될.. 함수?
   </script>
 </body>
 

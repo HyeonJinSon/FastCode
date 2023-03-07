@@ -70,86 +70,88 @@
             </div>
           </main>
 
-          <!-- cate1 Modal -->
-          <dialog class="cate1Modal" id="cate1Modal">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="content-title">대분류 등록</h2>
+          <div class="modal_bg">
+            <!-- cate1 Modal -->
+            <dialog class="cate1Modal" id="cate1Modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="content-title">대분류 등록</h2>
+                </div>
+                <div class="modal-body row">
+                  <input type="text" name="name1" id="name1" placeholder="카테고리명" />
+                  <input type="text" name="code1" id="code1" placeholder="코드 입력" />
+                </div>
+                <div class="modal-footer row justify-content-between">
+                  <button type="button" class="mid-btn btn-navy"  onclick="category_save(1)">추가하기</button>
+                  <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
+                </div>
               </div>
-              <div class="modal-body row">
-                <input type="text" name="name1" id="name1" placeholder="카테고리명" />
-                <input type="text" name="code1" id="code1" placeholder="코드 입력" />
+            </dialog>
+  
+            <!-- cate2 Modal -->
+            <dialog class="cate2Modal" id="cate2Modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="content-title">중분류 등록</h2>
+                </div>
+                <div class="modal-body row">
+                  <input type="text" name="name2" id="name2" placeholder="카테고리명" />
+                  <select name="pcode" id="pcode2">
+                    <option selected>대분류 선택</option>
+                    <?php 
+                          foreach($cate1 as $c){
+                      ?>
+                              <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
+                      <?php
+                          }
+                      ?>
+                    <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
+                    <!-- <option value="프로그래밍">프로그래밍</option>
+                    <option value="디자인">디자인</option> -->
+                  </select>
+                  <input type="text" name="code2" id="code2" placeholder="코드 입력" />
+                </div>
+                <div class="modal-footer row justify-content-between">
+                  <button type="button" class="mid-btn btn-navy"  onclick="category_save(2)">추가하기</button>
+                  <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
+                </div>
               </div>
-              <div class="modal-footer row justify-content-between">
-                <button type="button" class="mid-btn btn-navy"  onclick="category_save(1)">추가하기</button>
-                <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
-              </div>
-            </div>
-          </dialog>
-
-          <!-- cate2 Modal -->
-          <dialog class="cate2Modal" id="cate2Modal">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="content-title">중분류 등록</h2>
-              </div>
-              <div class="modal-body row">
-                <input type="text" name="name2" id="name2" placeholder="카테고리명" />
-                <select name="pcode" id="pcode2">
-                  <option selected>대분류 선택</option>
-                  <?php 
+            </dialog>
+  
+            <!-- cate3 Modal -->
+            <dialog class="cate3Modal" id="cate3Modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="content-title">소분류 등록</h2>
+                </div>
+                <div class="modal-body row">
+                  <input type="text" name="name3" id="name3" placeholder="카테고리명" />
+                  <select name="pcode" id="pcode2_1">
+                    <option selected>대분류 선택</option>
+                    <?php 
                         foreach($cate1 as $c){
                     ?>
                             <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
                     <?php
                         }
                     ?>
-                  <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
-                  <!-- <option value="프로그래밍">프로그래밍</option>
-                  <option value="디자인">디자인</option> -->
-                </select>
-                <input type="text" name="code2" id="code2" placeholder="코드 입력" />
+                    <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
+                    <!-- <option value="프로그래밍">프로그래밍</option>
+                    <option value="디자인">디자인</option> -->
+                  </select>
+                  <select name="pcode" id="pcode3">
+                    <option selected>중분류 선택</option>
+                    <!-- {category2} category4.php  select#cate2에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게-->
+                  </select>
+                  <input type="text" name="code3" id="code3" placeholder="코드 입력" />
+                </div>
+                <div class="modal-footer row justify-content-between">
+                  <button type="button" class="mid-btn btn-navy" onclick="category_save(3)">추가하기</button>
+                  <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
+                </div>
               </div>
-              <div class="modal-footer row justify-content-between">
-                <button type="button" class="mid-btn btn-navy"  onclick="category_save(2)">추가하기</button>
-                <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
-              </div>
-            </div>
-          </dialog>
-
-          <!-- cate3 Modal -->
-          <dialog class="cate3Modal" id="cate3Modal">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="content-title">소분류 등록</h2>
-              </div>
-              <div class="modal-body row">
-                <input type="text" name="name3" id="name3" placeholder="카테고리명" />
-                <select name="pcode" id="pcode2_1">
-                  <option selected>대분류 선택</option>
-                  <?php 
-                      foreach($cate1 as $c){
-                  ?>
-                          <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
-                  <?php
-                      }
-                  ?>
-                  <!-- {category1} select#cate1에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게 -->
-                  <!-- <option value="프로그래밍">프로그래밍</option>
-                  <option value="디자인">디자인</option> -->
-                </select>
-                <select name="pcode" id="pcode3">
-                  <option selected>중분류 선택</option>
-                  <!-- {category2} category4.php  select#cate2에서 선택된 값이 있을 경우 이 자리에 해당 option을 selected하여 보이게-->
-                </select>
-                <input type="text" name="code3" id="code3" placeholder="코드 입력" />
-              </div>
-              <div class="modal-footer row justify-content-between">
-                <button type="button" class="mid-btn btn-navy" onclick="category_save(3)">추가하기</button>
-                <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
-              </div>
-            </div>
-          </dialog>
+            </dialog>
+          </div>
 
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
@@ -164,12 +166,14 @@
     <script>
       //div.select-container:nth-child button 누르면 각각 dialog show()
       function open_Modal(idx){
-        $('dialog').eq(idx).show();
+        $('.modal_bg dialog').eq(idx).show();
+        $('.modal_bg').addClass('active');
       }
 
       //.modal_close를 click하면 dialog hide()
       $(".modal_close").click(()=>{
-        $('dialog').hide();
+        $('.modal_bg dialog').hide();
+        $('.modal_bg').removeClass('active');
       });
 
       //cate1 change 할일  category2.php cate1에 아래 중분류 cate2를 #cate2에 html로 넣어주기

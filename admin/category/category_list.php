@@ -43,7 +43,7 @@
                 <!-- colspan="각 cate1 아래의 cate3 총 개수" -->
                 <td class="cate1" colspan=""></td>
                 <!-- colspan="각 cate2 아래의 cate3 총 개수" -->
-                <td class="cate2" data-pcode="" colspan=""></td>
+                <td class="cate2" colspan=""></td>
                 <td class="cate3" data-pcode="<?php echo $row['pcode']; ?>"><?php echo $row['name']; ?></td>
               </tr>
               <?php } ?>
@@ -62,11 +62,9 @@
     $('.cate_list').each(function(){
       let cate2 = $(this).find('.cate3').attr('data-pcode');
       let cate2name = $(this).find(".cate2");
-      // let cate1 = $(this).find('.cate2').attr('data-pcode');
       let cate1name = $(this).find(".cate1");
       let data = {
         cate2 : cate2
-        // cate1 : cate1
       };
 
       $.ajax({
@@ -74,23 +72,9 @@
           type:'post',
           data:data,
           url: "category_list2.php", 
-          // dataType:'text',
           success: function(returned_data){
             console.log(returned_data);
             cate2name.text(returned_data);
-          }
-      });
-
-      $.ajax({
-          async: false,
-          type:'post',
-          data:data,
-          url: "category_list2_1.php", 
-          // dataType:'text',
-          success: function(returned_data){
-            console.log(returned_data);
-            cate2name.attr('data-pcode',returned_data);
-            
           }
       });
 
@@ -99,7 +83,6 @@
             type:'post',
             data:data,
             url: "category_list1.php", 
-            // dataType:'text',
             success: function(returned_data){
               console.log(returned_data);
               cate1name.text(returned_data);

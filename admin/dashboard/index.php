@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="/admin/css/dashboard.css">
   <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
   <!-- 스크롤바 -->
   <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
-  <!-- 데이트피커 -->
-  <script src="
-https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
-"></script>
+  <!-- calendar js -->
+  <script type="text/javascript" src="caleandar.min.js"></script>
 </head>
 
 <body>
@@ -267,12 +267,12 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
         <section id="course-data">
           <h3 class="main-menu-ft">카테고리 별 강좌 비율</h3>
           <div></div>
-          <span>더보기 &#43;</span>
+          <span><a href="#">더보기 &#43;</a></span>
         </section>
         <section id="click-data">
           <h3 class="main-menu-ft">카테고리 별 조회수</h3>
           <div></div>
-          <span>더보기 &#43;</span>
+          <span><a href="#">더보기 &#43;</a></span>
         </section>
       </div>
       <div class="dashboard-data">
@@ -284,39 +284,24 @@ https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js
             <li class="newcourse-item content-text-1">Figma 컴포넌트 활용하기</li>
             <li class="newcourse-item content-text-1">Javascript와 JQuery 응용</li>
           </ul>
-          <span>더보기 &#43;</span>
+          <span><a href="#">더보기 &#43;</a></span>
         </section>
         <section id="calendar-data">
           <h3 class="main-menu-ft">일정</h3>
           <div id="calendar"></div>
-          <span>더보기 &#43;</span>
+          <span><a href="#">더보기 &#43;</a></span>
         </section>
       </div>
-
     </div>
   </div>
-  <script src="menu.js"></script>
+  <!-- <script src="menu.js"></script> -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new SimpleBar(document.querySelector("[data-simplebar]"));
-      // 스크롤바
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        timeZone: 'UTC',
-        height: 312,
-        // initialView: 'dayGridMonth',
-        events: '',//json 파일로 이벤트 생성
-        editable: true,
-        selectable: true,
-        headerToolbar: {
-          start: 'title', // will normally be on the left. if RTL, will be on the right
-          center: '',
-          end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
-        },
-      });
-      calendar.render();
-      //캘린더
-    });
+    // 스크롤바
+    new SimpleBar(document.querySelector("[data-simplebar]"));
+    //달력
+    let element = caleandar(document.querySelector('#calendar'));
+
+    caleandar(element, events, settings);
   </script>
 </body>
 

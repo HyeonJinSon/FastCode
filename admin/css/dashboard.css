@@ -1,33 +1,4 @@
 @import url(common.css);
-/* body{
-  background: var(--background-g);
-  padding-top: 151px;
-}
-main{
-  text-align: center;
-}
-main h2{
-  text-transform: uppercase;
-  margin: 36px 0 75px;
-}
-main input{
-  width: 706px;
-  height: 81px;
-  border: none;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-input[type="text"]{
-  margin-bottom: 27px;
-}
-input[type="password"]{
-  margin-bottom: 80px;
-}
-.bg-bottom{
-  position: absolute;
-  width: 100vw;
-  bottom: 0;
-} */
 
 body {
   background: var(--background-g);
@@ -85,13 +56,15 @@ section h3 {
   margin-right: 40px;
 }
 
-#click-data {
+#click-data,
+#calendar-data {
   right: 0;
 }
 
-#course-data span,
-#click-data span,
-#newcourse span {
+#course-data span > a,
+#click-data span > a,
+#newcourse span > a,
+#calendar-data span > a {
   position: absolute;
   top: 0;
   right: 0;
@@ -132,83 +105,158 @@ section h3 {
 #newcourse .newcourse-item:last-child {
   margin-bottom: 0;
 }
-#calendar-data {
-  right: 0;
+/* 달력 */
+#calendar {
   width: 493px;
-}
-#calendar-data #calendar {
-  position: relative;
-  border-radius: 20px;
+  height: 312px;
+  padding: 30px 25px 36px;
   background: var(--highlight-s);
-  padding: 30px 25px;
+  border-radius: 20px;
+  box-sizing: border-box;
 }
-.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
-  margin-left: 0;
+.cld-main {
+  position: relative;
+  box-sizing: border-box;
 }
-#calendar-data .fc-button-group {
-  position: static;
+.cld-main a {
+  color: #333;
+  font-weight: bold;
 }
-#calendar-data .fc-button-group .fc-prev-button {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
+.cld-datetime {
+  margin: auto;
+  overflow: hidden;
+  margin-bottom: 23px;
 }
-#calendar-data .fc-button-group .fc-next-button {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-}
-#calendar-data .fc-icon-chevron-left:before {
+.cld-datetime .today {
+  margin: auto;
+  text-align: center;
   color: var(--background-w);
-  content: url("../img/caret-left-solid.svg");
-}
-#calendar-data .fc-icon-chevron-right:before {
-  color: var(--background-w);
-  content: url("../img/caret-right-solid.svg");
-}
-#calendar-data .fc-theme-standard td,
-#calendar-data .fc-theme-standard th,
-#calendar-data .fc-theme-standard .fc-scrollgrid {
-  border: none;
-}
-#calendar-data .fc-daygrid-day.fc-day-today {
-  background: none;
-}
-#calendar-data .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  font-size: 24px;
   line-height: 24px;
-}
-#calendar-data .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
-  display: inline-block;
-  background: var(--primary-n);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
   font-weight: 700;
 }
-
-#calendar-data #calendar .fc-today-button {
-  display: none;
+.cld-nav {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
-#calendar-data #calendar h2 {
-  display: block;
+.cld-nav svg {
+  fill: var(--background-w);
+}
+.cld-nav:hover {
+  cursor: pointer;
+}
+.cld-nav:hover svg {
+  fill: #666;
+}
+.cld-rwd {
+  content: url(../img/caret-left-solid.svg);
+  left: 0;
+  height: 36px;
+}
+.cld-fwd {
+  content: url(../img/caret-right-solid.svg);
+  height: 36px;
+  right: 0;
+}
+.cld-label:not(:last-of-type) {
+  margin-right: 22px;
+}
+.cld-day:not(:nth-of-type(7n)) {
+  margin-right: 22px;
+  margin-bottom: 5px;
+}
+.cld-day:nth-last-of-type(-n + 7) {
+  margin-bottom: 0;
+}
+.cld-labels {
+  margin-bottom: 10px;
+}
+.cld-labels,
+.cld-days {
+  padding-left: 0;
   text-align: center;
-  color: var(--background-w);
 }
-#calendar-data #calendar .fc-col-header-cell-cushion {
+.cld-label,
+.cld-day {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+.cld-label {
   color: var(--typography);
+  text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
+  line-height: 18px;
+  height: 18px;
 }
-#calendar-data #calendar .fc-daygrid-day-top {
+.cld-days {
+  width: 342px;
+  margin: auto;
+}
+.cld-day.today .cld-number {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: var(--primary-n);
+}
+.cld-day.disableDay {
+  opacity: 0.5;
+}
+.cld-day.nextMonth,
+.cld-day.prevMonth {
+  opacity: 0.33;
+}
+.cld-number {
+  position: relative;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 30px;
+}
+.cld-title {
+  position: absolute;
+  z-index: 5;
+  display: none;
+  top: 30px;
+  left: 0;
+  padding: 5px 10px;
+  background: #fff;
+  white-space: nowrap;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.cld-number:hover .cld-title {
   display: block;
-  text-align: center;
 }
-#calendar-data #calendar .fc-daygrid-day-number {
-  color: var(--background-w);
+.cld-title::before {
+  content: "";
+  position: absolute;
+  top: -7.5px;
+  left: 7.5px;
+  width: 0;
+  height: 0;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-bottom: 7.5px solid #ccc;
+}
+.cld-number.eventday {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid #999;
+}
+.cld-number.eventday:hover {
+  cursor: pointer;
+  background: #eee;
+}
+.today .cld-number.eventday:hover {
+  background: #888;
 }

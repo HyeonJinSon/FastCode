@@ -1,116 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>카테고리 리스트</title>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/category_list.css" />
-  </head>
-  <body>
-    <div class="common-wrap">
-      <div class="gnb-body pd-54">
-        <div class="admin-profile">
-          <div class="profile-img-wrap">
-            <img src="/img/admin-profile.png" alt="admin-img">
-          </div>
-          <h2>Manager</h2>
-          <div class="profile-menu-wrap">
-            <ul class="profile-menu d-flex justify-content-center">
-              <li><a href=""><i class="fa-brands fa-whmcs"></i></a></li>
-              <li><a href=""><i class="fa-regular fa-calendar-check"></i></a></li>
-              <li><a href=""><i class="fa-brands fa-weixin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-        <div data-simplebar>
-          <ul class="gnb-menu">
-            <li class="d-flex flex-column">
-              <a href="#" data-bs-toggle="collapse" role="button" class="menu-wrap" aria-expanded="true">
-                <i class="fa-solid fa-wrench"></i>
-                <span class="main-menu-ft">대시보드</span>
-              </a>
-            </li>
-            <li class="d-flex flex-column">
-              <a data-bs-toggle="collapse" role="button" href="#menuUserctrl" class="menu-wrap">
-                <i class="fas fa-user-friends"></i>
-                <span class="main-menu-ft">회원 관리</span>
-              </a>
-              <div class="collapse" id="menuUserctrl">
-                <ul>
-                  <li><a href="" class="sub-menu-ft">회원관리</a></li>
-                  <li><a href="" class="sub-menu-ft">강사관리</a></li>
-                  <li><a href="" class="sub-menu-ft">관리자관리</a></li>
-                  <li><a href="" class="sub-menu-ft">회원그룹관리</a></li>
-                  <li><a href="" class="sub-menu-ft">회원휴면/탈퇴관리</a></li>
-                  <li><a href="" class="sub-menu-ft">개인정보조회기록</a></li>
-                  <li><a href="" class="sub-menu-ft">메일발송관리</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="d-flex flex-column">
-              <a data-bs-toggle="collapse" role="button" href="#menuCoursectrl" class="menu-wrap">
-                <i class="fa-solid fa-book"></i>
-                <span class="main-menu-ft">강좌 관리</span>
-              </a>
-              <div class="collapse" id="menuCoursectrl">
-                <ul>
-                  <li><a href="" class="sub-menu-ft">과정카테고리</a></li>
-                  <li><a href="" class="sub-menu-ft">강좌리스트</a></li>
-                  <li><a href="" class="sub-menu-ft">강좌관리</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="d-flex flex-column">
-              <a data-bs-toggle="collapse" role="button" href="#menuSalesctrl" class="menu-wrap">
-                <i class="fas fa-money-check-alt"></i>
-                <span class="main-menu-ft">매출 관리</span>
-              </a>
-              <div class="collapse" id="menuSalesctrl">
-                <ul>
-                  <li><a href="" class="sub-menu-ft">월별매출통계</a></li>
-                  <li><a href="" class="sub-menu-ft">과정매출통계</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="d-flex flex-column">
-              <a data-bs-toggle="collapse" role="button" href="#menuEventctrl" class="menu-wrap">
-                <i class="fas fa-bullhorn"></i>
-                <span class="main-menu-ft">이벤트 관리</span>
-              </a>
-              <div class="collapse" id="menuEventctrl">
-                <ul>
-                  <li><a href="" class="sub-menu-ft">쿠폰관리</a></li>
-                  <li><a href="" class="sub-menu-ft">프리패스</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="d-flex flex-column">
-              <a data-bs-toggle="collapse" role="button" href="#menuBoardctrl" class="menu-wrap">
-                <i class="fas fa-th-list"></i>
-                <span class="main-menu-ft">게시판 관리</span>
-              </a>
-              <div class="collapse" id="menuBoardctrl">
-                <ul>
-                  <li><a href="" class="sub-menu-ft">공지사항 게시판</a></li>
-                  <li><a href="" class="sub-menu-ft">수강후기 게시판</a></li>
-                  <li><a href="" class="sub-menu-ft">수강문의 게시판</a></li>
-                  <li><a href="" class="sub-menu-ft">커뮤니티 게시판</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="content-body content-pd">
-        <div class="content-top">
-          <h1 id="main-logo"><a href="/"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
-          <div class="bookmark">
-            <input type="checkbox" id="bookmark1"/>
-            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
-          </div>
-        </div>
+<?php 
+  session_start();
+  if(!$_SESSION['AUID']){
+    echo "<script>
+            alert('접근 권한이 없습니다');
+            history.back();
+        </script>";
+  };
+
+  include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
+?>
+
+  <link rel="stylesheet" href="../css/category_list.css" />
+
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";
+
+  $query = "SELECT * from category where step=1";
+
+  $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
+  // $rs = $result -> fetch_object();
+  // print_r($rs);
+  
+  while($rs = $result -> fetch_object()){
+      $cate1[]=$rs;
+  }
+?>
+
         <main class="">
           <h2 class="page-title">카테고리 리스트</h2>
           <div class="cate_list_btn_wrapper row pd-54">
@@ -140,7 +55,11 @@
         </main>
     
     
-      </div>
-    </div>
-  </body>
-</html>
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+?>
+
+
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
+?>

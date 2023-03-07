@@ -15,15 +15,10 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";
 
-  $query = "SELECT * from category where step=1";
+  $query = "SELECT * from category where step=3";
 
   $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
-  // $rs = $result -> fetch_object();
-  // print_r($rs);
   
-  while($rs = $result -> fetch_object()){
-      $cate1[]=$rs;
-  }
 ?>
 
         <main class="">
@@ -43,13 +38,15 @@
             </thead>
             <tbody>
               <!-- 각 cate1, 2, 3의 name이 td 내용으로 출력 -->
-              <tr>
+              <?php while($row = $result->fetch_assoc()) { ?>
+              <tr class="cate_list">
                 <!-- colspan="각 cate1 아래의 cate3 총 개수" -->
-                <td colspan="">프로그래밍</td>
+                <td class="cate1" colspan=""></td>
                 <!-- colspan="각 cate2 아래의 cate3 총 개수" -->
-                <td colspan="">프론트엔드</td>
-                <td>html</td>
+                <td class="cate2" data-pcode="" colspan=""></td>
+                <td class="cate3" data-pcode="<?php echo $row['pcode']; ?>"><?php echo $row['name']; ?></td>
               </tr>
+              <?php } ?>
             </tbody>
           </table>
         </main>
@@ -58,7 +55,60 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
+  <script
+    src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+  </script>
+  <script> 
+    $('.cate_list').each(function(){
+      let cate2 = $(this).find('.cate3').attr('data-pcode');
+      let cate2name = $(this).find(".cate2");
+      // let cate1 = $(this).find('.cate2').attr('data-pcode');
+      let cate1name = $(this).find(".cate1");
+      let data = {
+        cate2 : cate2
+        // cate1 : cate1
+      };
 
+      $.ajax({
+          async: false,
+          type:'post',
+          data:data,
+          url: "category_list2.php", 
+          // dataType:'text',
+          success: function(returned_data){
+            console.log(returned_data);
+            cate2name.text(returned_data);
+          }
+      });
+
+      $.ajax({
+          async: false,
+          type:'post',
+          data:data,
+          url: "category_list2_1.php", 
+          // dataType:'text',
+          success: function(returned_data){
+            console.log(returned_data);
+            cate2name.attr('data-pcode',returned_data);
+            
+          }
+      });
+
+      $.ajax({
+            async: false,
+            type:'post',
+            data:data,
+            url: "category_list1.php", 
+            // dataType:'text',
+            success: function(returned_data){
+              console.log(returned_data);
+              cate1name.text(returned_data);
+            }
+        });
+
+
+    });
+  </script>
 
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

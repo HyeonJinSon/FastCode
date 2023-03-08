@@ -41,12 +41,11 @@
               <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#menuDashboard"
                 aria-expanded="true" aria-controls="menuDashboard">
                 <i class="fa-solid fa-wrench"></i>
-                <span class="main-menu-ft">대시보드</span>
+                <span class="main-menu-ft" onclick="location.href='index.php'">대시보드</span>
               </a>
             </h2>
             <div id="menuDashboard" class="accordion-collapse collapse show" aria-labelledby="hdDashboard"
               data-bs-parent="#main-menu-wrap">
-              <a href="dashboard/index.html"></a>
             </div>
           </div>
           <div class="accordion-item">
@@ -294,7 +293,6 @@
       </div>
     </div>
   </div>
-  <!-- <script src="menu.js"></script> -->
   <script>
     // 스크롤바
     new SimpleBar(document.querySelector("[data-simplebar]"));

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>강좌 리스트</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/lecture_list.css" />
   </head>
@@ -14,7 +16,7 @@
         <div class="h-100" data-simplebar>
           <div class="admin-profile">
             <div class="profile-img-wrap">
-              <img src="img/admin-profile.png" alt="admin-img">
+              <img src="../img/admin-profile.png" alt="admin-img">
             </div>
             <h2>Manager</h2>
             <div class="profile-menu-wrap">
@@ -219,22 +221,21 @@
           </div>
         </div>
       </div>
-        <div class="content-body content-pd">
-          <div class="content-top">
+      <div class="content-body content-pd">
+        <div class="content-top">
             <h1 id="main-logo"><a href="/"><img src="img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
             <div class="bookmark">
               <input type="checkbox" id="bookmark1" />
               <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
             </div>
-          </div>
+        </div>
         <main>
           <h2 class="page-title">강좌 리스트</h2>
           <a href="lecture_up.php" class="y-btn big-btn btn-navy">강좌 추가하기</a>
-          <!-- action="<?php echo $_SERVER['PHP_SELF'] ?>" -->
-          <form action="" method="get">
+          <form action="" method="get" id="sort_container">
             <div class="row justify-content-between align-items-start">
               <div class="col-md-4 row">
-                <select name="cate1" id="cate1" class="col">
+                <select name="cate1" id="cate1" class="col form-select">
                   <option selected>대분류 선택</option>
                   <!-- {category1} -->
                   <option value="프로그래밍">프로그래밍</option>
@@ -242,7 +243,7 @@
                 </select>
               </div>
               <div class="col-md-4 row">
-                <select name="cate2" id="cate2" class="col">
+                <select name="cate2" id="cate2" class="col form-select">
                   <option selected>중분류 선택</option>
                     <!-- {category2} category2.php -->
                     <option value="프론트">프론트</option>
@@ -251,7 +252,7 @@
                 </select>
               </div>
               <div class="col-md-4 row">
-                <select name="cate3" id="cate3"  class="col">
+                <select name="cate3" id="cate3"  class="col form-select">
                   <option selected>소분류 선택</option>
                     <!-- {category3} category3.php -->
                     <option value="html">html</option>
@@ -260,64 +261,77 @@
                 </select>
               </div>
             </div>
-            <div class="row align-items-start">
+            <div class="row justify-content-between align-items-start">
               <!-- lec_option_change.php -->
-              <div class="check_container col-md-4">
-                <input type="checkbox" name="recom" id="recom" value="1">
-                <label for="recom">추천</label>
-                <input type="checkbox" name="forbegin" id="forbegin" value="1">
-                <label for="forbegin">입문</label>
-                <input type="checkbox" name="forbasic" id="forbasic" value="1">
-                <label for="forbasic">초급</label>
-                <input type="checkbox" name="forinter" id="forinter" value="1">
-                <label for="forinter">중급</label>
-                <input type="checkbox" name="foradv" id="foradv" value="1">
-                <label for="foradv">상급</label>
+              <div class="row justify-content-between lec_option align-items-center col-md-4">
+                <input type="checkbox" name="recom" id="recom" value="1" class="col">
+                <label for="recom" class="col">추천</label>
+                <input type="checkbox" name="forbegin" id="forbegin" value="1" class="col">
+                <label for="forbegin" class="col">입문</label>
+                <input type="checkbox" name="forbasic" id="forbasic" value="1" class="col">
+                <label for="forbasic" class="col">초급</label>
+                <input type="checkbox" name="forinter" id="forinter" value="1" class="col">
+                <label for="forinter" class="col">중급</label>
+                <input type="checkbox" name="foradv" id="foradv" value="1" class="col">
+                <label for="foradv" class="col">상급</label>
               </div>
               <!-- <label for="search_keyword"><i class="fa-solid fa-magnifying-glass"></i></label> -->
-              <input type="text" class="col-md-4" name="search_keyword" id="search_keyword">
+              <input type="text" class="col-md-6" name="search_keyword" id="search_keyword">
               <!--  placeholder="&#xF002;"  style="font-family:Pretendard, FontAwesome" -->
               <button type="submit" id="search" class="col-md-2 y-btn mid-btn btn-sky">검색하기</button>
             </div>
           </form>
-          <form name="lec_list_container" action="lec_option_change.php" method="get">
-            <button class="col-md-2 y-btn mid-btn btn-navy">변경내용 저장</button>
+          <form id="lec_list_container" action="lec_option_change.php" method="get">
             <!-- lecture list table 조회 및 출력 -->
             <ul id="lec_list">
               <li class="row">
-                <img src="" alt="" class="col-md-2">
-                <div class="lec_info_box col-md-5 row">
-                  <p class="lec_info_title col">
+                <figure class="col-md-2">
+                  <img src="https://placehold.co/198x135" alt="">
+                </figure>
+                <div class="lec_info_box col-md-6">
+                  <div class="lec_info_title">
                     <h3 class="content-title">Javascript와 JQuery 응용</h3><a class="mini-tag new-tag">new</a><a class="mini-tag limit-tag">무제한</a>
-                  </p>
-                  <p class="col">프로그래밍 > 프론트엔드 > Javascript</p>
-                  <span class="col">판매가격 : 250000원</span>
+                  </div>
+                  <p><em>프로그래밍</em><i class="fa-solid fa-chevron-right"></i><em>프론트엔드</em><i class="fa-solid fa-chevron-right"></i> <em>Javascript</em></p>
+                  <p>판매가격 : <span>250000원</span></p>
                 </div>
-                <div class="lec_option_box col-md-5">
-                  <p>
-                    <select name="status" id="status">
+                <div class="lec_option_box col-md-4">
+                  <p class="row">
+                    <select name="status" id="status" class="form-select col-auto">
                       <option value="판매중">판매중</option>
                       <option value="판매대기">판매대기</option>
                       <option value="판매중지">판매중지</option>
                     </select>
-                    <a href="lecture_view.php" class="y-btn mid-btn btn-navy">보기</a>
+                    <a href="lecture_view.php" class="y-btn mid-btn btn-navy col-auto">보기</a>
                   </p>
-                  <p>
-                    <input type="checkbox" name="recom" id="lo_recom" value="">
-                    <label for="lo_recom">추천</label>
-                    <input type="checkbox" name="forbegin" id="lo_forbegin" value="">
-                    <label for="lo_forbegin">입문</label>
-                    <input type="checkbox" name="forbasic" id="lo_forbasic" value="">
-                    <label for="lo_forbasic">초급</label>
-                    <input type="checkbox" name="forinter" id="lo_forinter" value="">
-                    <label for="lo_forinter">중급</label>
-                    <input type="checkbox" name="foradv" id="lo_foradv" value="">
-                    <label for="lo_foradv">상급</label>
-                  </p>
+                  <div class="row lec_option justify-content-between align-items-center">
+                    <input type="checkbox" name="recom" id="" value="1" class="col">
+                    <label for="" class="col">추천</label>
+                    <input type="checkbox" name="forbegin" id="" value="1" class="col">
+                    <label for="" class="col">입문</label>
+                    <input type="checkbox" name="forbasic" id="" value="1" class="col">
+                    <label for="" class="col">초급</label>
+                    <input type="checkbox" name="forinter" id="" value="1" class="col">
+                    <label for="" class="col">중급</label>
+                    <input type="checkbox" name="foradv" id="" value="1" class="col">
+                    <label for="" class="col">상급</label>
+                  </div>
                 </div>
               </li>
             </ul>
+            <p>
+              <button class="y-btn mid-btn btn-navy">변경내용 저장</button>
+            </p>
           </form>
+          <div class="lec_pagination row">
+            <ul class="row col justify-content-center">
+              <li class="col-auto"><a href=""><i class="fa-solid fa-chevron-left"></i></a></li>
+              <li class="col-auto"><a href="" class="active">1</a></li>
+              <li class="col-auto"><a href="">2</a></li>
+              <li class="col-auto"><a href="">3</a></li>
+              <li class="col-auto"><a href=""><i class="fa-solid fa-chevron-right"></i></a></li>
+            </ul>
+          </div>
         </main>
       </div>
     </div>

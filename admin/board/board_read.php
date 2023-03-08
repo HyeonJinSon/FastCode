@@ -27,8 +27,8 @@
 ?>
 
      <!-- 본문시작 -->
-
-     <h2 class="page-title">공지사항</h2>
+    <!-- 글쓰는화면 > 에디터 > HTML 코드 직접 넣으면 됨 -->
+    <h2 class="page-title">공지사항</h2>
         <div>
           <div class="board_area pd-81">
             <div class="read_top">
@@ -38,10 +38,11 @@
                 <li class="date"><?= $rsc -> date; ?></li>
               </ul>
             </div>
-            <div class="read_content">\
-    <!-- 글쓰는화면 > 에디터 > HTML 코드 직접 넣으면 됨 -->
-            <p></p>
-              <p>클릭한 글 내용이 나옵니다.</p>
+            <div class="read_content">
+
+              <?= $rsc -> content; ?>
+
+              <!-- <p>클릭한 글 내용이 나옵니다.</p>
               <br />
               <p>
                 ex 안녕하십니까 FAST CODE 입니다.<br />
@@ -58,7 +59,8 @@
                 더욱 안정적이고 편리한 서비스를 제공하는 FAST CODE가
                 되겠습니다.<br />
                 감사합니다.
-              </p>
+              </p> -->
+
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $rsc -> idx; ?>" class="edit" type="button">수정</a>
                 <a href="./board_delete.php?idx=<?= $rsc -> idx; ?>" class="del" type="button">삭제</a>
@@ -69,7 +71,7 @@
             </div>
           </div>
           <div class="list_btn">
-            <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
+            <a href="#" class="y-btn big-btn btn-navy">목록으로</a>
           </div>
         </div>
 

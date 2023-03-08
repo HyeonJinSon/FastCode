@@ -67,28 +67,24 @@ $start_num = ($page - 1) * $list;
         <h2 class="page-title">공지사항</h2>
 
         <div class="borad_top">
-          <div class="row pd-54">
-            <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
-          </div>
-          <div class="borad_search_form">
-            <form class="row pd-54">
-              <select
-                class="form-select"
-                name="search_board"
-                name="search_board"
-              >
-                <option value="title">제목</option>
-                <option value="name">글쓴이</option>
-                <option value="content">내용</option>
-              </select>
-              <input
-                class="form-control"
-                type="search"
-                name="search"
-                required
-              />
-            </form>
-          </div>
+          <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
+          <form class="board_forms">
+            <select
+              class="form-select"
+              name="search_board"
+              name="search_board"
+            >
+              <option value="title">제목</option>
+              <option value="name">글쓴이</option>
+              <option value="content">내용</option>
+            </select>
+            <input
+              class="form-control"
+              type="search"
+              name="search"
+              required
+            />
+          </form>
         </div>
 
         <table>

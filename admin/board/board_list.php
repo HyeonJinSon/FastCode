@@ -178,16 +178,3 @@ $start_num = ($page - 1) * $list;
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
  ?>
-
-
-<!-- 
-
-121번줄
-
-else { ?>
-            검색결과 없을때 
-              <td>검색 결과가 없습니다.</td>
-            < ?php   } 
-
-
- -->

@@ -102,17 +102,25 @@ $start_num = ($page - 1) * $list;
             </tr>
           </thead>
           <tbody>
+            <?php
+                if(isset($rsc)){
+                    foreach($rsc as $r){ //조회된 글 출력
+            ?>
             <tr>
-              <td>5</td>
-              <td>신규 회원 월컴 기프트 쿠폰 증정 이벤트 안내</td>
-              <td>관리자</td>
-              <td>2023.3.12</td>
+              <td><?= $r->idx;?></td>
+              <td><?= $r->title;?></td>
+              <td><?= $r->name;?></td>
+              <td><?= $r->date;?></td>
               <th>
                 <a class="edit" type="button">수정</a>
                 <a class="del" type="button">삭제</a>
               </th>
             </tr>
-            <tr>
+            <?php 
+                } 
+              }  ?>
+              
+            <!-- <tr>
               <td>4</td>
               <td>3월 한정! 신규강의 런칭 특가 이벤트 안내</td>
               <td>관리자</td>
@@ -151,7 +159,7 @@ $start_num = ($page - 1) * $list;
                 <a class="edit" type="button">수정</a>
                 <a class="del" type="button">삭제</a>
               </th>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
 
@@ -170,3 +178,16 @@ $start_num = ($page - 1) * $list;
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
  ?>
+
+
+<!-- 
+
+121번줄
+
+else { ?>
+            검색결과 없을때 
+              <td>검색 결과가 없습니다.</td>
+            < ?php   } 
+
+
+ -->

@@ -172,6 +172,7 @@ body {
   position: relative;
   margin-left: 328px;
   background: var(--background-g);
+  height: 100vh;
 }
 .content-body .content-top {
   text-align: right;
@@ -183,6 +184,7 @@ body {
 /* Logo */
 #main-logo {
   display: inline-block;
+  height: 33px;
 }
 #main-logo a img {
   display: block;

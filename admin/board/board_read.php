@@ -38,7 +38,9 @@
                 <li class="date"><?= $rsc -> date; ?></li>
               </ul>
             </div>
-            <div class="read_content">
+            <div class="read_content">\
+    <!-- 글쓰는화면 > 에디터 > HTML 코드 직접 넣으면 됨 -->
+            <p></p>
               <p>클릭한 글 내용이 나옵니다.</p>
               <br />
               <p>

@@ -3,9 +3,16 @@
 body {
   background: var(--background-g);
 }
+.bookmark{
+  display: none;
+}
+a {
+  color: var(--primary-n);
+}
 section {
   color: var(--primary-n);
   margin-bottom: 27px;
+  position: relative;
 }
 section h3 {
   margin-bottom: 12px;
@@ -20,7 +27,7 @@ section h3 {
   margin-right: 11px;
 }
 #bookmark-menu .bookmark-list {
-  gap: 30px;
+  gap: 29px;
 }
 #bookmark-menu .bookmark-list .bookmark-item {
   width: 200px;
@@ -32,6 +39,42 @@ section h3 {
 #bookmark-menu .bookmark-list .bookmark-item i {
   font-size: 48px;
   margin-bottom: 15px;
+  position: relative;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#bookmark-menu .bookmark-list .bookmark-item i.fa-school:hover{
+  color:var(--highlight-s);
+}
+#bookmark-menu .bookmark-list .bookmark-item i.fa-list-check:hover{
+  color:#3C90C7;
+}
+#bookmark-menu .bookmark-list .bookmark-item i.fa-bullhorn:hover{
+  color: var(--primary-r);
+}
+#bookmark-menu .bookmark-list .bookmark-item i.fa-ticket:hover{
+  color: var(--highlight-m);
+}
+#bookmark-menu .bookmark-list .bookmark-item i.category-add:hover{
+  color: #9747FF;
+}
+#bookmark-menu .bookmark-list .bookmark-item i.lecture-add:hover{
+  color: #000;
+}
+#bookmark-menu .bookmark-list .bookmark-item i.category-add:after,
+#bookmark-menu .bookmark-list .bookmark-item i.lecture-add:after{
+  position: absolute;
+  bottom: -7px;
+  right: 60px;
+  content: '+';
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-align: center;
+  line-height: 22px;
+  color:var(--background-w);
+  background: var(--highlight-s);
 }
 #bookmark-menu .bookmark-list .bookmark-item span {
   font-size: 18px;
@@ -40,25 +83,11 @@ section h3 {
 }
 
 .dashboard-data {
-  position: relative;
-  height: 351px;
   margin-bottom: 27px;
 }
-#course-data,
-#click-data,
-#newcourse,
-#calendar-data {
-  position: absolute;
-  top: 0;
-}
-#course-data {
-  left: 0;
-  margin-right: 40px;
-}
 
-#click-data,
-#calendar-data {
-  right: 0;
+#course-data {
+  margin-right: 35px;
 }
 
 #course-data span > a,
@@ -86,7 +115,7 @@ section h3 {
   background: var(--background-w);
 }
 #newcourse {
-  left: 0;
+  margin-right: 34px;
 }
 #newcourse ul {
   width: 820px;

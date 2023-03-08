@@ -1,0 +1,125 @@
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+#drop i.fa-arrow-up-from-bracket {
+    font-size: 50px;
+    color: var(--highlight-s);
+    margin-bottom: 24px;
+}
+#drop p span {
+    color: var(--highlight-s);
+}
+#drop + h3 {
+    display: inline-block;
+}
+#drop {
+    height: 200px;
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+#drop p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    color: #ccc;
+    text-align: center;
+}
+.box.drag-over{
+    background: #3498db;
+    color:#fff;
+}
+#thumbnails {
+    display: flex; gap:10px;
+}
+#thumbnails .thumb{
+    width: 20%;
+}
+#thumbnails .thumb img{
+    width: 100%;
+}
+main h2 {
+    margin-bottom: 78px;
+}
+main h3, h4 {
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.form-control,
+.form-select,
+.lec_video_up > input,
+#datepicker_start,
+#datepicker_end {
+  padding: 15px 25px;
+  border: 1px solid var(--primary-n);
+  border-radius: 5px;
+  height: 54px;
+  margin-bottom: 30px;
+}
+/* input:focus,
+select:focus {
+  border: 4px solid #3e88f1;
+  padding: 12px 11px;
+} */
+.g35 {
+    gap: 35px;
+}
+main h4 + input {
+    display: none;
+}
+main h4 + input.show {
+    display: block;
+}
+textarea {
+    height: 377px;
+    margin-bottom: 30px;
+    padding: 16px 25px;
+    border-radius: 5px;
+    resize: none;
+}
+main idv input::placeholder,
+label,
+textarea::placeholder,
+select option:selected {
+    color: var(--primary-n);
+    font-size: 18px;
+}
+.lec_option input {
+    width: 25px;
+    height: 25px;
+}
+.lec_option {
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+input[type="file"] {
+    background: #fff;
+    font-size: 18px;
+}
+main .up_btn_container {
+    justify-content: flex-end;
+    gap: 50px;
+}
+.lec_thumbnail_btn {
+    font-size: 18px;
+    color: #fff;
+    padding: 13px 21px;
+    border-radius: 5px;
+    background: #3E88F1;
+    line-height: 27px;
+    position: absolute;
+    border: 1px solid var(--primary-n);
+}
+.thumbnail_container{
+    position: relative;
+}
+.lec_video_up {
+    flex-wrap: nowrap;
+}

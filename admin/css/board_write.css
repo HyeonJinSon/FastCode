@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+label,
+h3 {
+  color: #161616;
+  display: block;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 81px;
+}
+
+input,
+textarea,
+.form-select {
+  width: 100%;
+  border: 1px solid #1d3557;
+  background-color: #ffffff;
+  color: #1d3557;
+  display: block;
+  font-size: 18px;
+  padding: 16px 24px;
+  border-radius: 0;
+}
+
+.form-select {
+  width: 420px;
+}
+
+textarea {
+  height: 375px;
+}
+
+.btns {
+  margin-top: 108px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #1d3557;
+  color: #1d3557;
+  display: block;
+  font-size: 18px;
+  border-radius: 0;
+}
+
+.files_btn {
+  font-size: 18px;
+  color: #fff;
+  padding: 8px 17px;
+  background: #3e88f1;
+  border: 1px solid #1d3557;
+  line-height: 27px;
+  position: absolute;
+}
+
+.files_container {
+  position: relative;
+}

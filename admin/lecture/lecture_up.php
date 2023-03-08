@@ -7,6 +7,9 @@
     <title>강좌 등록</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/lecture_up.css" />
   </head>
@@ -233,9 +236,9 @@
           <h2 class="page-title">강좌 등록</h2>
           <form action="lecture_ok.php" method="post" class="row">
             <h3>카테고리</h3>
-            <div class="row justify-content-between ">
+            <div class="row justify-content-between">
               <div class="col-md-4 row">
-                <select name="cate1" id="cate1" class="col">
+                <select name="cate1" id="cate1" class="col form-select" aria-label="Default select example">
                   <option selected>대분류 선택</option>
                   <!-- {category1} -->
                   <option value="프로그래밍">프로그래밍</option>
@@ -243,7 +246,7 @@
                 </select>
               </div>
               <div class="col-md-4 row">
-                <select name="cate2" id="cate2" class="col">
+                <select name="cate2" id="cate2" class="col form-select">
                   <option selected>중분류 선택</option>
                     <!-- {category2} category2.php -->
                     <option value="프론트">프론트</option>
@@ -252,7 +255,7 @@
                 </select>
               </div>
               <div class="col-md-4 row">
-                <select name="cate3" id="cate3" class="col">
+                <select name="cate3" id="cate3" class="col form-select">
                   <option selected>소분류 선택</option>
                     <!-- {category3} category3.php -->
                     <option value="html">html</option>
@@ -263,16 +266,16 @@
             </div>
             <div class="row">
               <h3>강좌명</h3>
-              <input type="text" name="" placeholder="강좌명을 입력하세요" class="col-md-12">
+              <input type="text" name="" placeholder="강좌명을 입력하세요" class="col-md-12 form-control">
             </div>
             <div class="row justify-content-between">
                 <div class="col-md-4 row">
                     <h3>가격</h3>
-                    <input type="text" name="" placeholder="가격을 입력하세요" class="col">
+                    <input type="text" name="" placeholder="가격을 입력하세요" class="col form-control">
                 </div>
                 <div class="col-md-4 row">
                     <h3>판매상태</h3>
-                    <select name="" id="" class="col">
+                    <select name="" id="" class="col form-select">
                         <option selected>옵션을 선택해주세요</option>
                         <option value="판매중">판매중</option>
                         <option value="판매대기">판매대기</option>
@@ -298,7 +301,7 @@
             <div class="row justify-content-between g35">
                 <div class="col-md-4 row">
                     <h3>수강기한</h3>
-                    <select name="" id="" class="col lec_date">
+                    <select name="" id="lec_date" class="col lec_date form-select">
                         <option selected>옵션을 선택해주세요</option>
                         <option value="제한">제한</option>
                         <option value="무제한">무제한</option>
@@ -306,11 +309,11 @@
                 </div>
                 <div class="col-md-4 row">
                     <h4 class="hidden">시작일</h4>
-                    <input type="text" id="datepicker_start" placeholder="--년 --월 --일"  class="col">
+                    <input type="text" id="datepicker_start" placeholder="----년 --월 --일"  class="col">
                 </div>
                 <div class="col-md-4 row">
                     <h4 class="hidden">종료일</h4>
-                    <input type="text" id="datepicker_end" placeholder="--년 --월 --일" class="col">
+                    <input type="text" id="datepicker_end" placeholder="----년 --월 --일" class="col">
                 </div>
             </div>
             <div class="row">
@@ -320,8 +323,8 @@
             <div class="row">
               <h3>썸네일 이미지</h3>
               <div class="thumbnail_container">
-                <button type="button" class="lec_thumbnail_btn" onclick="jQuery('#lec_thumbnail').click()">파일 선택</button>
-                <input type="file" name="" id="lec_thumbnail" class="col-md-12">
+                <label for="lec_thumbnail" class="lec_thumbnail_btn">파일 선택</label>
+                <input type="file" name="" id="lec_thumbnail" class="col-md-12 form-control form-control-lg">
               </div>
             </div>
             <div class="row">
@@ -336,13 +339,15 @@
               </div>
             </div>
             <div class="row">
-              <h3>강의 영상 업로드</h3><span class="lec_upload"><i class="fa-solid fa-square-plus" onclick=""></i></span>
-              <div class="row justify-content-between g35">
+              <div class="row">
+                <h3 class="col-auto">강의 영상 업로드</h3>
+                <span class="lec_upload col-auto"><i class="fa-solid fa-square-plus" onclick=""></i></span>
+              </div>
+              <div class="row justify-content-between g35 lec_video_up">
                   <input type="text" class="col-md-4" placeholder="강의명을 입력하세요">
-                  <!-- <input type="text" class="col-md-8"> -->
                   <div class="thumbnail_container col-md-8">
-                    <button type="button" class="lec_thumbnail_btn" onclick="jQuery('#lec_thumbnail').click()">파일 선택</button>
-                    <input type="file" name="" id="lec_thumbnail" class="col-md-12">
+                    <label for="lec_thumbnail" class="lec_thumbnail_btn">파일 선택</label>
+                    <input type="file" name="" id="lec_thumbnail" class="col-md-12 form-control form-control-lg">
                   </div>
               </div>
             </div>
@@ -367,33 +372,31 @@
         });
 
         // $('main h4 + input').hide();
-        $('.lec_date').change(()=>{
-          if($(this).find('option').eq(1).filter(':checked')){
-            // $('main h4 + input').hide();
-            $('main h4 + input').addClass('show');
-          }else{
-            // $('main h4 + input').show();
-            $('main h4 + input').removeClass('show');
+        $('#lec_date').change(function(){
+          if($(this).val() == "제한"){
+            $('#datepicker_start, #datepicker_end').show();
+          }else if($(this).val() == "무제한"){
+            $('#datepicker_start, #datepicker_end').hide();
           }
         });
 
         var uploadFiles = [];
         var $drop = $("#drop");
-        $drop.on("dragenter", function(e) {  //드래그 요소가 들어왔을떄
+        $drop.on("dragenter", function(e) {
         $(this).addClass('drag-over');
-        }).on("dragleave", function(e) {  //드래그 요소가 나갔을때
+        }).on("dragleave", function(e) {
         $(this).removeClass('drag-over');
         }).on("dragover", function(e) {
         e.stopPropagation();
         e.preventDefault();
-        }).on('drop', function(e) {  //드래그한 항목을 떨어뜨렸을때
+        }).on('drop', function(e) {
         e.preventDefault();
         $(this).removeClass('drag-over');
-        var files = e.originalEvent.dataTransfer.files;  //드래그&드랍 항목
+        var files = e.originalEvent.dataTransfer.files;
             console.log(files);
         for(var i = 0; i < files.length; i++) {
             var file = files[i];
-            var size = uploadFiles.push(file);  //업로드 목록에 추가
+            var size = uploadFiles.push(file);
             
             attachFile(files[i]);
 
@@ -402,7 +405,7 @@
 
         function preview(file, idx) {
         console.log(idx);
-        var reader = new FileReader();    //db에서 가져오는 것이 아니라 그냥 파일 자체를 가지고 썸네일을 만들어주는 함수
+        var reader = new FileReader();
         reader.onload = (function(f, idx) {
             return function(e) {
             var div = '<div class="thumb" id="f_'+ idx +'"> \
@@ -415,7 +418,7 @@
         reader.readAsDataURL(file);
         }
 
-        $("#thumbnails").on("click", ".close", function(e) {   // 클로즈 버튼은 처음부터는 없던 요소이기 때문에 $('#thumbnails').find('.close').click으로 클릭 이벤트를 걸 수 없다. 53line처럼 .close의 부모인 #thumbnails에 클릭이벤트가 일어났을 때 .close를 찾고, 그때 할일을 적어주는 방식으로 해야 함
+        $("#thumbnails").on("click", ".close", function(e) {
         var $target = $(e.target);
         var idx = $target.attr('data-idx');
 

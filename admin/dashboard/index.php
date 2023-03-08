@@ -234,29 +234,41 @@
       <section id="bookmark-menu">
         <h2 class="popup-title"><i class="fa-solid fa-bookmark"></i>즐겨찾기 메뉴</h2>
         <ul class="bookmark-list d-flex flex-wrap">
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fa-solid fa-school"></i>
-            <span>강좌리스트</span>
+          <li>
+            <a href="../lecture/lecture_list.php" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fa-solid fa-school"></i>
+              <span>강좌리스트</span>
+            </a>
           </li>
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fa-solid fa-list-check"></i>
-            <span>카테고리 리스트</span>
+          <li>
+            <a href="../category/category_list.php" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fa-solid fa-list-check"></i>
+              <span>카테고리 리스트</span>
+            </a>
           </li>
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fas fa-bullhorn"></i>
-            <span>공지사항</span>
+          <li>
+            <a href="../board/board_list.html" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fas fa-bullhorn"></i>
+              <span>공지사항</span>
+            </a>
           </li>
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fa-solid fa-ticket"></i>
-            <span>쿠폰 리스트</span>
+          <li>
+            <a href="../coupon/coupon_llist.php" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fa-solid fa-ticket"></i>
+              <span>쿠폰 리스트</span>
+            </a>
           </li>
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fa-solid fa-list-check"></i>
-            <span>카테고리 추가</span>
+          <li>
+            <a href="../category/category.php" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fa-solid fa-list-check category-add"></i>
+              <span>카테고리 추가</span>
+            </a>
           </li>
-          <li class="bookmark-item d-flex flex-column justify-content-center">
-            <i class="fa-solid fa-school"></i>
-            <span>강좌 추가</span>
+          <li>
+            <a href="../lecture/lecture_up.php" class="bookmark-item d-flex flex-column justify-content-center">
+              <i class="fa-solid fa-school lecture-add"></i>
+              <span>강좌 추가</span>
+            </a>
           </li>
         </ul>
       </section>
@@ -279,7 +291,7 @@
             <li class="newcourse-item content-text-1">Figma 컴포넌트 활용하기</li>
             <li class="newcourse-item content-text-1">Javascript와 JQuery 응용</li>
           </ul>
-          <span><a href="#">더보기 &#43;</a></span>
+          <span><a href="../lecture/lecture_list.php">더보기 &#43;</a></span>
         </section>
         <section id="calendar-data">
           <h3 class="main-menu-ft">일정</h3>

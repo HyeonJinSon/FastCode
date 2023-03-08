@@ -29,9 +29,11 @@
     color: #ccc;
     text-align: center;
 }
-.box.drag-over{
-    background: #3498db;
-    color:#fff;
+#drop.drag-over{
+    background: var(--highlight-s);
+}
+#drop.drag-over p span {
+    color: #fff;
 }
 #thumbnails {
     display: flex; gap:10px;

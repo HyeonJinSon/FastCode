@@ -6,6 +6,3 @@
       new SimpleBar(document.querySelector("[data-simplebar]"));
     });
   </script>
-</body>
-
-</html>

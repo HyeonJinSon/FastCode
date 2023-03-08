@@ -74,6 +74,9 @@
     <span><a href="#">더보기 &#43;</a></span>
   </section>
 </div>
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+?>
 <script>
   let element = caleandar(document.querySelector('#calendar'));
 </script>

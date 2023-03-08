@@ -22,7 +22,7 @@
 $page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
 
 $pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
-$page_result = $conn -> query($pagesql);
+$page_result = $mysqli -> query($pagesql);
 $page_row = $page_result ->fetch_assoc();
 $row_num = $page_row['cnt'];//전체 게시물 수
 
@@ -48,7 +48,7 @@ $start_num = ($page - 1) * $list;
     /* ================== 값 조회 =================== */
 
     $sql = "SELECT * from board order by idx desc limit $start_num, $list";
-    $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);;
+    $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
     while($rs = $result->fetch_object()){
         $rsc[] = $rs;
     }
@@ -56,7 +56,7 @@ $start_num = ($page - 1) * $list;
     
 ?>
 
-<link rel="stylesheet" href="../css/board_list.css" />
+<link rel="stylesheet" href="../css/board_index.css" />
 
 <?php     
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
@@ -108,12 +108,16 @@ $start_num = ($page - 1) * $list;
             ?>
             <tr>
               <td><?= $r->idx;?></td>
-              <td><?= $r->title;?></td>
+              <td>
+              <a href="./board_read.php?idx=<?= $r->idx; ?>">                       
+                <?= $r->title;?>
+                </a>
+              </td>
               <td><?= $r->name;?></td>
               <td><?= $r->date;?></td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <a href="" class="edit" type="button">수정</a>
+                <a href="" class="del" type="button">삭제</a>
               </th>
             </tr>
             <?php 
@@ -165,15 +169,51 @@ $start_num = ($page - 1) * $list;
 
         <div class="pagenation">
           <ul>
-            <li><i class="fa-solid fa-chevron-left"></i></li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li><i class="fa-solid fa-chevron-right"></i></li>
-          </ul>
-        </div>
+            <?php 
+
+              // if($page == 1){
+                
+              // }
+
+
+            if($page > 1){
+             
+              if($block_num > 1){
+                $prev = ($block_num - 2)*$list + 1;
+                echo "<li><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+              }
+            }
+
+            for($i=$block_start; $i<= $block_end; $i++){
+              if($page == $i){//페이지 번호랑 현재 i가 같다면
+                  echo "<li><a href='?page=$i' class='active'>$i</a></li>";
+              }else{
+                  echo "<li><a href='?page=$i'>$i</a></li>";
+              }
+          }
+
+          if($page < $total_page){ // 아직 마지막이 아니라면
+            if($total_block > $block_num){ //전체 블록이 4갠데 현재 블록이 이거보다 작다고하다면 다음에도 더 있단 얘기니까 그 때 다음페이지가 나오도록
+                $next = $block_num * $list + 1;
+                echo "<li><a href='?page=$next'><i class='fa-solid fa-chevron-left'></i></a></li>";
+            }
+           
+        }
+        //     <li><i class="fa-solid fa-chevron-left"></i></li>
+        //     <li>1</li>
+        //     <li>2</li>
+        //     <li>3</li>
+        //     <li><i class="fa-solid fa-chevron-right"></i></li>
+        //   </ul>
+        // </div>
+
+        ?>
 
         <!-- 본문끝 -->
+
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+?>
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

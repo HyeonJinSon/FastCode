@@ -40,25 +40,11 @@ section h3 {
 }
 
 .dashboard-data {
-  position: relative;
-  height: 351px;
   margin-bottom: 27px;
 }
-#course-data,
-#click-data,
-#newcourse,
-#calendar-data {
-  position: absolute;
-  top: 0;
-}
-#course-data {
-  left: 0;
-  margin-right: 40px;
-}
 
-#click-data,
-#calendar-data {
-  right: 0;
+#course-data {
+  margin-right: 35px;
 }
 
 #course-data span > a,
@@ -86,7 +72,7 @@ section h3 {
   background: var(--background-w);
 }
 #newcourse {
-  left: 0;
+  margin-right: 34px;
 }
 #newcourse ul {
   width: 820px;

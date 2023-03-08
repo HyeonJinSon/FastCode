@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="/admin/css/dashboard.css">
   <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-
   <!-- 스크롤바 -->
   <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   <!-- calendar js -->
@@ -262,7 +260,7 @@
           </li>
         </ul>
       </section>
-      <div class="dashboard-data">
+      <div class="dashboard-data d-flex flex-wrap">
         <section id="course-data">
           <h3 class="main-menu-ft">카테고리 별 강좌 비율</h3>
           <div></div>
@@ -273,8 +271,6 @@
           <div></div>
           <span><a href="#">더보기 &#43;</a></span>
         </section>
-      </div>
-      <div class="dashboard-data">
         <section id="newcourse">
           <h3 class="main-menu-ft">신규 강좌</h3>
           <ul>

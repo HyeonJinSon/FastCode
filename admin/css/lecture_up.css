@@ -91,7 +91,8 @@ select option:selected {
     height: 25px;
 }
 .lec_option {
-    justify-content: space-between;
+    justify-content: space-between;\
+    align-items: center;
     white-space: nowrap;
 }
 input[type="file"] {

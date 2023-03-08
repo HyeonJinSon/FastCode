@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+.page-title {
+  margin-top: 81px;
+}
 
 label,
 h3 {
@@ -33,7 +36,7 @@ textarea {
 }
 
 .btns {
-  margin-top: 108px;
+  margin-top: 27px;
   display: flex;
   justify-content: flex-end;
   gap: 30px;

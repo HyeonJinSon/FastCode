@@ -51,18 +51,22 @@ main h3, h4 {
     font-weight: 500;
     margin-bottom: 24px;
 }
-input {
+.form-control,
+.form-select,
+.lec_video_up > input,
+#datepicker_start,
+#datepicker_end {
   padding: 15px 25px;
   border: 1px solid var(--primary-n);
   border-radius: 5px;
   height: 54px;
   margin-bottom: 30px;
 }
-input:focus,
+/* input:focus,
 select:focus {
   border: 4px solid #3e88f1;
   padding: 12px 11px;
-}
+} */
 .g35 {
     gap: 35px;
 }
@@ -91,12 +95,13 @@ select option:selected {
     height: 25px;
 }
 .lec_option {
-    justify-content: space-between;\
+    justify-content: space-between;
     align-items: center;
     white-space: nowrap;
 }
 input[type="file"] {
     background: #fff;
+    font-size: 18px;
 }
 main .up_btn_container {
     justify-content: flex-end;
@@ -105,15 +110,16 @@ main .up_btn_container {
 .lec_thumbnail_btn {
     font-size: 18px;
     color: #fff;
-    padding: 14px 23px;
+    padding: 13px 21px;
     border-radius: 5px;
     background: #3E88F1;
     line-height: 27px;
     position: absolute;
-    left: 0;
-    top: 0;
-    border: none;
+    border: 1px solid var(--primary-n);
 }
 .thumbnail_container{
     position: relative;
+}
+.lec_video_up {
+    flex-wrap: nowrap;
 }

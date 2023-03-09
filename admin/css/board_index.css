@@ -16,25 +16,25 @@
 
 .board_forms{
   display: flex;
-
+  font-size: 18px;
+  color: #1d3557;
 }
 
 .form-select {
   width: 133px;
   height: 56px;
   padding: 15px 15px;
-  border: 1px solid #1d3557;
-  color: #1d3557;
-  font-size: 18px;
   border-radius: 5px;
+  border: 1px solid #1d3557;
 }
 
 .form-control {
   width: 378px;
   height: 56px;
-  border: 1px solid #1d3557;
-  border-radius: 5px;
   margin-left: 30px;
+  padding-left: 24px;
+  border-radius: 5px;
+  border: 1px solid #1d3557;
 }
 
 table {
@@ -106,6 +106,8 @@ tbody tr:not(:last-child) {
   padding: 4px 17px;
   background: #1d3557;
   border-radius: 5px;
+  border: 0;
+  outline: 0;
 }
 
 .del {
@@ -115,6 +117,8 @@ tbody tr:not(:last-child) {
   padding: 4px 17px;
   background: #e53945;
   border-radius: 5px;
+  border: 0;
+  outline: 0;
 }
 
 .board_pagination {

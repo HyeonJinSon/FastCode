@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/board_index.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/board_index.css">
     <link
       rel="stylesheet"
-      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css"
-    />
+      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   </head>
@@ -21,7 +20,7 @@
         <div class="h-100" data-simplebar>
           <div class="admin-profile">
             <div class="profile-img-wrap">
-              <img src="../img/admin-profile.png" alt="admin-img" />
+              <img src="../img/admin-profile.png" alt="admin-img">
             </div>
             <h2>Manager</h2>
             <div class="profile-menu-wrap">
@@ -289,13 +288,13 @@
         <div class="content-top">
           <h1 id="main-logo">
             <a href="/"
-              ><img src="../img/fastcode_logo.png" alt="Fastcode" /><span
+              ><img src="../img/fastcode_logo.png" alt="Fastcode"><span
                 >fastcode</span
               ></a
             >
           </h1>
           <div class="bookmark">
-            <input type="checkbox" id="bookmark1" />
+            <input type="checkbox" id="bookmark1">
             <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
           </div>
         </div>
@@ -306,23 +305,24 @@
 
         <div class="borad_top">
           <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
-          <form class="board_forms">
+          <div class="board_forms">
             <select
               class="form-select"
               name="search_board"
-              name="search_board"
+              id="search_board"
             >
               <option value="title">제목</option>
               <option value="name">글쓴이</option>
               <option value="content">내용</option>
             </select>
+            
             <input
               class="form-control"
               type="search"
               name="search"
-              required
-            />
-          </form>
+              placeholder="검색어를 입력하세요."
+              required>
+          </div>
         </div>
 
         <table>
@@ -342,8 +342,8 @@
               <td>관리자</td>
               <td>2023.3.12</td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
             <tr>
@@ -352,8 +352,8 @@
               <td>관리자</td>
               <td>2023.3.10</td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
             <tr>
@@ -362,8 +362,8 @@
               <td>관리자</td>
               <td>2023.2.28</td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
             <tr>
@@ -372,8 +372,8 @@
               <td>관리자</td>
               <td>2023.2.10</td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
             <tr>
@@ -382,8 +382,8 @@
               <td>관리자</td>
               <td>2023.2.01</td>
               <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
           </tbody>

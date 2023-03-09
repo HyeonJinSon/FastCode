@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글 읽기(with삭제팝업)</title>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/board_read.css" />
-    <link rel="stylesheet" href="../css/board_delete.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/board_read.css">
+    <link rel="stylesheet" href="../css/board_delete.css">
     <link
       rel="stylesheet"
-      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css"
-    />
+      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   </head>
@@ -22,7 +21,7 @@
         <div class="h-100" data-simplebar>
           <div class="admin-profile">
             <div class="profile-img-wrap">
-              <img src="../img/admin-profile.png" alt="admin-img" />
+              <img src="../img/admin-profile.png" alt="admin-img">
             </div>
             <h2>Manager</h2>
             <div class="profile-menu-wrap">
@@ -290,7 +289,7 @@
         <div class="content-top">
           <h1 id="main-logo">
             <a href="/"
-              ><img src="../img/fastcode_logo.png" alt="Fastcode" /><span
+              ><img src="../img/fastcode_logo.png" alt="Fastcode"><span
                 >fastcode</span
               ></a
             >
@@ -334,15 +333,15 @@
               </p>
               <!-- 삭제 버튼을 누르면 팝업 버튼 -->
               <div class="read_btns">
-                <a class="edit" type="button">수정</a>
-                <a id="show" class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button id="show" class="del">삭제</button>
                 <!-- 팝업 HTML -->
                 <div class="background">
                   <div class="window">
                     <div class="popup">
                       <div class="flex">
                         <p class="title">글을 삭제하시겠습니까?</p>
-                        <input type="text" placeholder="삭제될 글 제목" />
+                        <input type="text" placeholder="삭제될 글 제목">
                         <div class="btns">
                           <a id="close" class="y-btn big-btn btn-sky"
                             >취소하기</a

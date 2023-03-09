@@ -60,6 +60,8 @@
     padding: 4px 17px;
     background: #1D3557;
     border-radius: 5px;
+    border: 0;
+    outline: 0;
 }
 .del {
     font-size: 16px;
@@ -69,6 +71,8 @@
     background: #E53945;
     border-radius: 5px;
     margin-left: 8px;
+    border: 0;
+    outline: 0;
 }
 .file_bottom{
     width: 100%;

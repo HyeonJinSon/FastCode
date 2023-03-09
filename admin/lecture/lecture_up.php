@@ -23,7 +23,7 @@
 ?>
         <main>
           <h2 class="page-title">강좌 등록</h2>
-          <form action="lecture_ok.php" onsubmit="return save();" method="post" class="row">
+          <form action="lecture_ok.php" onsubmit="return save();" method="post" class="row" enctype="multipart/form-data">
             <input type="hidden" name="file_table_id" id="file_table_id" value="">
             <h3>카테고리</h3>
             <div class="row justify-content-between">
@@ -135,10 +135,10 @@
                 <span class="lec_upload col-auto"><i class="fa-solid fa-square-plus" onclick="classplus()"></i></span>
               </div>
               <div id="classplus">
-              <div class="row justify-content-between g35 lec_video_up" id="class_content">
-                  <input type="text" class="col-md-4" placeholder="강의명을 입력하세요">
-                  <input type="url" id="" name="" class="col-md-8" placeholder="주소를 입력하세요">
-              </div>
+                <div class="row justify-content-between g35 lec_video_up" id="class_content">
+                    <input type="text" id="class_name" name="class_name[]" class="col-md-4" placeholder="강의명을 입력하세요">
+                    <input type="text" id="class_url" name="class_url[]" class="col-md-8" placeholder="주소를 입력하세요">
+                </div>
               </div>
             </div>
             <div class="row up_btn_container">
@@ -250,9 +250,9 @@
               alert('첨부실패');
               return;
             }else{
-              preview(file, return_data.imgid); //미리보기 만들기
               let imgid = $("#file_table_id").val() + return_data.imgid + ",";
               $("#file_table_id").val(imgid);
+              preview(file, return_data.imgid); //미리보기 만들기
             }
           }
 
@@ -273,7 +273,7 @@
           url: 'lecture_image_del.php',
           type: 'post',
           data: data,
-          dataType: 'text',
+          // dataType: 'text',
           success: function(return_data){
             if(return_data.result == "member"){
               alert('관리자로 로그인하세요');
@@ -292,10 +292,10 @@
       };
 
       function save(){
-        if(!$('#thumbnail').val()){
-          alert('썸네일을 추가하세요');
-          return false;
-        }
+        // if(!$('#thumbnail').val()){
+        //   alert('썸네일을 추가하세요');
+        //   return false;
+        // }
         if(!$('#file_table_id').val()){
           alert('추가이미지를 최소한 한 개 이상 등록하세요');
           return false;

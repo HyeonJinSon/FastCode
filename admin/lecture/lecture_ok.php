@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include $_SERVER['DOCUMENT_ROOT']."/inc/dbcon.php";
+    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
     if(!$_SESSION['AUID']){
         echo "<script>
@@ -15,17 +15,19 @@
     $name=$_POST["name"]; //강좌명
     $price=$_POST["price"]; //가격
     $sale_status=$_POST["sale_status"]; //판매상태
-    $recom=$_POST["recom"]; //추천
-    $forbegin=$_POST["forbegin"]; //입문
-    $forbasic=$_POST["forbasic"]; //초급
-    $forinter=$_POST["forinter"]; //중급
-    $foradv=$_POST["foradv"]; //상급
+    $recom=$_POST["recom"] ?? 0; //추천
+    $forbegin=$_POST["forbegin"] ?? 0; //입문
+    $forbasic=$_POST["forbasic"] ?? 0; //초급
+    $forinter=$_POST["forinter"] ?? 0; //중급
+    $foradv=$_POST["foradv"] ?? 0; //상급
     $lec_date=$_POST["lec_date"]; //수강기한 옵션
     $lec_start_date=$_POST["lec_start_date"]; //수강기한 시작일
     $lec_end_date=$_POST["lec_end_date"]; //수강기한 종료일
     $content=rawurldecode($_POST["content"]); //강좌설명
     $thumbnail=$_POST["thumbnail"]; //썸네일이미지
     $sale_cnt = 0; //판매량
+    $file_table_id=$_POST["file_table_id"];//이미지 num1,num2,
+    $file_table_id=rtrim($file_table_id,",");//오른쪽 끝에 , 삭제 num1,num2
 
     //썸네일 이미지
     if($_FILES['thumbnail']['name']){
@@ -61,12 +63,48 @@
         }
     }
 
-    $sql = "INSERT into lectures (name, cate, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_mid) 
-                        VALUES ('$name','".$cate."','".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."',".$recom.",".$forbegin.",'".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_mid."')";
-    
-    $rs = $mysqli -> query($sql) or die($mysqli -> error);
-    $pid = $mysqli -> insert_id;
+    //수강기한 설정
+    if($lec_date == '무제한'){
+        $lec_start_date = date("Y-m-d");
+        $lec_end_date = date("Y-m-d", strtotime($time_now."+100 years"));
+    }
+
+    $mysqli->autocommit(FALSE);
+    try{
+
+        $sql = "INSERT into lectures (name, cate, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_mid) 
+        VALUES ('$name','".$cate."','".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."','".$recom."','".$forbegin."','".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_mid."')";
+
+        $rs = $mysqli -> query($sql) or die($mysqli -> error);
+        $lecid = $mysqli -> insert_id;
+
+        $className = $_REQUEST['class_name']; //강의명
+        $classUrl = $_REQUEST['class_url']; //강의 영상 링크
+
+        $k=0;
+        foreach($className as $cn){
+            if($cn){
+                $clsql = "INSERT into lecture_class (lecid, class_name, class_url) VALUES ('".$lecid."','".$cn."','".$classUrl[$k]."')";
+                $rcs = $mysqli -> query($clsql) or die($mysqli->error);
+                $k++;
+            }
+        }
+
+        if($file_table_id){//첨부한 이미지 테이블 업데이트
+            $upquery="UPDATE lecture_image_table set lecid=".$lecid." where imgid in (".$file_table_id.")";
+            $iuq=$mysqli->query($upquery) or die($mysqli->error);
+        }
+
+        $mysqli->commit(); //DB 커밋
+
+        echo "<script>alert('등록되었습니다'); location.href='/admin/lecture/lecture_list.php';</script>";
+        exit;
+
+    }catch(Exception $e){
+        $mysqli->rollback(); //롤백
+        echo "<script>alert('등록 실패했습니다'); history.back();</script>";
+        exit;
+    }
 
 
-    
 ?>

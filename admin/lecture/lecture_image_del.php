@@ -11,7 +11,7 @@
     }
 
     $imgid = $_POST['imgid'];
-    $sql = "SELECT * from lecture_image_table where imgid='{$imgid}'";
+    $sql = "SELECT * from lecture_image_table where imgid='".$imgid."' ";
     $result = $mysqli -> query($sql);
     $rs = $result -> fetch_object();
     
@@ -21,8 +21,8 @@
     exit;
     }
 
-    $sql = "UPDATE lecture_image_table set status=0 where imgid='{$imgid}'";
-    $result = $mysqli -> query($sql);
+    $sql = "UPDATE lecture_image_table set status=0 where imgid='".$imgid."' ";
+    $result = $mysqli -> quey($sql);
 
     if($result){
       $delete_file = $_SERVER['DOCUMENT_ROOT']."/pdata/".$rs->filename;

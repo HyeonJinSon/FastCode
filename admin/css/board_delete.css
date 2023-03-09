@@ -75,7 +75,7 @@
   align-items: center
 }
 
-.flex .btns {
+.flex .popup_btns {
   display: flex;
   gap: 165px;
 }

@@ -137,10 +137,7 @@
               <div id="classplus">
               <div class="row justify-content-between g35 lec_video_up" id="class_content">
                   <input type="text" class="col-md-4" placeholder="강의명을 입력하세요">
-                  <div class="thumbnail_container col-md-8">
-                    <label for="lec_thumbnail" class="lec_thumbnail_btn">파일 선택</label>
-                    <input type="file" name="" id="lec_thumbnail" class="col-md-12 form-control form-control-lg">
-                  </div>
+                  <input type="url" id="" name="" class="col-md-8" placeholder="주소를 입력하세요">
               </div>
               </div>
             </div>

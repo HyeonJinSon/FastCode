@@ -17,6 +17,7 @@
     // while($rs = $result -> fetch_object()){
     //   $rsc[] = $rs;
     // }
+    // $r2 = $result -> fetch_assoc();
 
     $row = $result -> fetch_assoc();
 ?>
@@ -72,8 +73,8 @@
               </p> -->
 
               <div class="read_btns">
-                <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
-                <a href="./board_delete.php?idx=<?= $bno; ?>" class="del">삭제</a>
+                <a href="./board_modify.php?idx=<?= $row['idx'] ?>" class="edit">수정</a>
+                <a href="./board_delete.php?idx=<?= $row['idx'] ?>" class="del">삭제</a>
               </div>
             </div>
             <div class="file_bottom">

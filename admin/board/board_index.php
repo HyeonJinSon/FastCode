@@ -163,8 +163,8 @@ $start_num = ($page - 1) * $list;
           </tbody>
         </table>
 
-        <div class="pagenation">
-          <ul>
+        <div class="board_pagination row">
+          <ul class="row col justify-content-center">
             <?php 
 
               // if($page == 1){
@@ -172,26 +172,26 @@ $start_num = ($page - 1) * $list;
               // }
 
 
-            if($page > 1){
+            // if($page > 1){
              
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;
-                echo "<li><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+                echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
               }
-            }
+            // }
 
             for($i=$block_start; $i<= $block_end; $i++){
               if($page == $i){//페이지 번호랑 현재 i가 같다면
-                  echo "<li><a href='?page=$i' class='active'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
               }else{
-                  echo "<li><a href='?page=$i'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
               }
             }
 
           if($page < $total_page){ // 아직 마지막이 아니라면
             if($total_block > $block_num){ //전체 블록이 4갠데 현재 블록이 이거보다 작다고하다면 다음에도 더 있단 얘기니까 그 때 다음페이지가 나오도록
                 $next = $block_num * $list + 1;
-                echo "<li><a href='?page=$next'><i class='fa-solid fa-chevron-left'></i></a></li>";
+                echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
             }
            
         }

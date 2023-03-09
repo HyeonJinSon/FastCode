@@ -12,7 +12,7 @@
     $bno = $_GET['idx'];
 
     
-    $sql = "SELECT * from board WHERE idx=".$bno;
+    $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
     while($rs = $result -> fetch_object()){
       $rsc[] = $rs;
@@ -34,7 +34,7 @@
           <div class="board_area pd-81">
             <div class="read_top">
               <ul>
-                <li class="title"><?= $rsc -> title; ?></li>
+                <li class="title"><?php echo $rsc -> title; ?></li>
                 <li class="name"><?= $rsc -> name; ?></li>
                 <li class="date"><?= $rsc -> date; ?></li>
               </ul>
@@ -42,6 +42,7 @@
             <div class="read_content">
 
             <?php print_r($rsc);
+
             // print_r($r2['title']);
             // print_r($r2['name']);
             // print_r($r2['date']);
@@ -79,7 +80,7 @@
               if($rsc -> is_img == 1){
               ?>
               <!-- 이미지일때 -->
-              <img src="../../upload/<?= $rsc -> file; ?> " target="blank">
+              <img src="./board_files/<?= $rsc -> file; ?> " target="blank">
               <?php } else{ ?>
               <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>"><?= $rsc -> file; ?></a></p>
               <?php } ?>
@@ -90,6 +91,9 @@
           </div>
         </div>
 
+        <!-- <script>
+          console.log(<?php echo $rsc -> content ?>);
+        </script> -->
         
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";

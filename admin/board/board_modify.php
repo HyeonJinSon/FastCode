@@ -10,7 +10,7 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];
-    $sql = "SELECT * FROM board WHERE idx =".$bno;
+    $sql = "SELECT * FROM board WHERE idx ='{$bno}'";
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
     while($rs = $result->fetch_object()){
       $rsc[] = $rs;
@@ -29,7 +29,7 @@
 
 <h2 class="page-title">글 수정</h2>
 
-<form action="./board_modify_ok.php" method="POST">
+<form action="./board_modify_ok.php" method="POST" enctype="multipart/form-data" >
   <div class="pd-54">
     <div class="subject">
       <label for="subject">제목</label>

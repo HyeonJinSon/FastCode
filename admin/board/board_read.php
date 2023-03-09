@@ -81,7 +81,7 @@
               if($row['is_img'] == 1){
               ?>
               <!-- 이미지일때 -->
-              <img src="./board_files/<?= $row['file'] ?> " target="blank">
+                <img src="./board_files/<?= $row['file'] ?> " target="blank">
               <?php } else{ ?>
               <p class="file">첨부파일: <a href="./board_files/<?= $row['file'] ?>"><?= $row['file'] ?></a></p>
               <?php } ?>

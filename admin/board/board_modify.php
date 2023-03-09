@@ -19,7 +19,7 @@
 
     $bno = $_GET['idx'];
     $sql = "SELECT * from board WHERE idx='{$bno}'";
-    $result = $conn->query($sql); 
+    $result = $mysqli -> query($sql); 
     $row = $result -> fetch_assoc(); 
 
 ?>
@@ -45,7 +45,7 @@
         name="title"
         required
         placeholder="제목을 입력하세요"
-        value="<?= $rsc -> title; ?>"
+        value="<?= $row['title']; ?>"
       >
     </div>
     <div class="content">
@@ -57,7 +57,7 @@
         rows="10"
         placeholder="내용을 입력하세요"
       >
-      <?= $rsc -> content; ?>
+      <?= $row['content']; ?>
       </textarea>
     </div>
 
@@ -70,7 +70,7 @@
         name="file"
         id="files"
           class="form-control form-control-lg"
-        value="<?= $rsc -> file; ?>"
+        value="<?= $row['file']; ?>"
         >
       </div>
     </div>

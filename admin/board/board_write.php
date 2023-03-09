@@ -67,12 +67,12 @@
           <option value="2">관리자2</option>
         </select>
     </div>
-  </div>
+    </div>
   <!-- 내가수정- form 안으로 옮김 -->
-  <div class="btns">
-  <button type="submit" class="y-btn big-btn btn-navy">등록완료</button>
-  <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
-  </div>
+    <div class="btns">
+    <button type="submit" class="y-btn big-btn btn-navy">등록완료</button>
+    <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
+    </div>
 </form>
 
   

@@ -67,7 +67,7 @@ $start_num = ($page - 1) * $list;
         <h2 class="page-title">공지사항</h2>
 
         <div class="borad_top">
-          <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
+          <a href="./board_write.php" class="y-btn big-btn btn-navy">글쓰기</a>
           <form class="board_forms">
             <select
               class="form-select"
@@ -103,17 +103,17 @@ $start_num = ($page - 1) * $list;
                     foreach($rsc as $r){ //조회된 글 출력
             ?>
             <tr>
-              <td><?= $r->idx;?></td>
+              <td><?= $r -> idx;?></td>
               <td>
-              <a href="./board_read.php?idx=<?= $r->idx; ?>">                       
-                <?= $r->title;?>
+              <a href="./board_read.php?idx=<?= $r -> idx; ?>">                       
+                <?= $r -> title;?>
                 </a>
               </td>
-              <td><?= $r->name;?></td>
-              <td><?= $r->date;?></td>
+              <td><?= $r -> name;?></td>
+              <td><?= $r -> date;?></td>
               <th>
-                <button class="edit">수정</button>
-                <button class="del">삭제</button>
+                <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
+                <a href="./board_delete.php?idx=<?= $r -> idx; ?>" class="del">삭제</a>
               </th>
             </tr>
             <?php 

@@ -12,7 +12,6 @@
     $bno = $_GET['idx'];
     $sql = "SELECT * FROM board WHERE idx =".$bno;
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
-    $rs = $result -> fetch_object(); 
     while($rs = $result->fetch_object()){
       $rsc[] = $rs;
     }
@@ -72,10 +71,9 @@
 
     <div class="user_select">
         <label for="user_cat">작성권한</label>
-        <select class="form-select" name="user_cat" id="user_cat">
-          <option value="user">관리자</option>
-          <option value="user2">관리자2</option>
-          <option value="user3">관리자3</option>
+        <select class="form-select" name="authority" id="user_cat">
+          <option value="1">관리자</option>
+          <option value="2">관리자2</option>
         </select>
     </div>
   </div>

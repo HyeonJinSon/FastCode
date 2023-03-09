@@ -23,14 +23,15 @@
 
  <h2 class="page-title">새 글 작성</h2>
 
-<form action="write_ok.php" method="post">
+<form action="./board_write_ok.php" method="post">
+  <!-- <input type="hidden" value="<?php echo $_SESSION['AUID']; ?> "> -->
   <div class="pd-54">
     <div class="subject">
       <label for="subject">제목</label>
       <input
         type="text"
         id="subject"
-        name="subject"
+        name="title"
         required
         placeholder="제목을 입력하세요"
       >
@@ -61,10 +62,9 @@
 
     <div class="user_select">
         <label for="user_cat">작성권한</label>
-        <select class="form-select" name="user_cat" id="user_cat">
-          <option value="user">관리자</option>
-          <option value="user2">관리자2</option>
-          <option value="user3">관리자3</option>
+        <select class="form-select" name="authority" id="user_cat">
+          <option value="1">관리자</option>
+          <option value="2">관리자2</option>
         </select>
     </div>
   </div>

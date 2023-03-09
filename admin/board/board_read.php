@@ -6,16 +6,18 @@
     //     history.back();
     //     </script>";
     // };
+    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];
 
     
     $sql = "SELECT * from board WHERE idx=".$bno;
-    $result = $mysqli -> query($sql) or die("Query error ! => ".$mysqli -> error);
+    $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
     while($rs = $result -> fetch_object()){
       $rsc[] = $rs;
     }
+    // $r2 = $result -> fetch_assoc();
 ?>
 
     
@@ -39,6 +41,13 @@
             </div>
             <div class="read_content">
 
+            <?php print_r($rsc);
+            // print_r($r2['title']);
+            // print_r($r2['name']);
+            // print_r($r2['date']);
+            // print_r($r2['content']);
+            
+            ?>
               <?= nl2br($rsc -> content); ?>
 
               <!-- <p>클릭한 글 내용이 나옵니다.</p>

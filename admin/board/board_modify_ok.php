@@ -1,11 +1,11 @@
 <?php 
-
+    session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
-
     $bno = $_GET['idx'];
-    $username = $_POST['name'];
+    $username = '관리자';
     $title = $_POST['title'];
+    $authority = $_POST['authority']; 
     $content = $_POST['content'];
     $date = date('Y-m-d');
 
@@ -19,8 +19,11 @@
     move_uploaded_file($tmpfile_path, $upload_path);
 
     $sql = "UPDATE board 
-    SET name='{$username}', title='{$title}', content='{$content}', date='{$date}', file='{$file_orgname}', is_img='{$is_img}'  
+    SET name='{$username}', title='{$title}', authority='{$authority}', content='{$content}', date='{$date}', file='{$file_orgname}', is_img='{$is_img}'  
     WHERE idx='{$bno}'";
+
+/*     (name, title, content, date, authority, file, is_img) VALUES
+    ('{$username}','{$title}','{$content}','{$date}','{$authority}','{$file_orgname}','{$is_img}')";  */
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 

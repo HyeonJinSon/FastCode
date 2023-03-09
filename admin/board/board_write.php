@@ -19,28 +19,21 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
-<!-- 본문시작 -->
+ <!-- 본문시작 -->
 
-<h2 class="page-title">새 글 작성</h2>
+ <h2 class="page-title">새 글 작성</h2>
 
-<form action="board_write_ok.php" method="post" enctype="multipart/form-data">
-
-  <!-- ==================================================================================== -->
-  <!-- 파일 첨부용 - 내가 추가한 라인 -->
-  <input type="hidden" name="file_table_id" id="file_table_id" value="">
-  <!-- 이 상품 번호랑 추가이미지 테이블 연결이 안돼있음 >>> 얘가 가지고있는 고유의 id랑 연결 -->
-  <!-- ==================================================================================== -->
-
+<form action="write_ok.php" method="post">
   <div class="pd-54">
     <div class="subject">
       <label for="subject">제목</label>
       <input
         type="text"
         id="subject"
-        name="title"
+        name="subject"
         required
         placeholder="제목을 입력하세요"
-      />
+      >
     </div>
     <div class="content">
       <label for="usermsg">내용</label>
@@ -62,28 +55,27 @@
           name="file"
           id="files"
           class="form-control form-control-lg"
-        />
+        >
       </div>
     </div>
 
-    <!-- 작성권한 name 수정함 authority 로,, -->
     <div class="user_select">
-      <form>
-        <label for="user">작성권한</label>
-        <select class="form-select" name="authority" id="">
+        <label for="user_cat">작성권한</label>
+        <select class="form-select" name="user_cat" id="user_cat">
           <option value="user">관리자</option>
           <option value="user2">관리자2</option>
           <option value="user3">관리자3</option>
         </select>
-      </form>
     </div>
   </div>
+  <!-- 내가수정- form 안으로 옮김 -->
+  <div class="btns">
+  <button type="submit" class="y-btn big-btn btn-navy">등록완료</button>
+  <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
+  </div>
 </form>
-<div class="btns">
-  <a href="#" class="y-btn big-btn btn-navy">등록완료</a>
-  <a href="#" class="y-btn big-btn btn-sky">등록취소</a>
-</div>
 
+  
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>

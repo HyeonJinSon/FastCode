@@ -112,8 +112,8 @@ $start_num = ($page - 1) * $list;
               <td><?= $r->name;?></td>
               <td><?= $r->date;?></td>
               <th>
-                <a href="" class="edit" type="button">수정</a>
-                <a href="" class="del" type="button">삭제</a>
+                <button class="edit">수정</button>
+                <button class="del">삭제</button>
               </th>
             </tr>
             <?php 

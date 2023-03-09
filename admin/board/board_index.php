@@ -186,7 +186,7 @@ $start_num = ($page - 1) * $list;
               }else{
                   echo "<li><a href='?page=$i'>$i</a></li>";
               }
-          }
+            }
 
           if($page < $total_page){ // 아직 마지막이 아니라면
             if($total_block > $block_num){ //전체 블록이 4갠데 현재 블록이 이거보다 작다고하다면 다음에도 더 있단 얘기니까 그 때 다음페이지가 나오도록

@@ -62,8 +62,8 @@
               </p> -->
 
               <div class="read_btns">
-                <a href="./board_modify.php?idx=<?= $rsc -> idx; ?>" class="edit" type="button">수정</a>
-                <a href="./board_delete.php?idx=<?= $rsc -> idx; ?>" class="del" type="button">삭제</a>
+                <a href="./board_modify.php?idx=<?= $rsc -> idx; ?>" class="edit">수정</a>
+                <a href="./board_delete.php?idx=<?= $rsc -> idx; ?>" class="del">삭제</a>
               </div>
             </div>
             <div class="file_bottom">

@@ -6,7 +6,6 @@
     //     history.back();
     //     </script>";
     // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];
@@ -40,7 +39,7 @@
             </div>
             <div class="read_content">
 
-              <?= $rsc -> content; ?>
+              <?= nl2br($rsc -> content); ?>
 
               <!-- <p>클릭한 글 내용이 나옵니다.</p>
               <br />
@@ -67,11 +66,18 @@
               </div>
             </div>
             <div class="file_bottom">
-              <p class="file">첨부파일:</p>
+              <?php 
+              if($rsc -> is_img == 1){
+              ?>
+              <!-- 이미지일때 -->
+              <img src="../../upload/<?= $rsc -> file; ?> " target="blank">
+              <?php } else{ ?>
+              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>"><?= $rsc -> file; ?></a></p>
+              <?php } ?>
             </div>
           </div>
           <div class="list_btn">
-            <a href="#" class="y-btn big-btn btn-navy">목록으로</a>
+            <a href="./board_index.php" class="y-btn big-btn btn-navy">목록으로</a>
           </div>
         </div>
 

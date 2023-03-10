@@ -11,7 +11,9 @@
     };
 
     $cate=$_POST["cate1"].$_POST["cate2"].$_POST["cate3"]; //카테고리
-    $cate_mid=$_POST["cate2"]; //카테고리 중분류 대시보드용
+    $cate_big=$_POST["cate1"]; //카테고리 대분류
+    $cate_mid=$_POST["cate2"]; //카테고리 중분류
+    $cate_sm=$_POST["cate3"]; //카테고리 소분류
     $name=$_POST["name"]; //강좌명
     $price=$_POST["price"]; //가격
     $sale_status=$_POST["sale_status"]; //판매상태
@@ -72,8 +74,8 @@
     $mysqli->autocommit(FALSE);
     try{
 
-        $sql = "INSERT into lectures (name, cate, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_mid) 
-        VALUES ('$name','".$cate."','".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."','".$recom."','".$forbegin."','".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_mid."')";
+        $sql = "INSERT into lectures (name, cate, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_big, cate_mid, cate_sm) 
+        VALUES ('$name','".$cate."','".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."','".$recom."','".$forbegin."','".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_big."','".$cate_mid."','".$cate_sm."')";
 
         $rs = $mysqli -> query($sql) or die($mysqli -> error);
         $lecid = $mysqli -> insert_id;

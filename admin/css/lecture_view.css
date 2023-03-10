@@ -48,6 +48,10 @@
   border-radius: 20px;
   display: flex;
   flex-wrap: nowrap;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  white-space: nowrap;
 }
 /* .lec_view_info div + div:before {
   content: '';
@@ -55,20 +59,34 @@
   height: 108px;
   width: 1px;
   background: var(--highlight-s);
+  position: absolute;
+  left: -30px;
 } */
+.lec_view_info .bar {
+  height: 108px;
+  width: 1px;
+  background: var(--highlight-s);
+  margin: 54px 0;
+}
 .lec_view_info1 {
-  padding: 83px 100px;
+  position: relative;
+  padding: 83px 90px;
   text-align: center;
   line-height: 28px;
 }
 .lec_view_info2 {
-  padding: 68px 95px;
+  position: relative;
+  padding: 68px 80px;
   text-align: center;
 }
 .lec_view_info2 p {
   margin-top: 20px;
 }
 .lec_view_info3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: normal;
+  position: relative;
   padding: 95px 61px;
   flex-wrap: nowrap;
 }
@@ -95,7 +113,7 @@
   white-space: nowrap;
 }
 .lec_view_desc {
-  margin: 27px 0;
+  margin: 54px 0;
 }
 .lec_view_desc p {
   line-height: 27px;
@@ -108,15 +126,14 @@ main h4 {
   margin: 27px 0;
 }
 
-/* .lec_view_img_slide {
-  margin: 0 auto;
-  width: 1262px;
-} */
 .lec_view_img_slide {
   width: 1262px;
   height: 190px;
-  margin: 27px 0;
+  margin: 54px 0;
   position: relative;
+}
+.lec_view_img_slide h4 {
+  display: none;
 }
 .lec_view_img_slide .lec_img_slide_wrapper {
   position: relative;
@@ -143,8 +160,6 @@ main h4 {
 .lec_view_img_slide .lec_img_slide_wrapper .lec_img_slides li figure {
   height: 190px;
   width: 278px;
-  /* width: 100%;
-  height: 100%; */
   border-radius: 10px;
 }
 .lec_view_img_slide .lec_img_slide_wrapper .lec_img_slides li figure img {
@@ -154,16 +169,16 @@ main h4 {
 .lec_view_img_slide .lec_img_controls {
   position: absolute;
   top: 50%;
-  left: 0;
-  transform: translateY(-50%)
+  left: 60px;
+  right: 0;
+  transform: translateY(-50%);
 }
 .lec_view_img_slide .lec_img_controls span {
-  position: absolute;
-  top: 50%;
+  display: inline-block;
 }
 .lec_view_img_slide .lec_img_controls span i {
   display: inline-block;
-  color: var(--highlight-s);
+  color: var(--primary-n);
   font-size: 20px;
   padding: 7px 12px; 
   background: rgba(255,255,255,.3);
@@ -171,14 +186,15 @@ main h4 {
   border-radius: 50%;
 }
 .lec_view_img_slide .lec_img_controls span:hover i {
-  color: var(--primary-r);
+  color: var(--highlight-s);
 }
 .lec_view_img_slide .lec_img_controls .prev {
-  left: 0;
+  margin-left: -70px;
 }
 .lec_view_img_slide .lec_img_controls .next {
-  right: 0;
-}
+  align-self: flex-end;
+  margin-right: -110px;
+} 
 
 .lec_view_btn_container {
   margin-top: 135px;
@@ -186,7 +202,7 @@ main h4 {
   justify-content: flex-end;
 }
 .lec_view_video_container {
-  margin-top: 108px;
+  margin-top: 54px;
 }
 .lec_view_video_container h4 {
   margin-bottom: 30px;

@@ -14,13 +14,18 @@
   padding: 81px 0;
 }
 
+.coupon_search {
+  display: flex;
+}
+
 .form-control {
-  width: 600px;
+  width: 462px;
   height: 56px;
   border: 1px solid #1d3557;
   border-radius: 5px;
   font-size: 18px;
   padding-left: 30px;
+  margin-right: 20px;
 }
 
 .form-select {

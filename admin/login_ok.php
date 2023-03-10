@@ -17,7 +17,7 @@
         $_SESSION['AUNAME'] = $rs->username;
         $_SESSION['ALEVEL'] = $rs->level;
         echo "<script>
-            alert('관리자님 어서오세요');
+            alert('{$rs->username}님 어서오세요');
             location.href='/admin/dashboard/index.php';
         </script>";
         exit;

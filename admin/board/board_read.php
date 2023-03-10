@@ -8,7 +8,6 @@
     // };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
-    include $_SERVER['DOCUMENT_ROOT']."/board/lib.php";
 
     $bno = $_GET['idx'];
 
@@ -27,7 +26,7 @@
     // while문을 안쓰고 그냥 객체에서 뽑아서 쓰면 됨!! while 에서 배열로 했기 떄문에 출력이 안된거였음
 ?>
 
-    
+<link rel="stylesheet" href="../css/board_delete.css" />
 <link rel="stylesheet" href="../css/board_read.css" />
 
 <?php     
@@ -78,7 +77,7 @@
 
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
-                <a href="./board_delete.php?idx=<?= $bno; ?>" class="del">삭제</a>
+                <!-- <a href="" id="show" class="del">삭제</a> -->
               </div>
             </div>
             <div class="file_bottom">
@@ -92,18 +91,95 @@
           </div>
         </div>
 
+        <!-- 삭제 팝업 HTML -->
+        <div class="background">
+          <div class="window">
+            <div class="popup">
+              <div class="flex">
+                <p class="title">글을 삭제하시겠습니까?</p>
+                <input type="text" placeholder="<?= $rsc -> title; ?>">
+                <div class="btns">
+                  <a id="close" class="y-btn big-btn btn-sky"
+                    >취소하기</a
+                  >
+                  <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
+                  <!-- 내가 deletebtn 추가 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 팝업 HTML 끝 -->
+
+
+
         <!-- <script>
           console.log(<?php echo $rsc -> content ?>);
         </script> -->
-
-      <script>
-        // 삭제 버튼을 누르면 할일
-        
-      </script>
-        
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+</script>
+<script>
+  // function show() {
+  //   document.querySelector(".background").className = "background show";
+  // }
+
+  // function close() {
+  //   document.querySelector(".background").className = "background";
+  // }
+
+  // document.querySelector("#show").addEventListener("click", ()=>{
+    
+  // });
+  // document.querySelector("#close").addEventListener("click", close);
+
+
+  // 삭제 버튼(바깥)을 누르면 할일
+  $("#show").click(function(e){
+    e.preventDefault();
+    $(this).addClass('show');
+    $(".background").show();
+  });
+
+  $("#close").click(function(){
+    $(this).removeClass('show');
+    $(".background").hide();
+  });
+
+
+  //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
+  $('#deletebtn').click(function(){
+
+    let idx = <?= $bno; ?>;
+
+    let data = {
+      idx:idx,
+    }
+
+  $.ajax({
+        async:false,
+        type:'post',
+        url:'./board_delete.php',
+        data:data,
+        dataType:'json',
+        error:function(){
+            alert('error');
+        },
+        success:function(result){               
+          if(result.result == true){
+              alert('삭제되었습니다.');
+              location.href="./board_index.php";
+          }                
+        }
+      });
+
+  });
+  
+</script>
+
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

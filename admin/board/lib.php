@@ -6,23 +6,30 @@
         $rs = $result -> fetch_object();
 
 ?>
-                <!-- 팝업 HTML -->
-                <div class="background">
-                  <div class="window">
-                    <div class="popup">
-                      <div class="flex">
-                        <p class="title">글을 삭제하시겠습니까?</p>
-                        <input type="text" placeholder="<?= $rs -> title; ?>">
-                        <div class="btns">
-                          <a href="#" id="close" class="y-btn big-btn btn-sky"
-                            >취소하기</a>
-                          <a href="./board_delete.php?idx=<?= $idx; ?>" class="y-btn big-btn btn-red">삭제하기</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 팝업 HTML 끝 -->
+  <!-- 팝업 HTML -->
+  <div class="background">
+    <div class="window">
+      <div class="popup">
+        <div class="flex">
+          <p class="title">글을 삭제하시겠습니까?</p>
+          <input type="text" placeholder="<?= $rs -> title; ?>">
+          <div class="btns">
+            <a href="#" id="close" class="y-btn big-btn btn-sky"
+              >취소하기</a>
+            <a href="./board_delete.php?idx=<?= $idx; ?>" class="y-btn big-btn btn-red">삭제하기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 팝업 HTML 끝 -->
+  <script>
+    // document.querySelector("#show").addEventListener("click", show);
+    // document.querySelector("#close").addEventListener("click", close);
+    //dl..이렇게들어와도됨??????????????
+    document.body.appendChild(".background");
+  </script>
+  <!--  -->
 
 <?php
     }

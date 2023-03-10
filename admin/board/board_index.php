@@ -57,6 +57,7 @@ $start_num = ($page - 1) * $list;
 ?>
 
 <link rel="stylesheet" href="../css/board_index.css" />
+<link rel="stylesheet" href="../css/board_delete.css" />
 
 <?php     
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
@@ -113,7 +114,7 @@ $start_num = ($page - 1) * $list;
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
-                <a href="./board_delete.php?idx=<?= $r -> idx; ?>" class="del">삭제</a>
+                <a href="#" id="show" class="del">삭제</a>
               </th>
             </tr>
             <?php 
@@ -207,10 +208,76 @@ $start_num = ($page - 1) * $list;
 
         <!-- 본문끝 -->
 
+        <!-- 삭제 팝업 HTML -->
+        <div class="background">
+          <div class="window">
+            <div class="popup">
+              <div class="flex">
+                <p class="title">글을 삭제하시겠습니까?</p>
+                <input type="text" placeholder="">
+                <div class="btns">
+                  <a id="close" class="y-btn big-btn btn-sky"
+                    >취소하기</a
+                  >
+                  <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
+                  <!-- 내가 deletebtn 추가 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 팝업 HTML 끝 -->
+
+
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+</script>
 
+
+  <script>
+
+      // 삭제 버튼(바깥)을 누르면 할일
+  $("#show").click(function(e){
+    e.preventDefault();
+    $(this).addClass('show');
+  });
+
+  $("#close").click(function(){
+    $(this).removeClass('show');
+  });
+
+
+  //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
+  $('#deletebtn').click(function(){
+
+    let idx = <?= $bno; ?>;
+
+    let data = {
+      idx:idx,
+    }
+
+  $.ajax({
+        async:false,
+        type:'post',
+        url:'./board_delete.php',
+        data:data,
+        dataType:'json',
+        error:function(){
+            alert('error');
+        },
+        success:function(result){               
+          if(result.result == true){
+              alert('삭제되었습니다.');
+              location.href="./board_index.php";
+          }                
+        }
+      });
+
+  });
+  </script>
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
  ?>

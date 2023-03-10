@@ -1,4 +1,6 @@
 .background {
+  display: none; /* 임의추가 내가 */
+  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
@@ -6,7 +8,7 @@
   height: 100vh;
   /* background-color: rgba(0, 0, 0, 0.3); */
   background: rgba(224, 233, 239, 0.9);
-  z-index: 1000;
+  /* z-index: 1000; */
 
   /* 숨기기 */
   z-index: -1;
@@ -14,6 +16,8 @@
 }
 
 .show {
+  /* display: block; */
+  /* 임의추가 내가 */
   opacity: 1;
   z-index: 1000;
   transition: all 0.5s;
@@ -36,7 +40,7 @@
   /* 임시 지정 */
   width: 934px;
   height: 405px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
 
@@ -49,18 +53,18 @@
   transition: all 0.5s;
 }
 
-.popup .title{
+.popup .title {
   font-size: 28px;
   font-weight: 500;
   margin-top: 88px;
   margin-bottom: 54px;
 }
 
-.popup input{
+.popup input {
   width: 605px;
   height: 54px;
-  background: #FFFFFF;
-  border: 1px solid #1D3557;
+  background: #ffffff;
+  border: 1px solid #1d3557;
   border-radius: 5px;
   font-weight: 500;
   font-size: 24px;
@@ -69,10 +73,10 @@
   margin-bottom: 54px;
 }
 
-.popup .flex{
+.popup .flex {
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
 }
 
 .flex .btns {
@@ -85,7 +89,7 @@
   line-height: 27px;
   color: #ffffff;
   padding: 4px 17px;
-  background: #E53945;
+  background: #e53945;
   border-radius: 5px;
   margin-left: 8px;
 }

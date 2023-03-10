@@ -8,6 +8,7 @@
     // };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
+    // include $_SERVER['DOCUMENT_ROOT']."/board/lib.php";
 
     $bno = $_GET['idx'];
 

@@ -9,19 +9,23 @@
 
     $content = $_POST['content'];
     $date = date('Y-m-d');
-
-    // print_r(strpos('text', 'image'));
+    
+    var_dump(strpos('text/plain', 'image'));
+    
     // 인덱스번호 알려줌
     // 파일 테이블 명
     // $file_table_id = $_POST["file_table_id"]; 얘 없어도 될듯???
+ 
+ 
     $file_orgname = $_FILES['file']['name'] ;
     $tmpfile_path = $_FILES['file']['tmp_name'];
 
     // 파일 업로드할 경로, 이미지 판단 
     $upload_path = "./board_files/".$file_orgname;
     $file_type = $_FILES['file']['type'];
-    if(strpos($file_type, 'image') >= 0) {$is_img = 1;} else if(strpos($file_type, 'image') == false){$is_img = 0;}
+    if(strpos($file_type, 'image') == true) {$is_img = 1;} else {$is_img = 0;}
     move_uploaded_file($tmpfile_path, $upload_path);
+    // 앞에 값이 있으면 true
 
     $sql = "INSERT INTO board 
     (name, title, content, date, authority, file, is_img) VALUES
@@ -36,7 +40,7 @@
         echo "<script> alert('글쓰기에 실패했습니다.');
         location.href = './board_index.php';</script>";
     }
-    
+  /*  */
 
 
 

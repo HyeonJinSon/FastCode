@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글 읽기(with삭제팝업)</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/board_read.css">
-    <link rel="stylesheet" href="../css/board_delete.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쿠폰 등록</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/coupon_up.css" />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css">
+      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   </head>
@@ -21,7 +21,7 @@
         <div class="h-100" data-simplebar>
           <div class="admin-profile">
             <div class="profile-img-wrap">
-              <img src="../img/admin-profile.png" alt="admin-img">
+              <img src="../img/admin-profile.png" alt="admin-img" />
             </div>
             <h2>Manager</h2>
             <div class="profile-menu-wrap">
@@ -289,98 +289,164 @@
         <div class="content-top">
           <h1 id="main-logo">
             <a href="/"
-              ><img src="../img/fastcode_logo.png" alt="Fastcode"><span
+              ><img src="../img/fastcode_logo.png" alt="Fastcode" /><span
                 >fastcode</span
               ></a
             >
           </h1>
-          <!-- <div class="bookmark">
+          <div class="bookmark">
             <input type="checkbox" id="bookmark1" />
             <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
-          </div> -->
+          </div>
         </div>
         <!-- 로고 및 북마크 위치 끝 -->
         <!-- 본문시작 -->
 
-        <h2 class="page-title">공지사항</h2>
-        <div>
-          <div class="board_area pd-81">
-            <div class="read_top">
-              <ul>
-                <li class="title">클릭한 글의 제목이 나옵니다.</li>
-                <li class="name">등록일</li>
-                <li class="date">2023.2.01</li>
-              </ul>
+        <h2 class="page-title">쿠폰등록</h2>
+
+        <form action="coupon_ok.php" method="post">
+          <div class="pd-54">
+            <div class="c_title">
+              <label for="coupon_title">쿠폰명</label>
+              <input
+                type="text"
+                id="coupon_title"
+                name="coupon_title"
+                required
+                placeholder="쿠폰명을 입력하세요"
+              />
             </div>
-            <div class="read_content">
-              <p>클릭한 글 내용이 나옵니다.</p>
-              <br />
-              <p>
-                ex 안녕하십니까 FAST CODE 입니다.<br />
-                원활하고 안정된 서비스 제공을 위하여 2023년 2월 새벽 시스템 점검
-                작업이 예정되어 있습니다.<br />
-                점검 시간 중 홈페이지 및 모바일의 모든 서비스가 중단될
-                예정이오니 이용에 불편 없으시기 바랍니다.<br />
-                <br />
-                1. 일시<br />
-                : 2/01(수) 03am ~ 05am<br />
-                <br />
-                2. 내용<br />
-                : 정기 PM작업, DB 최적화<br />
-                더욱 안정적이고 편리한 서비스를 제공하는 FAST CODE가
-                되겠습니다.<br />
-                감사합니다.
-              </p>
-              <!-- 삭제 버튼을 누르면 팝업 버튼 -->
-              <div class="read_btns">
-                <button class="edit">수정</button>
-                <button id="show" class="del">삭제</button>
-                <!-- 팝업 HTML -->
-                <div class="background">
-                  <div class="window">
-                    <div class="popup">
-                      <div class="flex">
-                        <p class="title">글을 삭제하시겠습니까?</p>
-                        <input type="text" placeholder="삭제될 글 제목">
-                        <div class="popup_btns">
-                          <a id="close" class="y-btn big-btn btn-sky"
-                            >취소하기</a
-                          >
-                          <a class="y-btn big-btn btn-red">삭제하기</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 팝업 HTML 끝 -->
+
+            <div class="line_second">
+              <div class="c_type">
+                <label for="coupon_type">쿠폰타입</label>
+                <select class="form-select" name="coupon_type" id="coupon_type">
+                  <option value="타입1">타입1</option>
+                  <option value="타입2">타입2</option>
+                </select>
+              </div>
+              <div class="c_active">
+                <label for="coupon_active">상태</label>
+                <select
+                  class="form-select"
+                  name="coupon_active"
+                  id="coupon_active"
+                >
+                  <option value="활성화">활성화</option>
+                  <option value="비활성화">비활성화</option>
+                </select>
+              </div>
+              <div class="c_discount">
+                <label for="coupon_discount">할인가</label>
+                <input
+                  type="text"
+                  id="coupon_discount"
+                  name="coupon_discount"
+                  required
+                  placeholder="원"
+                />
               </div>
             </div>
-            <div class="file_bottom">
-              <p class="file">첨부파일:</p>
+
+            <div class="line_third">
+              <div class="c_percent">
+                <label for="coupon_percen">할인율</label>
+                <input
+                  type="text"
+                  id="coupon_percen"
+                  name="coupon_percen"
+                  required
+                  placeholder="%"
+                />
+              </div>
+
+              <div class="c_min">
+                <label for="coupon_min">최소사용금액</label>
+                <input
+                  type="text"
+                  id="coupon_min"
+                  name="coupon_min"
+                  required
+                  placeholder="원"
+                />
+              </div>
+
+              <div class="c_max">
+                <label for="coupon_max">최소사용금액</label>
+                <input
+                  class="ph"
+                  type="text"
+                  id="coupon_max"
+                  name="coupon_max"
+                  required
+                  placeholder="원"
+                />
+              </div>
+            </div>
+
+            <div class="line_fourth">
+              <div class="c_use">
+                <label for="coupon_use">사용기한</label>
+                <select class="form-select" name="coupon_use" id="coupon_use">
+                  <option value="무제한">무제한</option>
+                  <option value="제한">제한</option>
+                </select>
+              </div>
+
+              <div class="c_start">
+                <label for="coupon_start_date">시작일</label>
+                <input
+                  type="date"
+                  name="coupon_start_date"
+                  id="coupon_start_date"
+                />
+              </div>
+
+              <div class="c_end">
+                <label for="coupon_end_date">종료일</label>
+                <input
+                  type="date"
+                  name="coupon_end_date"
+                  id="coupon_end_date"
+                />
+              </div>
+            </div>
+
+            <div class="files">
+              <h3>쿠폰이미지</h3>
+              <div class="files_container">
+                <label for="files" class="files_btn">파일 선택</label>
+                <input
+                  type="file"
+                  name="file"
+                  id="files"
+                  class="form-control form-control-lg"
+                />
+              </div>
             </div>
           </div>
-          <div class="list_btn">
-            <a href="#" class="y-btn big-btn btn-navy">목록으로</a>
+          <div class="btns">
+            <button type="submit" class="y-btn big-btn btn-navy">
+              등록완료
+            </button>
+            <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-
-    <script src="menu.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- <script src="menu.js"></script> -->
     <script>
-      function show() {
-        document.querySelector(".background").className = "background show";
-      }
-
-      function close() {
-        document.querySelector(".background").className = "background";
-      }
-
-      document.querySelector("#show").addEventListener("click", show);
-      document.querySelector("#close").addEventListener("click", close);
-
-      document.addEventListener("DOMContentLoaded", function () {
-        new SimpleBar(document.querySelector("[data-simplebar]"));
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   new SimpleBar(document.querySelector("[data-simplebar]"));
+      // });
+      $("#coupon_start_date, #coupon_end_date").hide();
+      $("#coupon_use").change(function () {
+        if ($(this).val() == "제한") {
+          $("#coupon_start_date, #coupon_end_date").show();
+        } else if ($(this).val() == "무제한") {
+          $("#coupon_start_date, #coupon_end_date").hide();
+        }
       });
     </script>
   </body>

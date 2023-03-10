@@ -31,7 +31,8 @@
 .form-control {
   width: 378px;
   height: 56px;
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-left: 24px;
   border-radius: 5px;
   border: 1px solid #1d3557;
@@ -135,6 +136,10 @@ tbody tr:not(:last-child) {
   height: 27px;
   text-align: center;
   line-height: 27px;
+}
+.board_pagination a.active {
+  color: var(--background-g);
+  background: var(--primary-n);
 }
 .board_pagination a.active {
   color: var(--background-g);

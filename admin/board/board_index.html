@@ -306,8 +306,7 @@
 
         <div class="borad_top">
           <a href="#" class="y-btn big-btn btn-navy">글쓰기</a>
-          <form class="board_forms">
-            <!-- div -> form 내가 수정 -->
+          <div class="board_forms">
             <select class="form-select" name="search_board" id="search_board">
               <option value="title">제목</option>
               <option value="name">글쓴이</option>
@@ -321,7 +320,14 @@
               placeholder="검색어를 입력하세요."
               required
             />
-          </form>
+            <button
+              type="submit"
+              id="search"
+              class="col-md-2 y-btn mid-btn btn-sky"
+            >
+              검색하기
+            </button>
+          </div>
         </div>
 
         <table>

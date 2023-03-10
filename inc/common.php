@@ -1,7 +1,5 @@
-<link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
 </head>
+
 <body>
   <div class="common-wrap">
     <div class="gnb-body">
@@ -23,7 +21,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdDashboard">
               <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#menuDashboard"
-                aria-expanded="true" aria-controls="menuDashboard">
+                aria-expanded="true" aria-controls="menuDashboard"  onclick="location.href='../dashboard/index.php'">
                 <i class="fa-solid fa-wrench"></i>
                 <span class="main-menu-ft">대시보드</span>
               </a>
@@ -43,13 +41,48 @@
             <div id="menuUser" class="accordion-collapse collapse" aria-labelledby="hdUser"
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원관리</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>강사관리</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>관리자관리</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원그룹관리</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>회원휴면/탈퇴관리</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>개인정보조회기록</span></a></li>
-                <li><a href="" class="sub-menu-ft"><span>&middot;</span><span>메일발송관리</span></a></li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>회원관리</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>강사관리</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>관리자관리</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>회원그룹관리</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>회원휴면/탈퇴관리</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>개인정보조회기록</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="sub-menu-ft">
+                    <span>&middot;</span>
+                    <span>메일발송관리</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -65,13 +98,13 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="../category/category.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>과정카테고리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="../lecture/lecture_list.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>강좌리스트</span>
                   </a>
@@ -123,7 +156,7 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="../coupon/coupon_llist.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>쿠폰관리</span>
                   </a>
@@ -149,7 +182,7 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="../board/board_index.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>공지사항 게시판</span>
                   </a>
@@ -182,10 +215,9 @@
       <!-- 로고 및 북마크 위치 시작 -->
       <div class="content-top">
         <h1 id="main-logo"><a href="/"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
-        <div class="bookmark">
+      <!-- <div class="bookmark">
           <input type="checkbox" id="bookmark1" />
           <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
-        </div>
+        </div> -->
       </div>
-
-
+      <!-- 로고 및 북마크 위치 끝 -->

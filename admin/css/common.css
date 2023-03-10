@@ -172,9 +172,11 @@ body {
   position: relative;
   margin-left: 328px;
   background: var(--background-g);
+  height: auto;
 }
 .content-body .content-top {
-  text-align: right;
+  position: absolute;
+  right: 114px;
 }
 .content-body .content-top .bookmark {
   margin-top: 25px;
@@ -331,6 +333,10 @@ body {
 }
 
 /* Bookmark */
+.bookmark{
+  position: absolute;
+  right: 0;
+}
 .bookmark label {
   display: inline-block;
   width: 81px;

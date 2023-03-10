@@ -1,99 +1,99 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 .page-title {
-    color: #161616;
-    margin-top: 81px;
+  color: #161616;
+  margin-top: 81px;
 }
-  
-.coupon_top{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 81px 0;
+
+.coupon_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 81px 0;
 }
 
 .form-control {
-    width: 600px;
-    height: 56px;
-    border: 1px solid #1d3557;
-    border-radius: 5px;
-    font-size: 18px;
-    padding-left: 30px;
+  width: 600px;
+  height: 56px;
+  border: 1px solid #1d3557;
+  border-radius: 5px;
+  font-size: 18px;
+  padding-left: 30px;
 }
- 
+
 .form-select {
-    width: 165px;
-    height: 40px;
-    border: 1px solid #1D3557;
-    border-radius: 5px;
-    margin-bottom: 55px;
-    margin-left: 45px;
+  width: 165px;
+  height: 40px;
+  border: 1px solid #1d3557;
+  border-radius: 5px;
+  margin-bottom: 55px;
+  margin-left: 55px;
 }
 
-ul.coupon_list, li.list_contents{
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap:58px;
+ul.coupon_list,
+li.list_contents {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+  padding-left: 55px;
 }
 
-figure img{
-    border-radius: 10px;
+figure img {
+  border-radius: 10px;
 }
 
-.big_titles{
-    display: flex;
-    align-items: flex-start;
-    gap: 20px 10px;
+.big_titles {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px 10px;
 }
-.btns{
-    display: flex;
-    flex-direction: column;
-    gap:15px 0;
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
 }
 
 .coupon_list {
-    width: 100%;
-    height: 216px;
-    background: #FFFFFF;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+  width: 100%;
+  height: 216px;
+  background: #ffffff;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 }
 
-div h3{
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 30px;
-    color: #161616;
+div h3 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 30px;
+  color: #161616;
 }
 
-.sub_titles{
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
+.sub_titles {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 /* 페이지네이션 */
 .coupon_pagination {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 .coupon_pagination a {
-    color: var(--primary-n);
-    display: inline-block;
-    border-radius: 50%;
-    background: none;
-    font-size: 18px;
-    font-weight: 700;
-    width: 27px;
-    height: 27px;
-    text-align: center;
-    line-height: 27px;
+  color: var(--primary-n);
+  display: inline-block;
+  border-radius: 50%;
+  background: none;
+  font-size: 18px;
+  font-weight: 700;
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  line-height: 27px;
 }
 .coupon_pagination a.active {
-    color: var(--background-g);
-    background: var(--primary-n);
+  color: var(--background-g);
+  background: var(--primary-n);
 }
-  

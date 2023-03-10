@@ -7,14 +7,14 @@
   margin-top: 81px;
 }
 
-.borad_top{
+.borad_top {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 81px 0;
 }
 
-.board_forms{
+.board_forms {
   display: flex;
   font-size: 18px;
   color: #1d3557;
@@ -31,7 +31,8 @@
 .form-control {
   width: 378px;
   height: 56px;
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-left: 24px;
   border-radius: 5px;
   border: 1px solid #1d3557;

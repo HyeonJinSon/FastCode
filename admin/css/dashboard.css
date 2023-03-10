@@ -34,28 +34,37 @@ section h3 {
   background: var(--background-w);
   text-align: center;
 }
+#bookmark-menu .bookmark-list .bookmark-item:hover,
+#course-data .doughnut-wrap:hover,
+#click-data .chart-div2:hover,
+#calendar:hover{
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25); 
+}
+#newcourse .newcourse-item:hover{
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25); 
+}
 #bookmark-menu .bookmark-list .bookmark-item i {
   font-size: 48px;
   margin-bottom: 15px;
   position: relative;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-#bookmark-menu .bookmark-list .bookmark-item i.fa-school:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.fa-school {
   color: var(--highlight-s);
 }
-#bookmark-menu .bookmark-list .bookmark-item i.fa-list-check:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.fa-list-check {
   color: #3c90c7;
 }
-#bookmark-menu .bookmark-list .bookmark-item i.fa-bullhorn:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.fa-bullhorn {
   color: var(--primary-r);
 }
-#bookmark-menu .bookmark-list .bookmark-item i.fa-ticket:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.fa-ticket {
   color: var(--highlight-m);
 }
-#bookmark-menu .bookmark-list .bookmark-item i.category-add:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.category-add {
   color: #9747ff;
 }
-#bookmark-menu .bookmark-list .bookmark-item i.lecture-add:hover {
+#bookmark-menu .bookmark-list .bookmark-item:hover i.lecture-add {
   color: #000;
 }
 #bookmark-menu .bookmark-list .bookmark-item i.category-add:after,
@@ -283,6 +292,7 @@ section h3 {
 }
 
 /* CHART */
+
 #course-data .doughnut-wrap {
   width: 606px;
   height: 312px;

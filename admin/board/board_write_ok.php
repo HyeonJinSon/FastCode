@@ -10,6 +10,8 @@
     $content = $_POST['content'];
     $date = date('Y-m-d');
 
+    // print_r(strpos('text', 'image'));
+    // 인덱스번호 알려줌
     // 파일 테이블 명
     // $file_table_id = $_POST["file_table_id"]; 얘 없어도 될듯???
     $file_orgname = $_FILES['file']['name'] ;
@@ -18,7 +20,7 @@
     // 파일 업로드할 경로, 이미지 판단 
     $upload_path = "./board_files/".$file_orgname;
     $file_type = $_FILES['file']['type'];
-    if(strpos($file_type, 'image') > 0) {$is_img = 1;} else{$is_img = 0;}
+    if(strpos($file_type, 'image') >= 0) {$is_img = 1;} else if(strpos($file_type, 'image') == false){$is_img = 0;}
     move_uploaded_file($tmpfile_path, $upload_path);
 
     $sql = "INSERT INTO board 

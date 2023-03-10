@@ -14,10 +14,15 @@
     
     $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
-    while($rs = $result -> fetch_object()){
-      $rsc[] = $rs;
-    }
+    // while($rs = $result -> fetch_object()){
+    //   $rsc[] = $rs;  //얘를 담아서........
+    // } 글 하나있으면 하나 둘 ... > rsc 안에는 글 하나 안에 있는 컬럼이 다있음
+    // 글 하나만 출력할거니까 while 을 쓸필요가없어요
 
+    // foreach로... 1번글 - id,tt, desc... 얘네가 다 rsc안에... 컬럼들 안에 있는거
+    // 그냥 rsc 는 배열로 돼있어서 foreach 
+
+    $rsc = $result -> fetch_object(); //객체형식으로 저장
 ?>
 
     
@@ -43,8 +48,8 @@
 
             <?php print_r($rsc);
 
-            // print_r($r2['title']);
-            // print_r($r2['name']);
+            // print_r($rsc['title']);
+            // print_r($rsc['name']);
             // print_r($r2['date']);
             // print_r($r2['content']);
             

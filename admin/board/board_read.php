@@ -12,13 +12,18 @@
     $bno = $_GET['idx'];
 
     
-    $sql = "SELECT * from board WHERE idx='{$bno}'"; 
+    $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
     // while($rs = $result -> fetch_object()){
     //   $rsc[] = $rs;
-    // }
+    // } 글 하나있으면 하나 둘 ... > rsc 안에는 글 하나 안에 있는 컬럼이 다있음
+    // 글 하나만 출력할거니까 while 을 쓸필요가없어요
 
-    $row = $result -> fetch_assoc();
+    // foreach로... 1번글 - id,tt, desc... 얘네가 다 rsc안에... 컬럼들 안에 있는거
+    // 그냥 rsc 는 배열로 돼있어서 foreach 
+
+    $rsc = $result -> fetch_object(); //객체형식으로 저장
+    // while문을 안쓰고 그냥 객체에서 뽑아서 쓰면 됨!! while 에서 배열로 했기 떄문에 출력이 안된거였음
 ?>
 
     
@@ -35,22 +40,21 @@
           <div class="board_area pd-81">
             <div class="read_top">
               <ul>
-                <li class="title"><?= $row['title'] ?></li>
-                <li class="name"><?= $row['name'] ?></li>
-                <li class="date"><?= $row['date'] ?></li>
+                <li class="title"><?= $rsc -> title; ?></li>
+                <li class="name"><?= $rsc -> name; ?></li>
+                <li class="date"><?= $rsc -> date; ?></li>
               </ul>
             </div>
             <div class="read_content">
 
-            <!-- <?php print_r($rsc);
-
-            // print_r($r2['title']);
-            // print_r($r2['name']);
-            // print_r($r2['date']);
-            // print_r($r2['content']);
-            
-            ?> -->
-              <?php echo nl2br($row['content']);  ?>
+              <?= nl2br($rsc -> content); ?>
+              <br>
+              <?php 
+              if($rsc -> is_img == 1){
+              ?>
+              <!-- 이미지일때 -->
+              <img src="./board_files/<?= $rsc -> file; ?> " target="blank">
+             <?php } ?>
 
               <!-- <p>클릭한 글 내용이 나옵니다.</p>
               <br />
@@ -77,13 +81,9 @@
               </div>
             </div>
             <div class="file_bottom">
-              <?php 
-              if($row['is_img'] == 1){
-              ?>
-              <!-- 이미지일때 -->
-                <img src="./board_files/<?= $row['file'] ?> " target="blank">
-              <?php } else{ ?>
-              <p class="file">첨부파일: <a href="./board_files/<?= $row['file'] ?>"><?= $row['file'] ?></a></p>
+              
+              <?php if($rsc -> is_img == 0){ ?>
+              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>"><?= $rsc -> file; ?></a></p>
               <?php } ?>
             </div>
           </div>

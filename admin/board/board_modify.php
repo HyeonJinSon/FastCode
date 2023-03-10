@@ -36,6 +36,7 @@
 <h2 class="page-title">글 수정</h2>
 
 <form action="./board_modify_ok.php" method="POST" enctype="multipart/form-data" >
+  <input type="hidden" name="idx" value="<?= $bno ?>">
   <div class="pd-54">
     <div class="subject">
       <label for="subject">제목</label>

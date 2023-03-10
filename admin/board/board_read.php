@@ -99,8 +99,8 @@
               <div class="flex">
                 <p class="title">글을 삭제하시겠습니까?</p>
                 <input type="text" placeholder="<?= $rsc -> title; ?>">
-                <div class="btns">
-                  <a id="close" class="y-btn big-btn btn-sky"  onclick="close();">취소하기</a>
+                <div class="popup_btns">
+                  <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
                   <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
                   <!-- 내가 deletebtn 추가 -->
                 </div>
@@ -126,10 +126,10 @@
     document.querySelector(".background").className = "background show";
   }
 
-  function close() {
-    document.querySelector(".background").className = "background";
-    $(".background").hide();
-  }
+  // function close() {
+  //   // document.querySelector(".background").className = "background";
+
+  // }
 
   // document.querySelector("#show").addEventListener("click", ()=>{
     
@@ -144,11 +144,9 @@
   //   $(".background").show();
   // });
 
-  // $("#close").click(function(){
-  //   // $(".background").removeClass('show');
-  //   $(".background").hide();
-  // });
-
+  $("#close").click(function(){
+    $(".background").removeClass('show');
+  });
 
   //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
   $('#deletebtn').click(function(){

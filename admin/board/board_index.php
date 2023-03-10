@@ -101,10 +101,13 @@ $start_num = ($page - 1) * $list;
                 if(isset($rsc)){
                     foreach($rsc as $r){ //조회된 글 출력
             ?>
-            <tr>
+            <tr id="trid">
               <td><?= $r -> idx;?></td>
+              <!-- 내가임의추가 아이디 -->
               <td>
-              <a href="./board_read.php?idx=<?= $r -> idx; ?>">                       
+              <a class="trtitle" href="./board_read.php?idx=<?= $r -> idx; ?>">  
+             <!-- 얘는 보여주기만하는거잖아!!! 값을 넘기는게 아니라서 조회할필요가없어요. 그냥 여기서 가져다 쓰세요
+             text 로 그 안에있는거 가져다가 값을 넣어  -->
                 <?= $r -> title;?>
                 </a>
               </td>
@@ -112,7 +115,7 @@ $start_num = ($page - 1) * $list;
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
-                <button id="show" class="del" onclick="show(); console.log('클릭');">삭제</button>
+                <button id="show" class="del" >삭제</button>
               </th>
             </tr>
             <?php 
@@ -195,7 +198,7 @@ $start_num = ($page - 1) * $list;
         ?>
 
         <!-- 본문끝 -->
-
+        
         <!-- 삭제 팝업 HTML -->
         <div class="background">
           <div class="window">
@@ -203,8 +206,8 @@ $start_num = ($page - 1) * $list;
               <div class="flex">
                 <p class="title">글을 삭제하시겠습니까?</p>
                 <input type="text" placeholder="">
-                <div class="btns">
-                <a id="close" class="y-btn big-btn btn-sky"  onclick="close();">취소하기</a>
+                <div class="popup_btns">
+                <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
                   <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
                   <!-- 내가 deletebtn 추가 -->
                 </div>
@@ -228,11 +231,6 @@ $start_num = ($page - 1) * $list;
     document.querySelector(".background").className = "background show";
   }
 
-  function close() {
-    document.querySelector(".background").className = "background";
- 
-  }
-
   // document.querySelector("#show").addEventListener("click", ()=>{
     
   // });
@@ -240,11 +238,9 @@ $start_num = ($page - 1) * $list;
 
 
   // 삭제 버튼(바깥)을 누르면 할일
-  // $("#show").click(function(e){
-  //   e.preventDefault();
-  //   // $(".background").addClass('show');
-  //   $(".background").show();
-  // });
+  $("#show").click(function(){
+    $(".background").addClass('show');
+  });
 
   // $("#close").click(function(){
   //   // $(".background").removeClass('show');
@@ -255,7 +251,8 @@ $start_num = ($page - 1) * $list;
   //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
   $('#deletebtn').click(function(){
 
-    let idx = <?= $bno; ?>;
+    // let idx = ; //이 번호가 안들어와서...
+    let idx = $("#show").closest('tr').find('#trid').val();
 
     let data = {
       idx:idx,

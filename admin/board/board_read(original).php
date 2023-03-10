@@ -14,9 +14,10 @@
     
     $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
-    $rs = $result -> fetch_object();
+    while($rs = $result -> fetch_object()){
+      $rsc[] = $rs;
+    }
 
-    // $r2 = $result -> fetch_assoc();
 ?>
 
     

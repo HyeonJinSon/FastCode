@@ -333,9 +333,6 @@
           <span><a href="#">더보기 &#43;</a></span>
         </section>
       </div>
-<?php
-  include $_SERVER['DOCUMENT_ROOT']."/fastcode/inc/footer.php";
-?>
 <script>
   //달력 caleandar.js 
   // https://github.com/jackducasse/caleandar

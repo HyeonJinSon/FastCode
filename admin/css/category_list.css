@@ -6,6 +6,7 @@
 }
 main table {
   width: 100%;
+  border-radius: 20px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
 main table thead {
@@ -37,6 +38,9 @@ main table tbody tr td {
   height: 27px;
   font-size: 24px;
   border-bottom: 1px solid var(--highlight-s);
+}
+main table tbody tr:last-child td {
+  border-bottom: none;
 }
 main table tbody tr:first-child  td{
   padding-top: 27px;

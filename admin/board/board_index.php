@@ -51,9 +51,7 @@ $start_num = ($page - 1) * $list;
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
     while($rs = $result->fetch_object()){
         $rsc[] = $rs;
-    }
-
-    
+    }  
 ?>
 
 <link rel="stylesheet" href="../css/board_index.css" />
@@ -114,7 +112,7 @@ $start_num = ($page - 1) * $list;
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
-                <a href="#" id="show" class="del">삭제</a>
+                <button id="show" class="del" onclick="show(); console.log('클릭');">삭제</button>
               </th>
             </tr>
             <?php 
@@ -167,35 +165,25 @@ $start_num = ($page - 1) * $list;
         <div class="board_pagination row">
           <ul class="row col justify-content-center">
             <?php 
-
-              // if($page == 1){
-                
-              // }
-
-
-            // if($page > 1){
-             
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;
                 echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
               }
-            // }
 
             for($i=$block_start; $i<= $block_end; $i++){
-              if($page == $i){//페이지 번호랑 현재 i가 같다면
+              if($page == $i){
                   echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
               }else{
                   echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
               }
             }
 
-          if($page < $total_page){ // 아직 마지막이 아니라면
-            if($total_block > $block_num){ //전체 블록이 4갠데 현재 블록이 이거보다 작다고하다면 다음에도 더 있단 얘기니까 그 때 다음페이지가 나오도록
-                $next = $block_num * $list + 1;
-                echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+            if($page < $total_page){
+              if($total_block > $block_num){ 
+                  $next = $block_num * $list + 1;
+                  echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+              }
             }
-           
-        }
         //     <li><i class="fa-solid fa-chevron-left"></i></li>
         //     <li>1</li>
         //     <li>2</li>
@@ -216,9 +204,7 @@ $start_num = ($page - 1) * $list;
                 <p class="title">글을 삭제하시겠습니까?</p>
                 <input type="text" placeholder="">
                 <div class="btns">
-                  <a id="close" class="y-btn big-btn btn-sky"
-                    >취소하기</a
-                  >
+                <a id="close" class="y-btn big-btn btn-sky"  onclick="close();">취소하기</a>
                   <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
                   <!-- 내가 deletebtn 추가 -->
                 </div>
@@ -237,17 +223,33 @@ $start_num = ($page - 1) * $list;
 </script>
 
 
-  <script>
+<script>
+  function show() {
+    document.querySelector(".background").className = "background show";
+  }
 
-      // 삭제 버튼(바깥)을 누르면 할일
-  $("#show").click(function(e){
-    e.preventDefault();
-    $(this).addClass('show');
-  });
+  function close() {
+    document.querySelector(".background").className = "background";
+ 
+  }
 
-  $("#close").click(function(){
-    $(this).removeClass('show');
-  });
+  // document.querySelector("#show").addEventListener("click", ()=>{
+    
+  // });
+  // document.querySelector("#close").addEventListener("click", close);
+
+
+  // 삭제 버튼(바깥)을 누르면 할일
+  // $("#show").click(function(e){
+  //   e.preventDefault();
+  //   // $(".background").addClass('show');
+  //   $(".background").show();
+  // });
+
+  // $("#close").click(function(){
+  //   // $(".background").removeClass('show');
+  //   $(".background").hide();
+  // });
 
 
   //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
@@ -277,6 +279,8 @@ $start_num = ($page - 1) * $list;
       });
 
   });
+  
+  
   </script>
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

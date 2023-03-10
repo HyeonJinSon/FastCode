@@ -78,6 +78,7 @@
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
                 <!-- <a href="" id="show" class="del">삭제</a> -->
+                <button id="show" class="del" onclick="show(); console.log('클릭');">삭제</button>
               </div>
             </div>
             <div class="file_bottom">
@@ -99,9 +100,7 @@
                 <p class="title">글을 삭제하시겠습니까?</p>
                 <input type="text" placeholder="<?= $rsc -> title; ?>">
                 <div class="btns">
-                  <a id="close" class="y-btn big-btn btn-sky"
-                    >취소하기</a
-                  >
+                  <a id="close" class="y-btn big-btn btn-sky"  onclick="close();">취소하기</a>
                   <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
                   <!-- 내가 deletebtn 추가 -->
                 </div>
@@ -123,13 +122,14 @@
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
 <script>
-  // function show() {
-  //   document.querySelector(".background").className = "background show";
-  // }
+  function show() {
+    document.querySelector(".background").className = "background show";
+  }
 
-  // function close() {
-  //   document.querySelector(".background").className = "background";
-  // }
+  function close() {
+    document.querySelector(".background").className = "background";
+    $(".background").hide();
+  }
 
   // document.querySelector("#show").addEventListener("click", ()=>{
     
@@ -138,16 +138,16 @@
 
 
   // 삭제 버튼(바깥)을 누르면 할일
-  $("#show").click(function(e){
-    e.preventDefault();
-    $(this).addClass('show');
-    $(".background").show();
-  });
+  // $("#show").click(function(e){
+  //   e.preventDefault();
+  //   // $(".background").addClass('show');
+  //   $(".background").show();
+  // });
 
-  $("#close").click(function(){
-    $(this).removeClass('show');
-    $(".background").hide();
-  });
+  // $("#close").click(function(){
+  //   // $(".background").removeClass('show');
+  //   $(".background").hide();
+  // });
 
 
   //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.

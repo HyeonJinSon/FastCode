@@ -1,6 +1,7 @@
 .background {
-  display: none; /* 임의추가 내가 */
-  visibility: hidden;
+  /* 임의추가 내가 */
+  /* display: none; */
+
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +9,7 @@
   height: 100vh;
   /* background-color: rgba(0, 0, 0, 0.3); */
   background: rgba(224, 233, 239, 0.9);
-  /* z-index: 1000; */
+  z-index: 1000;
 
   /* 숨기기 */
   z-index: -1;

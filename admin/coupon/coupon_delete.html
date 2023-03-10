@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠폰 리스트(with삭제팝업)</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/coupon_list.css">
+    <link rel="stylesheet" href="../css/coupon_delete.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
+  </head>
+
+  <body>
+    <div class="common-wrap">
+      <div class="gnb-body">
+        <div class="h-100" data-simplebar>
+          <div class="admin-profile">
+            <div class="profile-img-wrap">
+              <img src="../img/admin-profile.png" alt="admin-img">
+            </div>
+            <h2>Manager</h2>
+            <div class="profile-menu-wrap">
+              <ul class="profile-menu d-flex justify-content-center">
+                <li>
+                  <a href=""><i class="fa-brands fa-whmcs"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa-regular fa-calendar-check"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa-brands fa-weixin"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion" id="main-menu-wrap">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdDashboard">
+                <a
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuDashboard"
+                  aria-expanded="true"
+                  aria-controls="menuDashboard"
+                >
+                  <i class="fa-solid fa-wrench"></i>
+                  <span class="main-menu-ft">대시보드</span>
+                </a>
+              </h2>
+              <div
+                id="menuDashboard"
+                class="accordion-collapse collapse show"
+                aria-labelledby="hdDashboard"
+                data-bs-parent="#main-menu-wrap"
+              ></div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdUser">
+                <a
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuUser"
+                  aria-expanded="false"
+                  aria-controls="menuUser"
+                >
+                  <i class="fas fa-user-friends"></i>
+                  <span class="main-menu-ft">회원 관리</span>
+                </a>
+              </h2>
+              <div
+                id="menuUser"
+                class="accordion-collapse collapse"
+                aria-labelledby="hdUser"
+                data-bs-parent="#main-menu-wrap"
+              >
+                <ul class="accordion-body">
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>회원관리</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>강사관리</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>관리자관리</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>회원그룹관리</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>회원휴면/탈퇴관리</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>개인정보조회기록</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft"
+                      ><span>&middot;</span><span>메일발송관리</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdCourse">
+                <a
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuCourse"
+                  aria-expanded="false"
+                  aria-controls="menuCourse"
+                >
+                  <i class="fa-solid fa-book"></i>
+                  <span class="main-menu-ft">강좌 관리</span>
+                </a>
+              </h2>
+              <div
+                id="menuCourse"
+                class="accordion-collapse collapse"
+                aria-labelledby="hdCourse"
+                data-bs-parent="#main-menu-wrap"
+              >
+                <ul class="accordion-body">
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>과정카테고리</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>강좌리스트</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>강좌관리</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdSales">
+                <a
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuSales"
+                  aria-expanded="false"
+                  aria-controls="menuSales"
+                >
+                  <i class="fas fa-money-check-alt"></i>
+                  <span class="main-menu-ft">매출 관리</span>
+                </a>
+              </h2>
+              <div
+                id="menuSales"
+                class="accordion-collapse collapse"
+                aria-labelledby="hdSales"
+                data-bs-parent="#main-menu-wrap"
+              >
+                <ul class="accordion-body">
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>월별매출통계</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>과정매출통계</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdEvent">
+                <a
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuEvent"
+                  aria-expanded="false"
+                  aria-controls="menuEvent"
+                >
+                  <i class="fas fa-bullhorn"></i>
+                  <span class="main-menu-ft">이벤트 관리</span>
+                </a>
+              </h2>
+              <div
+                id="menuEvent"
+                class="accordion-collapse collapse"
+                aria-labelledby="hdEvent"
+                data-bs-parent="#main-menu-wrap"
+              >
+                <ul class="accordion-body">
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>쿠폰관리</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>프리패스</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="hdBoard">
+                <a
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menuBoard"
+                  aria-expanded="false"
+                  aria-controls="menuBoard"
+                >
+                  <i class="fas fa-th-list"></i>
+                  <span class="main-menu-ft">게시판 관리</span>
+                </a>
+              </h2>
+              <div
+                id="menuBoard"
+                class="accordion-collapse collapse"
+                aria-labelledby="hdBoard"
+                data-bs-parent="#main-menu-wrap"
+              >
+                <ul class="accordion-body">
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>공지사항 게시판</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>수강후기 게시판</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>수강문의 게시판</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sub-menu-ft">
+                      <span>&middot;</span>
+                      <span>커뮤니티 게시판</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body content-pd">
+        <!-- 로고 및 북마크 위치 시작 -->
+        <div class="content-top">
+          <h1 id="main-logo">
+            <a href="/"
+              ><img src="../img/fastcode_logo.png" alt="Fastcode"><span
+                >fastcode</span
+              ></a
+            >
+          </h1>
+          <div class="bookmark">
+            <input type="checkbox" id="bookmark1">
+            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+          </div>
+        </div>
+        <!-- 로고 및 북마크 위치 끝 -->
+        <!-- 본문시작 -->
+
+            <h2 class="page-title">쿠폰 리스트</h2>
+
+            <div class="coupon_top">
+            <a href="#" class="y-btn big-btn btn-navy">쿠폰추가하기</a>
+            <div class="coupon_search">
+                <input
+                class="form-control"
+                type="search"
+                name="search"
+                placeholder="검색어를 입력하세요."
+                required>
+            </div>
+            </div>
+
+            <ul class="coupon_list">
+                <li class="list_contents">
+                    <figure>
+                        <img src="https://placehold.co/198x135" alt="">
+                    </figure>
+                    <div class="titles">
+                        <div class="big_titles">
+                          <h3>UI/UX 강좌 10%할인</h3>
+                          <a class="mini-tag new-tag">new</a>
+                          <a class="mini-tag limit-tag">무제한</a>
+                        </div>
+                        <div class="sub_titles">
+                            <p>최소금액 : <span>50,000원 이상</span></p>
+                            <p>할인율 : <span>10%</span></p>
+                        </div>
+                    </div>
+                    <div class="coupon_select">
+                        <select class="form-select" name="coupon" id="coupon">
+                            <option value="활성화">활성화</option>
+                            <option value="비활성화">비활성화</option>
+                        </select>   
+                    </div>
+                    <!-- 삭제 버튼을 누르면 팝업 버튼 -->
+                    <div class="btns">
+                      <button class="y-btn small-btn btn-navy">수정하기</button>
+                      <button id="show" class="y-btn small-btn btn-red">삭제하기</button>
+                    </div>
+                      <!-- 팝업 HTML -->
+                      <div class="background">
+                        <div class="window">
+                          <div class="popup">
+                            <div class="flex">
+                              <p class="title">쿠폰을 삭제하시겠습니까?</p>
+                              <input type="text" placeholder="삭제 될 쿠폰 제목">
+                              <div class="popup_btns">
+                                <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
+                                <a class="y-btn big-btn btn-red">삭제하기</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 팝업 HTML 끝 -->
+                </li>
+            </ul>
+
+            <div class="coupon_pagination row">
+                <ul class="row col justify-content-center">
+                <li class="col-auto">
+                    <a href=""><i class="fa-solid fa-chevron-left"></i></a>
+                </li>
+                <li class="col-auto"><a href="" class="active">1</a></li>
+                <li class="col-auto"><a href="">2</a></li>
+                <li class="col-auto"><a href="">3</a></li>
+                <li class="col-auto">
+                    <a href=""><i class="fa-solid fa-chevron-right"></i></a>
+                </li>
+                </ul>
+            </div>
+      </div>
+    </div>
+
+    <script src="menu.js"></script>
+    <script>
+      function show() {
+        document.querySelector(".background").className = "background show";
+      }
+
+      function close() {
+        document.querySelector(".background").className = "background";
+      }
+
+      document.querySelector("#show").addEventListener("click", show);
+      document.querySelector("#close").addEventListener("click", close);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        new SimpleBar(document.querySelector("[data-simplebar]"));
+      });
+    </script>
+  </body>
+</html>

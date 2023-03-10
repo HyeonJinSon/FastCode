@@ -23,8 +23,9 @@
     // 파일 업로드할 경로, 이미지 판단 
     $upload_path = "./board_files/".$file_orgname;
     $file_type = $_FILES['file']['type'];
-    if(strpos($file_type, 'image') == true) {$is_img = 1;} else {$is_img = 0;}
+    if(strpos($file_type, 'image') !== false) {$is_img = 1;} else {$is_img = 0;}
     move_uploaded_file($tmpfile_path, $upload_path);
+    // false가 아니면... 이라고 작성!!! 해야되네요... 왜인지모르겠지만.... 아예 없는값이라그럴수도?
     // 앞에 값이 있으면 true
 
     $sql = "INSERT INTO board 

@@ -8,7 +8,7 @@
     // };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
-    // include $_SERVER['DOCUMENT_ROOT']."/board/lib.php";
+    include $_SERVER['DOCUMENT_ROOT']."/board/lib.php";
 
     $bno = $_GET['idx'];
 
@@ -95,6 +95,11 @@
         <!-- <script>
           console.log(<?php echo $rsc -> content ?>);
         </script> -->
+
+      <script>
+        // 삭제 버튼을 누르면 할일
+        
+      </script>
         
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";

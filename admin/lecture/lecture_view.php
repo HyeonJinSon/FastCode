@@ -323,10 +323,12 @@
                 <p>판매가격 : <span>250000원</span></p>
                 <p>상태 : <span>판매중</span></p>
               </div>
+              <div class="bar"></div>
               <div class="lec_view_info2">
                 <a class="mini-tag limit-tag">제한</a>
                 <p><span>2023.03.28</span> - <span>2023.06.28</span></p>
               </div>
+              <div class="bar"></div>
               <div class="lec_view_info3">
                 <!-- db에 저장되어 있는 체크 여부가 checked 속성 여부로 출력되면서(db 연결하면서 바꿔야 될 수도..), 이 화면에서 체크박스를 바꾸지는 못하도록 disabled 속성을 추가했음, 스타일은 브라우저에서 지정한 스타일이라 label:before로 따로 만듦 -->
                 <div
@@ -400,7 +402,7 @@
               </p>
             </div>
             <div class="lec_view_img_slide">
-              <h4 class="hidden">강좌 추가 이미지</h4>
+              <h4>강좌 추가 이미지</h4>
               <div class="lec_img_slide_wrapper">
                 <ul class="lec_img_slides">
                   <li>
@@ -435,9 +437,9 @@
                   </li>
                 </ul>
               </div>	
-              <p class="lec_img_controls">
-                <span class="prev"><i class="fa-solid fa-chevron-left"></i></span>
-                <span class="next"><i class="fa-solid fa-chevron-right"></i></span>
+              <p class="lec_img_controls row justify-content-between">
+                <span class="prev col-auto"><i class="fa-solid fa-chevron-left"></i></span>
+                <span class="next col-auto"><i class="fa-solid fa-chevron-right"></i></span>
               </p>
             </div>
             <div class="lec_view_video_container">
@@ -485,44 +487,43 @@
           function slideLayout(sw,sm){
             let allSlide = slides.find('li');
             allSlide.each(function(idx){
-                $(this).css({left:`${idx*(sw+sm)}px`});
+              $(this).css({left:`${idx*(sw+sm)}px`});
             });
             moveAmt = sw + sm;
             setSlideCenter(moveAmt);
           }
           slideLayout(slideWidth,slideMargin);
-
+          
           function setSlideCenter(ma){
             slides.each(function(){
-              $(this).css({transform:`translateX(-${slideCount*ma}px)`});
-              $(this).addClass('animated');
-            });
+                $(this).css({transform:`translateX(-${slideCount*ma}px)`});
+                $(this).addClass('animated');
+              });
           }
+          
           
           function moveSlide(idx){
             slides.each(function(){
-              $(this).stop().animate({left:`-${idx*moveAmt}px`},100);
+              if(idx >= 0){
+                $(this).stop().animate({left:`-${idx*moveAmt}px`},100);
+              }else {
+                $(this).stop().animate({left:`${Math.abs(idx)*moveAmt}px`},100);
+              }
             });
             currentIdx = idx;
-
+            console.log(slideCount);
             if(currentIdx == slideCount || currentIdx == -slideCount){
                 setTimeout(()=>{
-                    $(this).removeClass('animated');
-                    $(this).css({left:'0px'});
-                    currentIdx = 0;
+                  slides.removeClass('animated');
+                  slides.css({left:'0px'});
+                  currentIdx = 0;
                 },500);
                 setTimeout(()=>{
-                    $(this).addClass('animated');
+                  slides.addClass('animated');
                 },600);
             }
           }
 
-          // prevBtn.click(()=>{
-          //   moveSlide(currentIdx-1);
-          // });
-          // nextBtn.click(()=>{
-          //   moveSlide(currentIdx+1);
-          // });
           prevBtn.click(debounce(()=>{
             moveSlide(currentIdx-1)
           },500));

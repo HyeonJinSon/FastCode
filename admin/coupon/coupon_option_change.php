@@ -1,0 +1,22 @@
+<?php
+    session_start();
+    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+
+    $idx = $_POST['selectedidx'];
+    $status = $_POST['selectedStatus'];
+
+    $sql = "UPDATE coupons SET status='{$status}' WHERE idx='{$idx}'";
+    $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
+
+    if($result){
+        $returned_data = array('result' => true);
+    } else{
+        $returned_data = array('result' => false);
+    }
+
+    // echo json_encode($returned_data);
+    // 이거 json이면 맞춰줘야될거같은데
+
+    echo $returned_data;
+
+?>

@@ -45,6 +45,7 @@
       }  
 ?>
 
+<link rel="stylesheet" href="../css/coupon_delete.css" />
 <link rel="stylesheet" href="../css/coupon_list.css" />
 
 <?php     
@@ -74,54 +75,73 @@
   </form>
 </div>
 
-<ul class="coupon_list">
-    <?php
-        if(isset($rsc)){
-            foreach($rsc as $r){ //조회된 쿠폰 출력
-    ?>
-  <li id="<?= $r -> idx;?>" class="list_contents">
-    <figure>
-      <img src="./coupon_files/<?= $r -> file; ?>" alt="" />
-      <!-- <img src="https://placehold.co/198x135" alt="" /> -->
-    </figure>
-    <div class="titles">
-      <div class="big_titles">
-        <h3><?= $r -> title;?></h3>
-        <!-- mini-tag 클릭시 기능 있는지 ? 물어보기... span으로 바꿔도되는지 -->
-        <a class="mini-tag new-tag">new</a>
-        <a class="mini-tag limit-tag">무제한</a>
-      </div>
-      <div class="sub_titles">
-        <p>최소금액 : <span><?= $r -> use_min_price;?>원 이상</span></p>
-        <p>할인율 : <span><?= $r -> coupon_ratio;?></span></p>
-      </div>
-    </div>
-    <div class="coupon_select">
-        <!-- form으로 바꿔야되는거? -->
-      <select class="form-select" name="coupon" id="coupon">
-        <option value="활성화">활성화</option>
-        <option value="비활성화">비활성화</option>
-      </select>
-    </div>
-    <div class="btns">
-      <button class="y-btn small-btn btn-navy">수정하기</button>
-      <button class="y-btn small-btn btn-red delbtn">삭제하기</button>
-    <!-- 내가 클래스명 delbtn 추가함 -->
-    </div>
-  </li>
-</ul>
+<!-- <form action="coupon" method="GET"> -->
+    <!-- 내가임의추가  --- 이거 안넣고 ajax로 먼저 .... -->
+    
+    <ul class="coupon_list">
+        <?php
+            if(isset($rsc)){
+                foreach($rsc as $r){ //조회된 쿠폰 출력
+                }}
+        ?>
+        <li id="<?= $r -> idx;?>" class="list_contents">
+            <figure>
+                <img src="./coupon_files/<?= $r -> file; ?>" alt="" />
+                <!-- <img src="https://placehold.co/198x135" alt="" /> -->
+            </figure>
+            <div class="titles">
+                <div class="big_titles">
+                    <h3><?= $r -> title;?></h3>
+                    <!-- mini-tag 클릭시 기능 있는지 ? 물어보기... span으로 바꿔도되는지 -->
+                    <a class="mini-tag new-tag">new</a>
+                    <a class="mini-tag limit-tag">무제한</a>
+                </div>
+                <div class="sub_titles">
+                    <p>최소금액 : <span><?= $r -> use_min_price;?>원 이상</span></p>
+                    <p>할인율 : <span><?= $r -> coupon_ratio;?></span></p>
+                </div>
+            </div>
+            <div class="coupon_select">
+                <!-- form으로 바꿔야되는거? -->
+                <select class="form-select" name="coupon" id="coupon">
+                    <option value="1">활성화</option>
+                    <option value="0">비활성화</option>
+                    <!-- 활성화 - 1 , 비활성화 - 2로 임의수정 -->
+                </select>
+            </div>
+            <div class="btns">
+                <button class="y-btn small-btn btn-navy">수정하기</button>
+                <button class="y-btn small-btn btn-red delbtn">삭제하기</button>
+                <!-- 내가 클래스명 delbtn 추가함 -->
+            </div>
+        </li>
+    </ul>
 
+<!-- </form> -->
+
+<!-- 페이지네이션 -->
 <div class="coupon_pagination row">
   <ul class="row col justify-content-center">
-    <li class="col-auto">
-      <a href=""><i class="fa-solid fa-chevron-left"></i></a>
-    </li>
-    <li class="col-auto"><a href="" class="active">1</a></li>
-    <li class="col-auto"><a href="">2</a></li>
-    <li class="col-auto"><a href="">3</a></li>
-    <li class="col-auto">
-      <a href=""><i class="fa-solid fa-chevron-right"></i></a>
-    </li>
+        <?php 
+        if($block_num > 1){
+        $prev = ($block_num - 2)*$list + 1;
+        echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+        }
+
+        for($i=$block_start; $i<= $block_end; $i++){
+            if($page == $i){
+                echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
+            }else{
+                echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
+            }
+        }
+
+        if($page < $total_page){
+            if($total_block > $block_num){ 
+                $next = $block_num * $list + 1;
+                echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+            }
+        } ?>
   </ul>
 </div>
 
@@ -161,6 +181,31 @@
   $("#close").click(function(){
     $(".background").removeClass('show');
   });
+
+// ======================= form 안쓰고 옵션 바꾸기 실험 ==============================
+
+  $(".form-select").change(function(){
+    let selectedStatus = $(this).find("option:selected").val(); //여기 바꿔놨음 this로
+    let selectedidx = $(this).closest('li').attr('id');
+
+    let data = {
+        selectedStatus : selectedStatus,
+        selectedidx : selectedidx
+    };
+        $.ajax({
+            async : false ,
+            type : 'post' ,
+            url : 'coupon_option_change.php' ,
+            data  : data ,
+            dataType : 'html' ,
+            error : function() {
+                alert('에러');
+            },
+            success : function(returned_data) {
+                alert('옵션이 변경되었습니다.');
+            }
+        });
+    });
 </script>
 
 <?php 

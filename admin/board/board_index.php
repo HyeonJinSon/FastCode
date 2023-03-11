@@ -139,16 +139,10 @@
                   echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
               }
             }
-        //     <li><i class="fa-solid fa-chevron-left"></i></li>
-        //     <li>1</li>
-        //     <li>2</li>
-        //     <li>3</li>
-        //     <li><i class="fa-solid fa-chevron-right"></i></li>
-        //   </ul>
-        // </div>
 
-        ?>
-
+            ?>
+          </ul>
+        </div>
         <!-- 본문끝 -->
         
         <!-- 삭제 팝업 HTML -->

@@ -54,8 +54,8 @@ $start_num = ($page - 1) * $list;
     }  
 ?>
 
-<link rel="stylesheet" href="../css/board_index.css" />
 <link rel="stylesheet" href="../css/board_delete.css" />
+<link rel="stylesheet" href="../css/board_index.css" />
 
 <?php     
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
@@ -206,7 +206,7 @@ $start_num = ($page - 1) * $list;
                 <p class="title">글을 삭제하시겠습니까?</p>
                 <input type="text" placeholder="">
                 <div class="popup_btns">
-                <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
+                  <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
                   <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
                   <!-- 내가 deletebtn 추가 -->
                 </div>

@@ -141,13 +141,3 @@ tbody tr:not(:last-child) {
   color: var(--background-g);
   background: var(--primary-n);
 }
-.board_pagination a.active {
-  color: var(--background-g);
-  background: var(--primary-n);
-}
-
-/* 임의추가 내가 */
-/* .background {
-  display: none;
-  visibility: hidden;
-} */

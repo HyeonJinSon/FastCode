@@ -10,7 +10,7 @@
     $content = $_POST['content'];
     $date = date('Y-m-d');
     
-    var_dump(strpos('text/plain', 'image'));
+    // var_dump(strpos('text/plain', 'image'));
     
     // 인덱스번호 알려줌
     // 파일 테이블 명
@@ -41,7 +41,6 @@
         echo "<script> alert('글쓰기에 실패했습니다.');
         location.href = './board_index.php';</script>";
     }
-  /*  */
 
 
 

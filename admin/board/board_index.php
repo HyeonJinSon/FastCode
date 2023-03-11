@@ -8,41 +8,32 @@
     // };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
-    
-
-// abcmall/product list.php 참조
-// ========== 검색
-//제목,글쓴이,내용
-
-// $search_where = " like '".$scate."%'";
-
 
     /* ================== 페이지네이션 =================== */
 
-$page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
+  $page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
 
-$pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
-$page_result = $mysqli -> query($pagesql);
-$page_row = $page_result ->fetch_assoc();
-$row_num = $page_row['cnt'];//전체 게시물 수
+  $pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
+  $page_result = $mysqli -> query($pagesql);
+  $page_row = $page_result ->fetch_assoc();
+  $row_num = $page_row['cnt'];//전체 게시물 수
 
-$list = 5; //한페이지에(페이지 당) 출력할 게시물 수
-$block_ct = 5; //출력할 페이지네이션 수(버튼5개)
-$block_num = ceil($page/$block_ct); //6부터 시작한다면 2블록 - 6/5 -> 1.2 -> 2 2번째 블록카운트부터 시작해야한다
-// 6/5 1.2 2 block_num 2
+  $list = 5; //한페이지에(페이지 당) 출력할 게시물 수
+  $block_ct = 5; //출력할 페이지네이션 수(버튼5개)
+  $block_num = ceil($page/$block_ct); //6부터 시작한다면 2블록 - 6/5 -> 1.2 -> 2 2번째 블록카운트부터 시작해야한다
+  // 6/5 1.2 2 block_num 2
 
-$block_start = (($block_num -1 )*$block_ct) + 1; //페이지 1 -> start 1
-$block_end = $block_start + $block_ct - 1; //시작번호 1일때 끝번호가 5가 될수 있도록.
+  $block_start = (($block_num -1 )*$block_ct) + 1; //페이지 1 -> start 1
+  $block_end = $block_start + $block_ct - 1; //시작번호 1일때 끝번호가 5가 될수 있도록.
 
-$total_page = ceil($row_num/$list); //몇페이지가 나와야 되냐
-// 총 게시물이 32개 > 7페이지가 나와야함 -> total page:7
-if($block_end > $total_page) $block_end = $total_page; //10번까지 안만들고 7번까지만 만든다
+  $total_page = ceil($row_num/$list); //몇페이지가 나와야 되냐
+  // 총 게시물이 32개 > 7페이지가 나와야함 -> total page:7
+  if($block_end > $total_page) $block_end = $total_page; //10번까지 안만들고 7번까지만 만든다
 
-$total_block = ceil($total_page/$block_ct); //총 32개, total block : 2개 (1~5, 6~7 /// 한세트, 두세트. 이 블록의 개수)
+  $total_block = ceil($total_page/$block_ct); //총 32개, total block : 2개 (1~5, 6~7 /// 한세트, 두세트. 이 블록의 개수)
 
-//page가 1이에요 -> 0번째부터 10까지 추출해야해요 / page 2> 10번재부터 10개
-$start_num = ($page - 1) * $list;
-
+  //page가 1이에요 -> 0번째부터 10까지 추출해야해요 / page 2> 10번재부터 10개
+  $start_num = ($page - 1) * $list;
 
 
     /* ================== 값 조회 =================== */

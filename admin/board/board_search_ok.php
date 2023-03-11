@@ -130,26 +130,26 @@
           <ul class="row col justify-content-center">
             <?php 
               if($block_num = 1){
-                echo "<li class='col-auto'><a href='?page=1'></a></li>";
+                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=1'></a></li>";
               }
 
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;
-                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=1'><i class='fa-solid fa-chevron-left'></i></a></li>";
+                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
               }
 
             for($i=$block_start; $i<= $block_end; $i++){
               if($page == $i){
-                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$i' class='active'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$i' class='active'>$i</a></li>";
               }else{
-                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$i'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$i'>$i</a></li>";
               }
             }
 
             if($page < $total_page){
               if($total_block > $block_num){ 
                   $next = $block_num * $list + 1;
-                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
               }
             }
 

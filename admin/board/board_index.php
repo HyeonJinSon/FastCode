@@ -101,7 +101,7 @@ $start_num = ($page - 1) * $list;
                 if(isset($rsc)){
                     foreach($rsc as $r){ //조회된 글 출력
             ?>
-            <tr id="trid">
+            <tr id="<?= $r -> idx;?>">
               <td><?= $r -> idx;?></td>
               <!-- 내가임의추가 아이디 -->
               <td>
@@ -115,7 +115,8 @@ $start_num = ($page - 1) * $list;
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
-                <button id="show" class="del" >삭제</button>
+                <button class="del" >삭제</button>
+                <!-- #show 를 삭제, 클래스명 del으로 통일... -->
               </th>
             </tr>
             <?php 
@@ -238,21 +239,23 @@ $start_num = ($page - 1) * $list;
 
 
   // 삭제 버튼(바깥)을 누르면 할일
-  $("#show").click(function(){
+  $(".del").click(function(){
     $(".background").addClass('show');
+    let idx = $(this).closest('tr').attr('id');
+    console.log(idx);
+    
+  });
+  
+  $("#close").click(function(){
+    $(".background").removeClass('show');
   });
 
-  // $("#close").click(function(){
-  //   // $(".background").removeClass('show');
-  //   $(".background").hide();
-  // });
+
 
 
   //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
   $('#deletebtn').click(function(){
-
     // let idx = ; //이 번호가 안들어와서...
-    let idx = $("#show").closest('tr').find('#trid').val();
 
     let data = {
       idx:idx,

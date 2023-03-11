@@ -8,50 +8,54 @@
     // };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
-    
 
-// abcmall/product list.php 참조
-// ========== 검색
-//제목,글쓴이,내용
+    /* ======================== search =========================== */
 
-// $search_where = " like '".$scate."%'";
+    $search_type = $_GET['search_board']; //name 과 일치
+    $keyword = $_GET['search']; 
 
+    if($search_type == "title"){
+        $search_result = "제목";
+    }
+    if($search_type == "name"){
+        $search_result = "글쓴이";
+    }
+    if($search_type == "content"){
+        $search_result = "내용";
+    }
 
     /* ================== 페이지네이션 =================== */
 
-$page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
+    $page = $_GET['page'] ?? 1;
 
-$pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
-$page_result = $mysqli -> query($pagesql);
-$page_row = $page_result ->fetch_assoc();
-$row_num = $page_row['cnt'];//전체 게시물 수
+    $searchsql = "SELECT COUNT(*) as cnt FROM board WHERE $search_type like '%$keyword%'";
+    $page_result = $mysqli -> query($searchsql);
+    $page_row = $page_result ->fetch_assoc();
+    $row_num = $page_row['cnt'];//전체 게시물 수
 
-$list = 5; //한페이지에(페이지 당) 출력할 게시물 수
-$block_ct = 5; //출력할 페이지네이션 수(버튼5개)
-$block_num = ceil($page/$block_ct); //6부터 시작한다면 2블록 - 6/5 -> 1.2 -> 2 2번째 블록카운트부터 시작해야한다
-// 6/5 1.2 2 block_num 2
+    $list = 5;
+    $block_ct = 5;
+    $block_num = ceil($page/$block_ct);
 
-$block_start = (($block_num -1 )*$block_ct) + 1; //페이지 1 -> start 1
-$block_end = $block_start + $block_ct - 1; //시작번호 1일때 끝번호가 5가 될수 있도록.
+    $block_start = (($block_num -1 )* $block_ct) + 1;
+    $block_end = $block_start + $block_ct - 1; 
 
-$total_page = ceil($row_num/$list); //몇페이지가 나와야 되냐
-// 총 게시물이 32개 > 7페이지가 나와야함 -> total page:7
-if($block_end > $total_page) $block_end = $total_page; //10번까지 안만들고 7번까지만 만든다
+    $total_page = ceil($row_num/$list);
+    if($block_end > $total_page) $block_end = $total_page;
 
-$total_block = ceil($total_page/$block_ct); //총 32개, total block : 2개 (1~5, 6~7 /// 한세트, 두세트. 이 블록의 개수)
-
-//page가 1이에요 -> 0번째부터 10까지 추출해야해요 / page 2> 10번재부터 10개
-$start_num = ($page - 1) * $list;
-
-
+    $total_block = ceil($total_page/$block_ct);
+    $start_num = ($page - 1) * $list;
 
     /* ================== 값 조회 =================== */
 
-    $sql = "SELECT * from board order by idx desc limit $start_num, $list";
+    $sql = "SELECT * from board WHERE $search_type like '%$keyword%' order by idx desc limit $start_num, $list";
+    
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
     while($rs = $result->fetch_object()){
         $rsc[] = $rs;
     }  
+
+
 ?>
 
 <link rel="stylesheet" href="../css/board_delete.css" />
@@ -63,7 +67,7 @@ $start_num = ($page - 1) * $list;
 
         <!-- 본문시작 -->
 
-        <h2 class="page-title">공지사항</h2>
+        <h2 class="page-title"><?= $search_result ?> : <?= $keyword ?>검색 결과</h2>
 
         <div class="borad_top">
           <a href="./board_write.php" class="y-btn big-btn btn-navy">글쓰기</a>
@@ -108,93 +112,46 @@ $start_num = ($page - 1) * $list;
               <!-- 내가임의추가 아이디 -->
               <td>
                 <a class="trtitle" href="./board_read.php?idx=<?= $r -> idx; ?>"><?= $r -> title;?></a>  
-              <!-- 얘는 보여주기만하는거잖아!!! 값을 넘기는게 아니라서 조회할필요가없어요. 그냥 여기서 가져다 쓰세요
-              text 로 그 안에있는거 가져다가 값을 넣어  -->
               </td>
               <td><?= $r -> name;?></td>
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
                 <button class="del">삭제</button>
-                <!-- #show 를 삭제, 클래스명 del으로 통일... -->
               </th>
             </tr>
             <?php 
                 } 
               }  ?>
-              
-            <!-- <tr>
-              <td>4</td>
-              <td>3월 한정! 신규강의 런칭 특가 이벤트 안내</td>
-              <td>관리자</td>
-              <td>2023.3.10</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>K - 디지털 트레이닝 안내 사항</td>
-              <td>관리자</td>
-              <td>2023.2.28</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>국비지원 내일배움 아카데미 오픈</td>
-              <td>관리자</td>
-              <td>2023.2.10</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2023년 2월 시스템 점검 안내</td>
-              <td>관리자</td>
-              <td>2023.2.01</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr> -->
           </tbody>
         </table>
 
         <div class="board_pagination row">
           <ul class="row col justify-content-center">
             <?php 
+              if($block_num = 1){
+                echo "<li class='col-auto'><a href='?page=1'></a></li>";
+              }
+
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;
-                echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=1'><i class='fa-solid fa-chevron-left'></i></a></li>";
               }
 
             for($i=$block_start; $i<= $block_end; $i++){
               if($page == $i){
-                  echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$i' class='active'>$i</a></li>";
               }else{
-                  echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$i'>$i</a></li>";
               }
             }
 
             if($page < $total_page){
               if($total_block > $block_num){ 
                   $next = $block_num * $list + 1;
-                  echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
               }
             }
-        //     <li><i class="fa-solid fa-chevron-left"></i></li>
-        //     <li>1</li>
-        //     <li>2</li>
-        //     <li>3</li>
-        //     <li><i class="fa-solid fa-chevron-right"></i></li>
-        //   </ul>
-        // </div>
 
         ?>
 
@@ -231,12 +188,6 @@ $start_num = ($page - 1) * $list;
   function show() {
     document.querySelector(".background").className = "background show";
   }
-
-  // document.querySelector("#show").addEventListener("click", ()=>{
-    
-  // });
-  // document.querySelector("#close").addEventListener("click", close);
-
 
   // 삭제 버튼(바깥)을 누르면 할일
   $(".del").click(function(){

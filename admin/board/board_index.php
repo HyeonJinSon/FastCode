@@ -122,47 +122,7 @@ $start_num = ($page - 1) * $list;
             <?php 
                 } 
               }  ?>
-              
-            <!-- <tr>
-              <td>4</td>
-              <td>3월 한정! 신규강의 런칭 특가 이벤트 안내</td>
-              <td>관리자</td>
-              <td>2023.3.10</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>K - 디지털 트레이닝 안내 사항</td>
-              <td>관리자</td>
-              <td>2023.2.28</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>국비지원 내일배움 아카데미 오픈</td>
-              <td>관리자</td>
-              <td>2023.2.10</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2023년 2월 시스템 점검 안내</td>
-              <td>관리자</td>
-              <td>2023.2.01</td>
-              <th>
-                <a class="edit" type="button">수정</a>
-                <a class="del" type="button">삭제</a>
-              </th>
-            </tr> -->
+            
           </tbody>
         </table>
 
@@ -225,7 +185,7 @@ $start_num = ($page - 1) * $list;
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
-
+<script src="./functions.js"></script>
 
 <script>
   function show() {
@@ -260,28 +220,28 @@ $start_num = ($page - 1) * $list;
   });
 
 
-  function delAjax($idx, $url, $destination){
-    let data = {
-      idx:$idx,
-    }
+  // function delAjax($idx, $url, $destination){
+  //   let data = {
+  //     idx:$idx,
+  //   }
 
-  $.ajax({
-        async:false,
-        type:'post',
-        url: $url,
-        data:data,
-        dataType:'json',
-        error:function(){
-            alert('error');
-        },
-        success:function(result){               
-          if(result.result == true){
-              alert('삭제되었습니다.');
-              location.href= $destination;
-          }                
-        }
-      });
-  }
+  // $.ajax({
+  //       async:false,
+  //       type:'post',
+  //       url: $url,
+  //       data:data,
+  //       dataType:'json',
+  //       error:function(){
+  //           alert('error');
+  //       },
+  //       success:function(result){               
+  //         if(result.result == true){
+  //             alert('삭제되었습니다.');
+  //             location.href= $destination;
+  //         }                
+  //       }
+  //     });
+  // }
 
 
   </script>

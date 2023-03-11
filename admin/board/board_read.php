@@ -121,6 +121,8 @@
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
+<script src="./functions.js"></script>
+
 <script>
   function show() {
     document.querySelector(".background").className = "background show";
@@ -156,26 +158,9 @@
     let data = {
       idx:idx,
     }
-
-  $.ajax({
-        async:false,
-        type:'post',
-        url:'./board_delete.php',
-        data:data,
-        dataType:'json',
-        error:function(){
-            alert('error');
-        },
-        success:function(result){               
-          if(result.result == true){
-              alert('삭제되었습니다.');
-              location.href="./board_index.php";
-          }                
-        }
-      });
+    delAjax(idx, './board_delete.php', './board_index.php')
 
   });
-  
 </script>
 
 

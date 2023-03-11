@@ -67,7 +67,7 @@
 
         <!-- 본문시작 -->
 
-        <h2 class="page-title"><?= $search_result ?> : <?= $keyword ?>검색 결과</h2>
+        <h2 class="page-title"><?= $search_result ?> : <?= $keyword ?>에 대한 검색 결과</h2>
 
         <div class="borad_top">
           <a href="./board_write.php" class="y-btn big-btn btn-navy">글쓰기</a>
@@ -120,9 +120,10 @@
                 <button class="del">삭제</button>
               </th>
             </tr>
-            <?php 
-                } 
-              }  ?>
+            <?php } } else { ?>
+              <!-- 검색결과없을때 -->
+              <td class="text-center" colspan="9">검색 결과가 없습니다.</td>
+              <?php } ?>
           </tbody>
         </table>
 
@@ -182,7 +183,7 @@
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
-
+<script src="./functions.js"></script>
 
 <script>
   function show() {
@@ -198,9 +199,11 @@
     // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
+    let search1page = './board_search_ok.php?search_board=<?= $search_type; ?>&search=<?= $keyword; ?>&page=1';
+
     //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
     $('#deletebtn').click(()=>{
-      delAjax(idx, './board_delete.php', './board_index.php')
+      delAjax(idx, './board_delete.php', search1page);
     });
     
   });
@@ -209,30 +212,6 @@
   $("#close").click(function(){
     $(".background").removeClass('show');
   });
-
-
-  function delAjax($idx, $url, $destination){
-    let data = {
-      idx:$idx,
-    }
-
-  $.ajax({
-        async:false,
-        type:'post',
-        url: $url,
-        data:data,
-        dataType:'json',
-        error:function(){
-            alert('error');
-        },
-        success:function(result){               
-          if(result.result == true){
-              alert('삭제되었습니다.');
-              location.href= $destination;
-          }                
-        }
-      });
-  }
 
 
   </script>

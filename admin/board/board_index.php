@@ -105,17 +105,15 @@ $start_num = ($page - 1) * $list;
               <td><?= $r -> idx;?></td>
               <!-- 내가임의추가 아이디 -->
               <td>
-              <a class="trtitle" href="./board_read.php?idx=<?= $r -> idx; ?>">  
-             <!-- 얘는 보여주기만하는거잖아!!! 값을 넘기는게 아니라서 조회할필요가없어요. 그냥 여기서 가져다 쓰세요
-             text 로 그 안에있는거 가져다가 값을 넣어  -->
-                <?= $r -> title;?>
-                </a>
+                <a class="trtitle" href="./board_read.php?idx=<?= $r -> idx; ?>"><?= $r -> title;?></a>  
+              <!-- 얘는 보여주기만하는거잖아!!! 값을 넘기는게 아니라서 조회할필요가없어요. 그냥 여기서 가져다 쓰세요
+              text 로 그 안에있는거 가져다가 값을 넣어  -->
               </td>
               <td><?= $r -> name;?></td>
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
-                <button class="del" >삭제</button>
+                <button class="del">삭제</button>
                 <!-- #show 를 삭제, 클래스명 del으로 통일... -->
               </th>
             </tr>
@@ -241,30 +239,34 @@ $start_num = ($page - 1) * $list;
   // 삭제 버튼(바깥)을 누르면 할일
   $(".del").click(function(){
     $(".background").addClass('show');
-    let idx = $(this).closest('tr').attr('id');
-    console.log(idx);
+    let tr = $(this).closest('tr');
+    let idx = tr.attr('id');
+    let title = tr.find('.trtitle').text();
+    // console.log(title);
+    $(".background").find('input').attr('placeholder',title);
+
+    //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
+    $('#deletebtn').click(()=>{
+      delAjax(idx, './board_delete.php', './board_index.php')
+    });
     
   });
   
+  // 취소 버튼 누르면 할일
   $("#close").click(function(){
     $(".background").removeClass('show');
   });
 
 
-
-
-  //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
-  $('#deletebtn').click(function(){
-    // let idx = ; //이 번호가 안들어와서...
-
+  function delAjax($idx, $url, $destination){
     let data = {
-      idx:idx,
+      idx:$idx,
     }
 
   $.ajax({
         async:false,
         type:'post',
-        url:'./board_delete.php',
+        url: $url,
         data:data,
         dataType:'json',
         error:function(){
@@ -273,14 +275,13 @@ $start_num = ($page - 1) * $list;
         success:function(result){               
           if(result.result == true){
               alert('삭제되었습니다.');
-              location.href="./board_index.php";
+              location.href= $destination;
           }                
         }
       });
+  }
 
-  });
-  
-  
+
   </script>
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

@@ -2,7 +2,7 @@
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
-    $cid = $_POST['cid'];
+    $cid = $_POST['idx'];
     $sql = "DELETE from coupons WHERE cid='".$cid."'"; 
 
     $result = $mysqli -> query($sql) or die("query Error! =>".$mysqli->error);

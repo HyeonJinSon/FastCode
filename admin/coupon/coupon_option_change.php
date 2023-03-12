@@ -5,7 +5,7 @@
     $idx = $_POST['selectedidx'];
     $status = $_POST['selectedStatus'];
 
-    $sql = "UPDATE coupons SET status='{$status}' WHERE idx='{$idx}'";
+    $sql = "UPDATE coupons SET status='{$status}' WHERE cid='{$idx}'";
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
     if($result){

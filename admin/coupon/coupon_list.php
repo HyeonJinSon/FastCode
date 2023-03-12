@@ -14,7 +14,7 @@
 
     $page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
 
-    $pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
+    $pagesql = "SELECT COUNT(*) as cnt FROM coupons"; //보드의 모든 것을 cnt 로 받고 개수를 구함
     $page_result = $mysqli -> query($pagesql);
     $page_row = $page_result ->fetch_assoc();
     $row_num = $page_row['cnt'];//전체 게시물 수
@@ -130,7 +130,7 @@
                 <select class="form-select" name="coupon" id="coupon">
                     <option value="1" <?php if($r -> status == 1) echo "selected"; ?>>활성화</option>
                     <option value="0" <?php if($r -> status == 0) echo "selected"; ?> >비활성화</option>
-                    <!-- 활성화 - 1 , 비활성화 - 2로 임의수정 -->
+                    <!-- 활성화 - 1 , 비활성화 - 0로 임의수정 -->
                 </select>
             </div>
             <div class="btns">
@@ -240,7 +240,7 @@
         $.ajax({
             async : false ,
             type : 'post' ,
-            url : 'coupon_option_change.php' ,
+            url : './coupon_option_change.php' ,
             data  : data ,
             dataType : 'html' ,
             error : function() {

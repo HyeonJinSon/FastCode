@@ -8,11 +8,15 @@
 
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
-    $coupon_price = $_POST["coupon_price"];//할인가
+    $coupon_discount = $_POST["coupon_discount"];//할인가
     $coupon_ratio = $_POST["coupon_ratio"];//할인율
     $status = $_POST["status"];//상태
-    $max_value = $_POST["max_value"];//최대할인금액
-    $use_min_price = $_POST["use_min_price"];//최소사용가능금액
+    $max_price = $_POST["max_price"];//최대사용금액
+    $min_price = $_POST["min_price"];//최소사용가능금액
+
+    $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
+    $start_date = $_POST["coupon_start_date"];//기한>> 시작일
+    $end_date = $_POST["coupon_end_date"];//기한>> 종료일
 
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
@@ -43,19 +47,19 @@
 
 
 
-    // $sql = "INSERT INTO board 
-    // (name, title, content, date, authority, file, is_img) VALUES
-    // ('{$username}','{$title}','{$content}','{$date}','{$authority}','{$file_orgname}','{$is_img}')"; 
+    $sql = "INSERT INTO coupons 
+    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date) VALUES
+    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}')"; 
 
-    // $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
+    $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
-    // if($result){
-    //     echo "<script> alert('쿠폰 등록이 완료되었습니다.');
-    //     location.href = './coupon_list.php';</script>";
-    // }else{
-    //     echo "<script> alert('글쓰기에 실패했습니다.');
-    //     location.href = './coupon_list.php';</script>";
-    // }
+    if($result){
+        echo "<script> alert('쿠폰 등록이 완료되었습니다.');
+        location.href = './coupon_list.php';</script>";
+    }else{
+        echo "<script> alert('글쓰기에 실패했습니다.');
+        location.href = './coupon_list.php';</script>";
+    }
 
 
 

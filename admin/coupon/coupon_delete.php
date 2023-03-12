@@ -2,17 +2,17 @@
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
-    $idx = $_POST['idx'];
-    $sql = "DELETE from board WHERE idx='".$idx."'"; 
+    $cid = $_POST['cid'];
+    $sql = "DELETE from coupons WHERE cid='".$cid."'"; 
 
     $result = $mysqli -> query($sql) or die("query Error! =>".$mysqli->error);
 
     if($result){
-        $data = array('result' => true);
+        $returned_data = array('result' => true);
     } else{
-        $data = array('result' => false);
+        $returned_data = array('result' => false);
     }
 
-    echo json_encode($data);
+    echo json_encode($returned_data);
 
 ?>

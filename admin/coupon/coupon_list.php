@@ -77,13 +77,14 @@
 
 <!-- <form action="coupon" method="GET"> -->
     <!-- 내가임의추가  --- 이거 안넣고 ajax로 먼저 .... -->
-    
-    <ul class="coupon_list">
         <?php
             if(isset($rsc)){
                 foreach($rsc as $r){ //조회된 쿠폰 출력
-                }}
-        ?>
+              
+        ?>    
+        <!-- 이거 리스트인데 이렇게짜도되나...? -->
+    <ul class="coupon_list">
+
         <li id="<?= $r -> cid;?>" class="list_contents">
             <figure>
                 <img src="./coupon_files/<?= $r -> file; ?>" alt="" />
@@ -91,32 +92,58 @@
             </figure>
             <div class="titles">
                 <div class="big_titles">
-                    <h3><?= $r -> title;?></h3>
+                    <h3 class="lititle"><?= $r -> coupon_name;?></h3>
                     <!-- mini-tag 클릭시 기능 있는지 ? 물어보기... span으로 바꿔도되는지 -->
-                    <a class="mini-tag new-tag">new</a>
-                    <a class="mini-tag limit-tag">무제한</a>
+                   <?php 
+                            // 태그 =================================
+                            $published_time = $r -> coupon_start_date; // 쿠폰시작날짜
+                            $now = date('Y-m-d'); //오늘날짜
+
+                            // ====== new ======
+                            if($published_time == $now){// 날짜 같으면
+                                $newtag = '<a class="mini-tag new-tag">new</a>';
+                            } else{
+                                $newtag = '';
+                            }
+
+                            // ====== unlimited ======
+                            if($r -> coupon_due == 1){// 날짜 같으면
+                              $unlimittag = '<a class="mini-tag limit-tag">무제한</a>';
+                            } else{
+                                $unlimittag = '';
+                            }
+
+                            echo $newtag;
+                            echo $unlimittag;
+
+                          ?> 
+                      <!-- <a class="mini-tag new-tag">new</a>
+                      <a class="mini-tag limit-tag">무제한</a> -->  
                 </div>
                 <div class="sub_titles">
-                    <p>최소금액 : <span><?= $r -> use_min_price;?>원 이상</span></p>
+                    <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
                     <p>할인율 : <span><?= $r -> coupon_ratio;?></span></p>
                 </div>
             </div>
             <div class="coupon_select">
                 <!-- form으로 바꿔야되는거? -->
                 <select class="form-select" name="coupon" id="coupon">
-                    <option value="1">활성화</option>
-                    <option value="0">비활성화</option>
+                    <option value="1" <?php if($r -> status == 1) echo "selected"; ?>>활성화</option>
+                    <option value="0" <?php if($r -> status == 0) echo "selected"; ?> >비활성화</option>
                     <!-- 활성화 - 1 , 비활성화 - 2로 임의수정 -->
                 </select>
             </div>
             <div class="btns">
-                <button class="y-btn small-btn btn-navy">수정하기</button>
-                <button class="y-btn small-btn btn-red delbtn">삭제하기</button>
-                <!-- 내가 클래스명 delbtn 추가함 -->
+                <!-- <button class="y-btn small-btn btn-navy">수정하기</button> -->
+                <a href="./coupon_modify.php?cid=<?= $r -> cid; ?>" class="y-btn small-btn btn-navy">수정</a>
+                <button class="y-btn small-btn btn-red del">삭제하기</button>
+                <!-- 내가 클래스명 del 추가함 -->
             </div>
         </li>
-    </ul>
 
+    </ul>
+        <?php  }
+            } ?>
 <!-- </form> -->
 
 <!-- 페이지네이션 -->
@@ -147,13 +174,31 @@
 
 <!-- 본문끝 -->
 
+        <!-- 삭제 팝업 HTML -->
+        <div class="background">
+          <div class="window">
+            <div class="popup">
+              <div class="flex">
+                <p class="title">글을 삭제하시겠습니까?</p>
+                <input type="text" placeholder="">
+                <div class="popup_btns">
+                  <a id="close" class="y-btn big-btn btn-sky">취소하기</a>
+                  <a class="y-btn big-btn btn-red" id="deletebtn">삭제하기</a>
+                  <!-- 내가 deletebtn 추가 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 팝업 HTML 끝 -->
+
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
-<script src="./functions.js"></script>
+<script src="../board/functions.js"></script>
 
 <script>
     // 삭제 팝업 모달
@@ -162,17 +207,17 @@
   }
 
   // 삭제 버튼(바깥)을 누르면 할일
-  $(".delbtn").click(function(){
+  $(".del").click(function(){
     $(".background").addClass('show');
-    let tr = $(this).closest('tr');
-    let idx = tr.attr('id');
-    let title = tr.find('.trtitle').text();
+    let li = $(this).closest('li');
+    let cid = li.attr('id');
+    let title = li.find('.lititle').text();
     // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
     //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
     $('#deletebtn').click(()=>{
-      delAjax(idx, './coupon_delete.php', './coupon_list.php')
+      delAjax(cid, './coupon_delete.php', './coupon_list.php')
     });
     
   });
@@ -184,7 +229,7 @@
 
 // ======================= form 안쓰고 옵션 바꾸기 실험 ==============================
 
-  $(".form-select").change(function(){
+  $(".coupon_select .form-select").change(function(){
     let selectedStatus = $(this).find("option:selected").val(); //여기 바꿔놨음 this로
     let selectedidx = $(this).closest('li').attr('id');
 

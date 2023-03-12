@@ -9,6 +9,13 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
+
+    $cno = $_GET['cid'];
+    $sql = "SELECT * from board WHERE idx='{$cno}'";
+    $result = $mysqli -> query($sql); 
+    $row = $result -> fetch_assoc(); 
+
+
 ?>
 
 <link rel="stylesheet" href="../css/coupon_up.css" />
@@ -21,7 +28,7 @@
 
 <h2 class="page-title">쿠폰등록</h2>
 
-<form action="./coupon_ok.php" method="POST" enctype="multipart/form-data">
+<form action="./board_modify_ok.php" method="POST" enctype="multipart/form-data">
   <div class="pd-54">
     <div class="c_title">
       <label for="coupon_title">쿠폰명</label>
@@ -31,6 +38,7 @@
         name="coupon_name"
         required
         placeholder="쿠폰명을 입력하세요"
+        value="<?= $row['coupon_name']; ?>"
       />
     </div>
 

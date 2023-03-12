@@ -130,9 +130,9 @@
         <div class="board_pagination row">
           <ul class="row col justify-content-center">
             <?php 
-              if($block_num = 1){
-                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=1'></a></li>";
-              }
+              // if($block_num = 1){
+              //   echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=1'></a></li>";
+              // }
 
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;

@@ -83,7 +83,7 @@
           id="coupon_percen"
           name="coupon_ratio"
           required
-          placeholder="%"
+          placeholder="<?= $row['coupon_ratio']; ?>%"
         />
       </div>
 
@@ -94,7 +94,7 @@
           id="coupon_min"
           name="min_price"
           required
-          placeholder="원"
+          placeholder="<?= $row['min_price']; ?>원"
         />
       </div>
 
@@ -106,7 +106,7 @@
           id="coupon_max"
           name="max_price"
           required
-          placeholder="원"
+          placeholder="<?= $row['max_price']; ?>원"
         />
       </div>
     </div>

@@ -1,19 +1,20 @@
 <?php 
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    ini_set( 'display_errors', '1' );
 
-    $cno = $_GET['cid'];
+    $cno = $_POST['cid'];
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
-    $coupon_discount = $_POST["coupon_discount"];//할인가
-    $coupon_ratio = $_POST["coupon_ratio"];//할인율
+    $coupon_discount =substr( $_POST["coupon_discount"] , 0, -3);//할인가
+    $coupon_ratio = preg_replace("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $_POST["coupon_ratio"]);
     $status = $_POST["status"];//상태
-    $max_price = $_POST["max_price"];//최대사용금액
-    $min_price = $_POST["min_price"];//최소사용가능금액
+    $max_price = substr( $_POST["max_price"], 0, -3);//최대사용금액
+    $min_price = substr( $_POST["min_price"], 0, -3);//최소사용가능금액
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-    $start_date = $_POST["coupon_start_date"];//기한>> 시작일
-    $end_date = $_POST["coupon_end_date"];//기한>> 종료일
+    $start_date = $_POST["coupon_start_date"] ?? now() ;//기한>> 시작일
+    $end_date = $_POST["coupon_end_date"] ?? now() + 30 ;//기한>> 종료일
 
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
@@ -43,9 +44,12 @@
     }
 
     $sql = "UPDATE coupons
-    SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE idx='{$cno}'";
+    SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE cid='{$cno}'";
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
+
+    // print_r($result);
+
 
     if($result){
         echo "<script> alert('쿠폰 수정이 완료되었습니다.');

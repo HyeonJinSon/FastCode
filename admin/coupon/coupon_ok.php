@@ -9,7 +9,7 @@
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
     $coupon_discount = $_POST["coupon_discount"];//할인가
-    $coupon_ratio = $_POST["coupon_ratio"];//할인율
+    $coupon_ratio = preg_replace("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $_POST["coupon_ratio"]);
     $status = $_POST["status"];//상태
     $max_price = $_POST["max_price"];//최대사용금액
     $min_price = $_POST["min_price"];//최소사용가능금액

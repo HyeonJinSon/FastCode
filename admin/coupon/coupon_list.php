@@ -135,7 +135,7 @@
             </div>
             <div class="btns">
                 <!-- <button class="y-btn small-btn btn-navy">수정하기</button> -->
-                <a href="./coupon_modify.php?cid=<?= $r -> cid; ?>" class="y-btn small-btn btn-navy">수정</a>
+                <a href="./coupon_modify.php?cid=<?= $r -> cid; ?>" class="y-btn small-btn btn-navy">수정하기</a>
                 <button class="y-btn small-btn btn-red del">삭제하기</button>
                 <!-- 내가 클래스명 del 추가함 -->
             </div>

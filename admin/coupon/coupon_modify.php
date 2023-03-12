@@ -11,7 +11,7 @@
 
 
     $cno = $_GET['cid'];
-    $sql = "SELECT * from board WHERE idx='{$cno}'";
+    $sql = "SELECT * from coupons WHERE cid='{$cno}'";
     $result = $mysqli -> query($sql); 
     $row = $result -> fetch_assoc(); 
 
@@ -26,9 +26,10 @@
 
 <!-- 본문시작 -->
 
-<h2 class="page-title">쿠폰등록</h2>
+<h2 class="page-title">쿠폰수정</h2>
 
-<form action="./board_modify_ok.php" method="POST" enctype="multipart/form-data">
+<form action="./coupon_modify_ok.php" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="cid" value="<?= $cno ?>">
   <div class="pd-54">
     <div class="c_title">
       <label for="coupon_title">쿠폰명</label>
@@ -37,7 +38,6 @@
         id="coupon_title"
         name="coupon_name"
         required
-        placeholder="쿠폰명을 입력하세요"
         value="<?= $row['coupon_name']; ?>"
       />
     </div>
@@ -70,7 +70,7 @@
           id="coupon_discount"
           name="coupon_discount"
           required
-          placeholder="원"
+          value="<?= $row['coupon_discount']; ?>원"
         />
       </div>
     </div>
@@ -83,7 +83,7 @@
           id="coupon_percen"
           name="coupon_ratio"
           required
-          placeholder="<?= $row['coupon_ratio']; ?>%"
+          value="<?= $row['coupon_ratio']; ?>%"
         />
       </div>
 
@@ -94,7 +94,7 @@
           id="coupon_min"
           name="min_price"
           required
-          placeholder="<?= $row['min_price']; ?>원"
+          value="<?= $row['min_price']; ?>원"
         />
       </div>
 
@@ -106,7 +106,7 @@
           id="coupon_max"
           name="max_price"
           required
-          placeholder="<?= $row['max_price']; ?>원"
+          value="<?= $row['max_price']; ?>원"
         />
       </div>
     </div>

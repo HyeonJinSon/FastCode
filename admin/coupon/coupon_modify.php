@@ -154,9 +154,9 @@
   </div>
   <div class="btns">
     <button type="submit" class="y-btn big-btn btn-navy">
-      등록완료
+      수정완료
     </button>
-    <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
+    <button type="reset" class="y-btn big-btn btn-sky">수정취소</button>
   </div>
 </form>
 
@@ -166,9 +166,9 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
 
-<script
+<!-- <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
-</script>
+</script> -->
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

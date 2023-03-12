@@ -2,6 +2,7 @@
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
+    $cno = $_GET['cid'];
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
     $coupon_discount = $_POST["coupon_discount"];//할인가
@@ -41,21 +42,17 @@
         }
     }
 
-    $sql = "UPDATE coupons SET name='{$username}', title='{$title}', authority ='{$authority}', content='{$content}', date='{$date}', file='{$file_orgname}', is_img ='{$is_img}' WHERE idx='{$bno}'";
+    $sql = "UPDATE coupons
+    SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE idx='{$cno}'";
 
-/*     (name, title, content, date, authority, file, is_img) VALUES
-    ('{$username}','{$title}','{$content}','{$date}','{$authority}','{$file_orgname}','{$is_img}')";  */
-
-
-    // print_r($sql);
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
     if($result){
-        echo "<script> alert('글 수정이 완료되었습니다.');
-        location.href = './board_index.php';</script>";
+        echo "<script> alert('쿠폰 수정이 완료되었습니다.');
+        location.href = './coupon_list.php';</script>";
     }else{
-        echo "<script> alert('글 수정에 실패했습니다.');
-        location.href = './board_index.php';</script>";
+        echo "<script> alert('쿠폰 수정에 실패했습니다.');
+        location.href = './coupon_list.php';</script>";
     }
 
 

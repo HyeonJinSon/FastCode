@@ -91,6 +91,25 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.gnb-body .admin-profile .profile-menu li:last-child{
+  position: relative;
+}
+.gnb-body .admin-profile .profile-menu li:last-child::after{
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  content: '1';
+  display: block;
+  font-size: 24px;
+  line-height: 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color:var(--background-w);
+  background: var(--primary-r);
+  
+}
+
 .simplebar-track.simplebar-horizontal {
   visibility: hidden !important;
 }
@@ -167,6 +186,10 @@ body {
 .accordion-collapse {
   padding-left: 27px;
 }
+.sub-menu-ft:active, .sub-menu-ft:focus, .sub-menu-ft:hover {
+  color: var(--primary-r);
+}
+
 /* content page */
 .content-body {
   position: relative;

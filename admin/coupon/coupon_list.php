@@ -38,7 +38,7 @@
 
       /* ================== 값 조회 =================== */
   
-      $sql = "SELECT * from coupons order by idx desc limit $start_num, $list";
+      $sql = "SELECT * from coupons order by cid desc limit $start_num, $list";
       $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
       while($rs = $result->fetch_object()){
           $rsc[] = $rs;
@@ -57,7 +57,7 @@
 <h2 class="page-title">쿠폰 리스트</h2>
 
 <div class="coupon_top">
-  <a href="#" class="y-btn big-btn btn-navy">쿠폰추가하기</a>
+  <a href="./coupon_up.php" class="y-btn big-btn btn-navy">쿠폰추가하기</a>
   <form action="./coupon_search_ok.php" method="GET" class="coupon_search">
     <input
       class="form-control"
@@ -84,7 +84,7 @@
                 foreach($rsc as $r){ //조회된 쿠폰 출력
                 }}
         ?>
-        <li id="<?= $r -> idx;?>" class="list_contents">
+        <li id="<?= $r -> cid;?>" class="list_contents">
             <figure>
                 <img src="./coupon_files/<?= $r -> file; ?>" alt="" />
                 <!-- <img src="https://placehold.co/198x135" alt="" /> -->

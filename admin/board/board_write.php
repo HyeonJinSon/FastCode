@@ -24,7 +24,6 @@
  <h2 class="page-title">새 글 작성</h2>
 
 <form action="./board_write_ok.php" method="post" enctype="multipart/form-data" >
-  <!-- <input type="hidden" value="<?php echo $_SESSION['AUID']; ?> "> -->
   <div class="pd-54">
     <div class="subject">
       <label for="subject">제목</label>

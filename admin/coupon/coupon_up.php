@@ -28,7 +28,7 @@
       <input
         type="text"
         id="coupon_title"
-        name="coupon_title"
+        name="coupon_name"
         required
         placeholder="쿠폰명을 입력하세요"
       />
@@ -46,11 +46,12 @@
         <label for="coupon_active">상태</label>
         <select
           class="form-select"
-          name="coupon_active"
+          name="status"
           id="coupon_active"
         >
-          <option value="활성화">활성화</option>
-          <option value="비활성화">비활성화</option>
+          <option value="1">활성화</option>
+          <option value="2">비활성화</option>
+          <!-- 활성화 - 1 , 비활성화 - 2로 임의수정 -->
         </select>
       </div>
       <div class="c_discount">
@@ -71,7 +72,7 @@
         <input
           type="text"
           id="coupon_percen"
-          name="coupon_percen"
+          name="coupon_ratio"
           required
           placeholder="%"
         />
@@ -82,19 +83,19 @@
         <input
           type="text"
           id="coupon_min"
-          name="coupon_min"
+          name="min_price"
           required
           placeholder="원"
         />
       </div>
 
       <div class="c_max">
-        <label for="coupon_max">최소사용금액</label>
+        <label for="coupon_max">최대사용금액</label>
         <input
           class="ph"
           type="text"
           id="coupon_max"
-          name="coupon_max"
+          name="max_price"
           required
           placeholder="원"
         />
@@ -104,7 +105,7 @@
     <div class="line_fourth">
       <div class="c_use">
         <label for="coupon_use">사용기한</label>
-        <select class="form-select" name="coupon_use" id="coupon_use">
+        <select class="form-select" name="coupon_due" id="coupon_use">
           <option value="무제한">무제한</option>
           <option value="제한">제한</option>
         </select>
@@ -162,4 +163,4 @@
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
- ?>
+?>

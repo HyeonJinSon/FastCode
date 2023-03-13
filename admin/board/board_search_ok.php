@@ -9,34 +9,53 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
+    /* ======================== search =========================== */
+
+    $search_type = $_GET['search_board']; //name 과 일치
+    $keyword = $_GET['search']; 
+
+    if($search_type == "title"){
+        $search_result = "제목";
+    }
+    if($search_type == "name"){
+        $search_result = "글쓴이";
+    }
+    if($search_type == "content"){
+        $search_result = "내용";
+    }
+
     /* ================== 페이지네이션 =================== */
 
-  $page = $_GET['page'] ?? 1;
+    $page = $_GET['page'] ?? 1;
 
-  $pagesql = "SELECT COUNT(*) as cnt FROM board"; 
-  $page_result = $mysqli -> query($pagesql);
-  $page_row = $page_result ->fetch_assoc();
-  $row_num = $page_row['cnt'];//전체 게시물 수
+    $searchsql = "SELECT COUNT(*) as cnt FROM board WHERE $search_type like '%$keyword%'";
+    $page_result = $mysqli -> query($searchsql);
+    $page_row = $page_result ->fetch_assoc();
+    $row_num = $page_row['cnt'];//전체 게시물 수
 
-  $list = 5;
-  $block_ct = 5;
-  $block_num = ceil($page/$block_ct);
-  $block_start = (($block_num -1 )*$block_ct) + 1; 
-  $block_end = $block_start + $block_ct - 1;
+    $list = 5;
+    $block_ct = 5;
+    $block_num = ceil($page/$block_ct);
 
-  $total_page = ceil($row_num/$list); 
-  if($block_end > $total_page) $block_end = $total_page;
-  $total_block = ceil($total_page/$block_ct);
-  $start_num = ($page - 1) * $list;
+    $block_start = (($block_num -1 )* $block_ct) + 1;
+    $block_end = $block_start + $block_ct - 1; 
 
+    $total_page = ceil($row_num/$list);
+    if($block_end > $total_page) $block_end = $total_page;
+
+    $total_block = ceil($total_page/$block_ct);
+    $start_num = ($page - 1) * $list;
 
     /* ================== 값 조회 =================== */
 
-    $sql = "SELECT * from board order by idx desc limit $start_num, $list";
+    $sql = "SELECT * from board WHERE $search_type like '%$keyword%' order by idx desc limit $start_num, $list";
+    
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
     while($rs = $result->fetch_object()){
         $rsc[] = $rs;
     }  
+
+
 ?>
 
 <link rel="stylesheet" href="../css/board_delete.css" />
@@ -48,7 +67,7 @@
 
         <!-- 본문시작 -->
 
-        <h2 class="page-title">공지사항</h2>
+        <h2 class="page-title"><?= $search_result ?> : <?= $keyword ?>에 대한 검색 결과</h2>
 
         <div class="borad_top">
           <a href="./board_write.php" class="y-btn big-btn btn-navy">글쓰기</a>
@@ -99,42 +118,44 @@
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
                 <button class="del">삭제</button>
-                <!-- 임의로 #show 를 삭제, 클래스명 del으로 통일... -->
               </th>
             </tr>
-            <?php 
-                } 
-              }  ?>
-            
+            <?php } } else { ?>
+              <!-- 검색결과없을때 -->
+              <td class="text-center" colspan="9">검색 결과가 없습니다.</td>
+              <?php } ?>
           </tbody>
         </table>
 
         <div class="board_pagination row">
           <ul class="row col justify-content-center">
             <?php 
+              // if($block_num = 1){
+              //   echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=1'></a></li>";
+              // }
+
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;
-                echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+                echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
               }
 
             for($i=$block_start; $i<= $block_end; $i++){
               if($page == $i){
-                  echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$i' class='active'>$i</a></li>";
               }else{
-                  echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$i'>$i</a></li>";
               }
             }
 
             if($page < $total_page){
               if($total_block > $block_num){ 
                   $next = $block_num * $list + 1;
-                  echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+                  echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
               }
             }
 
-            ?>
-          </ul>
-        </div>
+        ?>
+
         <!-- 본문끝 -->
         
         <!-- 삭제 팝업 HTML -->
@@ -178,9 +199,11 @@
     // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
+    let search1page = './board_search_ok.php?search_board=<?= $search_type; ?>&search=<?= $keyword; ?>&page=1';
+
     //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.
     $('#deletebtn').click(()=>{
-      delAjax(idx, './board_delete.php', './board_index.php')
+      delAjax(idx, './board_delete.php', search1page);
     });
     
   });
@@ -189,6 +212,7 @@
   $("#close").click(function(){
     $(".background").removeClass('show');
   });
+
 
   </script>
 <?php 

@@ -1,332 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- title에 강좌명 출력 ?? -->
-    <title>강좌 1</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
-    <link rel="stylesheet" href="../css/common.css" />
+<?php 
+  session_start();
+  if(!$_SESSION['AUID']){
+    echo "<script>
+            alert('접근 권한이 없습니다');
+            history.back();
+        </script>";
+  };
+
+  include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
+?>
     <link rel="stylesheet" href="../css/lecture_view.css" />
-  </head>
-  <body>
-    <div class="common-wrap">
-      <div class="gnb-body">
-        <div class="h-100" data-simplebar>
-          <div class="admin-profile">
-            <div class="profile-img-wrap">
-              <img src="../img/admin-profile.png" alt="admin-img" />
-            </div>
-            <h2>Manager</h2>
-            <div class="profile-menu-wrap">
-              <ul class="profile-menu d-flex justify-content-center">
-                <li>
-                  <a href=""><i class="fa-brands fa-whmcs"></i></a>
-                </li>
-                <li>
-                  <a href=""><i class="fa-regular fa-calendar-check"></i></a>
-                </li>
-                <li>
-                  <a href=""><i class="fa-brands fa-weixin"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="accordion" id="main-menu-wrap">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdDashboard">
-                <a
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuDashboard"
-                  aria-expanded="true"
-                  aria-controls="menuDashboard"
-                >
-                  <i class="fa-solid fa-wrench"></i>
-                  <span class="main-menu-ft">대시보드</span>
-                </a>
-              </h2>
-              <div
-                id="menuDashboard"
-                class="accordion-collapse collapse show"
-                aria-labelledby="hdDashboard"
-                data-bs-parent="#main-menu-wrap"
-              ></div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdUser">
-                <a
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuUser"
-                  aria-expanded="false"
-                  aria-controls="menuUser"
-                >
-                  <i class="fas fa-user-friends"></i>
-                  <span class="main-menu-ft">회원 관리</span>
-                </a>
-              </h2>
-              <div
-                id="menuUser"
-                class="accordion-collapse collapse"
-                aria-labelledby="hdUser"
-                data-bs-parent="#main-menu-wrap"
-              >
-                <ul class="accordion-body">
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>회원관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>강사관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>관리자관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>회원그룹관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>회원휴면/탈퇴관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>개인정보조회기록</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>메일발송관리</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdCourse">
-                <a
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuCourse"
-                  aria-expanded="false"
-                  aria-controls="menuCourse"
-                >
-                  <i class="fa-solid fa-book"></i>
-                  <span class="main-menu-ft">강좌 관리</span>
-                </a>
-              </h2>
-              <div
-                id="menuCourse"
-                class="accordion-collapse collapse"
-                aria-labelledby="hdCourse"
-                data-bs-parent="#main-menu-wrap"
-              >
-                <ul class="accordion-body">
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>과정카테고리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>강좌리스트</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>강좌관리</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdSales">
-                <a
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuSales"
-                  aria-expanded="false"
-                  aria-controls="menuSales"
-                >
-                  <i class="fas fa-money-check-alt"></i>
-                  <span class="main-menu-ft">매출 관리</span>
-                </a>
-              </h2>
-              <div
-                id="menuSales"
-                class="accordion-collapse collapse"
-                aria-labelledby="hdSales"
-                data-bs-parent="#main-menu-wrap"
-              >
-                <ul class="accordion-body">
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>월별매출통계</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>과정매출통계</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdEvent">
-                <a
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuEvent"
-                  aria-expanded="false"
-                  aria-controls="menuEvent"
-                >
-                  <i class="fas fa-bullhorn"></i>
-                  <span class="main-menu-ft">이벤트 관리</span>
-                </a>
-              </h2>
-              <div
-                id="menuEvent"
-                class="accordion-collapse collapse"
-                aria-labelledby="hdEvent"
-                data-bs-parent="#main-menu-wrap"
-              >
-                <ul class="accordion-body">
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>쿠폰관리</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>프리패스</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="hdBoard">
-                <a
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#menuBoard"
-                  aria-expanded="false"
-                  aria-controls="menuBoard"
-                >
-                  <i class="fas fa-th-list"></i>
-                  <span class="main-menu-ft">게시판 관리</span>
-                </a>
-              </h2>
-              <div
-                id="menuBoard"
-                class="accordion-collapse collapse"
-                aria-labelledby="hdBoard"
-                data-bs-parent="#main-menu-wrap"
-              >
-                <ul class="accordion-body">
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>공지사항 게시판</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>수강후기 게시판</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>수강문의 게시판</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" class="sub-menu-ft">
-                      <span>&middot;</span>
-                      <span>커뮤니티 게시판</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-body content-pd">
-        <div class="content-top">
-          <h1 id="main-logo">
-            <a href="/"
-              ><img src="../img/fastcode_logo.png" alt="Fastcode" /><span
-                >fastcode</span
-              ></a
-            >
-          </h1>
-          <div class="bookmark">
-            <input type="checkbox" id="bookmark1" />
-            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
-          </div>
-        </div>
-        <main>
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";  
+
+  $lecid = $_GET['lecid'];
+  // echo $lecid;
+
+  $query = "SELECT * from lectures where lecid=".$lecid;
+  $result = $mysqli ->query($query) or die("Query Error =>".$mysqli->error);
+  $rs = $result ->fetch_object();
+?>
+    <main>
           <h2 class="page-title hidden">강좌 상세보기</h2>
           <div class="lec_view_container">
             <div class="lec_view_title_container row">
               <figure class="col-md-4">
-                <img src="https://placehold.co/442x301" alt="" />
+                <!-- <img src="https://placehold.co/442x301" alt="" /> -->
+                <img src="<?php echo $rs->thumbnail;?>" alt="" class="thumbnail_img_preview"/>
               </figure>
               <div class="lec_view_title col-md-8">
                 <p>
-                  <em>프로그래밍</em><i class="fa-solid fa-chevron-right"></i
-                  ><em>프론트엔드</em
+                <?php 
+                    $cb_code = $rs->cate_big;
+                    $cm_code = $rs->cate_mid;
+                    $cs_code = $rs->cate_sm;
+
+                    $cs_query = "SELECT * from category where step=3 and code='".$cs_code."'";
+                    $cs_result = $mysqli -> query($cs_query) or die("query error =>".$mysqli-->error);
+                    $csr = $cs_result -> fetch_object();
+
+                    $cm_query = "SELECT * from category where step=2 and code='".$cm_code."'";
+                    $cm_result = $mysqli -> query($cm_query) or die("query error =>".$mysqli-->error);
+                    $cmr = $cm_result -> fetch_object();
+
+                    $cb_query = "SELECT * from category where step=1 and code='".$cb_code."'";
+                    $cb_result = $mysqli -> query($cb_query) or die("query error =>".$mysqli-->error);
+                    $cbr = $cb_result -> fetch_object();
+                  ?>
+                  <em><?php echo $cbr->name ;?></em><i class="fa-solid fa-chevron-right"></i
+                  ><em><?php echo $cmr->name ;?></em
                   ><i class="fa-solid fa-chevron-right"></i>
-                  <em>Javascript</em>
+                  <em><?php echo $csr->name ;?></em>
                 </p>
-                <h3 class="content-title">Javascript와 JQuery 응용</h3>
+                <h3 class="content-title"><?php echo $rs->name;?></h3>
               </div>
             </div>
             <div class="lec_view_info">
               <div class="lec_view_info1">
-                <p>판매가격 : <span>250000원</span></p>
-                <p>상태 : <span>판매중</span></p>
+                <p>판매가격 : <span><?php echo number_format($rs->price);?>원</span></p>
+                <p>상태 : <span><?php echo $rs->sale_status;?></span></p>
               </div>
               <div class="bar"></div>
               <div class="lec_view_info2">
-                <a class="mini-tag limit-tag">제한</a>
-                <p><span>2023.03.28</span> - <span>2023.06.28</span></p>
+                <a class="mini-tag limit-tag"><?php echo $rs->lec_date;?></a>
+                <?php 
+                if($rs->lec_date=='무제한'){
+                  echo "";
+                }else if($rs->lec_date=='제한'){
+                  echo "<p><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
+                };
+                ?>
               </div>
               <div class="bar"></div>
               <div class="lec_view_info3">
@@ -334,72 +77,22 @@
                 <div
                 class="row lec_option justify-content-between align-items-center"
               >
-                <input
-                  type="checkbox"
-                  name="recom"
-                  id=""
-                  value="1"
-                  class="col"
-                  disabled
-                  checked
-                />
+                <input type="checkbox" name="recom" id="" value="1" class="col" disabled <?php if($rs->recom){echo "checked";}?>/>
                 <label for="" class="col">추천</label>
-                <input
-                  type="checkbox"
-                  name="forbegin"
-                  id=""
-                  value="1"
-                  class="col"
-                  disabled
-                />
+                <input type="checkbox" name="forbegin" id="" value="1" class="col" disabled  <?php if($rs->forbegin){echo "checked";}?>/>
                 <label for="" class="col">입문</label>
-                <input
-                  type="checkbox"
-                  name="forbasic"
-                  id=""
-                  value="1"
-                  class="col"
-                  disabled
-                />
+                <input type="checkbox" name="forbasic" id="" value="1" class="col" disabled <?php if($rs->forbasic){echo "checked";}?>/>
                 <label for="" class="col">초급</label>
-                <input
-                  type="checkbox"
-                  name="forinter"
-                  id=""
-                  value="1"
-                  class="col"
-                  disabled
-                  checked
-                />
+                <input type="checkbox" name="forinter" id="" value="1" class="col" disabled <?php if($rs->forinter){echo "checked";}?>/>
                 <label for="" class="col">중급</label>
-                <input
-                  type="checkbox"
-                  name="foradv"
-                  id=""
-                  value="1"
-                  class="col"
-                  disabled
-                  checked
-                />
+                <input type="checkbox" name="foradv" id="" value="1" class="col" disabled <?php if($rs->foradv){echo "checked";}?>/>
                 <label for="" class="col">상급</label>
                 </div>
               </div>
             </div>
             <div class="lec_view_desc">
               <h4>강좌 설명</h4>
-              <p>
-                지난 3년간 강의평점 최고점을 달성한 000 선생님과 함께 하는 Javascript & JQuery 수업!<br>
-                이 강의를 수강하면 Javascript와 JQuery를 구분하고 상황에 따라 능숙하게 기능을 수행할 수 있는 사람이 됩니다!<br><br>
-
-                다음과 같은 사람에게 추천합니다!<br>
-                HTML과 CSS 작업을 어느 정도 수행할 수 있는 사람<br>
-                동적 효과와 다양한 기능을 수행할 수 있는 사이트를 만들고 싶은 사람<br>
-                Javascript와 JQuery를 사용할 수는 있지만 둘의 구분을 명확하게 알지 못하는 사람<br><br>
-
-                초보자들은 이 강의 수강 전 HTML 기본 강의, CSS Master 강의를 선행하는 것을 추천합니다.<br><br>
-
-                강좌에 대한 질문이나 문의사항은 강의문의사항 게시판을 이용해주세요.<br>
-              </p>
+              <p> <?php echo nl2br($rs->content); ?> </p>
             </div>
             <div class="lec_view_img_slide">
               <h4>강좌 추가 이미지</h4>
@@ -458,8 +151,9 @@
             <a href="#" class="y-btn small-btn btn-red">삭제</a>
           </div>
         </main>
-      </div>
-    </div>
+    <?php
+        include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
       let slideWrapper = $('.lec_img_slide_wrapper'),
@@ -544,5 +238,6 @@
             }
           }
     </script>
-  </body>
-</html>
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
+?>

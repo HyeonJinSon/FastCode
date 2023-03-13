@@ -16,9 +16,26 @@
   $lecid = $_GET['lecid'];
   // echo $lecid;
 
+  //강좌 정보 조회
   $query = "SELECT * from lectures where lecid=".$lecid;
   $result = $mysqli ->query($query) or die("Query Error =>".$mysqli->error);
   $rs = $result ->fetch_object();
+
+  //추가이미지 조회
+  $query2 = "SELECT * from lecture_image_table where lecid=".$lecid;
+  $result2 = $mysqli ->query($query2) or die("Query Error =>".$mysqli->error);
+      
+  while($rs2 = $result2 ->fetch_object()){
+      $attached_imgs[] = $rs2;
+  }
+
+  //옵션을 product_options에서 조회하고 그 결과를 $options에 담자
+  $query3 = "SELECT * from lecture_class where lecid=".$lecid;
+  $result3 = $mysqli ->query($query3) or die("Query Error =>".$mysqli->error);
+      
+  while($rs3 = $result3 ->fetch_object()){
+          $classes[] = $rs3;
+  }
 ?>
     <main>
           <h2 class="page-title hidden">강좌 상세보기</h2>
@@ -98,36 +115,18 @@
               <h4>강좌 추가 이미지</h4>
               <div class="lec_img_slide_wrapper">
                 <ul class="lec_img_slides">
+                <?php foreach($attached_imgs as $ai) { ?>
                   <li>
+                    <figure>
+                      <img src="../../pdata/<?php echo $ai -> filename; ?>" alt="">
+                    </figure>
+                  </li>
+                <?php } ?>
+                  <!-- <li>
                     <figure>
                       <img src="https://placehold.co/278x190" alt="">
                     </figure>
-                  </li>
-                  <li>
-                    <figure>
-                      <img src="https://placehold.co/278x190" alt="">
-                    </figure>
-                  </li>
-                  <li>
-                    <figure>
-                      <img src="https://placehold.co/278x190" alt="">
-                    </figure>
-                  </li>
-                  <li>
-                    <figure>
-                      <img src="https://placehold.co/278x190" alt="">
-                    </figure>
-                  </li>
-                  <li>
-                    <figure>
-                      <img src="https://placehold.co/278x190" alt="">
-                    </figure>
-                  </li>
-                  <li>
-                    <figure>
-                      <img src="https://placehold.co/278x190" alt="">
-                    </figure>
-                  </li>
+                  </li> -->
                 </ul>
               </div>	
               <p class="lec_img_controls row justify-content-between">
@@ -138,9 +137,14 @@
             <div class="lec_view_video_container">
               <h4>강의 영상</h4>
               <ul class="lec_video_list">
+              <?php if($classes) {
+                foreach($classes as $cl) {
+              ?>
                 <li class="row justify-content-between">
-                  <em class="col-auto">1강. 강의 영상 제목 1</em><a href="" class="lec_play col-auto"><i class="fa-regular fa-circle-play"></i></a>
+                  <em class="col-auto"><?php echo $cl -> class_name; ?></em>
+                  <a href="<?php echo $cl -> class_url; ?>" class="lec_play col-auto" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
                 </li>
+              <?php }} ?>
               </ul>
             </div>
           </div>

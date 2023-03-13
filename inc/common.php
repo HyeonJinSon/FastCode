@@ -214,7 +214,7 @@
     <div class="content-body content-pd">
       <!-- 로고 및 북마크 위치 시작 -->
       <div class="content-top">
-        <h1 id="main-logo"><a href="../dashborad/inde.php"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
+        <h1 id="main-logo"><a href="../dashboard/index.php"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
       <!-- <div class="bookmark">
           <input type="checkbox" id="bookmark1" />
           <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>

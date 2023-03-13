@@ -25,6 +25,7 @@
   $forinter = $_GET['forinter']?? '';
   $foradv = $_GET['foradv']?? '';
   $search_keyword=$_GET["search_keyword"]??'';
+  $page=$_GET["page"]?? 1;
 
   //카테고리 select
   $query = "SELECT * from category where step=1";
@@ -74,15 +75,16 @@
   }
 
   //리스트 개수
-  if(isset($_GET['page'])){
-    $page = $_GET['page'];
-  } else {
-      $page = 1;
-  }
+
+  // if(isset($_GET['page'])){
+  //   $page = $_GET['page'];
+  // } else {
+  //     $page = 1;
+  // }
   if($page < 1) $page = 1;
   $pageCount  = $_GET['pageCount']??5;
   $startLimit = ($page-1)*$pageCount;
-  $firstPageNumber = $_GET['firstPageNumber'];
+  // $firstPageNumber = $_GET['firstPageNumber'];
 
   //강좌 리스트 조회
   $sql = "SELECT * from lectures where 1=1";
@@ -90,7 +92,7 @@
   $order = " order by lecid desc";//최근 등록 순 정렬
   $limit = " limit $startLimit, $pageCount"; //5개씩 조회
   $query = $sql.$order.$limit; //쿼리 문장 조합
-  // echo $query;
+  echo $query;
 
   $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
   while($rs = $result->fetch_object()){
@@ -100,10 +102,13 @@
   //페이지네이션
   $sqlcnt = "SELECT count(*) as cnt from lectures where 1=1";
   $sqlcnt .=$search_where;
-  $totalsqlcnt = $sqlcnt.$order.$limit;
+  $totalsqlcnt = $sqlcnt.$order;
+  echo $totalsqlcnt;
   $countresult = $mysqli -> query($totalsqlcnt) or die("query error => ".$mysqli->error);
   $rscnt = $countresult -> fetch_object();
   $totalcount = $rscnt -> cnt; //전체 게시물 수
+
+  echo $totalcount;
 
   $block_ct = 5; //출력할 페이지네이션 수(버튼5개)
   $block_num = ceil($page/$block_ct);
@@ -271,6 +276,8 @@
             </p>
           </form>
           <div class="lec_pagination row">
+            <!-- <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="get" id="page">
+            <input type="submit" value="" name="page" id="pageinput"> -->
             <ul class="row col justify-content-center">
             <?php
             if($block_num > 1){
@@ -312,6 +319,19 @@
       if($("li").hasClass('no-search-data')){
         $('.content-body').css({height: '100vh'});
       }
+
+      $(".pager").click(function(e){
+        // e.preventDefault();
+        $('.pager').removeClass('active');
+        $(this).addClass('active');
+        // $startpagenum = $(this).text();
+        // console.log($startpagenum);
+        // let $pageCount = <?php echo $pageCount; ?>;
+        // let startpagenum = $startpagenum * $pageCount;
+        // console.log(startpagenum);
+        // $('#page').val($startpagenum);
+        // $('#page').submit();
+      });
 
       $("#cate1").change(function(){
         let cate1 = $(this).val();

@@ -130,8 +130,11 @@
         </li>
 
     </ul>
-        <?php  }
-            } ?>
+    <?php } } else { ?>
+              <!-- 검색결과없을때 -->
+              <div class="coupon_list d-flex align-items-center justify-content-center">
+                <div class="big_titles text-center"> 등록된 쿠폰이 없습니다.</div></div>
+              <?php } ?>
 
 <!-- 페이지네이션 -->
 <div class="coupon_pagination row">

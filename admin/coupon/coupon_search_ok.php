@@ -135,8 +135,10 @@
         </li>
 
     </ul>
-        <?php  }
-            } ?>
+    <?php } } else { ?>
+              <!-- 검색결과없을때 -->
+              <div class="text-center">검색 결과가 없습니다.</div>
+              <?php } ?>
 
 <!-- 페이지네이션 -->
 <div class="coupon_pagination row">

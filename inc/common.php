@@ -235,7 +235,6 @@ let currentUrl2 = currentUrl.split('/');//주소 배열 나눠줌
       if(currentUrl2[4]===targetUrl2[0]){ //배열중 폴더명이 같은 것 찾아줌
       //모든 메인메뉴 접는다.
         menu.find('.accordion-button').attr('aria-expanded', 'false');
-        menu.find('.accordion-button').removeClass('aria-expanded', 'false');
         menu.find('.accordion-button').addClass('collapsed');
       //서브메뉴의 가까운 메뉴를 연다
       $(this).closest('.accordion-item').find('.accordion-button').attr('aria-expanded', 'true');

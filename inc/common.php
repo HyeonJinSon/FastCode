@@ -42,43 +42,43 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>회원관리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>강사관리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>관리자관리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>회원그룹관리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>회원휴면/탈퇴관리</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>개인정보조회기록</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>메일발송관리</span>
                   </a>
@@ -110,7 +110,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>강좌관리</span>
                   </a>
@@ -130,13 +130,13 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>월별매출통계</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>과정매출통계</span>
                   </a>
@@ -162,7 +162,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>프리패스</span>
                   </a>
@@ -188,19 +188,19 @@
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>수강후기 게시판</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>수강문의 게시판</span>
                   </a>
                 </li>
                 <li>
-                  <a href="" class="sub-menu-ft">
+                  <a href="#" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>커뮤니티 게시판</span>
                   </a>
@@ -214,7 +214,7 @@
     <div class="content-body content-pd">
       <!-- 로고 및 북마크 위치 시작 -->
       <div class="content-top">
-        <h1 id="main-logo"><a href="/"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
+        <h1 id="main-logo"><a href="../dashborad/inde.php"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
       <!-- <div class="bookmark">
           <input type="checkbox" id="bookmark1" />
           <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
@@ -222,26 +222,29 @@
       </div>
       <!-- 로고 및 북마크 위치 끝 -->
 <script>
+let menu = $('.accordion-item'); //메인메뉴
+let menus = $('.accordion-body li a'); //메인메뉴
+let currentUrl = location.href; //주소확인
 
-  // 메뉴
-  let menuItems = $('.accordion-item');
-  
-  // 서브 메뉴
-  let subMenus = $('.accordion-body a');
-  
-  // 현재 페이지의 URL
-  let currentUrl = window.location.href;
-  
-  // 각 서브 메뉴를 반복하면서 현재 페이지와 링크된 페이지가 같은 경우 해당 메뉴를 열어 놓기
-  subMenus.each(function() {
-    let linkUrl = $(this).attr('href');
-    
-    if (currentUrl.indexOf(linkUrl) !== -1) {
-      $(this).closest('.accordion-collapse').collapse('show');
+//서브메뉴 마다할일
+  menus.each(function(){
+    let submenuUrl = $(this).attr('href');
+    let targetUrl = submenuUrl.replace('../','');
+    let active = currentUrl.indexOf(targetUrl);
+    console.log(submenuUrl);
+    console.log(active);
+    if(active > -1){
+      //모든 메인메뉴 접는다.
+        menu.find('.accordion-button').attr('aria-expanded', 'false');
+        menu.find('.accordion-button').removeClass('aria-expanded', 'false');
+        menu.find('.accordion-button').addClass('collapsed');
+      //서브메뉴의 가까운 메뉴를 연다
       $(this).closest('.accordion-item').find('.accordion-button').attr('aria-expanded', 'true');
-    }
+      $(this).closest('.accordion-item').find('.accordion-button').removeClass('collapsed');
+      $(this).closest('.accordion-collapse').addClass('show');
+      $(this).css('color','#e53945');
+    };
   });
-
 
 
 </script>

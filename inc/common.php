@@ -156,7 +156,7 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="../coupon/coupon_llist.php" class="sub-menu-ft">
+                  <a href="../coupon/coupon_list.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>쿠폰관리</span>
                   </a>
@@ -225,15 +225,17 @@
 let menu = $('.accordion-item'); //메인메뉴
 let menus = $('.accordion-body li a'); //메인메뉴
 let currentUrl = location.href; //주소확인
+let currentUrl2 = currentUrl.split('/');
 
 //서브메뉴 마다할일
   menus.each(function(){
     let submenuUrl = $(this).attr('href');
     let targetUrl = submenuUrl.replace('../','');
+    let targetUrl2 = targetUrl.split('/');
     let active = currentUrl.indexOf(targetUrl);
-    console.log(submenuUrl);
-    console.log(active);
-    if(active > -1){
+    
+    // if(active > -1){
+      if(currentUrl2[4]===targetUrl2[0]){
       //모든 메인메뉴 접는다.
         menu.find('.accordion-button').attr('aria-expanded', 'false');
         menu.find('.accordion-button').removeClass('aria-expanded', 'false');
@@ -244,6 +246,7 @@ let currentUrl = location.href; //주소확인
       $(this).closest('.accordion-collapse').addClass('show');
       $(this).css('color','#e53945');
     };
+  // }
   });
 
 

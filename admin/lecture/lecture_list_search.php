@@ -15,6 +15,18 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";  
 
+  //변수명 설정
+  $cate1 = $_GET['cate1']?? '';
+  $cate2 = $_GET['cate2']?? '';
+  $cate3 = $_GET['cate3']?? '';
+  $recom = $_GET['recom']?? '';
+  $forbegin = $_GET['forbegin']?? '';
+  $forbasic = $_GET['forbasic']?? '';
+  $forinter = $_GET['forinter']?? '';
+  $foradv = $_GET['foradv']?? '';
+  $search_keyword=$_GET["search_keyword"]??'';
+  $page=$_GET["page"]?? 1;
+
   //카테고리 select
   $query = "SELECT * from category where step=1";
   $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
@@ -35,10 +47,35 @@
       $cate3array[]=$rs;
     }
   }
+  $scate = $cate1.$cate2.$cate3;
+  if($scate){
+    $search_where .= " and cate like '".$scate."%'";
+  }
+
+  //장좌옵션 check
+  if($recom){
+    $search_where .= " and recom=1";
+  }
+  if($forbegin){
+    $search_where .= " and forbegin=1";
+  }
+  if($forbasic){
+    $search_where .= " and forbasic=1";
+  }
+  if($forinter){
+    $search_where .= " and forinter=1";
+  }
+  if($foradv){
+    $search_where .= " and foradv=1";
+  }
+
+  //검색
+  if($search_keyword){
+    $search_where .= " and (name like '%".$search_keyword."%' or content like '%".$search_keyword."%')";
+  }
 
   //리스트 개수
 
-  $page=$_GET["page"]?? 1;
   if($page < 1) $page = 1;
   $pageCount  = $_GET['pageCount']??5;
   $startLimit = ($page-1)*$pageCount;
@@ -49,7 +86,7 @@
   $order = " order by lecid desc";//최근 등록 순 정렬
   $limit = " limit $startLimit, $pageCount"; //5개씩 조회
   $query = $sql.$order.$limit; //쿼리 문장 조합
-  // echo $query;
+//   echo $query;
 
   $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
   while($rs = $result->fetch_object()){
@@ -60,12 +97,12 @@
   $sqlcnt = "SELECT count(*) as cnt from lectures where 1=1";
   $sqlcnt .=$search_where;
   $totalsqlcnt = $sqlcnt.$order;
-  // echo $totalsqlcnt;
+//   echo $totalsqlcnt;
   $countresult = $mysqli -> query($totalsqlcnt) or die("query error => ".$mysqli->error);
   $rscnt = $countresult -> fetch_object();
   $totalcount = $rscnt -> cnt; //전체 게시물 수
 
-  // echo $totalcount;
+//   echo $totalcount;
 
   $block_ct = 5; //출력할 페이지네이션 수(버튼5개)
   $block_num = ceil($page/$block_ct);
@@ -83,7 +120,7 @@
           <h2 class="page-title">강좌 리스트</h2>
           <a href="lecture_up.php" class="y-btn big-btn btn-navy">강좌 추가하기</a>
 
-          <form action="lecture_list_search.php" method="get" id="sort_container">
+          <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="get" id="sort_container">
             <div class="row justify-content-between align-items-start">
               <div class="col-md-4 row">
                 <select name="cate1" id="cate1" class="col form-select">
@@ -239,21 +276,21 @@
             <?php
             if($block_num > 1){
               $prev = ($block_num - 2)*$pageCount + 1;
-              echo "<li class='col-auto'><a href='?page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
+              echo "<li class='col-auto'><a href='?cate1=$cate1&cate2=$cate2&cate3=$cate3&recom=$recom&forbegin=$forbegin&forbasic=$forbasic&forinter=$forinter&foradv=$foradv&search_keyword=$search_keyword&page=$prev'><i class='fa-solid fa-chevron-left'></i></a></li>";
             }
 
             for($i=$block_start; $i<= $block_end; $i++){
               if($page == $i){
-                echo "<li class='col-auto'><a href='?page=$i' class='active'>$i</a></li>";
+                echo "<li class='col-auto'><a href='?cate1=$cate1&cate2=$cate2&cate3=$cate3&recom=$recom&forbegin=$forbegin&forbasic=$forbasic&forinter=$forinter&foradv=$foradv&search_keyword=$search_keyword&page=$i' class='active'>$i</a></li>";
               }else{
-                echo "<li class='col-auto'><a href='?page=$i'>$i</a></li>";
+                echo "<li class='col-auto'><a href='?cate1=$cate1&cate2=$cate2&cate3=$cate3&recom=$recom&forbegin=$forbegin&forbasic=$forbasic&forinter=$forinter&foradv=$foradv&search_keyword=$search_keyword&page=$i'>$i</a></li>";
               }
             }
 
             if($page < $totalPage){
               if($total_block > $block_num){
                 $next = $block_num *$pageCount + 1;
-                echo "<li class='col-auto'><a href='?page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
+                echo "<li class='col-auto'><a href='?cate1=$cate1&cate2=$cate2&cate3=$cate3&recom=$recom&forbegin=$forbegin&forbasic=$forbasic&forinter=$forinter&foradv=$foradv&search_keyword=$search_keyword&page=$next'><i class='fa-solid fa-chevron-right'></i></a></li>";
               }
             }
             ?>
@@ -278,6 +315,7 @@
       }
 
       $(".pager").click(function(e){
+        // e.preventDefault();
         $('.pager').removeClass('active');
         $(this).addClass('active');
       });

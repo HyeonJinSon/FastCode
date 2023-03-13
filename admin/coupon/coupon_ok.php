@@ -1,11 +1,15 @@
 <?php 
     session_start();
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+        
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>alert('권한이 없습니다.');history.back();</script>";
-    //     exit;
-    // }
 
+    
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
     $coupon_discount = $_POST["coupon_discount"];//할인가

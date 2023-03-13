@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];

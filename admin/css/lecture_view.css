@@ -82,6 +82,9 @@
 .lec_view_info2 p {
   margin-top: 20px;
 }
+.lec_view_info2 .mini-tag {
+  margin: 0 90px;
+}
 .lec_view_info3 {
   font-size: 18px;
   line-height: 24px;

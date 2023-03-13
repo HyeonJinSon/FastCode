@@ -36,16 +36,14 @@
               </ul>
             </div>
             <div class="read_content">
-
+                <?php 
+                if($rsc -> is_img == 1){
+                ?>
+                <!-- 이미지일때 -->
+                <img src="./board_files/<?= $rsc -> file; ?> " target="blank"><br><br>
+              <?php } ?>
               <?= nl2br($rsc -> content); ?>
               <br>
-              <?php 
-              if($rsc -> is_img == 1){
-              ?>
-              <!-- 이미지일때 -->
-              <img src="./board_files/<?= $rsc -> file; ?> " target="blank">
-             <?php } ?>
-
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
                 <!-- <a href="" id="show" class="del">삭제</a> -->

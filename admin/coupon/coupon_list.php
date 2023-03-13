@@ -110,7 +110,7 @@
                 </div>
                 <div class="sub_titles">
                     <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
-                    <p>할인율 : <span><?= $r -> coupon_ratio;?> %</span></p>
+                    <p>할인율 : <span><?= $r -> coupon_ratio;?>%</span></p>
                 </div>
             </div>
             <div class="coupon_select">
@@ -237,7 +237,7 @@
                 alert('에러');
             },
             success : function(returned_data) {
-                alert('옵션이 변경되었습니다.');
+                alert('쿠폰 상태가 변경되었습니다.');
             }
         });
     });

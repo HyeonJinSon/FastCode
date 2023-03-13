@@ -53,10 +53,10 @@
 
     if($coupon_due == 1){
         $sql = "UPDATE coupons
-        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ={$start_date}, coupon_end_date ={$end_date} WHERE cid='{$cno}'";    
+        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ={$start_date}, coupon_end_date ={$end_date}, file='{$coupon_image}' WHERE cid='{$cno}'";    
     } else{
         $sql = "UPDATE coupons
-        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE cid='{$cno}'";    
+        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}', file='{$coupon_image}' WHERE cid='{$cno}'";    
     }
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);

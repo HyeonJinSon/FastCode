@@ -24,10 +24,10 @@
 
     if($result){
         echo "<script> alert('글 수정이 완료되었습니다.');
-        location.href = './board_index.php';</script>";
+        location.href = './board_read.php?idx=$bno';</script>";
     }else{
         echo "<script> alert('글 수정에 실패했습니다.');
-        location.href = './board_index.php';</script>";
+        location.href = './board_index.php?idx=$bno';</script>";
     }
 
 

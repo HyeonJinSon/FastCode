@@ -166,6 +166,20 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
 
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+</script>
+<script>
+      $("#coupon_start_date, #coupon_end_date").hide();
+      $("#coupon_use").change(function () {
+        if ($(this).val() == "2") {
+          $("#coupon_start_date, #coupon_end_date").show();
+        } else if ($(this).val() == "1") {
+          $("#coupon_start_date, #coupon_end_date").hide();
+        }
+      });
+</script>
+
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";
 ?>

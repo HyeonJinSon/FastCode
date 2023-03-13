@@ -14,10 +14,24 @@
     $max_price = $_POST["max_price"];//최대사용금액
     $min_price = $_POST["min_price"];//최소사용가능금액
 
-    $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-    $start_date = $_POST["coupon_start_date"] ?? null ;//기한>> 시작일
-    $end_date = $_POST["coupon_end_date"] ?? null ;
+    // var_dump($_POST["coupon_start_date"]);
+    // var_dump($_POST["coupon_end_date"]);
 
+    $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
+
+    // 무제한일때 date 값 NULL
+    if($coupon_due == 1){
+        $start_date = "NULL";
+        $end_date = "NULL";
+    }else{
+        $start_date = $_POST["coupon_start_date"];
+        $end_date = $_POST["coupon_end_date"];
+    }
+
+    //기한>> 시작일
+    // $end_date = $_POST["coupon_end_date"];
+    // $start_date == '\N' ? "NULL" : $_POST["coupon_start_date"];
+    // $end_date == '\N' ? "NULL" : $_POST["coupon_end_date"];
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
 
@@ -46,10 +60,19 @@
     }
 
 
-
+if($coupon_due == 1){
     $sql = "INSERT INTO coupons 
     (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
-    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}')"; 
+    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}',{$start_date},{$end_date}, '{$coupon_image}')";   
+} else{
+    $sql = "INSERT INTO coupons 
+    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
+    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}')";    
+}
+
+
+
+    // print_r($sql);
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 

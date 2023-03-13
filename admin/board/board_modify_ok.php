@@ -3,7 +3,6 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
     $bno = $_POST['idx'];
-    print_r($bno);
     $username = '관리자';
     $title = $_POST['title'];
     $authority = $_POST['authority']; 

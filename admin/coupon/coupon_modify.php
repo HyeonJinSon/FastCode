@@ -46,8 +46,8 @@
       <div class="c_type">
         <label for="coupon_type">쿠폰타입</label>
         <select class="form-select" name="coupon_type" id="coupon_type">
-          <option value="1">타입1</option>
-          <option value="2">타입2</option>
+          <option value="1" <?php if($row['coupon_type'] == 1) echo 'checked' ?>>타입1</option>
+          <option value="2" <?php if($row['coupon_type'] == 2) echo 'checked' ?>>타입2</option>
           <!-- 내가 1 2로 임의수정 -->
         </select>
       </div>

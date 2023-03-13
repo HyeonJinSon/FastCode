@@ -41,6 +41,11 @@
     padding: 110px;
     padding-left: 50px;
     position: relative;
+    font-size: 18px;
+    color: #1d3557;
+}
+.img {
+    width: 100%;
 }
 .read_content p{
     font-weight: 500;

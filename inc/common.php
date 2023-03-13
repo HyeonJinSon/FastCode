@@ -156,7 +156,7 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="../coupon/coupon_llist.php" class="sub-menu-ft">
+                  <a href="../coupon/coupon_list.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>쿠폰관리</span>
                   </a>
@@ -214,7 +214,7 @@
     <div class="content-body content-pd">
       <!-- 로고 및 북마크 위치 시작 -->
       <div class="content-top">
-        <h1 id="main-logo"><a href="../dashborad/inde.php"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
+        <h1 id="main-logo"><a href="../dashboard/index.php"><img src="../img/fastcode_logo.png" alt="Fastcode"><span>fastcode</span></a></h1>
       <!-- <div class="bookmark">
           <input type="checkbox" id="bookmark1" />
           <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
@@ -224,16 +224,15 @@
 <script>
 let menu = $('.accordion-item'); //메인메뉴
 let menus = $('.accordion-body li a'); //메인메뉴
-let currentUrl = location.href; //주소확인
+let currentUrl = location.href; //현재 주소확인
+let currentUrl2 = currentUrl.split('/');//주소 배열 나눠줌
 
 //서브메뉴 마다할일
   menus.each(function(){
-    let submenuUrl = $(this).attr('href');
+    let submenuUrl = $(this).attr('href'); //주소 확인
     let targetUrl = submenuUrl.replace('../','');
-    let active = currentUrl.indexOf(targetUrl);
-    console.log(submenuUrl);
-    console.log(active);
-    if(active > -1){
+    let targetUrl2 = targetUrl.split('/'); //주소 배열 나눠줌
+      if(currentUrl2[4]===targetUrl2[0]){ //배열중 폴더명이 같은 것 찾아줌
       //모든 메인메뉴 접는다.
         menu.find('.accordion-button').attr('aria-expanded', 'false');
         menu.find('.accordion-button').removeClass('aria-expanded', 'false');
@@ -244,6 +243,7 @@ let currentUrl = location.href; //주소확인
       $(this).closest('.accordion-collapse').addClass('show');
       $(this).css('color','#e53945');
     };
+  // }
   });
 
 

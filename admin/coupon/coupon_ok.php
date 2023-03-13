@@ -1,11 +1,15 @@
 <?php 
     session_start();
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+        
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>alert('권한이 없습니다.');history.back();</script>";
-    //     exit;
-    // }
 
+    
     $coupon_name = $_POST["coupon_name"];//쿠폰명
     $coupon_type = $_POST["coupon_type"];//쿠폰타입
     $coupon_discount = $_POST["coupon_discount"];//할인가
@@ -13,25 +17,17 @@
     $status = $_POST["status"];//상태
     $max_price = $_POST["max_price"];//최대사용금액
     $min_price = $_POST["min_price"];//최소사용가능금액
-
-    // var_dump($_POST["coupon_start_date"]);
-    // var_dump($_POST["coupon_end_date"]);
+    $regdate = date('Y-m-d'); //등록일 //now()가 php 함수네... 그래서 안되네요 sql 문장에는
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-
     // 무제한일때 date 값 NULL
     if($coupon_due == 1){
         $start_date = "NULL";
         $end_date = "NULL";
-    }else{
-        $start_date = $_POST["coupon_start_date"];
-        $end_date = $_POST["coupon_end_date"];
-    }
-
-    //기한>> 시작일
-    // $end_date = $_POST["coupon_end_date"];
-    // $start_date == '\N' ? "NULL" : $_POST["coupon_start_date"];
-    // $end_date == '\N' ? "NULL" : $_POST["coupon_end_date"];
+        }else{
+            $start_date = $_POST["coupon_start_date"];
+            $end_date = $_POST["coupon_end_date"];
+        }
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
 
@@ -60,19 +56,15 @@
     }
 
 
-if($coupon_due == 1){
-    $sql = "INSERT INTO coupons 
-    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
-    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}',{$start_date},{$end_date}, '{$coupon_image}')";   
-} else{
-    $sql = "INSERT INTO coupons 
-    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
-    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}')";    
-}
-
-
-
-    // print_r($sql);
+    if($coupon_due == 1){
+        $sql = "INSERT INTO coupons 
+        (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file, regdate) VALUES
+        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}',{$start_date},{$end_date}, '{$coupon_image}','{$regdate}')";   
+    } else{
+        $sql = "INSERT INTO coupons 
+        (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file, regdate) VALUES
+        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}','{$regdate}')";    
+    }
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 

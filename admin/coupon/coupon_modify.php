@@ -1,11 +1,11 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
@@ -46,8 +46,8 @@
       <div class="c_type">
         <label for="coupon_type">쿠폰타입</label>
         <select class="form-select" name="coupon_type" id="coupon_type">
-          <option value="1">타입1</option>
-          <option value="2">타입2</option>
+          <option value="1" <?php if($row['coupon_type'] == 1) echo 'selected' ?>>타입1</option>
+          <option value="2" <?php if($row['coupon_type'] == 2) echo 'selected' ?>>타입2</option>
           <!-- 내가 1 2로 임의수정 -->
         </select>
       </div>
@@ -58,8 +58,8 @@
           name="status"
           id="coupon_active"
         >
-          <option value="1">활성화</option>
-          <option value="2">비활성화</option>
+          <option value="1" <?php if($row['status'] == 1) echo 'selected' ?>>활성화</option>
+          <option value="2" <?php if($row['status'] == 2) echo 'selected' ?>>비활성화</option>
           <!-- 활성화 - 1 , 비활성화 - 2로 임의수정 -->
         </select>
       </div>
@@ -115,8 +115,8 @@
       <div class="c_use">
         <label for="coupon_use">사용기한</label>
         <select class="form-select" name="coupon_due" id="coupon_use">
-          <option value="1">무제한</option>
-          <option value="2">제한</option>
+          <option value="1" <?php if($row['coupon_due'] == 1) echo 'selected' ?>>무제한</option>
+          <option value="2" <?php if($row['coupon_due'] == 2) echo 'selected' ?>>제한</option>
         </select>
       </div>
 
@@ -169,7 +169,11 @@
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
+
 <script>
+  $(function(){
+    $("#coupon_use").trigger('change');
+  })
       $("#coupon_start_date, #coupon_end_date").hide();
       $("#coupon_use").change(function () {
         if ($(this).val() == "2") {
@@ -179,6 +183,7 @@
         }
       });
 </script>
+
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

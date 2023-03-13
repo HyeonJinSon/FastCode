@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     /* ======================== search =========================== */
@@ -130,9 +130,6 @@
         <div class="board_pagination row">
           <ul class="row col justify-content-center">
             <?php 
-              // if($block_num = 1){
-              //   echo "<li class='col-auto'><a href='?search_board=$search_type&search=$keyword&page=1'></a></li>";
-              // }
 
               if($block_num > 1){
                 $prev = ($block_num - 2)*$list + 1;

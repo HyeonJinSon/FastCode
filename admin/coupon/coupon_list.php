@@ -1,12 +1,11 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
     
     
@@ -87,11 +86,11 @@
                     <h3 class="lititle"><?= $r -> coupon_name;?></h3>
                    <?php 
                             // 태그 =================================
-                            $published_time = $r -> coupon_start_date; // 쿠폰시작날짜
+                            $registered_time = $r -> regdate; //쿠폰 등록날짜
                             $now = date('Y-m-d'); //오늘날짜
 
                             // ====== new ======
-                            if($published_time == $now){
+                            if($registered_time == $now){
                                 $newtag = '<a class="mini-tag new-tag">new</a>';
                             } else{
                                 $newtag = '';
@@ -111,7 +110,7 @@
                 </div>
                 <div class="sub_titles">
                     <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
-                    <p>할인율 : <span><?= $r -> coupon_ratio;?></span></p>
+                    <p>할인율 : <span><?= $r -> coupon_ratio;?>%</span></p>
                 </div>
             </div>
             <div class="coupon_select">
@@ -131,8 +130,11 @@
         </li>
 
     </ul>
-        <?php  }
-            } ?>
+    <?php } } else { ?>
+              <!-- 검색결과없을때 -->
+              <div class="coupon_list d-flex align-items-center justify-content-center">
+                <div class="big_titles text-center"> 등록된 쿠폰이 없습니다.</div></div>
+              <?php } ?>
 
 <!-- 페이지네이션 -->
 <div class="coupon_pagination row">
@@ -235,7 +237,7 @@
                 alert('에러');
             },
             success : function(returned_data) {
-                alert('옵션이 변경되었습니다.');
+                alert('쿠폰 상태가 변경되었습니다.');
             }
         });
     });

@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];
@@ -14,7 +14,7 @@
     $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
 
-    $rsc = $result -> fetch_object(); //객체형식으로 저장
+    $rsc = $result -> fetch_object();
 ?>
 
 <link rel="stylesheet" href="../css/board_delete.css" />
@@ -36,16 +36,14 @@
               </ul>
             </div>
             <div class="read_content">
-
+                <?php 
+                if($rsc -> is_img == 1){
+                ?>
+                <!-- 이미지일때 -->
+                <img src="./board_files/<?= $rsc -> file; ?> " target="blank"><br><br>
+              <?php } ?>
               <?= nl2br($rsc -> content); ?>
               <br>
-              <?php 
-              if($rsc -> is_img == 1){
-              ?>
-              <!-- 이미지일때 -->
-              <img src="./board_files/<?= $rsc -> file; ?> " target="blank">
-             <?php } ?>
-
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
                 <!-- <a href="" id="show" class="del">삭제</a> -->

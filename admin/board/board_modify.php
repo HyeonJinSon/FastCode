@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    // if(!$_SESSION['AUID']){
-    //     echo "<script>
-    //     alert('접근 권한이 없습니다.');
-    //     history.back();
-    //     </script>";
-    // };
-    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+    if(!$_SESSION['AUID']){
+      echo "<script>
+              alert('접근 권한이 없습니다');
+              history.back();
+          </script>";
+    };
+
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
     $bno = $_GET['idx'];
@@ -49,8 +49,7 @@
         cols="30"
         rows="10"
         placeholder="내용을 입력하세요"
-      >
-      <?= $row['content']; ?>
+      ><?= $row['content']; ?>
       </textarea>
     </div>
 
@@ -71,15 +70,15 @@
     <div class="user_select">
         <label for="user_cat">작성권한</label>
         <select class="form-select" name="authority" id="user_cat">
-          <option value="1">관리자</option>
-          <option value="2">관리자2</option>
+          <option value="1" <?php if($row['authority'] == 1) echo 'selected' ?>>관리자</option>
+          <option value="2" <?php if($row['authority'] == 2) echo 'selected' ?> >관리자2</option>
         </select>
     </div>
   </div>
   <!-- 내가수정 -->
   <div class="btns">
     <button type="submit" class="y-btn big-btn btn-navy">등록완료</button>
-    <button type="reset" class="y-btn big-btn btn-sky">등록취소</button>
+    <a href="./board_read.php?idx=<?= $bno ?>" class="y-btn big-btn btn-sky">등록취소</a>
   </div>
 </form>
 

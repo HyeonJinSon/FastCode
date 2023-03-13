@@ -13,9 +13,17 @@
     $min_price = substr( $_POST["min_price"], 0, -3);//최소사용가능금액
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-    $start_date = $_POST["coupon_start_date"] ?? null ;//기한>> 시작일
-    $end_date = $_POST["coupon_end_date"] ?? null ;//기한>> 종료일
+    // $start_date = $_POST["coupon_start_date"] ?? null ;//기한>> 시작일
+    // $end_date = $_POST["coupon_end_date"] ?? null ;//기한>> 종료일
 
+    // 무제한일때 date 값 NULL
+    if($coupon_due == 1){
+        $start_date = "NULL";
+        $end_date = "NULL";
+    }else{
+        $start_date = $_POST["coupon_start_date"];
+        $end_date = $_POST["coupon_end_date"];
+    }
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
 
@@ -43,11 +51,13 @@
         }
     }
 
-    $sql = "UPDATE coupons
-    SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE cid='{$cno}'";
-
-    $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
-
+    if($coupon_due == 1){
+        $sql = "UPDATE coupons
+        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ={$start_date}, coupon_end_date ={$end_date} WHERE cid='{$cno}'";    
+    } else{
+        $sql = "UPDATE coupons
+        SET coupon_name='{$coupon_name}', coupon_type='{$coupon_type}', coupon_discount ='{$coupon_discount}', coupon_ratio='{$coupon_ratio}', status='{$status}', max_price='{$max_price}', min_price ='{$min_price}', coupon_due ='{$coupon_due}', coupon_start_date ='{$start_date}', coupon_end_date ='{$end_date}' WHERE cid='{$cno}'";    
+    }
 
     if($result){
         echo "<script> alert('쿠폰 수정이 완료되었습니다.');

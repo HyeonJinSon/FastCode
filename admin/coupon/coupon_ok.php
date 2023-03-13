@@ -17,6 +17,7 @@
     $status = $_POST["status"];//상태
     $max_price = $_POST["max_price"];//최대사용금액
     $min_price = $_POST["min_price"];//최소사용가능금액
+    $regdate = date('Y-m-d'); //등록일 //now()가 php 함수네... 그래서 안되네요 sql 문장에는
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
     // 무제한일때 date 값 NULL
@@ -62,14 +63,14 @@
 
     if($coupon_due == 1){
         $sql = "INSERT INTO coupons 
-        (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
-        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}',{$start_date},{$end_date}, '{$coupon_image}')";   
+        (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file, regdate) VALUES
+        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}',{$start_date},{$end_date}, '{$coupon_image}','{$regdate}')";   
     } else{
         $sql = "INSERT INTO coupons 
         (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
-        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}')";    
+        ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}','{$regdate}')";    
     }
-    
+
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
     if($result){

@@ -86,11 +86,11 @@
                     <h3 class="lititle"><?= $r -> coupon_name;?></h3>
                    <?php 
                             // 태그 =================================
-                            $published_time = $r -> coupon_start_date; // 쿠폰시작날짜
+                            $registered_time = $r -> regdate; //쿠폰 등록날짜
                             $now = date('Y-m-d'); //오늘날짜
 
                             // ====== new ======
-                            if($published_time == $now){
+                            if($registered_time == $now){
                                 $newtag = '<a class="mini-tag new-tag">new</a>';
                             } else{
                                 $newtag = '';
@@ -110,7 +110,7 @@
                 </div>
                 <div class="sub_titles">
                     <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
-                    <p>할인율 : <span><?= $r -> coupon_ratio;?></span></p>
+                    <p>할인율 : <span><?= $r -> coupon_ratio;?> %</span></p>
                 </div>
             </div>
             <div class="coupon_select">

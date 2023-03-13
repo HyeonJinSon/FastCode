@@ -91,11 +91,11 @@
                     <h3 class="lititle"><?= $r -> coupon_name;?></h3>
                    <?php 
                             // 태그 =================================
-                            $published_time = $r -> coupon_start_date; // 쿠폰시작날짜
+                            $registered_time = $r -> regdate; //쿠폰 등록날짜
                             $now = date('Y-m-d'); //오늘날짜
 
                             // ====== new ======
-                            if($published_time == $now){// 날짜 같으면
+                            if($registered_time == $now){
                                 $newtag = '<a class="mini-tag new-tag">new</a>';
                             } else{
                                 $newtag = '';

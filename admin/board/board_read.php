@@ -14,7 +14,7 @@
     $sql = "SELECT * from board where idx='".$bno."'"; 
     $result = $mysqli -> query($sql) or die("Query Error ! => ".$mysqli -> error);
 
-    $rsc = $result -> fetch_object(); //객체형식으로 저장
+    $rsc = $result -> fetch_object();
 ?>
 
 <link rel="stylesheet" href="../css/board_delete.css" />

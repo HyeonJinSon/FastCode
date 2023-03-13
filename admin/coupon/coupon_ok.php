@@ -29,11 +29,6 @@
             $end_date = $_POST["coupon_end_date"];
         }
 
-        //기한>> 시작일
-        // $end_date = $_POST["coupon_end_date"];
-        // $start_date == '\N' ? "NULL" : $_POST["coupon_start_date"];
-        // $end_date == '\N' ? "NULL" : $_POST["coupon_end_date"];
-
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
 
         if($_FILES['file']['size'] > 10240000){//10메가

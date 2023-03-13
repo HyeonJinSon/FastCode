@@ -13,8 +13,6 @@
     $min_price = substr( $_POST["min_price"], 0, -3);//최소사용가능금액
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-    // $start_date = $_POST["coupon_start_date"] ?? null ;//기한>> 시작일
-    // $end_date = $_POST["coupon_end_date"] ?? null ;//기한>> 종료일
 
     // 무제한일때 date 값 NULL
     if($coupon_due == 1){

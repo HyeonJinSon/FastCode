@@ -78,13 +78,13 @@
                 <p>상태 : <span><?php echo $rs->sale_status;?></span></p>
               </div>
               <div class="bar"></div>
-              <div class="lec_view_info2">
-                <a class="mini-tag limit-tag"><?php echo $rs->lec_date;?></a>
+              <div class="lec_view_info2 row flex-column justify-content-center align-items-center">
+                <a class="mini-tag limit-tag col-auto"><?php echo $rs->lec_date;?></a>
                 <?php 
                 if($rs->lec_date=='무제한'){
                   echo "";
                 }else if($rs->lec_date=='제한'){
-                  echo "<p><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
+                  echo "<p class="col"><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
                 };
                 ?>
               </div>

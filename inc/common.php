@@ -21,7 +21,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdDashboard">
               <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#menuDashboard"
-                aria-expanded="true" aria-controls="menuDashboard"  onclick="location.href='../dashboard/index.php'">
+                aria-expanded="false" aria-controls="menuDashboard"  onclick="location.href='../dashboard/index.php'">
                 <i class="fa-solid fa-wrench"></i>
                 <span class="main-menu-ft">대시보드</span>
               </a>
@@ -221,3 +221,27 @@
         </div> -->
       </div>
       <!-- 로고 및 북마크 위치 끝 -->
+<script>
+
+  // 메뉴
+  let menuItems = $('.accordion-item');
+  
+  // 서브 메뉴
+  let subMenus = $('.accordion-body a');
+  
+  // 현재 페이지의 URL
+  let currentUrl = window.location.href;
+  
+  // 각 서브 메뉴를 반복하면서 현재 페이지와 링크된 페이지가 같은 경우 해당 메뉴를 열어 놓기
+  subMenus.each(function() {
+    let linkUrl = $(this).attr('href');
+    
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest('.accordion-collapse').collapse('show');
+      $(this).closest('.accordion-item').find('.accordion-button').attr('aria-expanded', 'true');
+    }
+  });
+
+
+
+</script>

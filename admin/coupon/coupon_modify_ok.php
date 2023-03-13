@@ -48,8 +48,6 @@
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
-    // print_r($result);
-
 
     if($result){
         echo "<script> alert('쿠폰 수정이 완료되었습니다.');

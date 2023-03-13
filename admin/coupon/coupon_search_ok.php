@@ -16,28 +16,23 @@
 
     /* ================== 페이지네이션 =================== */
 
-    $page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
+    $page = $_GET['page'] ?? 1; 
 
-    $searchsql = "SELECT COUNT(*) as cnt FROM coupons WHERE coupon_name like '%$keyword%'"; //보드의 모든 것을 cnt 로 받고 개수를 구함
+    $searchsql = "SELECT COUNT(*) as cnt FROM coupons WHERE coupon_name like '%$keyword%'";
     $page_result = $mysqli -> query($searchsql);
     $page_row = $page_result ->fetch_assoc();
-    $row_num = $page_row['cnt'];//전체 게시물 수
+    $row_num = $page_row['cnt'];
   
-    $list = 5; //한페이지에(페이지 당) 출력할 게시물 수
-    $block_ct = 5; //출력할 페이지네이션 수(버튼5개)
-    $block_num = ceil($page/$block_ct); //6부터 시작한다면 2블록 - 6/5 -> 1.2 -> 2 2번째 블록카운트부터 시작해야한다
-    // 6/5 1.2 2 block_num 2
+    $list = 5;
+    $block_ct = 5; 
+    $block_num = ceil($page/$block_ct);
   
-    $block_start = (($block_num -1 )*$block_ct) + 1; //페이지 1 -> start 1
-    $block_end = $block_start + $block_ct - 1; //시작번호 1일때 끝번호가 5가 될수 있도록.
+    $block_start = (($block_num -1 )*$block_ct) + 1; 
+    $block_end = $block_start + $block_ct - 1; 
   
-    $total_page = ceil($row_num/$list); //몇페이지가 나와야 되냐
-    // 총 게시물이 32개 > 7페이지가 나와야함 -> total page:7
-    if($block_end > $total_page) $block_end = $total_page; //10번까지 안만들고 7번까지만 만든다
-  
-    $total_block = ceil($total_page/$block_ct); //총 32개, total block : 2개 (1~5, 6~7 /// 한세트, 두세트. 이 블록의 개수)
-  
-    //page가 1이에요 -> 0번째부터 10까지 추출해야해요 / page 2> 10번재부터 10개
+    $total_page = ceil($row_num/$list);
+    if($block_end > $total_page) $block_end = $total_page;
+    $total_block = ceil($total_page/$block_ct);
     $start_num = ($page - 1) * $list;
 
       /* ================== 값 조회 =================== */
@@ -79,8 +74,6 @@
   </form>
 </div>
 
-<!-- <form action="coupon" method="GET"> -->
-    <!-- 내가임의추가  --- 이거 안넣고 ajax로 먼저 .... -->
         <?php
             if(isset($rsc)){
                 foreach($rsc as $r){ //조회된 쿠폰 출력
@@ -92,12 +85,10 @@
         <li id="<?= $r -> cid;?>" class="list_contents">
             <figure>
                 <img src="<?= $r -> file; ?>" alt="" />
-                <!-- <img src="https://placehold.co/198x135" alt="" /> -->
             </figure>
             <div class="titles">
                 <div class="big_titles">
                     <h3 class="lititle"><?= $r -> coupon_name;?></h3>
-                    <!-- mini-tag 클릭시 기능 있는지 ? 물어보기... span으로 바꿔도되는지 -->
                    <?php 
                             // 태그 =================================
                             $published_time = $r -> coupon_start_date; // 쿠폰시작날짜
@@ -120,9 +111,7 @@
                             echo $newtag;
                             echo $unlimittag;
 
-                          ?> 
-                      <!-- <a class="mini-tag new-tag">new</a>
-                      <a class="mini-tag limit-tag">무제한</a> -->  
+                          ?>  
                 </div>
                 <div class="sub_titles">
                     <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
@@ -148,15 +137,11 @@
     </ul>
         <?php  }
             } ?>
-<!-- </form> -->
 
 <!-- 페이지네이션 -->
 <div class="coupon_pagination row">
   <ul class="row col justify-content-center">
         <?php 
-        // if($block_num = 1){
-        // echo "<li class='col-auto'><a href='?search=$keyword&page=1'></a></li>";
-        // }
 
         if($block_num > 1){
         $prev = ($block_num - 2)*$list + 1;

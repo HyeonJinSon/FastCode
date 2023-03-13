@@ -87,7 +87,7 @@
 
         <li id="<?= $r -> cid;?>" class="list_contents">
             <figure>
-                <img src="./coupon_files/<?= $r -> file; ?>" alt="" />
+                <img src="<?= $r -> file; ?>" alt="" />
                 <!-- <img src="https://placehold.co/198x135" alt="" /> -->
             </figure>
             <div class="titles">

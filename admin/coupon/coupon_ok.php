@@ -15,8 +15,8 @@
     $min_price = $_POST["min_price"];//최소사용가능금액
 
     $coupon_due = $_POST["coupon_due"];// 쿠폰 무제한/기한 select메뉴
-    $start_date = $_POST["coupon_start_date"];//기한>> 시작일
-    $end_date = $_POST["coupon_end_date"];//기한>> 종료일
+    $start_date = $_POST["coupon_start_date"] ?? null ;//기한>> 시작일
+    $end_date = $_POST["coupon_end_date"] ?? null ;
 
 
     if($_FILES["file"]["name"]){//첨부한 파일이 있으면
@@ -38,7 +38,7 @@
         $coupon_image = $newfilename.".".$ext; //파일명
         
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $save_dir.$coupon_image)){
-            $coupon_image = "/admin/coupon/coupon_image/".$coupon_image;
+            $coupon_image = "coupon_image/".$coupon_image;
         }else{
             echo "<script>alert('이미지를 등록할 수 없습니다. 관리자에게 문의해주십시오.');history.back();</script>";
             exit;
@@ -48,8 +48,8 @@
 
 
     $sql = "INSERT INTO coupons 
-    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date) VALUES
-    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}')"; 
+    (coupon_name, coupon_type, coupon_discount, coupon_ratio, status, max_price, min_price, coupon_due, coupon_start_date, coupon_end_date, file) VALUES
+    ('{$coupon_name}','{$coupon_type}','{$coupon_discount}','{$coupon_ratio}','{$status}','{$max_price}','{$min_price}','{$coupon_due}','{$start_date}','{$end_date}', '{$coupon_image}')"; 
 
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 

@@ -11,28 +11,22 @@
 
     /* ================== 페이지네이션 =================== */
 
-  $page = $_GET['page'] ?? 1; //넘어오는거 없으면 1페이지
+  $page = $_GET['page'] ?? 1;
 
-  $pagesql = "SELECT COUNT(*) as cnt FROM board"; //보드의 모든 것을 cnt 로 받고 개수를 구함
+  $pagesql = "SELECT COUNT(*) as cnt FROM board"; 
   $page_result = $mysqli -> query($pagesql);
   $page_row = $page_result ->fetch_assoc();
   $row_num = $page_row['cnt'];//전체 게시물 수
 
-  $list = 5; //한페이지에(페이지 당) 출력할 게시물 수
-  $block_ct = 5; //출력할 페이지네이션 수(버튼5개)
-  $block_num = ceil($page/$block_ct); //6부터 시작한다면 2블록 - 6/5 -> 1.2 -> 2 2번째 블록카운트부터 시작해야한다
-  // 6/5 1.2 2 block_num 2
+  $list = 5;
+  $block_ct = 5;
+  $block_num = ceil($page/$block_ct);
+  $block_start = (($block_num -1 )*$block_ct) + 1; 
+  $block_end = $block_start + $block_ct - 1;
 
-  $block_start = (($block_num -1 )*$block_ct) + 1; //페이지 1 -> start 1
-  $block_end = $block_start + $block_ct - 1; //시작번호 1일때 끝번호가 5가 될수 있도록.
-
-  $total_page = ceil($row_num/$list); //몇페이지가 나와야 되냐
-  // 총 게시물이 32개 > 7페이지가 나와야함 -> total page:7
-  if($block_end > $total_page) $block_end = $total_page; //10번까지 안만들고 7번까지만 만든다
-
-  $total_block = ceil($total_page/$block_ct); //총 32개, total block : 2개 (1~5, 6~7 /// 한세트, 두세트. 이 블록의 개수)
-
-  //page가 1이에요 -> 0번째부터 10까지 추출해야해요 / page 2> 10번재부터 10개
+  $total_page = ceil($row_num/$list); 
+  if($block_end > $total_page) $block_end = $total_page;
+  $total_block = ceil($total_page/$block_ct);
   $start_num = ($page - 1) * $list;
 
 
@@ -99,15 +93,13 @@
               <!-- 내가임의추가 아이디 -->
               <td>
                 <a class="trtitle" href="./board_read.php?idx=<?= $r -> idx; ?>"><?= $r -> title;?></a>  
-              <!-- 얘는 보여주기만하는거잖아!!! 값을 넘기는게 아니라서 조회할필요가없어요. 그냥 여기서 가져다 쓰세요
-              text 로 그 안에있는거 가져다가 값을 넣어  -->
               </td>
               <td><?= $r -> name;?></td>
               <td><?= $r -> date;?></td>
               <th>
                 <a href="./board_modify.php?idx=<?= $r -> idx; ?>" class="edit">수정</a>
                 <button class="del">삭제</button>
-                <!-- #show 를 삭제, 클래스명 del으로 통일... -->
+                <!-- 임의로 #show 를 삭제, 클래스명 del으로 통일... -->
               </th>
             </tr>
             <?php 
@@ -177,12 +169,6 @@
     document.querySelector(".background").className = "background show";
   }
 
-  // document.querySelector("#show").addEventListener("click", ()=>{
-    
-  // });
-  // document.querySelector("#close").addEventListener("click", close);
-
-
   // 삭제 버튼(바깥)을 누르면 할일
   $(".del").click(function(){
     $(".background").addClass('show');
@@ -203,31 +189,6 @@
   $("#close").click(function(){
     $(".background").removeClass('show');
   });
-
-
-  // function delAjax($idx, $url, $destination){
-  //   let data = {
-  //     idx:$idx,
-  //   }
-
-  // $.ajax({
-  //       async:false,
-  //       type:'post',
-  //       url: $url,
-  //       data:data,
-  //       dataType:'json',
-  //       error:function(){
-  //           alert('error');
-  //       },
-  //       success:function(result){               
-  //         if(result.result == true){
-  //             alert('삭제되었습니다.');
-  //             location.href= $destination;
-  //         }                
-  //       }
-  //     });
-  // }
-
 
   </script>
 <?php 

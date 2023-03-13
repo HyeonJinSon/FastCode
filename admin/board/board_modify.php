@@ -9,14 +9,6 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
-    // $bno = $_GET['idx'];
-    // $sql = "SELECT * FROM board WHERE idx ='{$bno}'";
-    // $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
-    // while($rs = $result->fetch_object()){
-    //   $rsc[] = $rs;
-    // }
-
-
     $bno = $_GET['idx'];
     $sql = "SELECT * from board WHERE idx='{$bno}'";
     $result = $mysqli -> query($sql); 

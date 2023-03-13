@@ -1,7 +1,6 @@
 <?php
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
-    // include $_SERVER['DOCUMENT_ROOT']."/board/lib.php";
 
     $idx = $_POST['idx'];
     $sql = "DELETE from board WHERE idx='".$idx."'"; 

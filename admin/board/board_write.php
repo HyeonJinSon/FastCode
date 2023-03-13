@@ -78,61 +78,6 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
-<!-- 
-<script>
-    function attachFile(file){
-        
-        var formData = new FormData();                  
-        formData.append('savefile', file); // === <input name="savefile" value="첨부파일명">
-                              
-        $.ajax({
-                    url: 'product_save_image.php',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData, //이 파일명으로 만들어줘                        
-                    type: 'post',
-                    dataType:'json',
-                    beforeSend: function(){}, //product_save_img 가 우리에게 응답하기 전에 할일이 있다면...
-                    error:function(){}, //혹시나 해당파일(product_save_img.php) 없으면 할일
-                    success: function(returned_data){ //product_save_img.php 유무
-                        console.log(returned_data);
-                        // 관리자 아니면 추가이미지 등록못하게함 > 관리자 유무 파악, admin 아니면 로그인메시지 출력
-                        // 첨부파일 10mb 넘으면 첨부할수 없다.
-                        // 이미지만 첨부 가능하게
-                        // 모두 실패했다고 한다면 첨부실패 메시지...
-                        
-                        if(returned_data.result == "member"){
-                            alert('관리자로 로그인하세요.');
-                            return; //이 함수는 우리에게 아무것도 안 되돌려줘요. 그냥 여기서 끝나요
-                        } else if(returned_data.result == "size"){
-                            alert('10mb 이하만 첨부할 수 있습니다.');
-                            return;
-                        } else if(returned_data.result == "image"){
-                            alert('이미지 첨부할 수 있습니다.');
-                            return;
-                        } else if(returned_data.result == "error"){
-                            alert('첨부 실패, 관리자에게 문의하세요');
-                            return;
-                        } else{
-                           let imgid = $("#file_table_id").val() + returned_data.imgid + ","; //누굴삭제할지 알아야 > 고유넘버 필요 //기존 value 에 이 다음에 넣을거 또 넣고 컴마
-                            $("#file_table_id").val(imgid);
-                           /*  var html = "<div class='col' id='f_" + returned_data.imgid +
-                            "'><div class='card h-100'><img src='/pdata/" + returned_data.savename +
-                            "' class='card-img-top'><div class='card-body'><button type='button' class='btn btn-warning' onclick='file_del(" +
-                            returned_data.imgid + ")'>삭제</button></div></div></div>";
-                           대상.val(값) <이렇게하면 지정됨
-                            $('#imageArea').append(html); //html 로 넣으면 그건 내용물이 있으면 계속 교체하는애니까 여러개가안들어감
-                            // append로 뒤에 계속 붙임~! */
-                            
-                            preview(file, returned_data.imgid); //미리보기 만들기
-                        }
-                    }
-        });
-
-    }
-
-</script> -->
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

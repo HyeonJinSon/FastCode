@@ -2,7 +2,7 @@
     session_start();
     include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
-    $bno = $_POST['idx']; //form 에서 input type hidden 으로 넘겨서!!! POST 방식으로 받아와.
+    $bno = $_POST['idx'];
     print_r($bno);
     $username = '관리자';
     $title = $_POST['title'];
@@ -21,11 +21,6 @@
 
     $sql = "UPDATE board SET name='{$username}', title='{$title}', authority ='{$authority}', content='{$content}', date='{$date}', file='{$file_orgname}', is_img ='{$is_img}' WHERE idx='{$bno}'";
 
-/*     (name, title, content, date, authority, file, is_img) VALUES
-    ('{$username}','{$title}','{$content}','{$date}','{$authority}','{$file_orgname}','{$is_img}')";  */
-
-
-    // print_r($sql);
     $result = $mysqli -> query($sql) or die("Query Error! => ".$mysqli->error);
 
     if($result){

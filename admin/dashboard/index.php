@@ -1,12 +1,14 @@
 <?php
   session_start();
+  $book_mark = $_SESSION['ADBOOK'];
+
+  print_r($book_mark);
   if(!$_SESSION['AUID']){
     echo "<script>
             alert('접근 권한이 없습니다');
             history.back();
         </script>";
   };
-  $book_mark = $_SESSION['ADBOOK'];
 
   include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
@@ -18,6 +20,7 @@
   while($rs_bookmark = $result_bookmark ->fetch_object()){
     $bmk[] = $rs_bookmark;
   }
+ 
   
 //Chart
   $sql = "SELECT D.name AS 'labels',
@@ -65,7 +68,7 @@
   <div class="scroll_book">
   <ul class="bookmark-list d-flex">
     <?php 
-    if($_SESSION['ADBOOK'] != 0) {
+    if($book_mark != 0) {
       foreach($bmk as $b) {?>
     <li>
       <a href="../<?php echo $b->pageUrl;?>" class="bookmark-item d-flex flex-column justify-content-center">
@@ -84,6 +87,7 @@
     <h3 class="main-menu-ft">카테고리 별 강좌 비율</h3>
     <div class="doughnut-wrap">
       <div class="chart-div">
+        <!-- <canvas id="DoughnutChart" width="250px" height="250px"></canvas> -->
         <canvas id="DoughnutChart"></canvas>
         <div id='legend-div' class="legend-div"></div>
       </div>
@@ -124,6 +128,9 @@
 ?>
 
 <script>
+  let bookmark = String(<?php echo json_encode($book_mark);?>);
+  // console.log('$_SESSION[ADBOOK] : ' + bookmark);
+
   //달력 caleandar.js 
   // https://github.com/jackducasse/caleandar
   let element = caleandar(document.querySelector('#calendar'));
@@ -169,7 +176,7 @@
           type: "doughnut", 
           data: doughnutChartData,
           options: {
-              responsive: false,
+              responsive: true,
               legend: {
                   display: false
               },

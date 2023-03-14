@@ -46,7 +46,6 @@
               <br>
               <div class="read_btns">
                 <a href="./board_modify.php?idx=<?= $bno; ?>" class="edit">수정</a>
-                <!-- <a href="" id="show" class="del">삭제</a> -->
                 <button id="show" class="del" onclick="show();">삭제</button>
               </div>
             </div>

@@ -25,7 +25,11 @@
       $cate1[]=$rs;
   }
 ?>
-
+            <div class="bookmark">
+              <input type="checkbox" id="bookmark1" />
+              <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+            </div>
+          </div>
           <main>
             <h2 class="page-title pd-81">카테고리 등록</h2>
             <div class="category_wrapper">

@@ -1,3 +1,8 @@
+<?php
+  $Session_ID = $_SESSION['AUID'];
+  $Session_Img = $_SESSION['ADIMG'];
+?>
+
 </head>
 
 <body>
@@ -6,9 +11,9 @@
       <div class="h-100" data-simplebar>
         <div class="admin-profile">
           <div class="profile-img-wrap">
-            <img src="../img/admin-profile.png" alt="admin-img">
+            <img src="../img/<?php echo $Session_Img;?>" alt="admin-img">
           </div>
-          <h2>Manager</h2>
+          <h2 style="text-transform:capitalize;"><?php echo $Session_ID; ?></h2>
           <div class="profile-menu-wrap">
             <ul class="profile-menu d-flex justify-content-center">
               <li><a href=""><i class="fa-brands fa-whmcs"></i></a></li>
@@ -218,6 +223,6 @@
       <!-- <div class="bookmark">
           <input type="checkbox" id="bookmark1" />
           <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
-        </div> -->
-      </div>
+        </div> 
+      </div> -->
       <!-- 로고 및 북마크 위치 끝 -->

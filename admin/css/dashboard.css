@@ -24,8 +24,14 @@ section h3 {
 #bookmark-menu h2 i {
   margin-right: 11px;
 }
-#bookmark-menu .bookmark-list {
-  gap: 29px;
+#bookmark-menu .bookmark-list li {
+  margin: 0 15px;
+}
+#bookmark-menu .bookmark-list li:first-child {
+  margin-left: 0;
+}
+#bookmark-menu .bookmark-list li:last-child {
+  margin-right: 0;
 }
 #bookmark-menu .bookmark-list .bookmark-item {
   width: 200px;
@@ -67,8 +73,10 @@ section h3 {
 #bookmark-menu .bookmark-list .bookmark-item:hover i.lecture-add {
   color: #000;
 }
+#bookmark-menu .bookmark-list .bookmark-item i.ticket-add:after,
+#bookmark-menu .bookmark-list .bookmark-item i.notice-add:after,
 #bookmark-menu .bookmark-list .bookmark-item i.category-add:after,
-#bookmark-menu .bookmark-list .bookmark-item i.lecture-add:after {
+#bookmark-menu .bookmark-list .bookmark-item i.lecture-add:after  {
   position: absolute;
   bottom: -7px;
   right: 60px;
@@ -353,4 +361,23 @@ section h3 {
   vertical-align: middle;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   line-height: 27px;
+}
+#bookmark-menu .bookmark_empty {
+  font-size: 24px;
+  margin-left: 50px;
+  line-height: 120px;
+  height: 135px;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#newcourse .lecture_empty {
+  display: block;
+  height: 337px;
+  text-align: center;
+  line-height: 330px;
+  color: #aaa;
+  background: var(--background-w);
+  font-size: 20px;
 }

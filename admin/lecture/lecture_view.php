@@ -84,7 +84,7 @@
                 if($rs->lec_date=='무제한'){
                   echo "";
                 }else if($rs->lec_date=='제한'){
-                  echo "<p class="col"><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
+                  echo "<p class='col'><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
                 };
                 ?>
               </div>

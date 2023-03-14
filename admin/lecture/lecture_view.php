@@ -84,7 +84,11 @@
                 if($rs->lec_date=='무제한'){
                   echo "";
                 }else if($rs->lec_date=='제한'){
-                  echo "<p class='col'><span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span></p>";
+                  ?>
+                  <p class="col">
+                    <?php echo "<span>".$rs->lec_start_date."</span> - <span>".$rs->lec_end_date."</span>"; ?>
+                  </p>
+                <?php
                 };
                 ?>
               </div>
@@ -142,7 +146,24 @@
               ?>
                 <li class="row justify-content-between">
                   <em class="col-auto"><?php echo $cl -> class_name; ?></em>
-                  <a href="<?php echo $cl -> class_url; ?>" class="lec_play col-auto" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
+                  <button class="lec_play col-auto"><i class="fa-regular fa-circle-play modal_open" onclick="open_Modal()"></i></button>
+
+                    <div class="modal_bg">
+                      <dialog class="videoModal" id="<?php echo $cl -> lcid; ?>">
+                        <div class="modal-content">
+                          <div class="modal-header row justify-content-center">
+                            <h2 class="content-title"><?php echo $cl -> class_name; ?></h2>
+                          </div>
+                          <div class="modal-body">
+                            <iframe width="560" height="315" src="<?php echo $cl -> class_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                          </div>
+                          <div class="modal-footer row justify-content-center">
+                            <button type="button" class="modal_close y-btn mid-btn btn-sky">닫기</button>
+                          </div>
+                        </div>
+                      </dialog>
+                    </div>
+
                 </li>
               <?php }} ?>
               </ul>
@@ -160,6 +181,32 @@
     ?>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
+      function open_Modal(){
+        $('.modal_bg dialog').eq().show();
+        $('.modal_bg').addClass('active');
+
+        // let data = {
+        //   lcid:lcid
+        // }
+        // $.ajax({
+        //   async: false,
+        //   type: "post",
+        //   data: data,
+        //   url: "lecture_view_classvideo.php",
+        //   success: function(return_data){
+        //     $("#class_video").attr('src',return_data.url);
+        //     $("#class_name").text(return_data.name);
+        //   }
+        // })
+      }
+
+      //.modal_close를 click하면 dialog hide()
+      $(".modal_close").click(()=>{
+        $('.modal_bg dialog').hide();
+        $('.modal_bg').removeClass('active');
+      });
+
+
       let slideWrapper = $('.lec_img_slide_wrapper'),
           slides = slideWrapper.find('.lec_img_slides'),
           slide = slides.find('li'),

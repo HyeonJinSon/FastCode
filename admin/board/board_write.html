@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>새 글 작성</title>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/board_write.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/board_write.css">
     <link
       rel="stylesheet"
-      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css"
-    />
+      href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   </head>
@@ -21,7 +20,7 @@
         <div class="h-100" data-simplebar>
           <div class="admin-profile">
             <div class="profile-img-wrap">
-              <img src="../img/admin-profile.png" alt="admin-img" />
+              <img src="../img/admin-profile.png" alt="admin-img">
             </div>
             <h2>Manager</h2>
             <div class="profile-menu-wrap">
@@ -289,13 +288,13 @@
         <div class="content-top">
           <h1 id="main-logo">
             <a href="/"
-              ><img src="../img/fastcode_logo.png" alt="Fastcode" /><span
+              ><img src="../img/fastcode_logo.png" alt="Fastcode"><span
                 >fastcode</span
               ></a
             >
           </h1>
           <div class="bookmark">
-            <input type="checkbox" id="bookmark1" />
+            <input type="checkbox" id="bookmark1">
             <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
           </div>
         </div>
@@ -314,7 +313,7 @@
                 name="subject"
                 required
                 placeholder="제목을 입력하세요"
-              />
+              >
             </div>
             <div class="content">
               <label for="usermsg">내용</label>
@@ -336,19 +335,17 @@
                   name="file"
                   id="files"
                   class="form-control form-control-lg"
-                />
+                >
               </div>
             </div>
 
             <div class="user_select">
-              <form>
-                <label for="user">작성권한</label>
-                <select class="form-select" name="user_cat" id="">
+                <label for="user_cat">작성권한</label>
+                <select class="form-select" name="user_cat" id="user_cat">
                   <option value="user">관리자</option>
                   <option value="user2">관리자2</option>
                   <option value="user3">관리자3</option>
                 </select>
-              </form>
             </div>
           </div>
         </form>

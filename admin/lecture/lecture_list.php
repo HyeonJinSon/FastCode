@@ -78,7 +78,11 @@
   $total_block = ceil($totalPage/$block_ct);
 
 ?>
-
+          <div class="bookmark">
+            <input type="checkbox" id="bookmark1" />
+            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+          </div>
+        </div>
         <main>
           <h2 class="page-title">강좌 리스트</h2>
           <a href="lecture_up.php" class="y-btn big-btn btn-navy">강좌 추가하기</a>

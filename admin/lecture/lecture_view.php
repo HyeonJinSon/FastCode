@@ -37,6 +37,7 @@
           $classes[] = $rs3;
   }
 ?>
+    </div>
     <main>
           <h2 class="page-title hidden">강좌 상세보기</h2>
           <div class="lec_view_container">
@@ -146,23 +147,23 @@
               ?>
                 <li class="row justify-content-between">
                   <em class="col-auto"><?php echo $cl -> class_name; ?></em>
-                  <button class="lec_play col-auto"><i class="fa-regular fa-circle-play modal_open" onclick="open_Modal()"></i></button>
+                  <button class="lec_play col-auto"><i class="fa-regular fa-circle-play modal_open" ></i></button>
 
-                    <div class="modal_bg">
-                      <dialog class="videoModal" id="<?php echo $cl -> lcid; ?>">
-                        <div class="modal-content">
-                          <div class="modal-header row justify-content-center">
-                            <h2 class="content-title"><?php echo $cl -> class_name; ?></h2>
-                          </div>
-                          <div class="modal-body">
-                            <iframe width="560" height="315" src="<?php echo $cl -> class_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                          </div>
-                          <div class="modal-footer row justify-content-center">
-                            <button type="button" class="modal_close y-btn mid-btn btn-sky">닫기</button>
-                          </div>
+                  <div class="modal_bg">
+                    <dialog class="videoModal" id="<?php echo $cl -> lcid; ?>">
+                      <div class="modal-content">
+                        <div class="modal-header row justify-content-center">
+                          <h2 class="content-title"><?php echo $cl -> class_name; ?></h2>
                         </div>
-                      </dialog>
-                    </div>
+                        <div class="modal-body">
+                          <iframe width="560" height="315" src="<?php echo $cl -> class_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="modal-footer row justify-content-center">
+                          <button type="button" class="modal_close y-btn mid-btn btn-sky">닫기</button>
+                        </div>
+                      </div>
+                    </dialog>
+                  </div>
 
                 </li>
               <?php }} ?>
@@ -181,24 +182,12 @@
     ?>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
-      function open_Modal(){
-        $('.modal_bg dialog').eq().show();
-        $('.modal_bg').addClass('active');
-
-        // let data = {
-        //   lcid:lcid
-        // }
-        // $.ajax({
-        //   async: false,
-        //   type: "post",
-        //   data: data,
-        //   url: "lecture_view_classvideo.php",
-        //   success: function(return_data){
-        //     $("#class_video").attr('src',return_data.url);
-        //     $("#class_name").text(return_data.name);
-        //   }
-        // })
-      }
+      $('.lec_play').click(function(){
+        // $('.modal_bg dialog').hide();
+        console.log($(this).next('.modal_bg dialog'));
+        $(this).next('.modal_bg').find('dialog').show();
+        $(this).next('.modal_bg').addClass('active');
+      });
 
       //.modal_close를 click하면 dialog hide()
       $(".modal_close").click(()=>{

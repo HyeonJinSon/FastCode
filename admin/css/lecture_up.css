@@ -97,8 +97,7 @@ textarea {
 }
 main idv input::placeholder,
 label,
-textarea::placeholder,
-select option:selected {
+textarea::placeholder {
     color: var(--primary-n);
     font-size: 18px;
 }

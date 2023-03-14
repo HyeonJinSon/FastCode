@@ -16,12 +16,12 @@
       <p class="field">
         <label for="username">username</label>
         <i class="fa-solid fa-user"></i>
-        <input type="text" name="userid" placeholder="username">
+        <input type="text" id="username" name="userid" placeholder="username">
       </p>
       <p class="field">
         <label for="password">password</label>
         <i class="fa-solid fa-lock"></i>
-        <input type="password" name="passwd" placeholder="password">
+        <input type="password" id="password" name="passwd" placeholder="password">
       </p>
       <input type="submit" value="LOGIN" class="y-btn login-btn btn-navy">
     </form>

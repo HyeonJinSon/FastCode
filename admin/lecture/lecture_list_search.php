@@ -52,7 +52,7 @@
     $search_where .= " and cate like '".$scate."%'";
   }
 
-  //장좌옵션 check
+  //강좌옵션 check
   if($recom){
     $search_where .= " and recom=1";
   }
@@ -115,7 +115,7 @@
   $total_block = ceil($totalPage/$block_ct);
 
 ?>
-
+        </div>
         <main>
           <h2 class="page-title">강좌 리스트</h2>
           <a href="lecture_up.php" class="y-btn big-btn btn-navy">강좌 추가하기</a>

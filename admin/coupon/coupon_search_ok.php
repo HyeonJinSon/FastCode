@@ -207,7 +207,6 @@
     let li = $(this).closest('li');
     let cid = li.attr('id');
     let title = li.find('.lititle').text();
-    // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
     //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.

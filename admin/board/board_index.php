@@ -175,7 +175,6 @@
     let tr = $(this).closest('tr');
     let idx = tr.attr('id');
     let title = tr.find('.trtitle').text();
-    // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
     //삭제하시겠습니까? 안쪽 삭제 버튼 누르면 할일.

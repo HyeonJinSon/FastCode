@@ -51,7 +51,7 @@
             </div>
             <div class="file_bottom">
             <?php if($rsc -> is_img == 1 || $rsc -> is_img == 0){  ?>
-              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>"><?= $rsc -> file; ?></a></p>
+              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>" target="_blank"><?= $rsc -> file; ?></a></p>
               <?php } ?>
             </div>
           </div>

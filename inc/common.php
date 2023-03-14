@@ -20,7 +20,7 @@
         <div class="accordion" id="main-menu-wrap">
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdDashboard">
-              <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#menuDashboard"
+              <a class="accordion-button" role="button" data-bs-toggle="collapse" data-bs-target="#menuDashboard"
                 aria-expanded="false" aria-controls="menuDashboard"  onclick="location.href='../dashboard/index.php'">
                 <i class="fa-solid fa-wrench"></i>
                 <span class="main-menu-ft">대시보드</span>
@@ -32,7 +32,7 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdUser">
-              <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuUser"
+              <a class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#menuUser"
                 aria-expanded="false" aria-controls="menuUser">
                 <i class="fas fa-user-friends"></i>
                 <span class="main-menu-ft">회원 관리</span>
@@ -88,7 +88,7 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdCourse">
-              <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuCourse"
+              <a class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#menuCourse"
                 aria-expanded="false" aria-controls="menuCourse">
                 <i class="fa-solid fa-book"></i>
                 <span class="main-menu-ft">강좌 관리</span>
@@ -120,7 +120,7 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdSales">
-              <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuSales"
+              <a class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#menuSales"
                 aria-expanded="false" aria-controls="menuSales">
                 <i class="fas fa-money-check-alt"></i>
                 <span class="main-menu-ft">매출 관리</span>
@@ -146,7 +146,7 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdEvent">
-              <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuEvent"
+              <a class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#menuEvent"
                 aria-expanded="false" aria-controls="menuEvent">
                 <i class="fas fa-bullhorn"></i>
                 <span class="main-menu-ft">이벤트 관리</span>
@@ -172,7 +172,7 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="hdBoard">
-              <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuBoard"
+              <a class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#menuBoard"
                 aria-expanded="false" aria-controls="menuBoard">
                 <i class="fas fa-th-list"></i>
                 <span class="main-menu-ft">게시판 관리</span>

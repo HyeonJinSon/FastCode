@@ -88,7 +88,7 @@
         <div id='legend-div' class="legend-div"></div>
       </div>
     </div>
-    <span><a href="#">더보기 &#43;</a></span>
+    <span><a href="../category/category_list.php">더보기 &#43;</a></span>
   </section>
   <section id="click-data">
     <h3 class="main-menu-ft">카테고리 별 판매량</h3>

@@ -84,7 +84,7 @@
     <h3 class="main-menu-ft">카테고리 별 강좌 비율</h3>
     <div class="doughnut-wrap">
       <div class="chart-div">
-        <canvas id="DoughnutChart" width="250px" height="250px"></canvas>
+        <canvas id="DoughnutChart"></canvas>
         <div id='legend-div' class="legend-div"></div>
       </div>
     </div>

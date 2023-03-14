@@ -21,6 +21,11 @@
       $cate1[]=$rs;
   }
 ?>
+          <div class="bookmark">
+            <input type="checkbox" id="bookmark1" />
+            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+          </div>
+        </div>
         <main>
           <h2 class="page-title">강좌 등록</h2>
           <form action="lecture_ok.php" onsubmit="return save();" method="post" class="row" enctype="multipart/form-data">

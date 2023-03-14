@@ -6,99 +6,83 @@
             history.back();
         </script>";
   };
+  $book_mark = $_SESSION['ADBOOK'];
+
   include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
- 
- //Chart
+
+
+//BookMark List
+  $sql_bookmark = "SELECT * FROM bookmark WHERE pageCode IN ({$book_mark}) LIMIT 0 , 6";
+  $result_bookmark = $mysqli -> query($sql_bookmark);
+
+  while($rs_bookmark = $result_bookmark ->fetch_object()){
+    $bmk[] = $rs_bookmark;
+  }
+  
+//Chart
   $sql = "SELECT D.name AS 'labels',
   COUNT(*) AS 'data'
   FROM lectures L
   JOIN category D ON L.cate_mid = D.code
   GROUP by D.name ";
-  $result = $mysqli -> query($sql);
 
-  
+  $result = $mysqli -> query($sql);
   while($rs = $result ->fetch_object()) {
   $data_json[] = $rs;
   $labels[] = $rs->labels;
   $data[] = $rs->data;   
-
-}
+  }
 
 
 // 신규강의
   $sql2 = "SELECT * 
   FROM lectures 
   WHERE reg_date
-  BETWEEN DATE_ADD(NOW(), INTERVAL -1 WEEK)
+  BETWEEN DATE_ADD(NOW(), INTERVAL -1 WEEK) 
   AND NOW() 
-  ORDER BY lecid 
-  DESC limit 0 , 4";
+  ORDER BY lecid DESC
+  LIMIT 0 , 4";
   $result2 = $mysqli -> query($sql2);
 
   while($rs2 = $result2 ->fetch_object()) {
-  $lecname[]=$rs2;
+  $lecture_id[]=$rs2;
 }
 
 ?>
   <link rel="stylesheet" href="../css/dashboard.css" />
   <script type="text/javascript" src="caleandar.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/simplebar@5.3.3/dist/simplebar.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <?php 
   include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";
 ?>
-<body> 
+<body>
 <section id="bookmark-menu">
   <h2 class="popup-title"><i class="fa-solid fa-bookmark"></i>즐겨찾기 메뉴</h2>
-  <ul class="bookmark-list d-flex flex-wrap">
+  <div class="scroll_book">
+  <ul class="bookmark-list d-flex">
+    <?php 
+    if($_SESSION['ADBOOK'] != 0) {
+      foreach($bmk as $b) {?>
     <li>
-      <a href="../lecture/lecture_list.php" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fa-solid fa-school"></i>
-        <span>강좌리스트</span>
+      <a href="../<?php echo $b->pageUrl;?>" class="bookmark-item d-flex flex-column justify-content-center">
+        <i class="<?php echo $b->iconName;?>"></i>
+        <span><?php echo $b->pageName;?></span>
       </a>
     </li>
-    <li>
-      <a href="../category/category_list.php" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fa-solid fa-list-check"></i>
-        <span>카테고리 리스트</span>
-      </a>
-    </li>
-    <li>
-      <a href="../board/board_list.html" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fas fa-bullhorn"></i>
-        <span>공지사항</span>
-      </a>
-    </li>
-    <li>
-      <a href="../coupon/coupon_llist.php" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fa-solid fa-ticket"></i>
-        <span>쿠폰 리스트</span>
-      </a>
-    </li>
-    <li>
-      <a href="../category/category.php" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fa-solid fa-list-check category-add"></i>
-        <span>카테고리 추가</span>
-      </a>
-    </li>
-    <li>
-      <a href="../lecture/lecture_up.php" class="bookmark-item d-flex flex-column justify-content-center">
-        <i class="fa-solid fa-school lecture-add"></i>
-        <span>강좌 추가</span>
-      </a>
-    </li>
+    <?php } } else { ?>
+      <p class="bookmark_empty">등록된 즐겨찾기가 없습니다.</p>
+    <?php } ?>
   </ul>
+</div>
 </section>
 <div class="dashboard-data d-flex flex-wrap">
   <section id="course-data">
     <h3 class="main-menu-ft">카테고리 별 강좌 비율</h3>
     <div class="doughnut-wrap">
       <div class="chart-div">
-        <canvas id="DoughnutChart" width="300px" height="300px"></canvas>
+        <canvas id="DoughnutChart" width="250px" height="250px"></canvas>
         <div id='legend-div' class="legend-div"></div>
       </div>
     </div>
@@ -114,12 +98,15 @@
   <section id="newcourse">
     <h3 class="main-menu-ft">신규 강좌</h3>
     <ul>
-    <?php foreach($lecname as $lid) {?>
-      <li class="newcourse-item content-text-1"><?php echo  $lid->name;?></li>
-    <?php } ?>
-      <!-- <li class="newcourse-item content-text-1">PHP 개발 환경 구축하기</li>
-      <li class="newcourse-item content-text-1">Figma 컴포넌트 활용하기</li>
-      <li class="newcourse-item content-text-1">Javascript와 JQuery 응용</li> -->
+    <?php 
+    if(isset($lecture_id)) {
+      foreach($lecture_id as $lid) {?>
+      <li class="newcourse-item content-text-1">
+        <a href="../lecture/lecture_view.php?lecid=<?php echo $lid->lecid; ?>"><?php echo  $lid->name;?></a>
+    </li>
+    <?php } } else { ?>
+      <li class="newcourse-item content-text-1 lecture_empty">업데이트 된 강의가 없습니다.</li>
+    <?php }?>
     </ul>
     <span><a href="../lecture/lecture_list.php">더보기 &#43;</a></span>
   </section>
@@ -129,8 +116,66 @@
     <span><a href="#">더보기 &#43;</a></span>
   </section>
 </div>
+    
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
+?>
 
 <script>
+//북마크
+  let bookmark = String(<?php echo json_encode($book_mark);?>);
+  console.log('$_SESSION[ADBOOK] : ' + bookmark);
+  if(bookmark != '0') {
+    if (bookmark.indexOf('5') != -1 ) {
+      $('#bookmark1').attr("checked", true);
+    } else {
+      $('#bookmark1').attr("checked", false);
+    }
+  }
+
+  $('#bookmark1').click(function() {
+    let checked = $(this).is(":checked");
+
+    if(checked == true) {
+      if(bookmark.length > 11){
+        alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
+      } else if(bookmark != '0') { 
+        bookmark += ',5';  
+      } else if(bookmark == '0'){
+        bookmark = bookmark.replace('0', '');
+        bookmark += '5';
+      }
+
+    } else { 
+      if(bookmark == '5') {
+        bookmark = '0';
+      } else {
+        bookmark = bookmark.replace(',5' , '');
+      }
+      
+    }
+
+    let data = {
+      bookmark: bookmark
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: 'bookmark.php',
+      data: data,
+      dataType: 'html',
+      error: function(){
+        alert('실패');
+      }, 
+      success: function (result) { 
+        bookmark = result;
+        console.log(bookmark);
+
+      }
+    });
+
+  });
+
   //달력 caleandar.js 
   // https://github.com/jackducasse/caleandar
   let element = caleandar(document.querySelector('#calendar'));
@@ -153,8 +198,9 @@
       dataArray[j] = jsonArray[j].data;
       j++;
   }
-  
-//도넛차트
+
+ 
+//Doughnut chart.js
   window.onload = function () {
     doughnutChartDraw();
     document.getElementById("legend-div").innerHTML = window.doughnutChart.generateLegend();
@@ -162,7 +208,6 @@
 
   let doughnutChartData = {
   labels: labelsArray,
-  // labels: ["프론트엔드", "벡엔드", "소스제작", "UI/UX 디자인  ", "기타"],
   datasets: [{
       data: dataArray,
       backgroundColor: ["#A8DADB", "#457B9D", "#1D3557", "#E53945", "#F0FAEF"]
@@ -213,19 +258,12 @@
     }
   };
 
-  //막대차트
+  //Bar chart.js
   const ctx2 = document.getElementById("myChart");
-  // Chart.defaults.scales.linear.min = 0;
   new Chart(ctx2, {
     type: "bar",
     data: {
-      labels: [
-        "벡엔드",
-        "프론트엔드",
-        "소스제작",
-        "UI/UX 디자인",
-        "기타",
-      ],
+      labels: labelsArray,
       datasets: [
         {
           data: [208, 284, 162, 347, 176],
@@ -251,7 +289,6 @@
             display: true,
             ticks: {
               beginAtZero: true,
-              // max: 18,
               min: 0,
               stepSize: 100, //증가수
               fontColor: "#161616",
@@ -270,7 +307,8 @@
       }
     }
   });
-    
+
+
 </script>
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

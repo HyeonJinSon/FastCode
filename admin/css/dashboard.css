@@ -327,10 +327,11 @@ section h3 {
   /* height: 312px;  */
 }
 #DoughnutChart {
-  width: 250px;
+  width: 80% !important;
+  height: 80% !important;
   position: relative;
   top: 10%;
-  left: 13%;
+  right: 9%;
 }
 .chart-div .legend-div {
   position: absolute;

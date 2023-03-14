@@ -6,6 +6,7 @@
             history.back();
         </script>";
   };
+  $book_mark = $_SESSION['ADBOOK'];
 
   include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 ?>
@@ -329,6 +330,65 @@
           }
         });
       }); //#cate2 change
+      //북마크
+      let bookmark = String(<?php echo json_encode($book_mark);?>);
+        // console.log('$_SESSION[ADBOOK] : ' + bookmark);
+        if(bookmark != '0') {
+          if (bookmark.indexOf('6') != -1 ) {
+            $('#bookmark1').attr("checked", true);
+          } else {
+            $('#bookmark1').attr("checked", false);
+          }
+        }
+
+
+
+
+        $('#bookmark1').click(function() {
+          let checked = $(this).is(":checked");
+
+
+
+
+          if(checked == true) {
+            if(bookmark.length > 11){
+              alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
+            } else if(bookmark != '0') {
+              bookmark += ',6';  
+            } else if(bookmark == '0'){
+              bookmark = bookmark.replace('0', '');
+              bookmark += '6';
+            }
+          } else {
+            if(bookmark == '6') {
+              bookmark = '0';
+            } else {
+              bookmark = bookmark.replace(',6' , '');
+            }
+
+          }
+
+
+          let data = {
+            bookmark: bookmark
+          }
+
+
+          $.ajax({
+            type: 'POST',
+            url: '../dashboard/bookmark.php',
+            data: data,
+            dataType: 'html',
+            error: function(){
+              alert('실패');
+            },
+            success: function (result) {
+              bookmark = result;
+              console.log(bookmark);
+            }
+          });
+        });
+
   </script>
 
 <?php

@@ -106,7 +106,7 @@ textarea::placeholder {
     height: 25px;
 }
 .lec_option {
-    justify-content: space-between;
+    margin-top: -70px;
     align-items: center;
     white-space: nowrap;
 }

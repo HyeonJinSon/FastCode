@@ -124,7 +124,7 @@ body {
   background-color: transparent;
 }
 .accordion-button {
-  background-color: none;
+  background-color: transparent;
   padding: 26px 0 26px 52px;
 }
 .accordion-button:not(.collapsed)::before {

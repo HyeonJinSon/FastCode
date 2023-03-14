@@ -193,7 +193,6 @@
     let tr = $(this).closest('tr');
     let idx = tr.attr('id');
     let title = tr.find('.trtitle').text();
-    // console.log(title);
     $(".background").find('input').attr('placeholder',title);
 
     let search1page = './board_search_ok.php?search_board=<?= $search_type; ?>&search=<?= $keyword; ?>&page=1';

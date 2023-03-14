@@ -29,7 +29,7 @@
       $attached_imgs[] = $rs2;
   }
 
-  //옵션을 product_options에서 조회하고 그 결과를 $options에 담자
+  //강의목록 조회
   $query3 = "SELECT * from lecture_class where lecid=".$lecid;
   $result3 = $mysqli ->query($query3) or die("Query Error =>".$mysqli->error);
       
@@ -150,7 +150,7 @@
                   <button class="lec_play col-auto"><i class="fa-regular fa-circle-play modal_open" ></i></button>
 
                   <div class="modal_bg">
-                    <dialog class="videoModal" id="<?php echo $cl -> lcid; ?>">
+                    <dialog class="videoModal">
                       <div class="modal-content">
                         <div class="modal-header row justify-content-center">
                           <h2 class="content-title"><?php echo $cl -> class_name; ?></h2>
@@ -183,7 +183,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
       $('.lec_play').click(function(){
-        // $('.modal_bg dialog').hide();
         console.log($(this).next('.modal_bg dialog'));
         $(this).next('.modal_bg').find('dialog').show();
         $(this).next('.modal_bg').addClass('active');

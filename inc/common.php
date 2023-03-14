@@ -103,7 +103,7 @@
               data-bs-parent="#main-menu-wrap">
               <ul class="accordion-body">
                 <li>
-                  <a href="../category/category.php" class="sub-menu-ft">
+                  <a href="../category/category_list.php" class="sub-menu-ft">
                     <span>&middot;</span>
                     <span>과정카테고리</span>
                   </a>

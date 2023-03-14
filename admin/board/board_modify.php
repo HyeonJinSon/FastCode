@@ -22,6 +22,8 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
+</div>
+<!-- 로고 및 북마크 위치 끝 -->
 
 <!-- 본문시작 -->
 

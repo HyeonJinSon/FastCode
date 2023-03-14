@@ -20,7 +20,11 @@
   $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
   
 ?>
-
+          <div class="bookmark">
+            <input type="checkbox" id="bookmark1" />
+            <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+          </div>
+        </div>
         <main class="">
           <h2 class="page-title">카테고리 리스트</h2>
           <div class="cate_list_btn_wrapper row pd-54">

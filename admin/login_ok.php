@@ -5,7 +5,8 @@
     $_SESSION['AUID'];
     $_SESSION['ADBOOK'] = 0;
     $_SESSION['ADIDX'];
-    
+    $_SESSION['ADIMG'];
+
     $userid = $_POST["userid"];
     $passwd = $_POST["passwd"];
     $passwd = hash('sha512',$passwd);
@@ -22,6 +23,7 @@
         $_SESSION['AUNAME'] = $rs->username;
         $_SESSION['ADLEVEL'] = $rs->level;
         $_SESSION['ADIDX'] = $rs->idx;
+        $_SESSION['ADIMG'] = $rs->profile_img;
         
         if($rs->bookmark_code == null) {
             $sql_null = "UPDATE admins SET bookmark_code = 0 WHERE idx='{$rs->idx}' ";

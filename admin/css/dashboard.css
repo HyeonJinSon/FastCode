@@ -186,12 +186,10 @@ section h3 {
   fill: #666;
 }
 .cld-rwd {
-  content: url(../img/caret-left-solid.svg);
   left: 0;
   height: 36px;
 }
 .cld-fwd {
-  content: url(../img/caret-right-solid.svg);
   height: 36px;
   right: 0;
 }

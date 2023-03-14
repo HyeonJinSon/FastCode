@@ -47,6 +47,14 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
+        <div class="bookmark">
+          <input type="checkbox" id="bookmark1" />
+          <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+        </div> 
+      </div>
+      
+  <!-- 로고 및 북마크 위치 끝 -->
+
 <!-- 본문시작 -->
 
 <h2 class="page-title">쿠폰 리스트</h2>

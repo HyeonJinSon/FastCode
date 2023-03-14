@@ -51,6 +51,9 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
+</div>
+<!-- 로고 및 북마크 위치 끝 -->
+
 <!-- 본문시작 -->
 
 <h2 class="page-title"><?= $keyword ?> 검색 결과</h2>

@@ -24,6 +24,10 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
+
+</div>
+<!-- 로고 및 북마크 위치 끝 -->
+
      <!-- 본문시작 -->
     <h2 class="page-title">공지사항</h2>
         <div>
@@ -51,7 +55,7 @@
             </div>
             <div class="file_bottom">
             <?php if($rsc -> is_img == 1 || $rsc -> is_img == 0){  ?>
-              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>"><?= $rsc -> file; ?></a></p>
+              <p class="file">첨부파일: <a href="./board_files/<?= $rsc -> file; ?>" target="_blank"><?= $rsc -> file; ?></a></p>
               <?php } ?>
             </div>
           </div>

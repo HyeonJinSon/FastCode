@@ -379,3 +379,7 @@ section h3 {
   background: var(--background-w);
   font-size: 20px;
 }
+#DoughnutChart {
+  width: 250px;
+  height: 250px;
+}

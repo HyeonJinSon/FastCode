@@ -58,6 +58,9 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/common.php";
 ?>
 <body>
+</div>
+<!-- 로고 및 북마크 위치 끝 -->
+
 <section id="bookmark-menu">
   <h2 class="popup-title"><i class="fa-solid fa-bookmark"></i>즐겨찾기 메뉴</h2>
   <div class="scroll_book">

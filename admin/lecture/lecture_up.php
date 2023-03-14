@@ -105,11 +105,11 @@
                 </div>
                 <div class="col-md-4 row">
                     <h4 class="hidden">시작일</h4>
-                    <input type="text" name="lec_start_date" id="datepicker_start" placeholder="----년 --월 --일"  class="col">
+                    <input type="date" name="lec_start_date" id="datepicker_start" class="col">
                 </div>
                 <div class="col-md-4 row">
                     <h4 class="hidden">종료일</h4>
-                    <input type="text" name="lec_end_date" id="datepicker_end" placeholder="----년 --월 --일" class="col">
+                    <input type="date" name="lec_end_date" id="datepicker_end" class="col">
                 </div>
             </div>
             <div class="row">
@@ -156,18 +156,7 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
-      $( "#datepicker_start" ).datepicker({
-          changeMonth: true,
-          changeYear: true,
-          dateFormat:'yy-mm-dd'
-      });
-      $( "#datepicker_end" ).datepicker({
-          changeMonth: true,
-          changeYear: true,
-          dateFormat:'yy-mm-dd'
-      });
       // $('main h4 + input').hide();
       $('#lec_date').change(function(){
         if($(this).val() == "제한"){

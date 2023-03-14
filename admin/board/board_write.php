@@ -7,6 +7,7 @@
           </script>";
     };
 
+    $book_mark = $_SESSION['ADBOOK'];
     include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
 ?>
@@ -19,8 +20,14 @@
     include $_SERVER['DOCUMENT_ROOT']."/inc/common.php"; 
 ?>
 
-</div>
-<!-- 로고 및 북마크 위치 끝 -->
+        <div class="bookmark">
+          <input type="checkbox" id="bookmark1" />
+          <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
+        </div> 
+      </div>
+      
+  <!-- 로고 및 북마크 위치 끝 -->
+
  <!-- 본문시작 -->
 
  <h2 class="page-title">새 글 작성</h2>
@@ -80,6 +87,59 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php";
 ?>
+
+<script>
+/* ======================= 북마크 ========================= */
+//북마크
+let bookmark = String(<?php echo json_encode($book_mark);?>);
+  // console.log('$_SESSION[ADBOOK] : ' + bookmark);
+  if(bookmark != '0') {
+    if (bookmark.indexOf('2') != -1 ) {
+      $('#bookmark1').attr("checked", true);
+    } else {
+      $('#bookmark1').attr("checked", false);
+    }
+  }
+
+  $('#bookmark1').click(function() {
+    let checked = $(this).is(":checked");
+
+    if(checked == true) {
+      if(bookmark.length > 11){
+        alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
+      } else if(bookmark != '0') {
+        bookmark += ',2';  
+      } else if(bookmark == '0'){
+        bookmark = bookmark.replace('0', '');
+        bookmark += '2';
+      }
+    } else {
+      if(bookmark == '2') {
+        bookmark = '0';
+      } else {
+        bookmark = bookmark.replace(',2' , '');
+      }   
+    }
+    let data = {
+      bookmark: bookmark
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '../dashboard/bookmark.php',
+      data: data,
+      dataType: 'html',
+      error: function(){
+        alert('실패');
+      },
+      success: function (result) {
+        bookmark = result;
+        console.log(bookmark);
+      }
+    });
+  });
+
+</script>
 
 <?php 
     include $_SERVER['DOCUMENT_ROOT']."/inc/foot.php";

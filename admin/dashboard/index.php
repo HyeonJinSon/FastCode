@@ -1,14 +1,13 @@
 <?php
   session_start();
-  $book_mark = $_SESSION['ADBOOK'];
-
-  print_r($book_mark);
+  
   if(!$_SESSION['AUID']){
     echo "<script>
-            alert('접근 권한이 없습니다');
-            history.back();
-        </script>";
+    alert('접근 권한이 없습니다');
+    history.back();
+    </script>";
   };
+  $book_mark = $_SESSION['ADBOOK'];
 
   include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 
@@ -23,11 +22,21 @@
  
   
 //Chart
-  $sql = "SELECT D.name AS 'labels',
-  COUNT(*) AS 'data'
-  FROM lectures L
-  JOIN category D ON L.cate_mid = D.code
-  GROUP by D.name ";
+  $sql = "SELECT X.labels,  X.data
+    FROM (SELECT D.name AS 'labels',
+    COUNT(*) AS 'data',
+      CASE WHEN D.name = '프론트엔드' THEN 1
+          WHEN D.name = '백엔드' THEN 2
+          WHEN D.name = 'UX/UI' THEN 3
+          WHEN D.name = '일반 디자인' THEN 4
+          WHEN D.name = '기타' THEN 5
+          ELSE 100
+      END AS 'orderNumber'
+    FROM lectures L
+    JOIN category D ON L.cate_mid = D.code
+    GROUP by D.name 
+) X
+ORDER BY orderNumber ASC";
 
   $result = $mysqli -> query($sql);
   while($rs = $result ->fetch_object()) {
@@ -221,7 +230,7 @@
       labels: labelsArray,
       datasets: [
         {
-          data: [208, 284, 162, 347, 176],
+          data: [228, 284, 196, 327, 161],
           backgroundColor: [
             "#FFDD67",
             "#A8DADB",

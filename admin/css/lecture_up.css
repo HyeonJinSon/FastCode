@@ -32,6 +32,9 @@
 #drop.drag-over{
     background: var(--highlight-s);
 }
+#drop.drag-over p i.fa-arrow-up-from-bracket {
+    color: #fff;
+}
 #drop.drag-over p span {
     color: #fff;
 }

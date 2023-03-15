@@ -267,21 +267,26 @@ let bookmark = String(<?php echo json_encode($book_mark);?>);
     let checked = $(this).is(":checked");
 
     if(checked == true) {
-      if(bookmark.length > 11){
+      if (bookmark.length < 10) {
+        if(bookmark != '0') {
+          bookmark += ',7';  
+        } else {
+          bookmark = bookmark.replace('0', '');
+          bookmark += '7';
+        }
+      } else {
         alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
-      } else if(bookmark != '0') {
-        bookmark += ',7';  
-      } else if(bookmark == '0'){
-        bookmark = bookmark.replace('0', '');
-        bookmark += '7';
+        $('.bookmark input').prop("checked", false);
       }
+
     } else {
       if(bookmark == '7') {
         bookmark = '0';
       } else {
         bookmark = bookmark.replace(',7' , '');
-      } 
+      }  
     }
+
     let data = {
       bookmark: bookmark
     }

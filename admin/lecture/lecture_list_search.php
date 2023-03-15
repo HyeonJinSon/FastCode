@@ -270,8 +270,6 @@
             </p>
           </form>
           <div class="lec_pagination row">
-            <!-- <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="get" id="page">
-            <input type="submit" value="" name="page" id="pageinput"> -->
             <ul class="row col justify-content-center">
             <?php
             if($block_num > 1){

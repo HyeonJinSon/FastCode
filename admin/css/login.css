@@ -55,7 +55,9 @@ main .field input:focus{
   border: 4px solid #3E88F1;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
-
+main .field input {
+    padding-top:10px;
+}
 /* 배경 하단 */
 .bg-top{
   position: absolute;

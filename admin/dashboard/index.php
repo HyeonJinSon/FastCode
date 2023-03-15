@@ -13,7 +13,7 @@
 
 
 //BookMark List
-  $sql_bookmark = "SELECT * FROM bookmark WHERE pageCode IN ({$book_mark}) LIMIT 0 , 6";
+  $sql_bookmark = "SELECT * FROM bookmark WHERE pageCode IN ({$book_mark}) ORDER BY FIELD(pageCode,{$book_mark}) LIMIT 0 , 6";
   $result_bookmark = $mysqli -> query($sql_bookmark);
 
   while($rs_bookmark = $result_bookmark ->fetch_object()){

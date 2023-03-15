@@ -100,26 +100,31 @@ let bookmark = String(<?php echo json_encode($book_mark);?>);
       $('#bookmark1').attr("checked", false);
     }
   }
-
+  
   $('#bookmark1').click(function() {
     let checked = $(this).is(":checked");
 
     if(checked == true) {
-      if(bookmark.length > 11){
+      if (bookmark.length < 10) {
+        if(bookmark != '0') {
+          bookmark += ',2';  
+        } else {
+          bookmark = bookmark.replace('0', '');
+          bookmark += '2';
+        }
+      } else {
         alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
-      } else if(bookmark != '0') {
-        bookmark += ',2';  
-      } else if(bookmark == '0'){
-        bookmark = bookmark.replace('0', '');
-        bookmark += '2';
+        $('.bookmark input').prop("checked", false);
       }
+
     } else {
       if(bookmark == '2') {
         bookmark = '0';
       } else {
         bookmark = bookmark.replace(',2' , '');
-      }   
+      }  
     }
+
     let data = {
       bookmark: bookmark
     }

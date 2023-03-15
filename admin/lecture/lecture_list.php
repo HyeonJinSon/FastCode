@@ -239,8 +239,6 @@
             </p>
           </form>
           <div class="lec_pagination row">
-            <!-- <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="get" id="page">
-            <input type="submit" value="" name="page" id="pageinput"> -->
             <ul class="row col justify-content-center">
             <?php
             if($block_num > 1){
@@ -332,8 +330,7 @@
       $('#bookmark1').attr("checked", false);
     }
   }
-
-
+    
 $('#bookmark1').click(function() {
     let checked = $(this).is(":checked");
 
@@ -361,7 +358,6 @@ $('#bookmark1').click(function() {
     let data = {
       bookmark: bookmark
     }
-
 
     $.ajax({
       type: 'POST',

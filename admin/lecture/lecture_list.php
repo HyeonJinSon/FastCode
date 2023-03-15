@@ -1,12 +1,14 @@
 <?php 
   session_start();
+  
   if(!$_SESSION['AUID']){
     echo "<script>
-            alert('접근 권한이 없습니다');
-            history.back();
-        </script>";
+    alert('접근 권한이 없습니다');
+    history.back();
+    </script>";
   };
-
+  $book_mark = $_SESSION['ADBOOK'];
+  
   include $_SERVER['DOCUMENT_ROOT']."/inc/head.php";
 ?>
 
@@ -332,21 +334,23 @@
   }
 
 
-  $('#bookmark1').click(function() {
+$('#bookmark1').click(function() {
     let checked = $(this).is(":checked");
 
-    if(checked == true) {
-      if(bookmark.length > 11){
+    if(checked == true) { 
+      if (bookmark.length < 10) {
+        if(bookmark != '0') {
+          bookmark += ',5';  
+        } else {
+          bookmark = bookmark.replace('0', '');
+          bookmark += '5';
+        }
+      } else {
         alert('즐겨찾기는 최대 6개까지만 설정 가능합니다.');
-      } else if(bookmark != '0') {
-        bookmark += ',5';  
-      } else if(bookmark == '0'){
-        bookmark = bookmark.replace('0', '');
-        bookmark += '5';
+        $('.bookmark input').prop("checked", false);
       }
 
-
-    } else {
+    } else { 
       if(bookmark == '5') {
         bookmark = '0';
       } else {

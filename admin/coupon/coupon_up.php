@@ -216,7 +216,9 @@ let bookmark = String(<?php echo json_encode($book_mark);?>);
         bookmark = bookmark.replace(',8' , '');
       }  
     }
-
+    let data = {
+      bookmark: bookmark
+    }
     $.ajax({
       type: 'POST',
       url: '../dashboard/bookmark.php',

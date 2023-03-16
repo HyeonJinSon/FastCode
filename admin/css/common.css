@@ -6,6 +6,7 @@
 body {
   font-family: "Pretendard";
   color: var(--typography);
+  background: var(--background-g);
 }
 
 /* padding */
@@ -199,7 +200,7 @@ body {
   position: relative;
   margin-left: 328px;
   background: var(--background-g);
-  height: 100vh;
+  height: auto;
 }
 .content-body .content-top {
   position: absolute;

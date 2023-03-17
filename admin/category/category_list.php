@@ -42,13 +42,10 @@
               </tr>
             </thead>
             <tbody>
-              <!-- 각 cate1, 2, 3의 name이 td 내용으로 출력 -->
               <?php while($row = $result->fetch_assoc()) { ?>
               <tr class="cate_list">
-                <!-- colspan="각 cate1 아래의 cate3 총 개수" -->
-                <td class="cate1" colspan=""></td>
-                <!-- colspan="각 cate2 아래의 cate3 총 개수" -->
-                <td class="cate2" colspan=""></td>
+                <td class="cate1"></td>
+                <td class="cate2"></td>
                 <td class="cate3" data-pcode="<?php echo $row['pcode']; ?>"><?php echo $row['name']; ?></td>
               </tr>
               <?php } ?>

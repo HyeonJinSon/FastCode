@@ -26,14 +26,14 @@
             <label for="bookmark1"><i class="fa-solid fa-bookmark"></i></label>
           </div>
         </div>
-        <main class="">
+        <main>
           <h2 class="page-title">카테고리 리스트</h2>
-          <div class="cate_list_btn_wrapper row pd-54">
+          <div class="cate_list_btn_wrapper d-flex pd-54">
             <a href="category.php" class="y-btn big-btn btn-navy">카테고리 추가</a>
             <a href="#" class="y-btn big-btn btn-sky">카테고리 수정</a>
             <a href="#" class="y-btn big-btn btn-red">카테고리 삭제</a>
           </div>
-          <table class="">
+          <table>
             <thead>
               <tr class="text-center">
                 <th scope="col" class="content-text-1">대분류</th>

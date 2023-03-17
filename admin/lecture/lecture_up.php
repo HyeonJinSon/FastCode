@@ -143,7 +143,7 @@
               <div id="classplus">
                 <div class="row justify-content-between g35 lec_video_up" id="class_content">
                     <input type="text" id="class_name" name="class_name[]" class="col-md-4" placeholder="강의명을 입력하세요">
-                    <input type="url" id="class_url" name="class_url[]" class="col-md-8" placeholder="주소를 입력하세요">
+                    <input type="url" id="class_url" name="class_url[]" class="col-md-7" placeholder="주소를 입력하세요">
                 </div>
               </div>
             </div>

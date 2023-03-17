@@ -47,8 +47,8 @@
 #thumbnails .thumb img{
     width: 100%;
 }
-main h2 {
-    margin-bottom: 78px;
+main h2.page-title {
+    margin: 81px 0 78px -12px;
 }
 main h3, h4 {
     font-size: 24px;

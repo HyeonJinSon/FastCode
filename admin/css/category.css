@@ -1,6 +1,9 @@
 body {
   background: var(--background-g);
 }
+main h2.page-title {
+  margin: 81px 0 81px -12px;
+}
 input,
 select {
   padding: 15px 25px;

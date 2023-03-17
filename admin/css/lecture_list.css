@@ -4,6 +4,9 @@ main h2 + a {
 .content-body {
   height: auto;
 }
+main h2.page-title {
+    margin: 81px 0 78px -12px;
+}
 .form-control,
 .form-select,
 #search_keyword {

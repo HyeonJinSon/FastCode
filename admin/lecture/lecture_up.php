@@ -135,13 +135,13 @@
                   </div>
               </div>
             </div>
-            <div class="row">
+            <div class="d-flex flex-column">
               <div class="row">
                 <h3 class="col-auto">강의 영상 업로드</h3>
                 <span class="lec_upload col-auto"><i class="fa-solid fa-square-plus" onclick="classplus()"></i></span>
               </div>
               <div id="classplus">
-                <div class="row justify-content-between g35 lec_video_up" id="class_content">
+                <div class="d-flex justify-content-between g35 lec_video_up" id="class_content">
                     <input type="text" id="class_name" name="class_name[]" class="col-md-4" placeholder="강의명을 입력하세요">
                     <input type="url" id="class_url" name="class_url[]" class="col-md-7" placeholder="주소를 입력하세요">
                 </div>

@@ -61,7 +61,7 @@
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div class="d-flex flex-column">
               <h3>강좌명</h3>
               <input type="text" name="name" id="name" placeholder="강좌명을 입력하세요" class="col-md-12 form-control">
             </div>

@@ -159,7 +159,7 @@
               ?>
               <input type="hidden" name="lecid[]" value="<?php echo $r->lecid; ?>">
               <!-- <?php echo $r->lecid; ?> -->
-              <li class="row">
+              <li class="d-flex">
                 <figure class="col-md-2">
                   <!-- <img src="https://placehold.co/198x135" alt=""> -->
                   <img src="<?php echo $r->thumbnail;?>" alt="" class="thumbnail_img_preview">

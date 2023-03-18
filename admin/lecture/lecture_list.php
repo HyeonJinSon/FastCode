@@ -91,7 +91,7 @@
 
           <form action="lecture_list_search.php" method="get" id="sort_container">
             <div class="row justify-content-between align-items-start">
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate1" id="cate1" class="col form-select">
                   <option selected value="">대분류 선택</option>
                   <!-- {category1} -->
@@ -104,7 +104,7 @@
                     ?>
                 </select>
               </div>
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate2" id="cate2" class="col form-select">
                   <option selected value="">중분류 선택</option>
                     <?php 
@@ -116,7 +116,7 @@
                     ?>
                 </select>
               </div>
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate3" id="cate3"  class="col form-select">
                   <option selected value="">소분류 선택</option>
                     <?php 
@@ -131,7 +131,7 @@
             </div>
             <div class="row justify-content-between align-items-start">
               <!-- lec_option_change.php -->
-              <div class="row justify-content-between lec_option align-items-center col-md-4">
+              <div class="d-flex justify-content-between lec_option align-items-center col-md-4">
                 <input type="checkbox" name="recom" id="recom" value="1" class="col" <?php if($recom){echo "checked";}?>>
                 <label for="recom" class="col">추천</label>
                 <input type="checkbox" name="forbegin" id="forbegin" value="1" class="col" <?php if($forbegin){echo "checked";}?>>
@@ -146,7 +146,7 @@
               <!-- <label for="search_keyword"><i class="fa-solid fa-magnifying-glass"></i></label> -->
               <input type="text" class="col-md-6" name="search_keyword" id="search_keyword" value="<?php echo $search_keyword;?>">
               <!--  placeholder="&#xF002;"  style="font-family:Pretendard, FontAwesome" -->
-              <button type="submit" id="search" class="col-md-2 y-btn mid-btn btn-sky">검색하기</button>
+              <button type="submit" id="search" class="col-md-1 y-btn mid-btn btn-sky">검색하기</button>
             </div>
           </form>
 

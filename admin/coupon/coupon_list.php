@@ -79,14 +79,14 @@
   </form>
 </div>
 
-        <?php
+  <!-- list 수정 0320 -->
+    <ul>
+    <?php
             if(isset($rsc)){
                 foreach($rsc as $r){ //조회된 쿠폰 출력
               
         ?>    
-        <!-- 이거 리스트인데 이렇게짜도되나...? -->
-    <ul class="coupon_list">
-        <li id="<?= $r -> cid;?>" class="list_contents">
+        <li id="<?= $r -> cid;?>"  class="coupon_list">
             <figure>
                 <img src="<?= $r -> file; ?>" alt="" />
             </figure>
@@ -138,13 +138,13 @@
             </div>
         </li>
 
-    </ul>
+    
     <?php } } else { ?>
               <!-- 검색결과없을때 -->
-              <div class="coupon_list d-flex align-items-center justify-content-center">
-                <div class="big_titles text-center"> 등록된 쿠폰이 없습니다.</div></div>
+              <li class="coupon_list d-flex align-items-center justify-content-center">
+                <div class="big_titles text-center"> 등록된 쿠폰이 없습니다.</div></li>
               <?php } ?>
-
+</ul>
 <!-- 페이지네이션 -->
 <div class="coupon_pagination row">
   <ul class="row col justify-content-center">

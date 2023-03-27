@@ -227,6 +227,7 @@ header .search {
     height: 32px;
     border-bottom: 1px solid var(--primary-n);
     position: relative;
+    padding: 0 5px;
 }
 header .search input {
     line-height: 32px;

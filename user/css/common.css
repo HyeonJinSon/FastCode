@@ -144,6 +144,22 @@ body {
 .lec_play:hover i {
   color: var(--primary-r);
 }
+/* top button */
+.top-btn {
+  width: 70px;
+  height: 70px;
+  background: rgba(168, 218, 219, 0.9);
+  color: var(--primary-n);
+  font-size: 25px;
+  border-radius: 35px;
+  line-height: 70px;
+  text-align: center;
+  transition: 0.2s;
+}
+.top-btn:hover {
+  background: rgba(229, 57, 69, 0.9);
+  color: var(--background-w);
+}
 
 /* header */
 header {

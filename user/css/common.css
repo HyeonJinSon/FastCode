@@ -170,6 +170,18 @@ header {
 header nav ul {
     gap: 30px;
 }
+.member-info {
+    gap: 40px;
+}
+.member-info li a {
+    position: relative;
+}
+.member-info li a span {
+    clip-path: inset(50% 50% 50% 50%);
+    position: absolute;
+    width: 0;
+    height: 0;
+}
 
 
 /* Footer */

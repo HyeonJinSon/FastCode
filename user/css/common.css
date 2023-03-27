@@ -1,0 +1,131 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css");
+@import url(reset.css);
+
+body {
+  font-family: "Pretendard";
+  color: var(--typography);
+}
+
+/* padding */
+.pd-54 {
+  padding: 54px 0;
+}
+.pd-81 {
+  padding: 81px 0;
+}
+.content-pd {
+  padding: 50px 114px 135px;
+}
+
+/* Color */
+:root {
+  --primary-r: #e53945;
+  --primary-n: #1d3557;
+  --highlight-s: #457b9d;
+  --highlight-m: #a8dad8;
+  --background-g: #e0e9ef;
+  --background-w: #fff;
+  --typography: #161616;
+}
+
+/* Title, Content, Menu font */
+.main-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+.popup-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.sub-title {
+  font-size: 21px;
+  font-weight: 600;
+}
+.content-title {
+  font-size: 20px;
+}
+.content-text-1 {
+  font-size: 18px;
+}
+.content-text-2 {
+  font-size: 16px;
+  line-height: 18px;
+}
+.content-text-3 {
+  font-size: 14px;
+  line-height: 18px;
+}
+.main-menu-ft {
+  font-size: 18px;
+  font-weight: 600;
+}
+.sub-menu-ft {
+  font-size: 16px;
+  line-height: 18px;
+}
+/* Buttons */
+.y-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.big-btn {
+  width: 200px;
+  height: 54px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.small-btn {
+  width: 142px;
+  height: 46.46px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.btn-navy {
+  background: var(--primary-n);
+  border: 3px solid var(--primary-n);
+  color: var(--background-w);
+}
+.btn-sky {
+  background: var(--highlight-s);
+  border: 3px solid var(--highlight-s);
+  color: var(--background-w);
+}
+.btn-red {
+  background: var(--primary-r);
+  border: 3px solid var(--primary-r);
+  color: var(--background-w);
+}
+.btn-navy:hover {
+  background: transparent;
+  color: var(--primary-n);
+}
+.btn-sky:hover {
+  background: transparent;
+  color: var(--highlight-s);
+}
+.btn-red:hover {
+  background: transparent;
+  color: var(--primary-r);
+}
+/* others */
+
+.lec_play i {
+  font-size: 30px;
+  color: var(--highlight-s);
+}
+
+.lec_play:hover i {
+  color: var(--primary-r);
+}

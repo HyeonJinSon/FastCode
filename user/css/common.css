@@ -168,8 +168,35 @@ header {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 header nav ul {
-    gap: 30px;
+    gap: 40px;
     line-height: 90px;
+}
+header nav ul li a {
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+header nav ul li a:hover {
+    color: var(--primary-r);
+}
+header .search {
+    width: 300px;
+    height: 32px;
+    border-bottom: 1px solid var(--primary-n);
+    position: relative;
+}
+header .search input {
+    line-height: 32px;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+}
+header .search i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .member-info {
     gap: 40px;
@@ -177,6 +204,11 @@ header nav ul {
 .member-info li i {
     font-size: 24px;
     line-height: 90px;
+    color: var(--primary-n);
+    transition: 0.3s;
+}
+.member-info li i:hover {
+    color: var(--primary-r);
 }
 .member-info li a {
     position: relative;

@@ -170,3 +170,28 @@ header {
 header nav ul {
     gap: 30px;
 }
+
+
+/* Footer */
+footer {
+  background: var(--highlight-s);
+  color: var(--background-w);
+  padding: 54px 0;
+}
+footer a {
+  color: var(--background-w);
+}
+#main-logo a img {
+  width: 201px;
+  height: 45px;
+}
+footer .footer_top {
+  justify-content: space-between;
+}
+footer .footer_top .footer_menu,
+footer .footer_top .footer_sns{
+  gap:30px;
+}
+footer .footer_top .footer_sns li i{
+  font-size: 30px;
+}

@@ -77,11 +77,11 @@
                         <label for="passwd" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
                         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="비밀번호를 입력하세요" required />
                     </div>
-                    <div class="input_info">
+                    <div class="input_info passwd_check">
                         <label for="passwd_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
                         <input type="password" class="form-control" id="passwd_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()"/>
+                        <span id="check"></span>
                     </div>
-                    <span id="check"></span>
 
                     <div class="input_info">
                         <h3>프로필 이미지</h3>
@@ -154,7 +154,7 @@
 
                     <button type="button" class="big-btn btn-red" id="signup">회원가입</button>
                 </form>
-            </section>`
+            </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 

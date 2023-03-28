@@ -50,11 +50,11 @@
             </section>
             <section class="signup">
                 <div class="member_btn d-flex justify-content-evenly">
-                    <a href="" class="d-flex flex-column-reverse login_btn">
+                    <a href="login.html" class="d-flex flex-column-reverse login_btn">
                         <h3 class="content-title">로그인</h3>
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     </a>
-                    <a href="" class="d-flex flex-column-reverse signup_btn">
+                    <a href="signup.html" class="d-flex flex-column-reverse signup_btn">
                         <h3 class="content-title">회원가입</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </a>
@@ -62,34 +62,34 @@
                 <form action="signup_ok.php">
                     <h2 class="main-title">회원가입</h2>
                     <div class="input_info">
-                        <label for="name" class="form-label">이름</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요" required />
+                        <label for="username" class="form-label">이름</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="이름을 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="id" class="form-label">아이디</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" required />
+                        <label for="userid" class="form-label">아이디</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="text" class="form-control" name="userid" id="userid" placeholder="아이디를 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="password" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
+                        <label for="passwd" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="password" class="form-control" name="passwd" id="passwd" placeholder="비밀번호를 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="password_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="password" class="form-control" id="password_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()" />
+                        <label for="passwd_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="password" class="form-control" name="passwd_ok" id="passwd_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()" />
                     </div>
                     <span id="check"></span>
 
                     <div class="input_info">
                         <h3>프로필 이미지</h3>
                         <label class="profile_img_btn" for="profile_img">파일 선택</label>
-                        <input type="file" id="profile_img" />
+                        <input type="file" name="profile_img" id="profile_img" />
                     </div>
 
                     <div class="plus_info">
                         <h3>관심 카테고리</h3>
                         <div class="input_info cate_like">
-                            <label for="cate_like1" class="form-label">관심 카테고리1</label>
-                            <select name="cate_like" id="cate_like1" class="form-select">
+                            <label for="cate1" class="form-label">관심 카테고리1</label>
+                            <select name="cate1" id="cate1" class="form-select">
                                 <option selected value="">관심있는 카테고리를 선택하세요</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -97,8 +97,8 @@
                             </select>
                         </div>
                         <div class="input_info cate_like">
-                            <label for="cate_like2" class="form-label">관심 카테고리2</label>
-                            <select name="cate_like" id="cate_like2" class="form-select">
+                            <label for="cate2" class="form-label">관심 카테고리2</label>
+                            <select name="cate2" id="cate2" class="form-select">
                                 <option selected value="">관심있는 카테고리를 선택하세요</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -107,33 +107,33 @@
                         </div>
 
                         <label for="ability_range" class="form-label ability_range">나의 실력</label>
-                        <input type="range" class="form-range" min="0" max="5" id="ability_range" />
+                        <input type="range" class="form-range" min="0" max="5" name="ability_range" id="ability_range" />
                     </div>
 
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="total-agree" required />
+                        <input type="checkbox" class="form-check-input" id="total-agree" />
                         <label for="total-agree" class="form-check-label">전체 약관 동의</label>
                     </div>
                     <hr />
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="use-agree" required />
+                        <input type="checkbox" class="form-check-input" name="use_agree" id="use_agree" value="1" required />
                         <div class="view_more d-flex justify-content-between">
-                            <label for="use-agree" class="form-check-label">[필수] 패스트코드 이용 약관에 동의<i class="fa-solid fa-asterisk"></i></label><i class="fa-solid fa-angle-right"></i>
+                            <label for="use_agree" class="form-check-label">[필수] 패스트코드 이용 약관에 동의<i class="fa-solid fa-asterisk"></i></label><i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="personalinfo-agree" required />
+                        <input type="checkbox" class="form-check-input" name="personalinfo_agree" id="personalinfo_agree" value="1" required />
                         <div class="view_more d-flex justify-content-between">
-                            <label for="personalinfo-agree" class="form-check-label">[필수] 개인정보 수집 및 이용에 동의<i class="fa-solid fa-asterisk"></i></label>
+                            <label for="personalinfo_agree" class="form-check-label">[필수] 개인정보 수집 및 이용에 동의<i class="fa-solid fa-asterisk"></i></label>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="marketing-agree" />
-                        <div class="view_more d-flex justify-content-between"><label for="marketing-agree" class="form-check-label">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</label><i class="fa-solid fa-angle-right"></i></div>
+                        <input type="checkbox" class="form-check-input" name="marketing_agree" id="marketing_agree" value="1" />
+                        <div class="view_more d-flex justify-content-between"><label for="marketing_agree" class="form-check-label">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</label><i class="fa-solid fa-angle-right"></i></div>
                     </div>
 
-                    <button type="submit" class="big-btn btn-red">회원가입</button>
+                    <button type="button" class="big-btn btn-red" id="signup">회원가입</button>
                 </form>
             </section>
         </div>

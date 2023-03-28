@@ -1,3 +1,7 @@
+<?php
+    include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -59,23 +63,23 @@
                         <i class="fa-solid fa-user-plus"></i>
                     </a>
                 </div>
-                <form action="signup_ok.php">
+                <form action="signup_ok.php" method="post">
                     <h2 class="main-title">회원가입</h2>
                     <div class="input_info">
-                        <label for="name" class="form-label">이름</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요" required />
+                        <label for="username" class="form-label">이름</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="text" class="form-control" id="username" placeholder="이름을 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="id" class="form-label">아이디</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" required />
+                        <label for="userid" class="form-label">아이디</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="text" class="form-control" id="userid" placeholder="아이디를 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="password" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
+                        <label for="passwd" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="password" class="form-control" id="passwd" placeholder="비밀번호를 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="password_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="password" class="form-control" id="password_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()" />
+                        <label for="passwd_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
+                        <input type="password" class="form-control" id="passwd_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()"/>
                     </div>
                     <span id="check"></span>
 
@@ -111,37 +115,38 @@
                     </div>
 
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="total-agree" required />
+                        <input type="checkbox" class="form-check-input" id="total-agree" />
                         <label for="total-agree" class="form-check-label">전체 약관 동의</label>
                     </div>
                     <hr />
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="use-agree" required />
-                        <div class="view_more d-flex justify-content-between">
-                            <label for="use-agree" class="form-check-label">[필수] 패스트코드 이용 약관에 동의<i class="fa-solid fa-asterisk"></i></label><i class="fa-solid fa-angle-right"></i>
+                        <input type="checkbox" class="form-check-input" id="use_agree" value="1" required />
+                        <div class="view_more d-flex justify-content-between"> 
+                            <label for="use_agree" class="form-check-label">[필수] 패스트코드 이용 약관에 동의<i class="fa-solid fa-asterisk"></i></label><i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="personalinfo-agree" required />
+                        <input type="checkbox" class="form-check-input" id="personalinfo_agree" value="1" required />
                         <div class="view_more d-flex justify-content-between">
-                            <label for="personalinfo-agree" class="form-check-label">[필수] 개인정보 수집 및 이용에 동의<i class="fa-solid fa-asterisk"></i></label>
+                            <label for="personalinfo_agree" class="form-check-label">[필수] 개인정보 수집 및 이용에 동의<i class="fa-solid fa-asterisk"></i></label>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="marketing-agree" />
-                        <div class="view_more d-flex justify-content-between"><label for="marketing-agree" class="form-check-label">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</label><i class="fa-solid fa-angle-right"></i></div>
+                        <input type="checkbox" class="form-check-input" id="marketing_agree" value="1" />
+                        <div class="view_more d-flex justify-content-between"><label for="marketing_agree" class="form-check-label">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</label><i class="fa-solid fa-angle-right"></i></div>
                     </div>
 
-                    <button type="submit" class="big-btn btn-red">회원가입</button>
+                    <button type="button" class="big-btn btn-red" id="signup">회원가입</button>
                 </form>
             </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
         <script>
             function check_pw() {
-                let pw = document.getElementById("password").value;
-                let pw2 = document.getElementById("password_ok").value;
+                let pw = document.getElementById("passwd").value;
+                let pw2 = document.getElementById("passwd_ok").value;
                 let check = document.getElementById("check");
 
                 if (pw != "" && pw2 != "") {
@@ -154,6 +159,30 @@
                     }
                 }
             }
+
+            $('#signup').click(function(){
+                let username = $('#username').val();
+                let userid = $('#userid').val();
+
+                var data={
+                    username : username,
+                    userid : userid
+                }
+                $.ajax({
+                    async:false,
+                    type:'post',
+                    url:'signup_check.php',
+                    data:data,
+                    dataType:'json',
+                    success : function(result){
+                        if(result.cnt>0){
+                            alert('이미 가입된 회원입니다, 다시 확인해주세요');
+                        } else{
+                            $('form').submit();
+                        }
+                    }
+                })
+            });
         </script>
     </body>
 </html>

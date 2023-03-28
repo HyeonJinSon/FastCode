@@ -7,6 +7,8 @@
     <title>나의 장바구니 | Fastcode</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/cart.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   </head>
   <body>
     <header class="">
@@ -78,7 +80,7 @@
             <li class="d-flex">
               <img src="" alt="" />
               <div class="cart_list_contents">
-                <h3 class="content-text-1">Javascript 입문 기초 문법 강의</h3>
+                <h3 class="content-text-1 lititle">Javascript 입문 기초 문법 강의</h3>
                 <span class="content-text-1">50,000원</span>
                 <span class="content-text-1">무제한</span>
               </div>
@@ -87,7 +89,7 @@
             <li class="d-flex">
               <img src="" alt="" />
               <div class="cart_list_contents">
-                <h3 class="content-text-1">
+                <h3 class="content-text-1 lititle">
                   Figma 디자인 기초부터 실전까지 - 실전편
                 </h3>
                 <span class="content-text-1">50,000원</span>
@@ -119,6 +121,21 @@
             <button class="y-btn big-btn btn-sky">결제하기</button>
           </div>
         </form>
+      </div>
+      <!-- 삭제 팝업 HTML -->
+      <div class="background">
+        <div class="window">
+          <div class="popup">
+            <div class="d-flex align-items-center">
+              <p class="title sub-title">강좌를 삭제하시겠습니까?</p>
+              <input type="text" placeholder="">
+              <div class="popup_btns d-flex">
+                <a id="close" class="y-btn small-btn btn-navy">취소하기</a>
+                <a id="deletebtn" class="y-btn small-btn btn-red" >삭제하기</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Footer -->
@@ -178,5 +195,36 @@
         </div>
       </div>
     </footer>
+    <script>
+    // 삭제 팝업
+    function show() {
+    document.querySelector(".background").className = "background show";
+  }
+
+  //장바구니 페이지에서 삭제 버튼 누르면
+  //배경색 살짝 어둡게, 팝업 보이게
+  $(".cart_item_del").click(function(){
+    $(".background").addClass('show');
+    let li = $(this).closest('li');
+    let cid = li.attr('id');
+    let title = li.find('.lititle').text();
+    $(".background").find('input').attr('placeholder',title);
+
+    //팝업에서 삭제 버튼 누르면
+    $('#deletebtn').click(()=>{
+      delAjax(cid, './cart_del.php', './cart.php')
+    });
+    
+    let data = {
+            cid:cid
+        }
+
+  });
+  
+  // 취소 버튼 누르면 할일
+  $("#close").click(function(){
+    $(".background").removeClass('show');
+  });
+    </script>
   </body>
 </html>

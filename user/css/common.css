@@ -124,15 +124,15 @@ body {
   color: var(--background-w);
 }
 .btn-navy:hover {
-  background: transparent;
+  background: var(--background-w);
   color: var(--primary-n);
 }
 .btn-sky:hover {
-  background: transparent;
+  background: var(--background-w);
   color: var(--highlight-s);
 }
 .btn-red:hover {
-  background: transparent;
+  background: var(--background-w);
   color: var(--primary-r);
 }
 /* others */

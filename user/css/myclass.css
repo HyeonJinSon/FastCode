@@ -1,0 +1,147 @@
+.class_banner {
+  background: var(--primary-n);
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 55px 125px 40px 100px;
+}
+.class_banner div {
+  font-size: 18px;
+  color: var(--background-g);
+  font-weight: 600;
+}
+.class_banner span {
+  color: #fff;
+  font-size: 48px;
+  margin-left: 30px;
+}
+.class_title {
+  gap: 35px;
+  padding-right: 50px;
+  margin-bottom: 40px;
+}
+.class_title h2 a {
+  color: #fff;
+  transition: color 0.15s;
+}
+.class_title h2:hover a {
+  color: var(--highlight-c);
+}
+.class_profile {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.class_profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.class_content aside h2 {
+  text-align: center;
+  margin: 54px 0 18px;
+}
+.class_content aside h2 a {
+  padding: 6px 24px;
+  background: var(--highlight-s);
+  border-radius: 15px;
+  color: #fff;
+  transition: background 0.15s;
+}
+.class_content aside h2:hover a {
+  background: var(--primary-r);
+}
+.class_content aside .class_nav {
+  border-radius: 50px;
+  border: 2px solid var(--background-g);
+  background: #fff;
+  padding: 36px 70px 36px 50px;
+}
+.class_content aside .class_nav li + li {
+  margin-top: 33px;
+}
+.class_content aside .class_nav li a {
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+.class_content aside .class_nav li:hover a {
+  color: var(--highlight-c);
+}
+.myLec_wrapper {
+  margin: 90px 0 270px;
+}
+.myLec {
+  width: 300px;
+  height: 361px;
+  border-radius: 50px;
+  position: relative;
+}
+.myLec_img {
+  border-radius: 50px;
+  width: 300px;
+  height: 227px;
+  z-index: -1;
+}
+.myLec_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.myLec_info {
+  border-radius: 50px;
+  z-index: 1;
+  background: #fff;
+  border: 2px solid var(--background-g);
+  transition: 0.3s;
+  width: 300px;
+  height: 197px;
+  margin-top: -62px;
+  padding: 26px 34px 52px 44px;
+  flex-direction: column;
+  gap: 50px;
+}
+.myLec_info h3 {
+  font-weight: 600;
+  color: var(--primary-n);
+}
+.myLec_go_btn {
+  display: inline-block;
+  padding: 17px 18px;
+  background: rgba(168,218,219,.65);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.myLec_go_btn i {
+  color: var(--primary-n);
+  transition: 0.3s;
+}
+.myLec:hover .myLec_info{
+  background: var(--highlight-m);
+}
+.myLec:hover .myLec_go_btn {
+  background: #fff;
+}
+.myLec:hover .myLec_go_btn i {
+  color: var(--highlight-c);
+}
+.lec_disabled:before {
+  content: '수강이 만료되었습니다';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(78,78,78,.8);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  z-index: 5;
+  border-radius: 50px;
+}
+.myLec_container {
+  gap: 54px 40px;
+}

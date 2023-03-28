@@ -304,7 +304,13 @@ footer a {
   height: 45px;
 }
 footer .footer_top {
-  justify-content: space-between;
+  position: relative;
+  margin-bottom: 36px;
+}
+footer .footer_top .footer_sns {
+  position: absolute;
+  right: 0;
+  top: -6px;
 }
 footer .footer_top .footer_menu,
 footer .footer_top .footer_sns {
@@ -316,6 +322,9 @@ footer .footer_top .footer_sns li i {
 footer .footer_bottom .footer_contents {
   flex-direction: column;
   margin-left: 24px;
+}
+footer .footer_bottom .footer_contents .content-title {
+  line-height: 36px;
 }
 footer .footer_bottom .footer_copyright {
   flex: 1;

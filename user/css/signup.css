@@ -2,20 +2,32 @@ body {
     background: var(--background-g);
 }
 .container section {
-    width: 50%;
+    width: 648px;
 }
 
 .deco {
     position: fixed;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
 }
 
 .signup {
-    margin: 112px 0 112px 648px;
+    margin: 102px 0 112px 648px;
 }
 .member_btn {
     text-align: center;
     margin-bottom: 54px;
+}
+.member_btn a {
+    color: var(--primary-n);
+    transition: 0.3s;
+}
+.member_btn a:hover {
+    color: var(--primary-r);
 }
 .member_btn a {
     gap: 15px;
@@ -23,12 +35,86 @@ body {
 .member_btn a i {
     font-size: 30px;
 }
+
 .signup form {
     background: #fff;
     padding: 54px 112px 90px;
+    box-sizing: border-box;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
 .signup form h2 {
     text-align: center;
+    margin-bottom: 72px;
+}
+.signup .input_info {
+    border-bottom: 1px solid var(--primary-n);
+    margin-bottom: 36px;
+}
+.signup .input_info label {
+    font-size: 18px;
+}
+.signup .input_info input {
+    font-size: 16px;
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+}
+.form-control {
+    border-radius: 0;
+}
+.signup .input_info .profile_img_btn {
+    font-size: 14px;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 5px;
+    background: #3e88f1;
+    line-height: 27px;
+    position: absolute;
+    border: 1px solid var(--primary-n);
+}
+.signup form h3 {
+    margin-bottom: 0.5rem;
+}
+
+.plus_info {
+    margin: 72px 0;
+}
+.signup form .cate_like {
+    margin-bottom: 12px;
+}
+.signup form .cate_like select {
+    font-size: 16px;
+    height: 42px;
+    line-height: 36px;
+    border: none;
+    border-radius: 0;
+}
+.cate_like label {
+    display: none;
+}
+.ability_range {
+    margin-top: 24px;
+}
+.form-check {
+    margin-bottom: 0.5rem;
+}
+.form-check label {
+    line-height: 24px;
+}
+form button {
+    display: block;
+    margin: 108px auto 0;
+}
+
+.fa-asterisk {
+    color: #ff4141;
+    font-size: 10px;
+    padding-left: 10px;
+}
+.fa-angle-right {
+    line-height: 24px;
 }

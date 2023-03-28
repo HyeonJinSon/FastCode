@@ -63,6 +63,15 @@ body {
     background: none;
     outline: none;
 }
+.signup .passwd_check {
+    position: relative;
+    margin-bottom: 52px;
+}
+.signup .passwd_check #check {
+    position: absolute;
+    top: 120%;
+    left: 0;
+}
 .form-control {
     border-radius: 0;
 }

@@ -16,7 +16,7 @@ body {
 }
 
 .signup {
-    margin: 102px 0 112px 648px;
+    margin: 52px 0 112px 648px;
 }
 .member_btn {
     text-align: center;
@@ -38,7 +38,7 @@ body {
 
 .signup form {
     background: #fff;
-    padding: 54px 112px 90px;
+    padding: 54px 112px 72px;
     box-sizing: border-box;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -117,4 +117,11 @@ form button {
 }
 .fa-angle-right {
     line-height: 24px;
+}
+
+.login_section {
+    margin-bottom: 52px;
+}
+#login {
+    margin: 84px auto 0;
 }

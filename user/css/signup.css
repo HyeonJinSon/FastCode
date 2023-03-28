@@ -1,0 +1,34 @@
+body {
+    background: var(--background-g);
+}
+.container section {
+    width: 50%;
+}
+
+.deco {
+    position: fixed;
+    height: 100vh;
+}
+
+.signup {
+    margin: 112px 0 112px 648px;
+}
+.member_btn {
+    text-align: center;
+    margin-bottom: 54px;
+}
+.member_btn a {
+    gap: 15px;
+}
+.member_btn a i {
+    font-size: 30px;
+}
+.signup form {
+    background: #fff;
+    padding: 54px 112px 90px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.signup form h2 {
+    text-align: center;
+}

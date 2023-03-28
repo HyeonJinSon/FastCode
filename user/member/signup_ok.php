@@ -7,8 +7,8 @@ $userid=$_POST["userid"];
 $passwd=$_POST["passwd"];
 $passwd=hash('sha512',$passwd);
 $profile_img=$_POST["profile_img"];
-$cate_like1=$_POST["cate_like1"];
-$cate_like2=$_POST["cate_like2"];
+$cate1=$_POST["cate1"];
+$cate2=$_POST["cate2"];
 $ability=$_POST["ability_range"];
 $use_agree=$_POST["use_agree"];
 $personalinfo_agree=$_POST["personalinfo_agree"];
@@ -55,7 +55,7 @@ try {
     //회원가입
     $query="INSERT INTO members
     (username, userid, userpw, profile_img, cate_like1, cate_like2, ability, use_agree, personalinfo_agree, marketing_agree)
-    VALUES('".$username."','".$userid."','".$passwd."','".$profile_img."','".$cate_like1."','".$cate_like2."','".$ability."','".$use_agree."','".$personalinfo_agree."','".$marketing_agree."')";
+    VALUES('".$username."','".$userid."','".$passwd."','".$profile_img."','".$cate1."','".$cate2."','".$ability."','".$use_agree."','".$personalinfo_agree."','".$marketing_agree."')";
     $rs=$mysqli->query($query) or die($mysqli->error);
      
     $mysqli->commit();//디비에 커밋한다.

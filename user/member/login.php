@@ -52,7 +52,7 @@
                 <p>쉽게 배우는 코딩</p>
                 <p>재밌게 배우는 코딩</p>
             </section>
-            <section class="signup">
+            <section class="signup login_section">
                 <div class="member_btn d-flex justify-content-evenly">
                     <a href="login.php" class="d-flex flex-column-reverse login_btn">
                         <h3 class="content-text-1">로그인</h3>
@@ -63,141 +63,25 @@
                         <i class="fa-solid fa-user-plus"></i>
                     </a>
                 </div>
-                <form action="signup_ok.php" method="post">
-                    <h2 class="main-title">회원가입</h2>
+                <form action="login_ok.php" method="post">
+                    <h2 class="main-title">로그인</h2>
                     <div class="input_info">
-                        <label for="username" class="form-label">이름</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="이름을 입력하세요" required />
-                    </div>
-                    <div class="input_info">
-                        <label for="userid" class="form-label">아이디</label><i class="fa-solid fa-asterisk"></i>
+                        <label for="userid" class="form-label">아이디</label>
                         <input type="text" class="form-control" name="userid" id="userid" placeholder="아이디를 입력하세요" required />
                     </div>
                     <div class="input_info">
-                        <label for="passwd" class="form-label">비밀번호</label><i class="fa-solid fa-asterisk"></i>
+                        <label for="passwd" class="form-label">비밀번호</label>
                         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="비밀번호를 입력하세요" required />
                     </div>
-                    <div class="input_info">
-                        <label for="passwd_ok" class="form-label">비밀번호 확인</label><i class="fa-solid fa-asterisk"></i>
-                        <input type="password" class="form-control" id="passwd_ok" placeholder="비밀번호를 입력하세요" required onchange="check_pw()"/>
-                    </div>
-                    <span id="check"></span>
 
-                    <div class="input_info">
-                        <h3>프로필 이미지</h3>
-                        <label class="profile_img_btn" for="profile_img">파일 선택</label>
-                        <input type="file" name="profile_img" id="profile_img" />
-                    </div>
-
-                    <div class="plus_info">
-                        <h3>관심 카테고리</h3>
-                        <?php
-                            $query = "SELECT * from category where step=3";
-                            $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
-                            while($rs = $result -> fetch_object()){
-                                $cate3[]=$rs;
-                            }
-                        ?>
-                        <div class="input_info cate_like">
-                            <label for="cate1" class="form-label">관심 카테고리1</label>
-                            <select name="cate1" id="cate1" class="form-select">
-                                <option selected value="">관심있는 카테고리를 선택하세요</option>
-                                <?php 
-                                    foreach($cate3 as $c){
-                                ?>
-                                    <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
-                                <?php
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="input_info cate_like">
-                            <label for="cate2" class="form-label">관심 카테고리2</label>
-                            <select name="cate2" id="cate2" class="form-select">
-                                <option selected value="">관심있는 카테고리를 선택하세요</option>
-                                <?php 
-                                    foreach($cate3 as $c){
-                                ?>
-                                    <option value="<?php echo $c->code; ?>"><?php echo $c->name; ?></option>
-                                <?php
-                                    }
-                                ?>
-                            </select>
-                        </div>
-
-                        <label for="ability_range" class="form-label ability_range">나의 실력</label>
-                        <input type="range" class="form-range" min="0" max="5" name="ability_range" id="ability_range" />
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="total-agree" />
-                        <label for="total-agree" class="form-check-label">전체 약관 동의</label>
-                    </div>
-                    <hr />
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="use_agree" id="use_agree" value="1" required />
-                        <div class="view_more d-flex justify-content-between"> 
-                            <label for="use_agree" class="form-check-label">[필수] 패스트코드 이용 약관에 동의<i class="fa-solid fa-asterisk"></i></label><i class="fa-solid fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="personalinfo_agree" id="personalinfo_agree" value="1" required />
-                        <div class="view_more d-flex justify-content-between">
-                            <label for="personalinfo_agree" class="form-check-label">[필수] 개인정보 수집 및 이용에 동의<i class="fa-solid fa-asterisk"></i></label>
-                            <i class="fa-solid fa-angle-right"></i>
-                        </div>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="marketing_agree" id="marketing_agree" value="1" />
-                        <div class="view_more d-flex justify-content-between"><label for="marketing_agree" class="form-check-label">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</label><i class="fa-solid fa-angle-right"></i></div>
-                    </div>
-
-                    <button type="button" class="big-btn btn-red" id="signup">회원가입</button>
+                    <button type="button" class="big-btn btn-red" id="login">로그인</button>
                 </form>
             </section>`
         </div>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
         <script>
-            function check_pw() {
-                let pw = document.getElementById("passwd").value;
-                let pw2 = document.getElementById("passwd_ok").value;
-                let check = document.getElementById("check");
 
-                if (pw != "" && pw2 != "") {
-                    if (pw == pw2) {
-                        check.innerHTML = "비밀번호가 일치합니다.";
-                        check.style.color = "blue";
-                    } else {
-                        check.innerHTML = "비밀번호가 일치하지 않습니다.";
-                        check.style.color = "red";
-                    }
-                }
-            }
-
-            $('#signup').click(function(){
-                let username = $('#username').val();
-                let userid = $('#userid').val();
-
-                var data={
-                    username : username,
-                    userid : userid
-                }
-                $.ajax({
-                    async:false,
-                    type:'post',
-                    url:'signup_check.php',
-                    data:data,
-                    dataType:'json',
-                    success : function(result){
-                        if(result.cnt>0){
-                            alert('이미 가입된 회원입니다. 다시 확인해주세요.');
-                        } else{
-                            $('form').submit();
-                        }
-                    }
-                })
-            });
         </script>
     </body>
 </html>

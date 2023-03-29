@@ -72,16 +72,48 @@
         </ul>
       </div>
     </header>
+    <!--
+    <?php ob_start();
+include $_SERVER["DOCUMENT_ROOT"]."/inc/head.php";
+
+
+    if($_SESSION['UID']){
+        $added_condition = " and c.userid= '".$_SESSION['UID']."'";
+    } else{
+        $added_condition = " and c.ssid= '".session_id()."'";
+    }
+
+
+    $sql = "SELECT *, c.cnt
+            from cart c
+            join products l on c.pid=l.pid where 1=1 ".$added_condition;
+
+
+$result = $mysqli->query($query) or die("query error => ".$mysqli->error);
+while($rs = $result->fetch_object()){
+    $rsc[]=$rs;
+}
+?>
+-->
     <div class="container">
       <h2 class="title">나의 장바구니</h2>
       <div class="cart_area d-flex">
         <div class="cart_list">
           <ul>
+            <!-- 장바구니에 담겨 있는 것 반복문으로 출력
+            
+            <?php
+            foreach($rsc as $p){
+            ?>
+            -->
             <li class="d-flex">
-              <img src="" alt="" />
+              <!-- 
+                <a href="/products.php?pid=<?php echo $p->pid;?>">
+               -->
+              <img src="<?php echo $p->thumbnail; ?>" alt="" />
               <div class="cart_list_contents">
-                <h3 class="content-text-1 lititle">Javascript 입문 기초 문법 강의</h3>
-                <span class="content-text-1">50,000원</span>
+                <h3 class="content-text-1 lititle"><?php echo $p->name; ?></h3>
+                <span class="content-text-1"><?php echo number_format($p->price);?>원</span>
                 <span class="content-text-1">무제한</span>
               </div>
               <button class="cart_item_del">삭제</button>
@@ -93,6 +125,10 @@
                   Figma 디자인 기초부터 실전까지 - 실전편
                 </h3>
                 <span class="content-text-1">50,000원</span>
+                <!-- if문 사용
+                  무제한인지 제한인지 확인하고 무제한이면 그대로 출력
+                  제한이면 start date와 end date 출력
+                -->
                 <span class="content-text-1">2023-03-14 - 2023-04-14</span>
               </div>
               <button class="cart_item_del">삭제</button>
@@ -122,7 +158,7 @@
           </div>
         </form>
       </div>
-      <!-- 삭제 팝업 HTML -->
+      <!-- 삭제 팝업 -->
       <div class="background">
         <div class="window">
           <div class="popup">
@@ -196,35 +232,41 @@
       </div>
     </footer>
     <script>
+
+    //금액 단위
+    function number_format(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
     // 삭제 팝업
-    function show() {
-    document.querySelector(".background").className = "background show";
-  }
+        function show() {
+        document.querySelector(".background").className = "background show";
+      }
 
-  //장바구니 페이지에서 삭제 버튼 누르면
-  //배경색 살짝 어둡게, 팝업 보이게
-  $(".cart_item_del").click(function(){
-    $(".background").addClass('show');
-    let li = $(this).closest('li');
-    let cid = li.attr('id');
-    let title = li.find('.lititle').text();
-    $(".background").find('input').attr('placeholder',title);
+    //장바구니 페이지에서 삭제 버튼 누르면
+    //배경색 살짝 어둡게, 팝업 보이게
+      $(".cart_item_del").click(function(){
+        $(".background").addClass('show');
+        let li = $(this).closest('li');
+        let cid = li.attr('id');
+        let title = li.find('.lititle').text();
+        $(".background").find('input').attr('placeholder',title);
 
-    //팝업에서 삭제 버튼 누르면
-    $('#deletebtn').click(()=>{
-      delAjax(cid, './cart_del.php', './cart.php')
-    });
-    
-    let data = {
-            cid:cid
-        }
+      //팝업에서 삭제 버튼 누르면
+        $('#deletebtn').click(()=>{
+          delAjax(cid, './cart_del.php', './cart.php')
+        });
+        
+        let data = {
+                cid:cid
+            }
 
-  });
-  
-  // 취소 버튼 누르면 할일
-  $("#close").click(function(){
-    $(".background").removeClass('show');
-  });
+      });
+      
+    // 취소 버튼 누르면 할일
+      $("#close").click(function(){
+        $(".background").removeClass('show');
+      });
     </script>
   </body>
 </html>

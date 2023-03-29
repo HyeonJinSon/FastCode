@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
+include $_SERVER["DOCUMENT_ROOT"]."/inc/lib.php";
 
 $username=$_POST["username"];
 $userid=$_POST["userid"];
@@ -57,10 +58,13 @@ try {
     (username, userid, userpw, profile_img, cate_like1, cate_like2, ability, use_agree, personalinfo_agree, marketing_agree)
     VALUES('".$username."','".$userid."','".$passwd."','".$profile_img."','".$cate1."','".$cate2."','".$ability."','".$use_agree."','".$personalinfo_agree."','".$marketing_agree."')";
     $rs=$mysqli->query($query) or die($mysqli->error);
-     
+    
+    //쿠폰
+    user_coupon($userid, 167, '회원가입 축하 쿠폰');
+
     $mysqli->commit();//디비에 커밋한다.
 
-    echo "<script>alert('회원가입이 되었습니다.');
+    echo "<script>alert('회원가입 성공!, 10,000원 쿠폰을 발행해 드렸습니다.');
     location.href='/index.php';</script>";
     exit;
 }catch (Exception $e) {

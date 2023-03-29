@@ -1,0 +1,20 @@
+header {
+  background: #fff;
+}
+body {
+  background: #0E1A2B;
+}
+.container > iframe {
+  padding: 54px 0;
+}
+.lec_desc h2 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+.lec_desc h3 {
+  color: var(--background-g);
+}
+.lec_btn {
+  margin: 20px 0 54px;
+  gap: 30px;
+}

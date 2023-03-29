@@ -18,3 +18,13 @@ body {
   margin: 20px 0 54px;
   gap: 30px;
 }
+#lec_review {
+  background: var(--background-g);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}
+#lec_list {
+  border: 2px solid var(--background-g);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}

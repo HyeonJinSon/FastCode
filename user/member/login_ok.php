@@ -14,7 +14,7 @@ $rs = $result->fetch_object();
 if($rs){
     $_SESSION['USERID'] = $rs->userid;
     $_SESSION['USERNAME'] = $rs->username;
-    // $sql = "UPDATE cart set userid='".$userid."' where ssid='".session_id()."'"; 
+    $sql = "UPDATE cart set userid='".$userid."' where ssid='".session_id()."'"; 
     $result = $mysqli -> query($sql) or die('Query error=>'.$mysqli->error);
     echo "<script>location.href='../index.php';</script>";
     exit;

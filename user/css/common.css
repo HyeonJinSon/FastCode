@@ -156,6 +156,11 @@ body {
   line-height: 70px;
   text-align: center;
   transition: 0.2s;
+  position: fixed;
+  bottom: 40px;
+  right: 150px;
+  display: none;
+  z-index: 10;
 }
 .top-btn:hover {
   background: rgba(229, 57, 69, 0.9);

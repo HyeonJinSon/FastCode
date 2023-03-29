@@ -1,0 +1,35 @@
+.banner img {
+    width: 540px;
+    height: 460px;
+    object-fit: contain;
+}
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+.swiper-slide {
+}
+
+.swiper .swiper-slide {
+}
+
+.go_category li {
+    text-align: center;
+}
+.sprite {
+    position: relative;
+    width: 53px;
+    height: 58px;
+    display: inline-block;
+}
+.sprite:before {
+    content: "";
+    width: 53px;
+    height: 58px;
+    background: url(../img/cate_icon.svg) no-repeat;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+}

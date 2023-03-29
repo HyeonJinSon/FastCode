@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fastcode</title>
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    </head>
+    <body>
+        <header class="">
+            <div class="container d-flex justify-content-between align-items-center">
+                <h1 id="main-logo">
+                    <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                </h1>
+                <nav class="main-menu-ft">
+                    <ul class="d-flex">
+                        <li><a href="">about us</a></li>
+                        <li><a href="">강의</a></li>
+                        <li>
+                            <a href="">커뮤니티</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">질문/답변</a></li>
+                                <li><a href="">스터디</a></li>
+                                <li><a href="">자유게시판</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">이벤트</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">할인</a></li>
+                                <li><a href="">프리패스</a></li>
+                                <li><a href="">특강</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">고객지원</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">문의하기</a></li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="">이용가이드</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
+                <ul class="member-info d-flex content-text-2">
+                    <li>
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span>장바구니</span>
+                    </li>
+
+                    <li>
+                        <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <span>로그아웃</span>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa-solid fa-user"></i></a>
+                        <span class="hidden">나의 정보</span>
+                        <ul class="my_info">
+                            <li>손현진님<i class="fa-solid fa-angle-right"></i></li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-chart-pie"></i>대시보드</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-play"></i>나의 강의실</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-clipboard"></i>강의노트</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-comments"></i>나의 커뮤니티</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-ticket"></i>쿠폰함</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-bell"></i>알림</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="banner swiper mySwiper">
+            <h2 class="hidden">main banner</h2>
+            <ul class="swiper-wrapper">
+                <li class="slide1 swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="banner_text col">
+                                <h3>HTML CSS Javascript 통합과정 프리패스 개강</h3>
+                                <h4>이젠 나도 웹퍼블리셔!</h4>
+                                <p>프리패스 신청 : 2023.03.24 - 2023.04.24</p>
+                            </div>
+                            <img class="col" src="img/banner1.png" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="slide2 swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="banner_text col">
+                                <h3>이용자를 생각하는 UX/UI Design 심화과정</h3>
+                                <h4>예쁘기만한 디자인 시대는 끝!</h4>
+                                <p>프리패스 신청 : 2023.03.24 - 2023.04.24</p>
+                            </div>
+                            <img class="col" src="img/banner2.png" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="slide3 swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="banner_text col">
+                                <h3>오늘의 해결사는 누구?! 커뮤니티 코딩 대회</h3>
+                                <h4>함께 해서 더 즐겁고 더 창의적으로!</h4>
+                                <p>대회참가 신청 : 2023.03.24 - 2023.04.24</p>
+                            </div>
+                            <img class="col" src="img/banner3.png" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="slide4 swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="banner_text col">
+                                <h3>웹퍼블리셔들을 위한 PHP&SQL 신규강좌 개강</h3>
+                                <h4>기능까지 갖춘 웹페이지 제작</h4>
+                                <p>강좌 신청 : 2023.03.24 - 2023.04.24</p>
+                            </div>
+                            <img class="col" src="img/banner4.png" alt="" />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="banner-next swiper-button-next"></div>
+            <div class="banner-prev swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </section>
+
+        <section class="go_category container">
+            <h2 class="hidden">카테고리별 강좌보기</h2>
+            <h3>어떤 강의를 찾으세요?</h3>
+            <ul class="d-flex justify-content-evenly">
+                <li><a href="" class="sprite">HTML</a></li>
+                <li><a href="" class="sprite">CSS</a></li>
+                <li><a href="" class="sprite">Javascript</a></li>
+                <li><a href="" class="sprite">React</a></li>
+                <li><a href="" class="sprite">PHP&SQL</a></li>
+                <li><a href="" class="sprite">Python</a></li>
+                <li><a href="" class="sprite">Mobile</a></li>
+                <li><a href="" class="sprite">Figma</a></li>
+                <li><a href="" class="sprite">AdobeXd</a></li>
+                <li><a href="" class="sprite">Scetch</a></li>
+                <li><a href="" class="sprite">Photoshop</a></li>
+                <li><a href="" class="sprite">illustrator</a></li>
+            </ul>
+        </section>
+
+        <section class="class_slide container">
+            <h2 class="hidden">추천강좌 슬라이드</h2>
+            <div class="class cate1 swiper lectureSwiper">
+                <h3>내가 관심있는 <em>Javascript</em> 분야 인기 강좌</h3>
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명1</h4>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명2</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명3</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명4</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명5</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>Javascript 강좌명6</h4></a
+                        >
+                    </li>
+                </ul>
+                <div class="lecture-next swiper-button-next"></div>
+                <div class="lecture-prev swiper-button-prev"></div>
+            </div>
+            <div class="class cate2 swiper lectureSwiper">
+                <h3>내가 관심있는 <em>React</em> 분야 인기 강좌</h3>
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명1</h4>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명2</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명3</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명4</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명5</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>React 강좌명6</h4></a
+                        >
+                    </li>
+                </ul>
+                <div class="lecture-next swiper-button-next"></div>
+                <div class="lecture-prev swiper-button-prev"></div>
+            </div>
+            <div class="class new swiper lectureSwiper">
+                <h3>따끈따끈 신규 강좌</h3>
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명1</h4>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명2</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명3</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명4</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명5</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>new 강좌명6</h4></a
+                        >
+                    </li>
+                </ul>
+                <div class="lecture-next swiper-button-next"></div>
+                <div class="lecture-prev swiper-button-prev"></div>
+            </div>
+            <div class="class best swiper lectureSwiper">
+                <h3>Best Seller 대표 강좌</h3>
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명1</h4>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명2</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명3</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="">
+                            <img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명4</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명5</h4></a
+                        >
+                    </li>
+                    <li class="swiper-slide">
+                        <a href=""
+                            ><img src="https://placehold.co/270x180" alt="" />
+                            <h4>Best 강좌명6</h4></a
+                        >
+                    </li>
+                </ul>
+                <div class="lecture-next swiper-button-next"></div>
+                <div class="lecture-prev swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section class="ad_fastcode">
+            <h2 class="hidden">fastcode 소개</h2>
+            <div class="container">
+                <div id="tabs">
+                    <ul>
+                        <li><a href="#tabs-1">빠르게 배우는 코딩</a></li>
+                        <li><a href="#tabs-2">쉽게 배우는 코딩</a></li>
+                        <li><a href="#tabs-3">재밌게 배우는 코딩</a></li>
+                    </ul>
+                    <div id="tabs-1">
+                        <p>
+                            Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed
+                            magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
+                        </p>
+                    </div>
+                    <div id="tabs-2">
+                        <p>
+                            Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla
+                            sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat,
+                            tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+                        </p>
+                    </div>
+                    <div id="tabs-3">
+                        <p>
+                            Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                            himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+                        </p>
+                        <p>
+                            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros,
+                            id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce
+                            in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notice container">
+            <h2>공지사항</h2>
+            <div>
+                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
+                <span>2023.03.20</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+            <div>
+                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
+                <span>2023.03.20</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+            <div>
+                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
+                <span>2023.03.20</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+        </section>
+
+        <div class="top-btn">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer_top d-flex">
+                    <ul class="footer_menu d-flex">
+                        <li class="content-text-2"><a href="#">회사소개</a></li>
+                        <li class="content-text-2"><a href="#">개인정보처리 방침</a></li>
+                        <li class="content-text-2"><a href="#">서비스이용약관</a></li>
+                        <li class="content-text-2"><a href="#">취소환불규정</a></li>
+                        <li class="content-text-2"><a href="#">자료실</a></li>
+                        <li class="content-text-2"><a href="#">고객센터</a></li>
+                        <li class="content-text-2"><a href="#">사이트맵</a></li>
+                    </ul>
+                    <ul class="footer_sns d-flex">
+                        <li>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-blog"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_bottom d-flex">
+                    <h6 id="main-logo">
+                        <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                    </h6>
+                    <div class="footer_contents">
+                        <h5 class="content-title">(주) FASTCODE</h5>
+                        <span class="content-text-3">대표자 김유미 | 사업자 등록 번호 123-45-67890</span>
+                        <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com |전화: 02-1212-1212</span>
+                    </div>
+                    <div class="footer_copyright"><span class="content-text-3">Copyright@2023 Fastcode. All Rights reserved</span></div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script>
+            $(function () {
+                $("#tabs").tabs();
+            });
+        </script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".banner-next",
+                    prevEl: ".banner-prev",
+                },
+                autoplay: {
+                    delay: 4500,
+                    disableOnInteraction: false,
+                },
+            });
+
+            var lecture_swiper = new Swiper(".lectureSwiper", {
+                slidesPerView: 4,
+                spaceBetween: 25,
+                navigation: {
+                    nextEl: ".lecture-next",
+                    prevEl: ".lecture-prev",
+                },
+            });
+        </script>
+    </body>
+</html>

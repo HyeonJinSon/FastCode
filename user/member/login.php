@@ -74,7 +74,7 @@
                         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="비밀번호를 입력하세요" required />
                     </div>
 
-                    <button type="button" class="big-btn btn-red" id="login">로그인</button>
+                    <button type="submit" class="big-btn btn-red" id="login">로그인</button>
                 </form>
             </section>`
         </div>

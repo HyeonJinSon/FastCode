@@ -169,130 +169,135 @@ body {
 
 /* header */
 header {
-  height: 90px;
-  border-bottom: 1px solid var(--highlight-s);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    height: 90px;
+    border-bottom: 1px solid var(--highlight-s);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 header nav ul {
-  gap: 40px;
-  line-height: 90px;
+    gap: 40px;
+    line-height: 90px;
 }
 header nav ul li a {
-  transition: 0.3s;
-  text-transform: uppercase;
+    transition: 0.3s;
+    text-transform: uppercase;
 }
 header nav ul li:hover > a {
-  color: var(--primary-r);
+    color: var(--primary-r);
 }
 header nav ul li {
-  position: relative;
+    position: relative;
 }
 header nav ul li > ul {
-  position: absolute;
-  display: inline-block;
-  width: 200%;
-  text-align: center;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border: 1px solid var(--primary-n);
-  border-radius: 5px;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s;
+    position: absolute;
+    display: inline-block;
+    width: 200%;
+    text-align: center;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid var(--primary-n);
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
 }
 header nav ul li > ul li {
-  padding: 7px 0;
+    padding: 7px 0;
 }
 header nav ul li > ul li:first-child {
-  padding-top: 15px;
+    padding-top: 15px;
 }
 header nav ul li > ul li:last-child {
-  padding-bottom: 15px;
+    padding-bottom: 15px;
 }
 header nav ul li:hover > ul {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 header nav ul li > ul:after {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  border-width: 5px;
-  border-color: transparent transparent var(--primary-n) transparent;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent transparent var(--primary-n) transparent;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 header .search {
-  width: 300px;
-  height: 32px;
-  border-bottom: 1px solid var(--primary-n);
-  position: relative;
-  padding: 0 5px;
+    width: 300px;
+    height: 32px;
+    border-bottom: 1px solid var(--primary-n);
+    position: relative;
+    padding: 0 5px;
 }
 header .search input {
-  line-height: 32px;
-  display: block;
-  width: 100%;
-  border: none;
-  background: none;
-  outline: none;
+    line-height: 32px;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
 }
 header .search i {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .member-info {
-  gap: 40px;
+    gap: 40px;
 }
 .member-info li i {
-  font-size: 24px;
-  line-height: 90px;
-  color: var(--primary-n);
-  transition: 0.3s;
+    font-size: 24px;
+    line-height: 90px;
+    color: var(--primary-n);
+    transition: 0.3s;
 }
 .member-info li i:hover {
-  color: var(--primary-r);
+    color: var(--primary-r);
 }
 .member-info li {
-  position: relative;
+    position: relative;
 }
 .member-info li span {
-  position: absolute;
-  display: inline-block;
-  width: 300%;
-  text-align: center;
-  padding: 5px 10px;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border: 1px solid var(--primary-n);
-  border-radius: 5px;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s;
+    position: absolute;
+    display: inline-block;
+    width: 300%;
+    text-align: center;
+    padding: 5px 10px;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid var(--primary-n);
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
 }
 .member-info li:hover span {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 .member-info li span:after {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  border-width: 5px;
-  border-color: transparent transparent var(--primary-n) transparent;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent transparent var(--primary-n) transparent;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.member-info #logout {
+    border: 0;
+    background: transparent;
+    padding: 0;
 }
 
 /* Footer */

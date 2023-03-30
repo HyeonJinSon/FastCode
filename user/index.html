@@ -11,8 +11,9 @@
     </head>
     <body>
         <header class="">
+            <div class="header">
             <div class="container d-flex justify-content-between align-items-center">
-                <h1 id="main-logo">
+                <h1 class="main-logo">
                     <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                 </h1>
                 <nav class="main-menu-ft">
@@ -84,6 +85,7 @@
                     </li>
                 </ul>
             </div>
+        </div>
         </header>
 
         <section class="banner swiper mySwiper">
@@ -154,8 +156,8 @@
 
         <section class="go_category container">
             <h2 class="hidden">카테고리별 강좌보기</h2>
-            <h3>어떤 강의를 찾으세요?</h3>
-            <ul class="d-flex justify-content-evenly">
+            <h3 class="sub-title">어떤 강의를 찾으세요?</h3>
+            <ul class="d-flex justify-content-evenly content-text-1">
                 <li><a href="" class="sprite html">HTML</a></li>
                 <li><a href="" class="sprite css">CSS</a></li>
                 <li><a href="" class="sprite javascript">Javascript</a></li>
@@ -174,42 +176,46 @@
         <section class="class_slide container">
             <h2 class="hidden">추천강좌 슬라이드</h2>
             <div class="class cate1 swiper lectureSwiper">
-                <h3>내가 관심있는 <em>Javascript</em> 분야 인기 강좌</h3>
+                <h3 class="sub-title">내가 관심있는 <em>Javascript</em> 분야 인기 강좌</h3>
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명1</h4>
+                            <h4 class="content-text-1">Javascript 강좌명1</h4>
+                            <span class="mini-tag new-tag">new</span>
+                            <span class="mini-tag hit-tag">hit</span>
+                            <span class="mini-tag easy-tag">초급</span>
+                            <span class="mini-tag difficult-tag">중급</span>
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명2</h4></a
+                            <h4 class="content-text-1">Javascript 강좌명2</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명3</h4></a
+                            <h4 class="content-text-1">Javascript 강좌명3</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명4</h4></a
+                            <h4 class="content-text-1">Javascript 강좌명4</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명5</h4></a
+                            <h4 class="content-text-1">Javascript 강좌명5</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>Javascript 강좌명6</h4></a
+                            <h4 class="content-text-1">Javascript 강좌명6</h4></a
                         >
                     </li>
                 </ul>
@@ -217,42 +223,42 @@
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
             <div class="class cate2 swiper lectureSwiper">
-                <h3>내가 관심있는 <em>React</em> 분야 인기 강좌</h3>
+                <h3 class="sub-title">내가 관심있는 <em>React</em> 분야 인기 강좌</h3>
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명1</h4>
+                            <h4 class="content-text-1">React 강좌명1</h4>
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명2</h4></a
+                            <h4 class="content-text-1">React 강좌명2</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명3</h4></a
+                            <h4 class="content-text-1">React 강좌명3</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명4</h4></a
+                            <h4 class="content-text-1">React 강좌명4</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명5</h4></a
+                            <h4 class="content-text-1">React 강좌명5</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>React 강좌명6</h4></a
+                            <h4 class="content-text-1">React 강좌명6</h4></a
                         >
                     </li>
                 </ul>
@@ -260,42 +266,42 @@
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
             <div class="class new swiper lectureSwiper">
-                <h3>따끈따끈 신규 강좌</h3>
+                <h3 class="sub-title">따끈따끈 신규 강좌</h3>
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명1</h4>
+                            <h4 class="content-text-1">new 강좌명1</h4>
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명2</h4></a
+                            <h4 class="content-text-1">new 강좌명2</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명3</h4></a
+                            <h4 class="content-text-1">new 강좌명3</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명4</h4></a
+                            <h4 class="content-text-1">new 강좌명4</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명5</h4></a
+                            <h4 class="content-text-1">new 강좌명5</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>new 강좌명6</h4></a
+                            <h4 class="content-text-1">new 강좌명6</h4></a
                         >
                     </li>
                 </ul>
@@ -303,42 +309,42 @@
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
             <div class="class best swiper lectureSwiper">
-                <h3>Best Seller 대표 강좌</h3>
+                <h3 class="sub-title">Best Seller 대표 강좌</h3>
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명1</h4>
+                            <h4 class="content-text-1">Best 강좌명1</h4>
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명2</h4></a
+                            <h4 class="content-text-1">Best 강좌명2</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명3</h4></a
+                            <h4 class="content-text-1">Best 강좌명3</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href="">
                             <img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명4</h4></a
+                            <h4 class="content-text-1">Best 강좌명4</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명5</h4></a
+                            <h4 class="content-text-1">Best 강좌명5</h4></a
                         >
                     </li>
                     <li class="swiper-slide">
                         <a href=""
                             ><img src="https://placehold.co/270x180" alt="" />
-                            <h4>Best 강좌명6</h4></a
+                            <h4 class="content-text-1">Best 강좌명6</h4></a
                         >
                     </li>
                 </ul>
@@ -350,59 +356,112 @@
         <section class="ad_fastcode">
             <h2 class="hidden">fastcode 소개</h2>
             <div class="container">
+                <div class="ad_fastcode_title text-center">
+                    <span>왜 </span>
+                    <div class="main-logo">
+                        <a href="#">
+                            <img src="img/fastcode_logo.png" alt="Fastcode" />
+                            <span>fastcode</span>
+                        </a>
+                    </div>
+                    <span> 에서 배워야할까?</span>
+                </div>
                 <div id="tabs">
-                    <ul>
-                        <li><a href="#tabs-1">빠르게 배우는 코딩</a></li>
-                        <li><a href="#tabs-2">쉽게 배우는 코딩</a></li>
-                        <li><a href="#tabs-3">재밌게 배우는 코딩</a></li>
+                    <ul class="row">
+                        <li class="col sub-title"><a href="#tabs-1"><i class="fa-solid fa-rocket"></i>빠르게 배우는 코딩</a></li>
+                        <li class="col sub-title"><a href="#tabs-2"><i class="fa-regular fa-lightbulb"></i>쉽게 배우는 코딩</a></li>
+                        <li class="col sub-title"><a href="#tabs-3"><i class="fa-solid fa-music"></i>재밌게 배우는 코딩</a></li>
                     </ul>
-                    <div id="tabs-1">
-                        <h3>빠르게 배우는 코딩</h3>
-                        <h4>fast learning</h4>
-                        <span>01</span>
-                        <p>빠르게 배우는 코딩에 대한 설명글</p>
-                        <p>빠르게 배우는 코딩에 대한 설명글</p>
-                        <p>빠르게 배우는 코딩에 대한 설명글</p>
-                        <span>자세히 보기</span>
+                    <div id="tabs-1" class="row">
+                        <div class="description col-6">
+                            <h3>빠르게 배우는 코딩<i class="fa-solid fa-rocket"></i></h3>
+                            <h4>fast learning</h4>
+                            <span class="num">01</span>
+                            <p>빠르게 배우는 코딩에 대한 설명글</p>
+                            <p>빠르게 배우는 코딩에 대한 설명글</p>
+                            <p>빠르게 배우는 코딩에 대한 설명글</p>
+                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+
+                        <div class="tab_thumbnail col-6">
+                            <img src="img/ad_fastcode_tab1.png" alt="" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
+                                </svg>
+                        </div>
+                      
                     </div>
-                    <div id="tabs-2">
-                        <h3>쉽게 배우는 코딩</h3>
-                        <h4>easy learning</h4>
-                        <span>02</span>
-                        <p>쉽게 배우는 코딩에 대한 설명글</p>
-                        <p>쉽게 배우는 코딩에 대한 설명글</p>
-                        <p>쉽게 배우는 코딩에 대한 설명글</p>
-                        <span>자세히 보기</span>
+                    <div id="tabs-2" class="row">
+                        <div class="description col-6">
+                            <h3>쉽게 배우는 코딩<i class="fa-regular fa-lightbulb"></i></h3>
+                            <h4>easy learning</h4>
+                            <span class="num">02</span>
+                            <p>쉽게 배우는 코딩에 대한 설명글</p>
+                            <p>쉽게 배우는 코딩에 대한 설명글</p>
+                            <p>쉽게 배우는 코딩에 대한 설명글</p>
+                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        
+                        <div class="tab_thumbnail col-6">
+                            <img src="img/ad_fastcode_tab2.png" alt="" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
+                                </svg>
+                        </div>
                     </div>
-                    <div id="tabs-3">
-                        <h3>재밌게 배우는 코딩</h3>
-                        <h4>funny learning</h4>
-                        <span>03</span>
-                        <p>재밌게 배우는 코딩에 대한 설명글</p>
-                        <p>재밌게 배우는 코딩에 대한 설명글</p>
-                        <p>재밌게 배우는 코딩에 대한 설명글</p>
-                        <span>자세히 보기</span>
+                    <div id="tabs-3" class="row">
+                        <div class="description col-6">
+                            <h3>재밌게 배우는 코딩<i class="fa-solid fa-music"></i></h3>
+                            <h4>funny learning</h4>
+                            <span class="num">03</span>
+                            <p>재밌게 배우는 코딩에 대한 설명글</p>
+                            <p>재밌게 배우는 코딩에 대한 설명글</p>
+                            <p>재밌게 배우는 코딩에 대한 설명글</p>
+                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="tab_thumbnail col-6">
+                            <img src="img/ad_fastcode_tab3.png" alt="" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
+                                </svg>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="notice container">
-            <h2>공지사항</h2>
-            <div>
-                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
-                <span>2023.03.20</span>
-                <i class="fa-solid fa-angle-right"></i>
-            </div>
-            <div>
-                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
-                <span>2023.03.20</span>
-                <i class="fa-solid fa-angle-right"></i>
-            </div>
-            <div>
-                <h3>[공지] 패스트코드 사이트 점검 안내</h3>
-                <span>2023.03.20</span>
-                <i class="fa-solid fa-angle-right"></i>
+            <div class="row">
+                <h2 class="col-1">공지사항</h2>
+                <ul class="notice_list col-11">
+                    <li class="row">
+                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
+                        <span class="col-3">2023.03.20</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li class="row">
+                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
+                        <span class="col-3">2023.03.20</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li class="row">
+                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
+                        <span class="col-3">2023.03.20</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -442,7 +501,7 @@
                     </ul>
                 </div>
                 <div class="footer_bottom d-flex">
-                    <h6 id="main-logo">
+                    <h6 class="main-logo">
                         <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h6>
                     <div class="footer_contents">
@@ -475,24 +534,30 @@
                     nextEl: ".banner-next",
                     prevEl: ".banner-prev",
                 },
-                // autoplay: {
-                //     delay: 4500,
-                //     disableOnInteraction: false,
-                // },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
             });
 
             var lecture_swiper = new Swiper(".lectureSwiper", {
                 slidesPerView: 4,
-                spaceBetween: 25,
+                spaceBetween: 35,
                 navigation: {
                     nextEl: ".lecture-next",
                     prevEl: ".lecture-prev",
                 },
+                
                 // autoplay: {
                 //     delay: 4500,
                 //     disableOnInteraction: false,
                 // },
             });
+            // function resize(){
+            //     $('.class ul.swiper-wrapper li.swiper-slide').outerWidth('278px');
+            // }
+            // resize();
         </script>
     </body>
 </html>

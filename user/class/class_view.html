@@ -80,11 +80,91 @@
       <a href="#" class="y-btn small-btn btn-sky">수강평 보기</a>
       <a href="myclass.html" class="y-btn small-btn btn-red">강의실</a>
     </div>
-    <div id="lec_review">
-      
-    </div>
-    <div id="lec_list">
-
+    <div id="lec_container">
+      <div id="lec_review">
+        <div class="review_title">
+          <h2 class="title">강좌 수강평</h2>
+          <a href="#"><i class="fa-solid fa-plus"></i> 더 보러가기</a>
+        </div>
+        <form action="" method="post">
+          <input type="text" name="lecReview" id="lecReview">
+          <label for="lecReview">수강평을 남겨 주세요</label>
+          <button class="review_ok"><i class="fa-solid fa-check"></i></button>
+        </form>
+        <ul>
+          <li class="d-flex align-items-center justify-content-between">
+            <p class="content-text-2">도움 많이 됐어요 추천해여 꼭 들으세여</p>
+            <span class="content-text-3">수강생 01</span>
+          </li>
+          <li class="d-flex align-items-center justify-content-between">
+            <p class="content-text-2">피그마 어려워용 ㅜㅠ 강사님 친절하시고 답변도 자세하게 남겨 주십니당</p>
+            <span class="content-text-3">수강생 02</span>
+          </li>
+          <li class="d-flex align-items-center justify-content-between">
+            <p class="content-text-2">피그마 입문자 분들 추천해요 :D</p>
+            <span class="content-text-3">수강생 03</span>
+          </li>
+        </ul>
+      </div>
+      <div id="lec_list">
+        <h2 class="title">강좌명 1</h2>
+        <ul>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title playing">01 강의명 1</h3>
+              <span class="content-text-2">15.36</span>
+            </div>
+          </li>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title">02 강의명 2</h3>
+              <span class="content-text-2">48.12</span>
+            </div>
+          </li>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title">03 강의명 3</h3>
+              <span class="content-text-2">38.45</span>
+            </div>
+          </li>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title">04 강의명 4</h3>
+              <span class="content-text-2">51.18</span>
+            </div>
+          </li>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title">05 강의명 5</h3>
+              <span class="content-text-2">44.08</span>
+            </div>
+          </li>
+          <li class="d-flex align-items-center">
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <div class="lec_info_box d-flex align-items-center justify-content-between">
+              <h3 class="content-title">06 강의명 6</h3>
+              <span class="content-text-2">28.17</span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="top-btn">
@@ -148,5 +228,11 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <script src="../js/common.js"></script>
+  <script>
+    $('.lec_btn').find('a').filter(':first-of-type').click((e)=>{
+      e.preventDefault();
+      $('#lec_container').toggleClass('slide');
+    })
+  </script>
 </body>
 </html>

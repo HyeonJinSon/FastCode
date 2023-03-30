@@ -264,7 +264,8 @@ header .search i {
 .member-info li {
     position: relative;
 }
-.member-info li span {
+.member-info li span,
+.member-info li .my_info {
     position: absolute;
     display: inline-block;
     width: 300%;
@@ -280,11 +281,16 @@ header .search i {
     opacity: 0;
     transition: 0.3s;
 }
-.member-info li:hover span {
+.member-info li .my_info{
+  width: 500%;
+}
+.member-info li:hover span,
+.member-info li:hover .my_info {
     visibility: visible;
     opacity: 1;
 }
-.member-info li span:after {
+.member-info li span:after,
+.member-info li .my_info:after {
     content: "";
     position: absolute;
     border-style: solid;

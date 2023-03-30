@@ -168,7 +168,13 @@ body {
 }
 
 /* header */
-header {
+header{
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: #fff;
+}
+header > div{
     height: 90px;
     border-bottom: 1px solid var(--highlight-s);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);

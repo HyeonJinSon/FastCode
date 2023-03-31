@@ -5,87 +5,91 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>fastcode</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
         <link rel="stylesheet" href="css/common.css" />
         <link rel="stylesheet" href="css/index.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     </head>
     <body>
         <header class="">
             <div class="header">
-            <div class="container d-flex justify-content-between align-items-center">
-                <h1 class="main-logo">
-                    <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
-                </h1>
-                <nav class="main-menu-ft">
-                    <ul class="d-flex">
-                        <li><a href="">about us</a></li>
-                        <li><a href="">강의</a></li>
+                <div class="container d-flex justify-content-between align-items-center">
+                    <h1 class="main-logo">
+                        <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                    </h1>
+                    <nav class="main-menu-ft">
+                        <ul class="d-flex">
+                            <li><a href="">about us</a></li>
+                            <li><a href="">강의</a></li>
+                            <li>
+                                <a href="">커뮤니티</a>
+                                <ul class="sub-menu-ft">
+                                    <li><a href="">질문/답변</a></li>
+                                    <li><a href="">스터디</a></li>
+                                    <li><a href="">자유게시판</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">이벤트</a>
+                                <ul class="sub-menu-ft">
+                                    <li><a href="">할인</a></li>
+                                    <li><a href="">프리패스</a></li>
+                                    <li><a href="">특강</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">고객지원</a>
+                                <ul class="sub-menu-ft">
+                                    <li><a href="">공지사항</a></li>
+                                    <li><a href="">문의하기</a></li>
+                                    <li><a href="">FAQ</a></li>
+                                    <li><a href="">이용가이드</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
+                    <ul class="member-info d-flex sub-menu-ft">
                         <li>
-                            <a href="">커뮤니티</a>
-                            <ul class="sub-menu-ft">
-                                <li><a href="">질문/답변</a></li>
-                                <li><a href="">스터디</a></li>
-                                <li><a href="">자유게시판</a></li>
-                            </ul>
+                            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <span>장바구니</span>
+                        </li>
+
+                        <li>
+                            <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                            <span>로그아웃</span>
                         </li>
                         <li>
-                            <a href="">이벤트</a>
-                            <ul class="sub-menu-ft">
-                                <li><a href="">할인</a></li>
-                                <li><a href="">프리패스</a></li>
-                                <li><a href="">특강</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">고객지원</a>
-                            <ul class="sub-menu-ft">
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">문의하기</a></li>
-                                <li><a href="">FAQ</a></li>
-                                <li><a href="">이용가이드</a></li>
+                            <a href=""><i class="fa-solid fa-user"></i></a>
+                            <span class="hidden">나의 정보</span>
+                            <ul class="my_info text-start">
+                                <li class="d-flex justify-content-between">
+                                    <img class="profile_img" src="img/어디서본건있는세포.jpg" alt="" />
+                                    <a href="">손현진님</a>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-chart-pie"></i>대시보드</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-play"></i>나의 강의실</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-clipboard"></i>강의노트</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-comments"></i>나의 커뮤니티</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-ticket"></i>쿠폰함</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa-solid fa-bell"></i>알림</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
-                </nav>
-                <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
-                <ul class="member-info d-flex content-text-2">
-                    <li>
-                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                        <span>장바구니</span>
-                    </li>
-
-                    <li>
-                        <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                        <span>로그아웃</span>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa-solid fa-user"></i></a>
-                        <span class="hidden">나의 정보</span>
-                        <ul class="my_info">
-                            <li>손현진님<i class="fa-solid fa-angle-right"></i></li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-chart-pie"></i>대시보드</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-play"></i>나의 강의실</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-clipboard"></i>강의노트</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-comments"></i>나의 커뮤니티</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-ticket"></i>쿠폰함</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-solid fa-bell"></i>알림</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                </div>
             </div>
-        </div>
         </header>
 
         <section class="banner swiper mySwiper">
@@ -368,74 +372,85 @@
                 </div>
                 <div id="tabs">
                     <ul class="row">
-                        <li class="col sub-title"><a href="#tabs-1"><i class="fa-solid fa-rocket"></i>빠르게 배우는 코딩</a></li>
-                        <li class="col sub-title"><a href="#tabs-2"><i class="fa-regular fa-lightbulb"></i>쉽게 배우는 코딩</a></li>
-                        <li class="col sub-title"><a href="#tabs-3"><i class="fa-solid fa-music"></i>재밌게 배우는 코딩</a></li>
+                        <li class="col sub-title">
+                            <a href="#tabs-1"><i class="fa-solid fa-rocket"></i>빠르게 배우는 코딩</a>
+                        </li>
+                        <li class="col sub-title">
+                            <a href="#tabs-2"><i class="fa-regular fa-lightbulb"></i>쉽게 배우는 코딩</a>
+                        </li>
+                        <li class="col sub-title">
+                            <a href="#tabs-3"><i class="fa-solid fa-music"></i>재밌게 배우는 코딩</a>
+                        </li>
                     </ul>
                     <div id="tabs-1" class="row">
-                        <div class="description col-6">
-                            <h3>빠르게 배우는 코딩<i class="fa-solid fa-rocket"></i></h3>
+                        <div class="description text-end col-6">
+                            <h3>빠르게 배우는 코딩 <i class="fa-solid fa-rocket"></i></h3>
                             <h4>fast learning</h4>
-                            <span class="num">01</span>
-                            <p>빠르게 배우는 코딩에 대한 설명글</p>
-                            <p>빠르게 배우는 코딩에 대한 설명글</p>
-                            <p>빠르게 배우는 코딩에 대한 설명글</p>
-                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                            <span class="num text-start">01</span>
+                            <div class="paragraph">
+                                <p>빠르게 배우는 코딩에 대한 설명글</p>
+                                <p>빠르게 배우는 코딩에 대한 설명글</p>
+                                <p>빠르게 배우는 코딩에 대한 설명글</p>
+                            </div>
+                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
 
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab1.png" alt="" >
+                            <img src="img/ad_fastcode_tab1.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
-                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
-                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
-                                </svg>
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            </svg>
                         </div>
-                      
                     </div>
                     <div id="tabs-2" class="row">
-                        <div class="description col-6">
-                            <h3>쉽게 배우는 코딩<i class="fa-regular fa-lightbulb"></i></h3>
+                        <div class="description text-end col-6">
+                            <h3>쉽게 배우는 코딩 <i class="fa-regular fa-lightbulb"></i></h3>
                             <h4>easy learning</h4>
-                            <span class="num">02</span>
-                            <p>쉽게 배우는 코딩에 대한 설명글</p>
-                            <p>쉽게 배우는 코딩에 대한 설명글</p>
-                            <p>쉽게 배우는 코딩에 대한 설명글</p>
-                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                            <span class="num text-start">02</span>
+                            <div class="paragraph">
+                                <p>쉽게 배우는 코딩에 대한 설명글</p>
+                                <p>쉽게 배우는 코딩에 대한 설명글</p>
+                                <p>쉽게 배우는 코딩에 대한 설명글</p>
+                            </div>
+                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
-                        
+
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab2.png" alt="" >
+                            <img src="img/ad_fastcode_tab2.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
-                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
-                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
-                                </svg>
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            </svg>
                         </div>
                     </div>
                     <div id="tabs-3" class="row">
-                        <div class="description col-6">
-                            <h3>재밌게 배우는 코딩<i class="fa-solid fa-music"></i></h3>
+                        <div class="description text-end col-6">
+                            <h3>재밌게 배우는 코딩 <i class="fa-solid fa-music"></i></h3>
                             <h4>funny learning</h4>
-                            <span class="num">03</span>
-                            <p>재밌게 배우는 코딩에 대한 설명글</p>
-                            <p>재밌게 배우는 코딩에 대한 설명글</p>
-                            <p>재밌게 배우는 코딩에 대한 설명글</p>
-                            <span>자세히 보기</span><i class="fa-solid fa-arrow-right-long"></i>
+                            <span class="num text-start">03</span>
+                            <div class="paragraph">
+                                <p>재밌게 배우는 코딩에 대한 설명글</p>
+                                <p>재밌게 배우는 코딩에 대한 설명글</p>
+                                <p>재밌게 배우는 코딩에 대한 설명글</p>
+                            </div>
+                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab3.png" alt="" >
+                            <img src="img/ad_fastcode_tab3.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557"/>
-                                <circle cx="80" cy="118" r="80" fill="#457B9D"/>
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D"/>
-                                <circle cx="96" cy="437" r="50" fill="#1D3557"/>
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB"/>
-                                </svg>
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -444,22 +459,19 @@
 
         <section class="notice container">
             <div class="row">
-                <h2 class="col-1">공지사항</h2>
-                <ul class="notice_list col-11">
+                <h2 class="col-1 sub-title">공지사항</h2>
+                <ul class="notice_list col-11 content-text-1">
                     <li class="row">
-                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
-                        <span class="col-3">2023.03.20</span>
-                        <i class="fa-solid fa-angle-right"></i>
+                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
+                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
                     </li>
                     <li class="row">
-                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
-                        <span class="col-3">2023.03.20</span>
-                        <i class="fa-solid fa-angle-right"></i>
+                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
+                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
                     </li>
                     <li class="row">
-                        <h3 class="col-9">패스트코드 사이트 점검 안내</h3>
-                        <span class="col-3">2023.03.20</span>
-                        <i class="fa-solid fa-angle-right"></i>
+                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
+                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
                     </li>
                 </ul>
             </div>
@@ -548,16 +560,12 @@
                     nextEl: ".lecture-next",
                     prevEl: ".lecture-prev",
                 },
-                
-                // autoplay: {
-                //     delay: 4500,
-                //     disableOnInteraction: false,
-                // },
+                autoplay: {
+                    delay: 4500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
             });
-            // function resize(){
-            //     $('.class ul.swiper-wrapper li.swiper-slide').outerWidth('278px');
-            // }
-            // resize();
         </script>
     </body>
 </html>

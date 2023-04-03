@@ -37,10 +37,10 @@
                     <h6 id="main-logo">
                         <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h6>
-                    <div class="footer_contents">
+                    <div class="footer_contents d-flex">
                         <h5 class="content-title">(주) FASTCODE</h5>
                         <span class="content-text-3">대표자 김유미 | 사업자 등록 번호 123-45-67890</span>
-                        <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com |전화: 02-1212-1212</span>
+                        <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com | 전화: 02-1212-1212</span>
                     </div>
                     <div class="footer_copyright"><span class="content-text-3">Copyright@2023 Fastcode. All Rights reserved</span></div>
                 </div>

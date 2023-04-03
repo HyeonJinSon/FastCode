@@ -13,7 +13,7 @@
         <header class="">
             <div class="header">
                 <div class="container d-flex justify-content-between align-items-center">
-                    <h1 class="main-logo">
+                    <h1 id="main-logo">
                         <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h1>
                     <nav class="main-menu-ft">
@@ -51,39 +51,41 @@
                     <ul class="member-info d-flex sub-menu-ft">
                         <li>
                             <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                            <span>장바구니</span>
+                            <span class="tip">장바구니</span>
                         </li>
 
                         <li>
                             <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                            <span>로그아웃</span>
+                            <span class="tip">로그아웃</span>
                         </li>
                         <li>
                             <a href=""><i class="fa-solid fa-user"></i></a>
                             <span class="hidden">나의 정보</span>
-                            <ul class="my_info text-start">
-                                <li class="d-flex justify-content-between">
-                                    <img class="profile_img" src="img/어디서본건있는세포.jpg" alt="" />
-                                    <a href="">손현진님</a>
-                                    <i class="fa-solid fa-angle-right"></i>
+                            <ul class="my_info text-start content-text-2">
+                                <li class="my_profile">
+                                    <a href="" class="d-flex">
+                                        <img class="profile_img" src="img/profile.jpg" alt="" cover-fit />
+                                        <span>손현진님</span>
+                                        <i class="fa-solid fa-angle-right ms-auto"></i>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-solid fa-chart-pie"></i>대시보드</a>
+                                    <a href=""><i class="fa-solid fa-chart-pie"></i><span>대시보드</span></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-solid fa-play"></i>나의 강의실</a>
+                                    <a href=""><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-solid fa-clipboard"></i>강의노트</a>
+                                    <a href=""><i class="fa-solid fa-clipboard"></i><span>강의노트</span></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-solid fa-comments"></i>나의 커뮤니티</a>
+                                    <a href=""><i class="fa-solid fa-comments"></i><span>나의 커뮤니티</span></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-solid fa-ticket"></i>쿠폰함</a>
+                                    <a href=""><i class="fa-solid fa-ticket"></i><span>쿠폰함</span></a>
                                 </li>
-                                <li>
-                                    <a href=""><i class="fa-solid fa-bell"></i>알림</a>
+                                <li class="alarm">
+                                    <a href="" class="d-flex align-items-center"><i class="fa-solid fa-bell"></i><span>알림</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -362,7 +364,7 @@
             <div class="container">
                 <div class="ad_fastcode_title text-center">
                     <span>왜 </span>
-                    <div class="main-logo">
+                    <div id="main-logo">
                         <a href="#">
                             <img src="img/fastcode_logo.png" alt="Fastcode" />
                             <span>fastcode</span>
@@ -513,13 +515,13 @@
                     </ul>
                 </div>
                 <div class="footer_bottom d-flex">
-                    <h6 class="main-logo">
+                    <h6 id="main-logo">
                         <a href="/"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h6>
-                    <div class="footer_contents">
+                    <div class="footer_contents d-flex">
                         <h5 class="content-title">(주) FASTCODE</h5>
                         <span class="content-text-3">대표자 김유미 | 사업자 등록 번호 123-45-67890</span>
-                        <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com |전화: 02-1212-1212</span>
+                        <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com | 전화: 02-1212-1212</span>
                     </div>
                     <div class="footer_copyright"><span class="content-text-3">Copyright@2023 Fastcode. All Rights reserved</span></div>
                 </div>
@@ -529,6 +531,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="js/common.js"></script>
         <script>
             $(function () {
                 $("#tabs").tabs();
@@ -567,5 +570,6 @@
                 },
             });
         </script>
+        
     </body>
 </html>

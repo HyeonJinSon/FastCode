@@ -1,6 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/head.php";
 ?>
+        <link rel="stylesheet" href="css/common.css" />
         <link rel="stylesheet" href="css/index.css" />
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
@@ -393,44 +394,8 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer.php";
 ?>        
-        <script>
-            $(function () {
-                $("#tabs").tabs();
-            });
-        </script>
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".banner-next",
-                    prevEl: ".banner-prev",
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-            });
-
-            var lecture_swiper = new Swiper(".lectureSwiper", {
-                slidesPerView: 4,
-                spaceBetween: 35,
-                navigation: {
-                    nextEl: ".lecture-next",
-                    prevEl: ".lecture-prev",
-                },
-                autoplay: {
-                    delay: 4500,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-            });
-        </script>
+        <script src="js/common.js"></script>
+        <script src="js/index.js"></script>
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/tail.php";
 ?> 

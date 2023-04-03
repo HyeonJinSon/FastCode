@@ -2,24 +2,23 @@
     include $_SERVER["DOCUMENT_ROOT"]."/inc/dbcon.php";
     ini_set( 'display_errors', '0' );
 
-    $pid = $_POST['pid'];
+    $lecid = $_POST['lecid'];
     $ssid = session_id();
     $userid = $_SESSION['UID'];
 
-    $query = "select cartid from cart where ssid='".$ssid."' and pid='".$pid."'";
+    $query = "select cartid from cart where ssid='".$ssid."' and lecid='".$lecid."'";
     $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
     $rs = $result->fetch_object();
     if($rs->cartid){
-        $sql="update cart set where ssid='".$ssid."' and pid='".$pid."'";
-        $result=$mysqli->query($sql) or die($mysqli->error);
+        echo "<script>alert('동일한 강좌가 있습니다.')</script>";
     }else{
         $sql="INSERT INTO `cart`
-        (`pid`,
+        (`lecid`,
         `userid`,
         `ssid`,
         `regdate`)
         VALUES
-        ('".$pid."',
+        ('".$lecid."',
         '".$userid."',
         '".$ssid."',
         now())";

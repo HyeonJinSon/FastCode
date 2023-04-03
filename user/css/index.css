@@ -39,7 +39,10 @@ section.banner {
 }
 .swiper {
     width: 100%;
-    height: auto;
+    /* height: 100%; */
+}
+.banner.swiper{
+    height: 676px;
 }
 .banner .swiper-slide .row {
     height: 586px;
@@ -238,6 +241,9 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 }
 .class {
     margin-bottom: 55px;
+}
+.class.swiper{
+    height: 307px;
 }
 .class:last-child {
     margin-bottom: 0;

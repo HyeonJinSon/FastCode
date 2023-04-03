@@ -46,6 +46,7 @@
 
                     <?php
                         if($_SESSION['USERID']){
+                            $userid = $_SESSION['USERID'];
                     ?>
                         <li>
                             <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
@@ -56,11 +57,18 @@
                             <span class="hidden">나의 정보</span>
                             <ul class="my_info text-start content-text-2">
                                 <li class="my_profile">
+                                    <?php 
+                                    $query = "SELECT * FROM members where userid = '".$userid."'";
+                                    $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
+                                    $rs = $result -> fetch_object();
+                                    ?>
                                     <a href="" class="d-flex">
-                                        <img class="profile_img" src="img/profile.jpg" alt="" cover-fit />
-                                        <span>손현진님</span>
+                                        <img class="profile_img" src="<?php echo $rs -> profile_img;?>" alt="" cover-fit />
+                                        <span><?php echo $rs -> username;?>님</span>
                                         <i class="fa-solid fa-angle-right ms-auto"></i>
                                     </a>
+                                    <?php
+                                    ?>
                                 </li>
                                 <li>
                                     <a href=""><i class="fa-solid fa-chart-pie"></i><span>대시보드</span></a>

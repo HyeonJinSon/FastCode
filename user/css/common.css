@@ -166,6 +166,9 @@ body {
   background: rgba(229, 57, 69, 0.9);
   color: var(--background-w);
 }
+.top-btn i.fa-arrow-up{
+  line-height: 70px;
+}
 
 /* header */
 header {

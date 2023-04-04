@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="css/common.css" />
         <link rel="stylesheet" href="css/index.css" />
 <?php
-    include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/inc/user/index_header.php";
 ?>
         <section class="banner swiper mySwiper">
             <h2 class="hidden">main banner</h2>
@@ -93,178 +93,192 @@
 
         <section class="class_slide container">
             <h2 class="hidden">추천강좌 슬라이드</h2>
+            <?php 
+                $query = "SELECT * from members where userid = '".$userid."'";
+                $result = $mysqli -> query($query) or die("query error =>".$mysqli-->error);
+                $rs = $result -> fetch_object();
+                $catelike1 = $rs -> cate_like1;
+                $catelike2 = $rs -> cate_like2;
+            ?>
+            <?php
+                if(isset($catelike1)){
+            ?>
             <div class="class cate1 swiper lectureSwiper">
-                <h3 class="sub-title">내가 관심있는 <em>Javascript</em> 분야 인기 강좌</h3>
+                <?php
+                    $cate1_query = "SELECT * from category where step=3 and code='".$catelike1."'";
+                    $cate1_result = $mysqli -> query($cate1_query) or die("query error =>".$mysqli-->error);
+                    $ct1_rs = $cate1_result -> fetch_object();
+                ?>
+                <h3 class="sub-title">내가 관심있는 <em><?php echo $ct1_rs -> name ; ?></em> 분야 인기 강좌</h3>
+                <?php
+                    $cate1lec_sql = "SELECT * from lectures where cate_sm='".$catelike1."' order by sale_cnt desc limit 0,8";
+                    $cate1lec_result = $mysqli->query($cate1lec_sql) or die("query error => ".$mysqli->error);
+                    while($c1l_rs = $cate1lec_result -> fetch_object()){
+                        $c1lrs[]=$c1l_rs;
+                    }
+                ?>
                 <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명1</h4>
-                            <span class="mini-tag new-tag">new</span>
-                            <span class="mini-tag hit-tag">hit</span>
-                            <span class="mini-tag easy-tag">초급</span>
-                            <span class="mini-tag difficult-tag">중급</span>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명2</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명3</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명4</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명5</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Javascript 강좌명6</h4></a
-                        >
-                    </li>
+                    <?php
+                        if(isset($c1lrs)){
+                            foreach($c1lrs as $lr){
+                    ?>
+                        <li class="swiper-slide">
+                            <a href="">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                                <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
+                                <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
+                            </a>
+                        </li>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <li class="no_class content-text-1">해당 강좌가 없습니다</li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
+            <?php } ?>
+            <?php
+                if(isset($catelike2)){
+            ?>
             <div class="class cate2 swiper lectureSwiper">
-                <h3 class="sub-title">내가 관심있는 <em>React</em> 분야 인기 강좌</h3>
+                <?php
+                    $cate2_query = "SELECT * from category where step=3 and code='".$catelike2."'";
+                    $cate2_result = $mysqli -> query($cate2_query) or die("query error =>".$mysqli-->error);
+                    $ct2_rs = $cate2_result -> fetch_object();
+                ?>
+                <h3 class="sub-title">내가 관심있는 <em><?php echo $ct2_rs -> name ; ?></em> 분야 인기 강좌</h3>
+                <?php
+                    $cate2lec_sql = "SELECT * from lectures where cate_sm='".$catelike2."' order by sale_cnt desc limit 0,8";
+                    $cate2lec_result = $mysqli->query($cate2lec_sql) or die("query error => ".$mysqli->error);
+                    while($c2l_rs = $cate2lec_result -> fetch_object()){
+                        $c2lrs[]=$c2l_rs;
+                    }
+                ?>
                 <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명1</h4>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명2</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명3</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명4</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명5</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">React 강좌명6</h4></a
-                        >
-                    </li>
+                    <?php
+                        if(isset($c2lrs)){
+                            foreach($c2lrs as $lr){
+                    ?>
+                        <li class="swiper-slide">
+                            <a href="">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                                <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
+                                <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
+                            </a>
+                        </li>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <li class="no_class content-text-1">해당 강좌가 없습니다</li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
+            <?php } ?>
             <div class="class new swiper lectureSwiper">
                 <h3 class="sub-title">따끈따끈 신규 강좌</h3>
+                <?php
+                    $newlec_sql = "SELECT * from lectures where sale_status='판매중' order by lecid desc limit 0,8";
+                    $newlec_result = $mysqli->query($newlec_sql) or die("query error => ".$mysqli->error);
+                    while($nl_rs = $newlec_result -> fetch_object()){
+                        $nlrs[]=$nl_rs;
+                    }
+                ?>
                 <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명1</h4>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명2</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명3</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명4</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명5</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">new 강좌명6</h4></a
-                        >
-                    </li>
+                    <?php
+                        if(isset($nlrs)){
+                            foreach($nlrs as $lr){
+                    ?>
+                        <li class="swiper-slide">
+                            <a href="">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                                <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
+                                <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
+                            </a>
+                        </li>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <li class="no_class content-text-1">해당 강좌가 없습니다</li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+                <div class="lecture-next swiper-button-next"></div>
+                <div class="lecture-prev swiper-button-prev"></div>
+            </div>
+            <div class="class recom swiper lectureSwiper">
+                <h3 class="sub-title">믿고 보는 전문가 추천 강의</h3>
+                <?php
+                    $recomlec_sql = "SELECT * from lectures where recom=1 order by lecid desc limit 0,8";
+                    $recomlec_result = $mysqli->query($recomlec_sql) or die("query error => ".$mysqli->error);
+                    while($rl_rs = $recomlec_result -> fetch_object()){
+                        $rlrs[]=$rl_rs;
+                    }
+                ?>
+                <ul class="swiper-wrapper">
+                    <?php
+                        if(isset($rlrs)){
+                            foreach($rlrs as $lr){
+                    ?>
+                        <li class="swiper-slide">
+                            <a href="">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                                <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
+                                <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
+                            </a>
+                        </li>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <li class="no_class content-text-1">해당 강좌가 없습니다</li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
             <div class="class best swiper lectureSwiper">
                 <h3 class="sub-title">Best Seller 대표 강좌</h3>
+                <?php
+                    $hitlec_sql = "SELECT * from lectures where sale_status='판매중' and sale_cnt>10 order by sale_cnt limit 0,8";
+                    $hitlec_result = $mysqli->query($hitlec_sql) or die("query error => ".$mysqli->error);
+                    while($hl_rs = $hitlec_result -> fetch_object()){
+                        $hlrs[]=$hl_rs;
+                    }
+                ?>
                 <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명1</h4>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명2</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명3</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="">
-                            <img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명4</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명5</h4></a
-                        >
-                    </li>
-                    <li class="swiper-slide">
-                        <a href=""
-                            ><img src="https://placehold.co/270x180" alt="" />
-                            <h4 class="content-text-1">Best 강좌명6</h4></a
-                        >
-                    </li>
+                    <?php
+                        if(isset($hlrs)){
+                            foreach($hlrs as $lr){
+                    ?>
+                        <li class="swiper-slide">
+                            <a href="">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                                <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
+                                <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
+                            </a>
+                        </li>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <li class="no_class content-text-1">해당 강좌가 없습니다</li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
@@ -374,19 +388,26 @@
         <section class="notice container">
             <div class="row">
                 <h2 class="col-1 sub-title">공지사항</h2>
+                <?php 
+                    $board_sql = "SELECT * from board order by idx desc limit 0,3";
+                    $b_result = $mysqli -> query($board_sql) or die("Query Error! => ".$mysqli->error);
+                    while($b_rs = $b_result->fetch_object()){
+                        $brsc[] = $b_rs;
+                    }
+                ?>
                 <ul class="notice_list col-11 content-text-1">
-                    <li class="row">
-                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
-                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
-                    </li>
-                    <li class="row">
-                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
-                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
-                    </li>
-                    <li class="row">
-                        <h3 class="col-9"><a href="">패스트코드 사이트 점검 안내</a></h3>
-                        <span class="col-3 text-center">2023.03.20<i class="fa-solid fa-angle-right"></i></span>
-                    </li>
+                    <?php 
+                        if(isset($brsc)){
+                            foreach($brsc as $br){
+                    ?>
+                        <li class="row">
+                            <h3 class="col-9"><a href="#"><?php echo $br -> title; ?></a></h3>
+                            <span class="col-3 text-center"><?php echo $br -> date; ?><i class="fa-solid fa-angle-right"></i></span>
+                        </li>
+                    <?php
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
         </section>

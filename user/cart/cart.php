@@ -1,6 +1,11 @@
 <?php ob_start();
   include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/head.php";
+?>
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/cart.css" />
+<?php
+  include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
 
   if($_SESSION['UID']){
     $added_condition = " and c.userid= '".$_SESSION['UID']."'";
@@ -17,12 +22,6 @@
     $rsc[]=$rs;
   }
 ?>
-
-<link rel="stylesheet" href="../css/common.css" />
-<link rel="stylesheet" href="../css/cart.css" />
-<?php
-  include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
-?>
     <div class="container cart_main">
       <h2 class="title">나의 장바구니</h2>
       <div class="cart_area d-flex">
@@ -30,9 +29,10 @@
           <ul>
             <!-- 장바구니에 담겨 있는 것 반복문으로 출력 -->
             <?php
-            foreach($rsc as $l){
+            if(isset($rsc)){ // 장바구니에 담긴게 있으면
+              foreach($rsc as $l){
             ?>
-            <li class="d-flex"> 
+            <li class="d-flex" id="<?php echo $l->cartid;?>"> 
               <img src="<?php echo $l->thumbnail; ?>" alt="" />
               <div class="cart_list_contents">
                 <h3 class="content-text-1 lititle"><?php echo $l->name; ?></h3>
@@ -53,8 +53,10 @@
               <button class="cart_item_del" id="<?php echo $c->cartid;?>">삭제</button>
             </li>
             <?php
-            }
-            ?>
+                } //장바구니에 담긴게 없으면
+              } else { ?>
+              <span class="main-menu-ft cart_empty">장바구니가 비었습니다.</span>
+            <?php } ?>
           </ul>
         </div>
         <form action="">

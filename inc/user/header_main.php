@@ -4,12 +4,12 @@
             <div class="header">
                 <div class="container d-flex justify-content-between align-items-center">
                     <h1 id="main-logo">
-                        <a href="../index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                        <a href="/"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h1>
                     <nav class="main-menu-ft">
                         <ul class="d-flex">
                             <li><a href="">about us</a></li>
-                            <li><a href="../lecture/lecture_list.php">강의</a></li>
+                            <li><a href="lecture/lecture_list.php">강의</a></li>
                             <li>
                                 <a href="">커뮤니티</a>
                                 <ul class="sub-menu-ft">
@@ -40,7 +40,7 @@
                     <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
                     <ul class="member-info d-flex sub-menu-ft">
                         <li>
-                            <a href="../cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                             <span class="tip">장바구니</span>
                         </li>
 
@@ -74,7 +74,7 @@
                                     <a href=""><i class="fa-solid fa-chart-pie"></i><span>대시보드</span></a>
                                 </li>
                                 <li>
-                                    <a href="../class/myclass.php"><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
+                                    <a href="class/myclass.php"><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
                                 </li>
                                 <li>
                                     <a href=""><i class="fa-solid fa-clipboard"></i><span>강의노트</span></a>
@@ -93,11 +93,11 @@
                         } else{
                     ?>
                     <li>
-                        <a href="../member/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                        <a href="member/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                         <span class="tip">로그인</span>
                     </li>
                     <li>
-                        <a href="../member/signup.php"><i class="fa-solid fa-user-plus"></i></a>
+                        <a href="member/signup.php"><i class="fa-solid fa-user-plus"></i></a>
                         <span class="tip">회원가입</span>
                     </li>
                     <?php

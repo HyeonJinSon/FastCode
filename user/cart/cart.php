@@ -7,8 +7,8 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
 
-  if($_SESSION['UID']){
-    $added_condition = " and c.userid= '".$_SESSION['UID']."'";
+  if($_SESSION['USERID']){
+    $added_condition = " and c.userid= '".$_SESSION['USERID']."'";
   } else{
     $added_condition = " and c.ssid= '".session_id()."'";
   }
@@ -67,7 +67,7 @@
                 //사용 가능한 쿠폰을 확인
                 $q2 = "SELECT ucid,coupon_name from user_coupons uc
                 join coupons c on c.cid=uc.couponid
-                where c.status = 2 and uc.status = 1 and uc.use_max_date >= now() and uc.userid='".$_SESSION['UID']."'";
+                where c.status = 1 and uc.status = 1 and uc.use_max_date >= now() and uc.userid='".$_SESSION['USERID']."'";
                 $r2 = $mysqli->query($q2) or die("query error => ".$mysqli->error);
                 while($cs2 = $r2->fetch_object()){
                     $csa[]=$cs2;
@@ -75,11 +75,11 @@
               ?>
               <option value="" readonly>쿠폰 선택</option>
               <?php
-                foreach ($csa as $c){
-                  // 유저가 가지고 있는 쿠폰 출력되게
+                if(isset($csa)){
+                  foreach ($csa as $c){ // 유저가 가지고 있는 쿠폰 출력되게
               ?>
-              <option value="<?php echo $c->ucid;?>"><?php echo $c->coupon_name;?></option>
-              <?php } ?>
+                <option value="<?php echo $c->ucid;?>"><?php echo $c->coupon_name;?></option>
+              <?php } } ?>
             </select>
             <input type="hidden" name="cart_total" id="cart_total" value="<?php echo $cart_total;?>">
             <div class="price d-flex justify-content-between">
@@ -146,7 +146,7 @@
         $.ajax({
             async:false,
             type:'post',
-            url:'coupon_cal.php',
+            url:'coupon_cal.ajax.php',
             data:data,
             dataType:'json',
             success:function(data){

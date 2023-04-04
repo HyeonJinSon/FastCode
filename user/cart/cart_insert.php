@@ -4,7 +4,7 @@
 
     $lecid = $_POST['lecid'];
     $ssid = session_id();
-    $userid = $_SESSION['UID'];
+    $userid = $_SESSION['USERID'];
 
     $query = "select cartid from cart where ssid='".$ssid."' and lecid='".$lecid."'";
     $result = $mysqli->query($query) or die("query error => ".$mysqli->error);

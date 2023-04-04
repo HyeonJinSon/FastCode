@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
 ini_set( 'display_errors', '0' );
 

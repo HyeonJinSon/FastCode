@@ -2,7 +2,7 @@
   background: var(--primary-n);
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  padding: 55px 125px 40px 100px;
+  padding: 145px 125px 40px 100px;
 }
 .class_banner div {
   font-size: 18px;
@@ -39,7 +39,7 @@
 }
 .class_content aside h2 {
   text-align: center;
-  margin: 54px 0 18px;
+  margin: 54px 0 36px;
 }
 .class_content aside h2 a {
   padding: 6px 24px;
@@ -52,7 +52,7 @@
   background: var(--primary-r);
 }
 .class_content aside .class_nav {
-  border-radius: 50px;
+  border-radius: 20px;
   border: 2px solid var(--background-g);
   background: #fff;
   padding: 36px 70px 36px 50px;
@@ -144,4 +144,7 @@
 }
 .myLec_container {
   gap: 54px 40px;
+}
+.lec_empty {
+  
 }

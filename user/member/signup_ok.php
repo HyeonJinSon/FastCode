@@ -7,13 +7,16 @@ $username=$_POST["username"];
 $userid=$_POST["userid"];
 $passwd=$_POST["passwd"];
 $passwd=hash('sha512',$passwd);
-$profile_img=$_POST["profile_img"];
-$cate1=$_POST["cate1"];
-$cate2=$_POST["cate2"];
+$cate1=$_POST["cate1"] ?? null;
+$cate2=$_POST["cate2"] ?? null;
 $ability=$_POST["ability_range"];
 $use_agree=$_POST["use_agree"];
 $personalinfo_agree=$_POST["personalinfo_agree"];
 $marketing_agree=$_POST["marketing_agree"] ?? 0;
+
+// $profile_orgin_img=$_FILES["profile_img"]['name'];
+// $tmpfile_path = $_FILES['file']['tmp_name'];
+
 
 
     //썸네일 이미지
@@ -33,22 +36,28 @@ $marketing_agree=$_POST["marketing_agree"] ?? 0;
             </script>";
             exit;
         }
+    
 
-        $save_dir = $_SERVER['DOCUMENT_ROOT']."/pdata/";
+    // $upload_path = "./member_profile/".$profile_orgin_img;
+    // move_uploaded_file($tmpfile_path, $upload_path);
+    // $profile_img = $upload_path;
+
+        $save_dir = "./member_profile/";
         $filename = $_FILES['profile_img']['name'];
         $ext = pathinfo($filename,PATHINFO_EXTENSION); //확장자
-        $newfilename = iconv_substr($userid,0,10).date("ymdHis").substr(rand(),0,6);
+        $newfilename = iconv_substr($userid,0,5).date("ymdHis").substr(rand(),0,6);
         $profile_img = $newfilename.'.'.$ext ;
         if(move_uploaded_file($_FILES['profile_img']['tmp_name'], $save_dir.$profile_img)){
-            $profile_img = "/pdata/".$profile_img;
+            $profile_img = "member/member_profile/".$profile_img;
         }else{
             echo "<script>
                 alert('이미지를 등록할 수 없습니다. 관리자에게 문의해주세요.');
-                history.back();
+                
             </script>";
             exit;
         }
-    }
+    };
+
 
 $mysqli->autocommit(FALSE);
 
@@ -65,7 +74,7 @@ try {
     $mysqli->commit();//디비에 커밋한다.
 
     echo "<script>alert('회원가입 성공!, 10,000원 쿠폰을 발행해 드렸습니다.');
-    location.href='/index.php';</script>";
+    location.href='../index.php';</script>";
     exit;
 }catch (Exception $e) {
     $mysqli->rollback();

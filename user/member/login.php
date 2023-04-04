@@ -13,8 +13,9 @@
         <link rel="stylesheet" href="../css/signup.css" />
     </head>
     <body>
-        <div class="container d-flex justify-content-between">
+        <div class="inner">
             <section class="deco">
+                <a href="<?php $_SERVER['DOCUMENT_ROOT']."/user/index.php";?>">
                 <svg xmlns="http://www.w3.org/2000/svg" width="536" height="108" viewBox="0 0 536 108" fill="none">
                     <path d="M101.099 41.6369H72.4921L68.1475 53.2265H94.6659L90.1481 65.2768H63.6296L53.6536 91.8864H37.7007L61.0561 29.5884H105.616L101.099 41.6369Z" fill="black" />
                     <path d="M153.009 91.8864H136.448L135.59 79.2927H112.578L104.773 91.8864H88.6121L128.764 29.5884H147.223L153.009 91.8864ZM134.885 67.8703L133.39 45.5515L119.583 67.8703H134.885Z" fill="black" />
@@ -48,6 +49,7 @@
                     <path d="M11.7038 24.8906C6.58144 34.2534 2.79714 43.2373 0 51.3652C0.0689341 52.1542 0.164381 52.9336 0.292528 53.7026C3.30442 44.5776 7.57922 34.2717 13.641 23.5103C12.9755 23.9457 12.3304 24.4073 11.7038 24.8906Z" fill="#1C38F4" />
                     <path d="M0.434814 43.0203C1.98672 39.1074 3.77017 35.0448 5.81079 30.8794C3.17185 34.43 1.30533 38.5596 0.434814 43.0203Z" fill="#1C38F4" />
                 </svg>
+                </a>
                 <p>빠르게 배우는 코딩</p>
                 <p>쉽게 배우는 코딩</p>
                 <p>재밌게 배우는 코딩</p>
@@ -63,7 +65,7 @@
                         <i class="fa-solid fa-user-plus"></i>
                     </a>
                 </div>
-                <form action="login_ok.php" method="post">
+                <form action="login_ok.php" method="post" class="login_form">
                     <h2 class="main-title">로그인</h2>
                     <div class="input_info">
                         <label for="userid" class="form-label">아이디</label>
@@ -76,7 +78,7 @@
 
                     <button type="submit" class="big-btn btn-red" id="login">로그인</button>
                 </form>
-            </section>`
+            </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 

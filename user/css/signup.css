@@ -1,8 +1,12 @@
 body {
     background: var(--background-g);
 }
-.container section {
-    width: 648px;
+.inner{
+    max-width: 1420px;
+    margin: 0 auto;
+}
+.inner section {
+    width: 710px;
 }
 
 .deco {
@@ -16,7 +20,7 @@ body {
 }
 
 .signup {
-    margin: 52px 0 112px 648px;
+    margin: 52px 0 112px 710px;
 }
 .member_btn {
     text-align: center;
@@ -132,5 +136,11 @@ form button {
     margin-bottom: 52px;
 }
 #login {
-    margin: 84px auto 0;
+    margin: 162px auto 0;
+}
+.login_section .login_form{
+    padding: 54px 112px 126px;
+}
+.login_section .login_form h2{
+margin-bottom: 126px;
 }

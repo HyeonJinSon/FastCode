@@ -8,6 +8,11 @@ body {
   color: var(--typography);
 }
 
+.member-info li .hidden,
+.hidden {
+    display: none;
+}
+
 /* padding */
 .pd-54 {
   padding: 54px 0;
@@ -272,7 +277,7 @@ header .search i {
 .member-info > li {
     position: relative;
 }
-.member-info li span,
+.member-info li .tip,
 .member-info li .my_info {
     position: absolute;
     width: 85px;
@@ -292,12 +297,12 @@ header .search i {
     width: 180px;
     padding: 0 15px;
 }
-.member-info li:hover span,
+.member-info li:hover .tip,
 .member-info li:hover .my_info {
     visibility: visible;
     opacity: 1;
 }
-.member-info li span:after,
+.member-info li .tip:after,
 .member-info li .my_info:after {
     content: "";
     position: absolute;
@@ -317,10 +322,57 @@ header .search i {
     height: 18px;
     margin-bottom: 18px;
 }
-.member-info .my_info .profile_img {
+.member-info .my_info li span{
+  transition: 0.3s;
+}
+.member-info .my_info li:hover i,
+.member-info .my_info li:hover span{
+  color: var(--primary-r);
+}
+.member-info .my_info .my_profile {
+  display: block;
+  height: 40px;
+  margin-top:10px;
+  margin-bottom: 18px;
+ 
+}
+.member-info .my_info .my_profile a{
+  gap: 10px;
+  align-items: center;
+}
+.member-info .my_info .my_profile .profile_img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+.member-info .my_info .my_profile i {
+  font-size: 24px;
+  line-height: 40px;
+  color: var(--primary-n);
+  width: 12px;
+  margin-right: 0;
+}
+.member-info .my_info li{
+  display: flex;
+  align-items: center;
+}
+.member-info .my_info li i{
+  line-height: 18px;
+  font-size: 18px;
+  display: inline-block;
+  width: 26px;
+  text-align: center;
+  margin-right: 10px;
+}
+.member-info .my_info li.alarm{
+  justify-content: end;
+}
+.member-info .my_info li.alarm i{
+  order: 2;
+  margin-right: 0;
+}
+.member-info .my_info li.alarm span{
+  order: 1;
 }
 
 /* Footer */

@@ -4,7 +4,7 @@
             <div class="header">
                 <div class="container d-flex justify-content-between align-items-center">
                     <h1 id="main-logo">
-                        <a href="<?php $_SERVER['DOCUMENT_ROOT']."/user/index.php";?>"><img src="img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                        <a href="<?php $_SERVER['DOCUMENT_ROOT']."/user/index.php";?>"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h1>
                     <nav class="main-menu-ft">
                         <ul class="d-flex">

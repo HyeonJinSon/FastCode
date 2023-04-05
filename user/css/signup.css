@@ -123,6 +123,22 @@ form button {
     margin: 108px auto 0;
 }
 
+#range,
+.fa-circle-question{
+    padding-left: 10px;
+    color: var(--highlight-s);
+}
+
+.warning{
+    box-shadow: 0 0 0 0.25rem rgba(229,57,69,.50);
+}
+
+.see_more{
+    border: none;
+    background: none;
+    margin: 0;
+}
+
 .fa-asterisk {
     color: #ff4141;
     font-size: 10px;
@@ -144,3 +160,41 @@ form button {
 .login_section .login_form h2{
 margin-bottom: 126px;
 }
+
+
+
+@keyframes animate-svg-name {
+    0% { fill: transparent; }
+    100% { fill: rgb(0, 0, 0); }
+}
+  
+.svg-name {
+    animation: animate-svg-name 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+
+#a{ animation-delay: 0.1s; }
+#s{ animation-delay: 0.2s; }
+#t{ animation-delay: 0.3s; }
+#c{ animation-delay: 0.4s; }
+#o{ animation-delay: 0.5s; }
+#d{ animation-delay: 0.6s; }
+#e{ animation-delay: 0.7s; }
+
+  
+@keyframes animate-svg-fill {
+    0% { fill: transparent; }
+    100% { fill: rgb(28, 56, 244); }
+}
+  
+.svg-elem {
+    animation: animate-svg-fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+  
+#l1{ animation-delay: 0.8s; }
+#l2{ animation-delay: 0.85s; }
+#l3{ animation-delay: 0.9s; }
+#l4{ animation-delay: 0.95s; }
+#l5{ animation-delay: 1.0s; }
+#l6{ animation-delay: 1.05s; }
+#l7{ animation-delay: 1.10s; }
+#l8{ animation-delay: 1.15s; }

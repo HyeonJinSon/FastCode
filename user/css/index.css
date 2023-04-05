@@ -411,3 +411,73 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     right: 0;
     transform: translateY(-50%);
 }
+
+
+
+
+
+
+@keyframes animate-svg-fill-1 {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: rgb(29, 53, 87);
+    }
+  }
+  
+  .svg-elem-1 {
+    animation: animate-svg-fill-1 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0s both;
+  }
+  
+  @keyframes animate-svg-fill-2 {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: rgb(69, 123, 157);
+    }
+  }
+  
+  .svg-elem-2 {
+    animation: animate-svg-fill-2 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.1s both;
+  }
+  
+  @keyframes animate-svg-fill-3 {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: rgb(69, 123, 157);
+    }
+  }
+  
+  .svg-elem-3 {
+    animation: animate-svg-fill-3 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.2s both;
+  }
+  
+  @keyframes animate-svg-fill-4 {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: rgb(29, 53, 87);
+    }
+  }
+  
+  .svg-elem-4 {
+    animation: animate-svg-fill-4 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.30000000000000004s both;
+  }
+  
+  @keyframes animate-svg-fill-5 {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: rgb(168, 218, 219);
+    }
+  }
+  .svg-elem-5 {
+    animation: animate-svg-fill-5 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.4s both;
+  }
+  

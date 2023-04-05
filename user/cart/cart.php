@@ -39,11 +39,11 @@
             if(isset($rsc)){ // 장바구니에 담긴게 있으면
               foreach($rsc as $l){
             ?>
-            <li class="d-flex" id="<?php echo $l->cartid;?>"> 
+            <li class="d-flex" id="<?php echo $l->cartid;?>" data-id="<?php echo $l->lecid;?>"> 
               <img src="<?php echo $l->thumbnail; ?>" alt="" />
               <div class="cart_list_contents">
                 <h3 class="content-text-1 lititle"><?php echo $l->name; ?></h3>
-                <span class="content-text-1"><?php echo number_format($l->price);?>원</span>
+                <span class="content-text-1 liprice" data-price="<?php echo $l->price; ?>"><?php echo number_format($l->price);?>원</span>
                 <span class="content-text-1">
                   <?php 
                   //lec_date 가 무제한이면 그대로 출력하고
@@ -88,7 +88,7 @@
                 <option value="<?php echo $c->ucid;?>"><?php echo $c->coupon_name;?></option>
               <?php } } ?>
             </select>
-            <input type="hidden" name="cart_total" id="cart_total" value="<?php echo $cart_total;?>">
+            <!-- <input type="hidden" name="cart_total" id="cart_total" value=""> -->
             <div class="price d-flex justify-content-between">
               <span class="main-menu-ft">가격</span>
               <span class="main-menu-ft" id="subtotal"></span>
@@ -104,7 +104,7 @@
               <span class="title" id="total_amount"></span>
               <!-- 총가격 - 할인가격 으로 계산된 가격 -->
             </div>
-            <button class="y-btn big-btn btn-sky" onclick="checkout_ok()">결제하기</button>
+            <button type="button" class="y-btn big-btn btn-sky" onclick="checkout_ok()">결제하기</button>
           </div>
         </form>
       </div>
@@ -129,27 +129,42 @@
       include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer.php";
     ?> 
     <script>
+      let lecidarr = [];
+      let cartidarr = [];
+      let userid = '<?php echo $_SESSION['USERID']; ?>';
+      cal_Sum();
 
       //모든 강좌 더하기
       function cal_Sum(){
-        let cart_item = $('.cart_list > li'); //장바구니 리스트 
+        let cart_item = $('.cart_list li'); //장바구니 리스트 
+        
         let sum = 0;
         cart_item.each(function(){
-            let total = $(this).find('.total_price span').text(); //가격
-            let totalmd = parseInt(total.replace(',',''));
-            sum+=totalmd;
+            let dataid = $(this).attr('data-id');
+            lecidarr.push(dataid);
+
+            let id = $(this).attr('id');
+            cartidarr.push(id);
+            
+            let total = $(this).find('.liprice').attr('data-price'); //가격
+            sum+=Number(total);
         });
         $('#subtotal').text(number_format(sum)+'원');
+        $('#total_amount').text(number_format(sum)+'원');
       }
 
       //쿠폰 계산
       $('#coupon').change(function(){
         var ucid = $("#coupon option:selected").val();//사용자 쿠폰 번호
-        var cart_total = $("#cart_total").val();//구매 합계
+        var subtotal = $("#subtotal").text();//구매 합계 100,000원
+        var subtotal2 = subtotal.replace(/\,/g,"");
+        var cart_total = subtotal2.replace(/\원/g,"");
+        // console.log(cart_total);
         var data = {
             ucid : ucid,
             cart_total : cart_total
         };
+        console.log(data.cart_total);
         $.ajax({
             async:false,
             type:'post',
@@ -162,7 +177,7 @@
                     $('#coupon_price').text(0);
                     return false;
                 } else if(data.result == true){
-                    $('#coupon_price').text('-'+data.coupon_price+'원');
+                    $('#coupon_price').text(number_format('-'+data.coupon_price+'원'));
                     $('#total_amount').text(number_format(cart_total - parseInt(data.coupon_price)+'원'));
                 }
             }
@@ -175,9 +190,9 @@
       }
 
       // 삭제 팝업
-        function show() {
-        document.querySelector(".background").className = "background show";
-      }
+      //   function show() {
+      //   document.querySelector(".background").className = "background show";
+      // }
 
       //장바구니 페이지에서 삭제 버튼 누르면
       //배경색 살짝 어둡게, 팝업 보이게
@@ -204,8 +219,9 @@
             },
             success:function(result){              
               if(result.result == true){
-                $('#'+cid).remove();
-                cal_Sum(); //삭제되고 다시 계산
+                $('#'+cid).remove(); //삭제되고
+                location.reload();
+                //cal_Sum(); //다시 계산
               }                
             }
           });
@@ -217,27 +233,24 @@
         $(".background").removeClass('show');
       });
         
-      //결제완료 누르면 할일
+      //결제하기 버튼 누르면 할일
       function checkout_ok(){
         let data = {
-            lecid : <?php echo $lecid ?>,
-            opts : opts,
-            cnt : cnt
+            userid : userid,
+            lecid : lecidarr,
+            cartid : cartidarr
         }
-        console.log(data);
-
-
         $.ajax({
           async: false,
           type:'post',
           url:'checkout_ok.php',
           data: data,
           dataType :'json',
-          error:function(){alert('연결에러')},
           success:function(result){
             console.log(result);
             if(result.result == 'ok'){
               alert('결제가 완료되었습니다.');
+              location.href="http://fastcode.dothome.co.kr/user/class/myclass.php";
             } else{
               alert('결제가 실패했습니다. 다시 시도해주세요.');
             }

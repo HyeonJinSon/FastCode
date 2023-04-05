@@ -26,7 +26,7 @@ if(!$rs2){//사용하려고 하는 쿠폰이 없으면
         exit;
     }
     if($rs2->coupon_type==1){//정액 쿠폰이면 1
-        $data = array("result"=>true, "coupon_price"=>$rs2->coupon_price);
+        $data = array("result"=>true, "coupon_price"=>$rs2->coupon_discount);
         echo json_encode($data);    
         exit;
     }else if($rs2->coupon_type==2){//정률 쿠폰이면 2

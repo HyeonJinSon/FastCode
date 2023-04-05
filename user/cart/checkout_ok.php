@@ -1,30 +1,29 @@
 <?php
 
-    session_start();
+  include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
+  ini_set( 'display_errors', '0' );
 
-    include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
-    ini_set( 'display_errors', '0' );
+  $lecids = $_POST['lecid'];
+  $cartids = $_POST['cartid'];
+  $userid = $_POST['userid'];
 
-    $lecid = $_POST['lecid'];
-    $ssid = session_id();
-    $userid = $_SESSION['USERID'];
-
-    //lectures 테이블에서 lecid 값을 조회
-    // $query = "SELECT lecid from lectures where ssid='".$ssid."'";
-    // $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
-    // $rs = $result->fetch_object();
-
-    //user_lectures 테이블에서 결제완료된 lecid의 값을 lecid 칼럼에 넣어준다.
-    $sql="INSERT INTO `user_lectures`(`lecid`,`userid`) VALUES ('".$lecid."','".$userid."')";
+  foreach($lecids as $lecid){
+    //user_lectures 테이블에서 결제완료된 lecid와 userid 의 값을 각 칼럼에 넣어준다.
+    $sql="INSERT INTO user_lectures (`lecid`,`userid`) VALUES ('".$lecid."','".$userid."')";
     $result2 = $mysqli->query($sql) or die($mysqli->error);
+    //완료되면 cart 테이블에서 결제되어 넘어간 강좌의 값을 없애준다.
 
-    if($result2){
-      echo "<script> alert('결제가 완료되었습니다.');
-        location.href = '../class/myclass.php';</script>";
-    }else{
-      echo "<script> alert('결제되지 않았습니다.')";
+    foreach($cartids as $cartid){
+      $sql2 ="DELETE from cart where cartid='".$cartid."' and userid='".$userid."'" ;
+      $mysqli->query($sql2);
     }
-    
-    echo json_encode($data);
+  }
+  if($result2){
+    $data = array("result"=>"ok");
+  }else{
+    $data = array("result"=>"fail");
+  }
+  echo json_encode($data);
+
 
 ?>

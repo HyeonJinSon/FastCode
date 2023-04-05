@@ -13,6 +13,13 @@
     $added_condition = " and c.ssid= '".session_id()."'";
   }
 
+  if(!$userid){//로그인 안되어있으면
+    echo '<script>
+    alert("로그인을 해주세요.");
+    location.href="http://fastcode.dothome.co.kr/user/member/login.php";
+    </script>';
+  }
+
   $sql = "SELECT *, c.cnt
     from cart c
     join lectures l on c.lecid=l.lecid where 1=1 ".$added_condition;
@@ -59,7 +66,7 @@
             <?php } ?>
           </ul>
         </div>
-        <form action="">
+        <form method="post">
           <div class="cart_cal">
             <h3 class="title">쿠폰</h3>
             <select name="coupon" id="coupon">
@@ -97,7 +104,7 @@
               <span class="title" id="total_amount"></span>
               <!-- 총가격 - 할인가격 으로 계산된 가격 -->
             </div>
-            <a href="myclass.php" class="y-btn big-btn btn-sky" >결제하기</a>
+            <button class="y-btn big-btn btn-sky" onclick="checkout_ok()">결제하기</button>
           </div>
         </form>
       </div>
@@ -174,42 +181,69 @@
 
       //장바구니 페이지에서 삭제 버튼 누르면
       //배경색 살짝 어둡게, 팝업 보이게
-        $(".cart_item_del").click(function(){
-          $(".background").addClass('show');
-          let li = $(this).closest('li');
-          let cid = li.attr('id');
-          let title = li.find('.lititle').text();
-          $(".background").find('input').attr('placeholder',title);
+      $(".cart_item_del").click(function(){
+        $(".background").addClass('show');
+        let li = $(this).closest('li');
+        let cid = li.attr('id');
+        let title = li.find('.lititle').text();
+        $(".background").find('input').attr('placeholder',title);
 
-        //팝업에서 삭제 버튼 누르면
-          $('#deletebtn').click(()=>{
-            // delAjax(cid, './cart_del.php', './cart.php')
-            let data = {
-            cid:cid
+      //팝업에서 삭제 버튼 누르면
+        $('#deletebtn').click(()=>{
+          let data = {
+          cid:cid
+          }
+          $.ajax({
+            async:false,
+            type:'post',
+            url:'cart_del.php',
+            data:data,
+            dataType:'json',
+            error:function(){
+              console.log('error');
+            },
+            success:function(result){              
+              if(result.result == true){
+                $('#'+cid).remove();
+                cal_Sum(); //삭제되고 다시 계산
+              }                
             }
-            $.ajax({
-              async:false,
-              type:'post',
-              url:'cart_del.php',
-              data:data,
-              dataType:'json',
-              error:function(){
-                console.log('error');
-              },
-              success:function(result){              
-                if(result.result == true){
-                  $('#'+cid).remove();
-                  cal_Sum(); //삭제되고 다시 계산
-                }                
-              }
-            });
           });
         });
+      });
         
       // 취소 버튼 누르면 할일
-        $("#close").click(function(){
-          $(".background").removeClass('show');
+      $("#close").click(function(){
+        $(".background").removeClass('show');
+      });
+        
+      //결제완료 누르면 할일
+      function checkout_ok(){
+        let data = {
+            lecid : <?php echo $lecid ?>,
+            opts : opts,
+            cnt : cnt
+        }
+        console.log(data);
+
+
+        $.ajax({
+          async: false,
+          type:'post',
+          url:'checkout_ok.php',
+          data: data,
+          dataType :'json',
+          error:function(){alert('연결에러')},
+          success:function(result){
+            console.log(result);
+            if(result.result == 'ok'){
+              alert('결제가 완료되었습니다.');
+            } else{
+              alert('결제가 실패했습니다. 다시 시도해주세요.');
+            }
+          }
         });
+      }
     </script>
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/tail.php";

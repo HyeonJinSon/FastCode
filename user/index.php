@@ -102,6 +102,7 @@
             ?>
             <?php
                 if(isset($catelike1)){
+                    if($catelike1 !== 'none'){
             ?>
             <div class="class cate1 swiper lectureSwiper">
                 <?php
@@ -141,9 +142,12 @@
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
-            <?php } ?>
+            <?php }else if($catelike1 == 'none'){ ?>
+                <div class="hidden">값이 없습니다</div>
+            <?php }} ?>
             <?php
                 if(isset($catelike2)){
+                    if($catelike2 !== 'none'){
             ?>
             <div class="class cate2 swiper lectureSwiper">
                 <?php
@@ -183,7 +187,9 @@
                 <div class="lecture-next swiper-button-next"></div>
                 <div class="lecture-prev swiper-button-prev"></div>
             </div>
-            <?php } ?>
+            <?php }else if($catelike2 == 'none'){ ?>
+                <div class="hidden">값이 없습니다</div>
+            <?php }} ?>
             <div class="class new swiper lectureSwiper">
                 <h3 class="sub-title">따끈따끈 신규 강좌</h3>
                 <?php
@@ -325,12 +331,12 @@
 
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab1.png" alt="" />
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
-                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
-                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" class="svg-elem-4"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" class="svg-elem-5"/>
                             </svg>
                         </div>
                     </div>
@@ -349,12 +355,12 @@
 
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab2.png" alt="" />
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
-                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
-                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" class="svg-elem-4"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" class="svg-elem-5"/>
                             </svg>
                         </div>
                     </div>
@@ -372,12 +378,12 @@
                         </div>
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab3.png" alt="" />
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" fill="none">
-                                <circle cx="160" cy="68" r="50" fill="#1D3557" />
-                                <circle cx="80" cy="118" r="80" fill="#457B9D" />
-                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" />
-                                <circle cx="96" cy="437" r="50" fill="#1D3557" />
-                                <circle cx="546" cy="392" r="50" fill="#A8DADB" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                                <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
+                                <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
+                                <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
+                                <circle cx="96" cy="437" r="50" fill="#1D3557" class="svg-elem-4"/>
+                                <circle cx="546" cy="392" r="50" fill="#A8DADB" class="svg-elem-5"/>
                             </svg>
                         </div>
                     </div>

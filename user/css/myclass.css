@@ -49,7 +49,7 @@
   transition: background 0.15s;
 }
 .class_content aside h2:hover a {
-  background: var(--primary-r);
+  background: var(--highlight-s);
 }
 .class_content aside .class_nav {
   border-radius: 20px;
@@ -61,7 +61,7 @@
   margin-top: 33px;
 }
 .class_content aside .class_nav li a {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   transition: color 0.15s;
 }
@@ -69,7 +69,8 @@
   color: var(--highlight-c);
 }
 .myLec_wrapper {
-  margin: 90px 0 270px;
+  margin: 110px 0 270px;
+  padding: 0 40px;
 }
 .myLec {
   width: 300px;
@@ -82,24 +83,27 @@
   width: 300px;
   height: 227px;
   z-index: -1;
+  overflow: hidden;
 }
 .myLec_img img {
+  z-index: -1;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 .myLec_info {
   border-radius: 50px;
-  z-index: 1;
+  z-index: 30;
   background: #fff;
   border: 2px solid var(--background-g);
   transition: 0.3s;
   width: 300px;
   height: 197px;
-  margin-top: -62px;
+  margin-top: -83px;
   padding: 26px 34px 52px 44px;
   flex-direction: column;
   gap: 50px;
+  position: relative;
 }
 .myLec_info h3 {
   font-weight: 600;
@@ -108,7 +112,7 @@
 .myLec_go_btn {
   display: inline-block;
   padding: 17px 18px;
-  background: rgba(168,218,219,.65);
+  background: rgba(168,218,216,.65);
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -146,5 +150,38 @@
   gap: 54px 40px;
 }
 .lec_empty {
-  
+  width: 100%;
+  line-height: 40px;
+  padding: 40px 0;
+}
+.lec_empty > p {
+  position: relative;
+  z-index: 1;
+}
+.lec_empty > p i {
+  color: var(--highlight-s);
+  font-size: 24px;
+}
+.lec_empty > div {
+  position: relative;
+  z-index: 1;
+}
+.lec_empty > div:after {
+  content: '';
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  width: 160px;
+  height: 2px;
+  background: rgba(168,218,216,.3);
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: 0.45s;
+}
+.lec_empty > div:hover:after {
+  transform: translate(-50%) scale(1);
+}
+.lec_empty > div i {
+  color: var(--highlight-s);
+  font-size: 24px;
 }

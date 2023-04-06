@@ -2,15 +2,16 @@
   session_start();
   ini_set('display_errors',1);
   include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
+  
+  $userid = $_SESSION['USERID'];
+  $username = $_SESSION['USERNAME'];
 
-  if(!isset($_SESSION['USERID'])){
+  if(!$userid){
     alert('로그인이 필요합니다.');
     exit;
   } 
 
 
-  $userid = $_SESSION['USERID'];
-  $username = $_SESSION['USERNAME'];
 
 
   $lecid = $_GET['lecid'];
@@ -98,7 +99,7 @@
           foreach($r2 as $c){
         ?>
             
-              <li class="d-flex align-items-center">
+              <li id="lec_li" class="d-flex align-items-center">
                   <figure>
                     <a href="class_view.php?lecid=<?php echo $lecid; ?>&c_idx=<?php echo $c->c_idx; ?>"><img src="<?php echo $c->c_thumbnail; ?>" alt=""></a>
                   </figure>
@@ -124,7 +125,7 @@
 ?>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <script src="../js/common.js"></script>
-  <script src="../js/class.js"></script>
+  <script src="../js/class_view.js"></script>
 <?php
   include $_SERVER["DOCUMENT_ROOT"]."/inc/user/tail.php";
 ?>

@@ -1,3 +1,8 @@
+$('.no_link').click(function(e) {
+	e.preventDefault();		
+});
+
+
 $(function () {
     $("#tabs").tabs();
 });

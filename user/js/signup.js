@@ -61,6 +61,7 @@ function noblank (){
     }
     let pw = document.getElementById("passwd").value;
     let pw2 = document.getElementById("passwd_ok").value;
+    let pw2input = document.getElementById("passwd_ok");
     let check = document.getElementById("check");
 
     if (pw != "" && pw2 != "") {
@@ -70,6 +71,7 @@ function noblank (){
         } else {
             check.innerHTML = "비밀번호가 일치하지 않습니다.";
             check.style.color = "red";
+            pw2input.classList.add('warning');
         }
     }
 }
@@ -79,28 +81,32 @@ $('#signup').click(function(){
     let userid = $('#userid').val();
     let pw = $("#passwd").val();
     let pw2 = $("#passwd_ok").val();
-    let use_agree = $('#use_agree').val();
-    let personalinfo_agree = $('#personalinfo_agree').val();
-// alert(use_agree);
+    let use_agree = $('#use_agree').is(':checked');
+    let personalinfo_agree = $('#personalinfo_agree').is(':checked');
+// alert(use_agree.is(':checked'));
    
     // $('form').addClass('was-validated');
 
     if(username == ""){
         alert('이름을 입력해주세요.');
         $('#username').addClass('warning');
+        $('html, body').animate({ scrollTop: 0 ,behavior:'smooth'}, 300);
     }else if(userid == ""){
         alert('아이디을 입력해주세요.');
         $('#userid').addClass('warning');
+        $('html, body').animate({ scrollTop: 0 ,behavior:'smooth'}, 300);
     }else if(pw == ""){
         alert('비밀번호를 입력해주세요.');
         $("#passwd").addClass('warning');
+        $('html, body').animate({ scrollTop: 0 ,behavior:'smooth'}, 300);
     }else if(pw2 == ""){
         alert('비밀번호를 한번 더 입력해주세요.');
         $("#passwd_ok").addClass('warning');
-    }else if(use_agree == null){
+        $('html, body').animate({ scrollTop: 0 ,behavior:'smooth'}, 300);
+    }else if(use_agree == false){
         alert('필수 이용약관에 동의해주세요.');
         $('#use_agree').addClass('warning');
-    }else if(personalinfo_agree == null){
+    }else if(personalinfo_agree == false){
         alert('필수 이용약관에 동의해주세요.');
         $('#personalinfo_agree').addClass('warning');
     }else{
@@ -126,3 +132,52 @@ $('#signup').click(function(){
     }
 
 });
+
+// 타이포 효과
+const $text = document.querySelector(".keyword");
+
+const letters = [
+  "빠르게",
+  "쉽게", 
+  "재밌게"
+];
+
+// 글자 입력 속도
+const speed = 150;
+let i = 0;
+
+// 타이핑 효과
+const typing = async () => {  
+  const letter = letters[i].split("");
+  while (letter.length) {
+    await wait(speed);
+    $text.innerHTML += letter.shift(); 
+  }
+  
+  // 잠시 대기
+  await wait(1500);
+  // 지우는 효과
+  remove();
+}
+
+// 글자 지우는 효과
+const remove = async () => {
+  const letter = letters[i].split("");
+  while (letter.length) {
+    await wait(speed);
+    letter.pop();
+    $text.innerHTML = letter.join(""); 
+  }
+  
+  // 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
+  i = !letters[i+1] ? 0 : i + 1;
+  typing();
+}
+
+// 딜레이 기능 ( 마이크로초 )
+function wait(ms) {
+  return new Promise(res => setTimeout(res, ms))
+}
+
+// 초기 실행
+setTimeout(typing, 1800);

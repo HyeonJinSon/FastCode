@@ -20,7 +20,7 @@
                                 <h4 class="order-1">이젠 나도 웹퍼블리셔!</h4>
                                 <p class="content-text-1 order-3">프리패스 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner1.png" alt="" />
+                            <img class="col-5" src="img/banner1.png" alt="" no-repeat/>
                         </div>
                     </div>
                 </li>
@@ -35,7 +35,7 @@
                                 <h4 class="order-1">예쁘기만한 디자인 시대는 끝!</h4>
                                 <p class="content-text-1 order-3">프리패스 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner2.png" alt="" />
+                            <img class="col-5" src="img/banner2.png" alt="" no-repeat/>
                         </div>
                     </div>
                 </li>
@@ -47,7 +47,7 @@
                                 <h4 class="order-1">함께 해서 더 즐겁고 더 창의적으로!</h4>
                                 <p class="content-text-1 order-3">대회참가 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner3.png" alt="" />
+                            <img class="col-5" src="img/banner3.png" alt="" no-repeat/>
                         </div>
                     </div>
                 </li>
@@ -62,7 +62,7 @@
                                 <h4 class="order-1">기능까지 갖춘 웹페이지 제작</h4>
                                 <p class="content-text-1 order-3">강좌 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner4.png" alt="" />
+                            <img class="col-5" src="img/banner4.png" alt="" no-repeat />
                         </div>
                     </div>
                 </li>
@@ -124,8 +124,8 @@
                             foreach($c1lrs as $lr){
                     ?>
                         <li class="swiper-slide">
-                            <a href="">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                            <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -169,8 +169,8 @@
                             foreach($c2lrs as $lr){
                     ?>
                         <li class="swiper-slide">
-                            <a href="">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                            <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -205,8 +205,8 @@
                             foreach($nlrs as $lr){
                     ?>
                         <li class="swiper-slide">
-                            <a href="">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                            <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -238,8 +238,8 @@
                             foreach($rlrs as $lr){
                     ?>
                         <li class="swiper-slide">
-                            <a href="">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                            <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  no-repeat />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -271,8 +271,8 @@
                             foreach($hlrs as $lr){
                     ?>
                         <li class="swiper-slide">
-                            <a href="">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." />
+                            <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -297,7 +297,7 @@
                 <div class="ad_fastcode_title text-center">
                     <span>왜 </span>
                     <div id="main-logo">
-                        <a href="#">
+                        <a href="#" class="no_link">
                             <img src="img/fastcode_logo.png" alt="Fastcode" />
                             <span>fastcode</span>
                         </a>
@@ -321,16 +321,25 @@
                             <h3>빠르게 배우는 코딩 <i class="fa-solid fa-rocket"></i></h3>
                             <h4>fast learning</h4>
                             <span class="num text-start">01</span>
-                            <div class="paragraph">
-                                <p>빠르게 배우는 코딩에 대한 설명글</p>
-                                <p>빠르게 배우는 코딩에 대한 설명글</p>
-                                <p>빠르게 배우는 코딩에 대한 설명글</p>
+                            <div class="paragraph d-flex align-items-end">
+                                <div>
+                                <i class="fa-solid fa-crosshairs"></i>
+                                    <p>꼭 필요한 내용만 </br> 담은 강좌</p>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-route"></i>
+                                    <p>나에게 필요한 과정을 </br> 담은 추천로드맵</p>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-paper-plane"></i>
+                                    <p>바로 해결해주는 </br> 빠른 Q&A 서비스</p>
+                                </div>
                             </div>
-                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="#" class="more content-text-2 no_link">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
 
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab1.png" alt="" />
+                            <img src="img/ad_fastcode_tab1.png" alt="" no-repeat/>
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -345,16 +354,25 @@
                             <h3>쉽게 배우는 코딩 <i class="fa-regular fa-lightbulb"></i></h3>
                             <h4>easy learning</h4>
                             <span class="num text-start">02</span>
-                            <div class="paragraph">
-                                <p>쉽게 배우는 코딩에 대한 설명글</p>
-                                <p>쉽게 배우는 코딩에 대한 설명글</p>
-                                <p>쉽게 배우는 코딩에 대한 설명글</p>
+                            <div class="paragraph d-flex align-items-end">
+                                <div>
+                                <i class="fa-solid fa-code"></i>
+                                    <p>이해를 높여주는 </br> 실습예제</p>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-stairs"></i>
+                                    <p>누구든 들을 수 있는 </br> 수준별 강좌</p>
+                                </div>
+                                <div>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>업계 최고 강사와 </br> 고퀄리티 강의</p>
+                                </div>
                             </div>
-                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="#" class="more content-text-2 no_link">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
 
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab2.png" alt="" />
+                            <img src="img/ad_fastcode_tab2.png" alt="" no-repeat/>
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -369,15 +387,24 @@
                             <h3>재밌게 배우는 코딩 <i class="fa-solid fa-music"></i></h3>
                             <h4>funny learning</h4>
                             <span class="num text-start">03</span>
-                            <div class="paragraph">
-                                <p>재밌게 배우는 코딩에 대한 설명글</p>
-                                <p>재밌게 배우는 코딩에 대한 설명글</p>
-                                <p>재밌게 배우는 코딩에 대한 설명글</p>
+                            <div class="paragraph d-flex align-items-end">
+                                <div>
+                                <i class="fa-solid fa-people-carry-box"></i>
+                                    <p>함께 배우고 나누는 </br> 커뮤니티</p>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-gamepad"></i>
+                                    <p>리워드를 쌓는 </br> 코딩 테스트</p>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <p>내가 커스텀하는 </br> 나만의 페이지</p>
+                                </div>
                             </div>
-                            <a href="" class="more content-text-2">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="#" class="more content-text-2 no_link">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab3.png" alt="" />
+                            <img src="img/ad_fastcode_tab3.png" alt="" no-repeat/>
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -407,8 +434,37 @@
                             foreach($brsc as $br){
                     ?>
                         <li class="row">
-                            <h3 class="col-9"><a href="#"><?php echo $br -> title; ?></a></h3>
+                            <h3 class="col-9" data-bs-toggle="modal" data-bs-target="#noticeModal_<?php echo $br -> idx; ?>"><a href="#" class="no_link"><?php echo $br -> title; ?></a></h3>
                             <span class="col-3 text-center"><?php echo $br -> date; ?><i class="fa-solid fa-angle-right"></i></span>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="noticeModal_<?php echo $br -> idx; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $br -> title; ?></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body content-text-3">
+                                    <p> <?php echo nl2br($br -> content); ?> </p>
+                                    </br>
+                                    <?php
+                                        if($br -> is_img ==1){
+                                    ?>
+                                        <img src="../admin/board/board_files/<?= $br -> file; ?>" no-repeat 0 0 center >
+                                    <?php
+                                        }
+                                    ?>
+                                    </br>
+                                    <span>작성일 : <?php echo $br -> date; ?></span>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><a href="#" class="no_link">게시물 보러가기</a></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         </li>
                     <?php
                             }

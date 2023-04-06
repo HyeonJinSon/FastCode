@@ -2,15 +2,20 @@
   session_start();
   include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
 
-  if(!isset($_SESSION['USERID'])){
+  $userid = $_SESSION['USERID'];
+  $username = $_SESSION['USERNAME'];
+
+  if(!$userid){
     echo "<script>
       alert('로그인이 필요합니다.');
       history.back();
     </script>";
   };
 
-  $userid = $_SESSION['USERID'];
-  $username = $_SESSION['USERNAME'];
+  $queryP = "SELECT profile_img from members where userid='".$userid."'";
+  $resultP = $mysqli->query($queryP) or die ("query error =>".$mysql->error);
+  $rsP = $resultP->fetch_object();
+
 
   $query4 = "SELECT my_lec from members where userid='".$userid."'";
   $result4 = $mysqli->query($query4) or die("query error =>".$mysqli->error);
@@ -19,7 +24,21 @@
   // }
   $rs4 = $result4->fetch_object();
   $rs4v = $rs4->my_lec;
-  $r4 = explode(',',$rs4v);
+  if($rs4v != null){
+    $r4 = explode(',',$rs4v);
+  } else {
+    $r4 = null;
+  }
+  $h = '100.00';
+  $f = (int)$h;
+
+  $query6 = "SELECT * from user_lectures where progress='".$f."'" and userid='"'.$userid."'";
+  $result6 = $mysqli->query($query6) or die("query error =>".$mysqli->error);
+  $rs6 = $result6->fetch_array();
+
+  $ongoing = count($rs4) - count($rs6);
+  $ongoing = (int)$ongoing;
+
 ?>
 
 <?php
@@ -36,23 +55,23 @@
     <div class="class_banner d-flex justify-content-between align-items-end">
       <div class="class_title d-flex align-items-center">
         <figure class="class_profile">
-          <img src="../img/profile_avatar.png" alt="">
+          <img src="../<?php echo $rsP->profile_img; ?>" alt="<?php echo $username; ?>님의 프로필 이미지">
         </figure>
         <h2><a href="myclass.php" class="title"><?php echo $username; ?> 님의 강의실</a></h2>
       </div>
       <div>
-        수강중인 강좌<span>5</span>
+        수강중인 강좌<span data-rate="<?php echo $ongoing; ?>">0</span>
       </div>
       <div>
-        수강완료 강좌<span>4</span>
+        수강완료 강좌<span data-rate="<?php echo count($rs6); ?>">0</span>
       </div>
       <div>
-        Today 학습 시간<span>2.8</span>
+        Today 학습 시간<span data-rate="6">0</span>
       </div>
     </div>
     <div class="class_content row">
       <aside class="col-md-2">
-        <h2><a href="myclass.php" class="sub-title">My 강의실</a></h2>
+        <h2><a href="myclass.php" class="content-title">My 강의실</a></h2>
         <ul class="class_nav">
           <li>
             <a href="#">작성한 글</a>
@@ -72,16 +91,21 @@
         </ul>
       </aside>
       <div class="myLec_wrapper col-md-10">
-        <ul class="myLec_container d-flex container flex-wrap justify-content-center">
+        <ul class="myLec_container d-flex container flex-wrap">
         <?php 
-        if($r4){
+        if($r4 != null){
           for($i=0;$i<=count($r4);$i++){
-          $query5 = "SELECT * FROM lectures where lecid='".$r4[$i]."'";
+          // $query5 = "SELECT * FROM lectures where lecid='".$r4[$i]."'";
+          $query5 = "SELECT l.lecid, l.teacher_name, l.name, l.thumbnail, ul.lecid, ul.progress
+          FROM user_lectures ul
+          JOIN lectures l
+          on ul.lecid = l.lecid
+          where ul.lecid='".$r4[$i]."'";
           $result5 = $mysqli->query($query5) or die("query error =>".$mysqli->error);
           while($rs5 = $result5->fetch_object()){
             $r5[]=$rs5;
           }
-          
+        }
 
             foreach($r5 as $ml){
         ?>
@@ -91,17 +115,28 @@
                     </figure>
                     <div class="myLec_info d-flex flex-nowrap">
                       <div class="myLec_title d-flex justify-content-between align-items-center flex-nowrap">
-                        <h3 class="content-title"><?php echo $ml->name; ?></h3>
-                        <a href="class_view.php?lecid=24&c_idx=1" class="myLec_go_btn"><i class="fa-solid fa-arrow-right"></i></a>
+                        <h3 class="content-title-1"><?php echo $ml->name; ?></h3>
+                        <a href="class_view.php?lecid=<?php echo $ml->lecid; ?>&c_idx=1" class="myLec_go_btn"><i class="fa-solid fa-arrow-right"></i></a>
                       </div>
                       <div class="d-flex justify-content-between flex-nowrap">
-                        <em class="content-text-2"><?php echo $ml->teacher_name; ?></em>
-                        <span class="content-text-2">수강률 14.08%</span>
+                        <em class="content-text-3"><?php echo $ml->teacher_name; ?></em>
+                        <span class="content-text-3">수강률 <?php echo $ml->progress; ?>%</span>
                       </div>
                     </div>
                   </li>
-                <?php
-                 }} }
+        <?php
+            }
+        } else {
+        ?>
+                <li class="lec_empty text-center">
+                  <p class="sub-title">아직 강의실이 비어 있네요 <i class="fa-regular fa-face-surprise"></i></p>
+                  <div>
+                    <p class="sub-title">강좌 리스트로 바로 가볼까요?</p>
+                    <p><a href="../lecture/lecture_list.php"><i class="fa-solid fa-arrow-right"></i></a></p>
+                  </div>
+                </li>
+                <?php  
+                 }
             ?>
 
         </ul>
@@ -113,6 +148,7 @@
 ?>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <script src="../js/common.js"></script>
+  <script src="../js/class.js"></script>
   <?php
   include $_SERVER["DOCUMENT_ROOT"]."/inc/user/tail.php";
 ?>

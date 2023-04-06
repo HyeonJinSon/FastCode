@@ -164,7 +164,7 @@ body {
   border-radius: 30px;
   background: #fff;
   padding: 18px 50px;
-  background: rgba(168,218,219,.6);
+  background: rgba(168,218,216,.4);
 }
 #lec_review ul li + li {
   margin-top: 26px;
@@ -191,9 +191,9 @@ body {
   margin-bottom: 30px;
 }
 #lec_list ul li figure {
-  width: 221px;
-  height: 136px;
-  border-radius: 15px;
+  width: 302px;
+  height: 125px;
+  border-radius: 10px;
   overflow: hidden;
 }
 #lec_list ul li figure img {
@@ -221,14 +221,14 @@ body {
 }
 #lec_list ul li.playing .lec_info_box a,
 #lec_list ul li .lec_info_box a:hover {
-  background: rgba(168,218,219.3);
+  background: rgba(168,218,216.1);
   color: var(--primary-n);
   font-weight: 700;
   transition: 0.2s;
 }
 #lec_list ul li .lec_info_box span {
   display: inline-block;
-  background: rgba(168,218,219,.5);
+  background: rgba(168,218,216,.5);
   color: var(--primary-n);
   border-radius: 15px;
   padding: 3px 15px;

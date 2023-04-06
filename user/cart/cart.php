@@ -132,6 +132,7 @@
       let lecidarr = [];
       let cartidarr = [];
       let userid = '<?php echo $_SESSION['USERID']; ?>';
+      let ucid = '<?php echo $c->ucid;?>';
       cal_Sum();
 
       //모든 강좌 더하기
@@ -189,11 +190,6 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       }
 
-      // 삭제 팝업
-      //   function show() {
-      //   document.querySelector(".background").className = "background show";
-      // }
-
       //장바구니 페이지에서 삭제 버튼 누르면
       //배경색 살짝 어둡게, 팝업 보이게
       $(".cart_item_del").click(function(){
@@ -238,7 +234,8 @@
         let data = {
             userid : userid,
             lecid : lecidarr,
-            cartid : cartidarr
+            cartid : cartidarr,
+            ucid : ucid
         }
         $.ajax({
           async: false,

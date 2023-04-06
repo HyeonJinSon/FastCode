@@ -44,7 +44,7 @@
                             $userid = $_SESSION['USERID'];
                     ?>
                         <li>
-                            <a href="../cart/cart.php">
+                            <a href="cart/cart.php">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <?php
                                     //로그인한 유저의 cart 테이블 조회해서 담긴 개수 확인

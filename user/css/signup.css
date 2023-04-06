@@ -8,6 +8,9 @@ body {
 .inner section {
     width: 710px;
 }
+.modal-body{
+    padding: 2rem;
+}
 
 .deco {
     position: fixed;
@@ -17,7 +20,99 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 45px;
+    gap: 36px;
 }
+/*
+@keyframes animate-svg-name {
+    0% { fill: transparent; }
+    100% { fill: rgb(0, 0, 0); }
+}
+  
+.svg-name {
+    animation: animate-svg-name 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+
+#a{ animation-delay: 0.1s; }
+#s{ animation-delay: 0.2s; }
+#t{ animation-delay: 0.3s; }
+#c{ animation-delay: 0.4s; }
+#o{ animation-delay: 0.5s; }
+#d{ animation-delay: 0.6s; }
+#e{ animation-delay: 0.7s; }
+*/
+
+@keyframes animate-svg-move {
+    0% { left: -100px; top:0; }
+    100% { left: 0; top:0;}
+}
+
+svg{
+    position: relative;
+    animation: animate-svg-move 0.5s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+
+@keyframes animate-svg-color {
+    0% { fill: transparent;}
+    100% { fill: rgb(0, 0, 0); }
+}
+
+.svg-name {
+    animation: animate-svg-color 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+ 
+@keyframes animate-svg-fill {
+    0% { fill: transparent; }
+    100% { fill: rgb(28, 56, 244); }
+}
+  
+.svg-elem {
+    animation: animate-svg-fill 0.5s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+  
+#l1{ animation-delay: 0.7s; }
+#l2{ animation-delay: 0.75s; }
+#l3{ animation-delay: 0.8s; }
+#l4{ animation-delay: 0.85s; }
+#l5{ animation-delay: 0.9s; }
+#l6{ animation-delay: 0.95s; }
+#l7{ animation-delay: 1.0s; }
+#l8{ animation-delay: 1.05s; }
+
+@keyframes slideup {
+    from { opacity: 0;}
+    to { opacity: 1;}
+  }
+
+.slogan{
+    align-self: flex-end;
+    padding-right: 180px;
+    font-size: 45px;
+    line-height: 72px;
+    height: 72px;
+    font-weight: 700;
+    animation: slideup 1s both 1.5s;
+}
+.keyword{
+    font-size: 52px;
+    color: var(--primary-n);
+}
+.keyword::after {
+    content: '';
+    margin-left: 0.3rem;
+    border-right: 2px solid #777;
+    animation: cursor 0.9s infinite steps(2);
+  }
+ 
+  @keyframes cursor {
+    from { border-right: 2px solid var(--background-g); }
+    to { border-right: 2px solid #777; }
+  }
+
+  .deco img{
+    width: 450px;
+    object-fit: contain;
+  }
+  
 
 .signup {
     margin: 52px 0 112px 710px;
@@ -163,38 +258,3 @@ margin-bottom: 126px;
 
 
 
-@keyframes animate-svg-name {
-    0% { fill: transparent; }
-    100% { fill: rgb(0, 0, 0); }
-}
-  
-.svg-name {
-    animation: animate-svg-name 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
-}
-
-#a{ animation-delay: 0.1s; }
-#s{ animation-delay: 0.2s; }
-#t{ animation-delay: 0.3s; }
-#c{ animation-delay: 0.4s; }
-#o{ animation-delay: 0.5s; }
-#d{ animation-delay: 0.6s; }
-#e{ animation-delay: 0.7s; }
-
-  
-@keyframes animate-svg-fill {
-    0% { fill: transparent; }
-    100% { fill: rgb(28, 56, 244); }
-}
-  
-.svg-elem {
-    animation: animate-svg-fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
-}
-  
-#l1{ animation-delay: 0.8s; }
-#l2{ animation-delay: 0.85s; }
-#l3{ animation-delay: 0.9s; }
-#l4{ animation-delay: 0.95s; }
-#l5{ animation-delay: 1.0s; }
-#l6{ animation-delay: 1.05s; }
-#l7{ animation-delay: 1.10s; }
-#l8{ animation-delay: 1.15s; }

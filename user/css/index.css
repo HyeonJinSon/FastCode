@@ -82,6 +82,7 @@ section.banner {
 .banner .swiper-button-prev {
     color: #fff;
     transition: 0.5s;
+    padding-top: 45px;
 }
 .banner .swiper-button-next:hover,
 .banner .swiper-button-prev:hover {
@@ -311,6 +312,8 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 }
 #tabs ul li.ui-state-hover {
     background: var(--highlight-m);
+    transform: translateY(-10px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
 #tabs ul li.ui-state-hover a {
     color: #000;
@@ -336,22 +339,12 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 #tabs .description {
     width: 650px;
     height: 450px;
-    margin-top: 36px;
+    margin-top: 27px;
     display: grid;
     grid-template-columns: 9fr 20fr;
     grid-template-rows: 5fr 9fr 4fr 14fr 12fr 22fr 22fr 4fr;
 }
-#tabs .description h3 {
-    font-weight: 700;
-    font-size: 70px;
-    line-height: 75px;
-    color: var(--primary-n);
-    grid-column: 1/-1;
-    grid-row: 4/5;
-}
-#tabs .description h3 i {
-    color: var(--primary-r);
-}
+
 #tabs .description h4 {
     font-weight: 700;
     font-size: 45px;
@@ -362,13 +355,33 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 }
 #tabs .description .paragraph {
     grid-column: 1/-1;
-    grid-row: -4/-3;
+    grid-row: -4/-2;
+    gap: 18px;
+    padding: 0 27px;
+}
+#tabs .description .paragraph div{
+    display: inline-block;
+    text-align: center;
+    padding: 0 9px;
+    margin-bottom: 62px;
 }
 #tabs .description .paragraph p {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
+    display: inline-block;
 }
+#tabs .description .paragraph div i{
+    font-size: 36px;
+    margin-bottom: 36px;
+    color: var(--primary-n);
+    transition: 0.3s;
+}
+#tabs .description .paragraph div:hover i{
+    font-size: 54px;
+    color: var(--primary-r);
+}
+
 #tabs .description span.num {
     font-weight: 700;
     font-size: 170px;
@@ -385,6 +398,17 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 #tabs div.row .more {
     grid-column: 1/-1;
     grid-row: -2/-1;
+}
+#tabs .description h3 {
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 75px;
+    color: var(--primary-n);
+    grid-column: 1/-1;
+    grid-row: 4/5;
+}
+#tabs .description h3 i {
+    color: var(--primary-r);
 }
 
 .notice {
@@ -412,72 +436,44 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     transform: translateY(-50%);
 }
 
+.notice .modal-footer a{
+    color: #fff;
+}
+.notice .modal-body img{
+    width: 80%;
+}
 
 
-
-
-
-@keyframes animate-svg-fill-1 {
-    0% {
-      fill: transparent;
-    }
-    100% {
-      fill: rgb(29, 53, 87);
-    }
+@keyframes animate-svg-fill {
+    0% { opacity: 0; translate: 0 30px; }
+    80% { opacity: 0.75; translate: 0 -10px;}
+    100% { opacity: 1; translate: 0 0;}
   }
+@keyframes animate-text-fill {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
   
   .svg-elem-1 {
-    animation: animate-svg-fill-1 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0s both;
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.2s both;
   }
-  
-  @keyframes animate-svg-fill-2 {
-    0% {
-      fill: transparent;
-    }
-    100% {
-      fill: rgb(69, 123, 157);
-    }
-  }
-  
   .svg-elem-2 {
-    animation: animate-svg-fill-2 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.1s both;
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.3s both;
   }
-  
-  @keyframes animate-svg-fill-3 {
-    0% {
-      fill: transparent;
-    }
-    100% {
-      fill: rgb(69, 123, 157);
-    }
-  }
-  
   .svg-elem-3 {
-    animation: animate-svg-fill-3 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.2s both;
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.4s both;
   }
-  
-  @keyframes animate-svg-fill-4 {
-    0% {
-      fill: transparent;
-    }
-    100% {
-      fill: rgb(29, 53, 87);
-    }
-  }
-  
   .svg-elem-4 {
-    animation: animate-svg-fill-4 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.30000000000000004s both;
-  }
-  
-  @keyframes animate-svg-fill-5 {
-    0% {
-      fill: transparent;
-    }
-    100% {
-      fill: rgb(168, 218, 219);
-    }
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.5s both;
   }
   .svg-elem-5 {
-    animation: animate-svg-fill-5 0.7s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0.4s both;
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.6s both;
   }
-  
+  .tab_thumbnail img{
+    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.7s both;
+  }
+  .description{
+    animation: animate-text-fill 0.3s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.05s both;
+  }
+

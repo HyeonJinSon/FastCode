@@ -475,7 +475,7 @@
         </section>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer.php";
+    include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer_main.php";
 ?>        
         <script src="js/common.js"></script>
         <script src="js/index.js"></script>

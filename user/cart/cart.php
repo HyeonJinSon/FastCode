@@ -250,7 +250,7 @@
             console.log(result);
             if(result.result == 'ok'){
               alert('결제가 완료되었습니다.');
-              location.href="http://fastcode.dothome.co.kr/user/class/myclass.php";
+              location.href="../class/myclass.php";
             } else{
               alert('결제가 실패했습니다. 다시 시도해주세요.');
             }

@@ -39,15 +39,27 @@
                     </nav>
                     <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
                     <ul class="member-info d-flex sub-menu-ft">
-                        <li>
-                            <a href="cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <span class="tip">장바구니</span>
-                        </li>
-
                     <?php
                         if($_SESSION['USERID']){
                             $userid = $_SESSION['USERID'];
                     ?>
+                        <li>
+                            <a href="../cart/cart.php">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <?php
+                                    //로그인한 유저의 cart 테이블 조회해서 담긴 개수 확인
+                                    $cquery = "SELECT COUNT(*) as cnt FROM cart where userid = '".$userid."' ";
+                                    $result5 = $mysqli->query($cquery);
+                                    $cntrs = $result5 -> fetch_assoc();
+                                    if($cntrs['cnt'] > 0){ // 장바구니에 담긴게 0보다 많으면 span 태그 나오게
+                                ?>
+                                <span class="user_cart_num"><?php echo $cntrs['cnt']; ?></span>
+                                <?php
+                                    }
+                                ?>
+                            </a>
+                            <span class="tip">장바구니</span>
+                        </li>
                         <li>
                             <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             <span class="tip">로그아웃</span>

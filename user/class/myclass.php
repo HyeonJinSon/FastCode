@@ -17,33 +17,27 @@
   $rsP = $resultP->fetch_object();
 
 
-  $query4 = "SELECT my_lec from members where userid='".$userid."'";
+  $query4 = "SELECT ul.*, lc.* from user_lectures ul join lectures lc on ul.lecid=lc.lecid where ul.userid='".$userid."' order by ul.ulid desc";
   $result4 = $mysqli->query($query4) or die("query error =>".$mysqli->error);
-  // while($rs4 = $result4->fetch_object()){
-  //   $r4[]=$rs4;
-  // }
   $rs4 = $result4->fetch_object();
-  $rs4v = $rs4->my_lec;
-  if($rs4v != null){
-    $r4 = explode(',',$rs4v);
-  } else {
-    $r4 = null;
+  while($rs4 = $result4->fetch_object()){
+    $r4[]=$rs4;
   }
- 
 
-  // $h = '100.00';
+  // $h = 100.00;
   // $f = (int)$h;
-  // $where = "and progress=".$f." and userid=".$userid;
+  $where = "and progress='100.00' and userid='".$userid."'";
 
 
-  // $query6 = "SELECT * from user_lectures where 1=1 ".$where;
-  // $result6 = $mysqli->query($query6) or die("query error =>".$mysqli->error);
-  // $rs6 = $result6->fetch_array();
-  // if(!$rs6){
-  //   $rs6 = null;
-  // }
-  // $ongoing = count($rs4) - count($rs6);
-  // $ongoing = (int)$ongoing;
+  $query6 = "SELECT * from user_lectures where 1=1 ".$where;
+  $result6 = $mysqli->query($query6) or die("query error =>".$mysqli->error);
+  while($rs6 = $result6->fetch_object()){
+    $r6[]=$rs6;
+  };
+  if(!$r6){
+    $r6 = null;
+  }
+  $ongoing = (int)(count($r4) - count($r6));
 
 ?>
 
@@ -65,15 +59,15 @@
         </figure>
         <h2><a href="myclass.php" class="title"><?php echo $username; ?> 님의 강의실</a></h2>
       </div>
-      <!-- <div>
+      <div>
         수강중인 강좌<span data-rate="<?php echo $ongoing; ?>">0</span>
       </div>
       <div>
-        수강완료 강좌<span data-rate="<?php echo count($rs6); ?>">0</span>
+        수강완료 강좌<span data-rate="<?php echo count($r6); ?>">0</span>
       </div>
       <div>
         Today 학습 시간<span data-rate="6">0</span>
-      </div> -->
+      </div>
     </div>
     <div class="class_content row">
       <aside class="col-md-2">
@@ -100,27 +94,10 @@
         <ul class="myLec_container d-flex container flex-wrap">
         <?php 
         if($r4 != null){
-          for($i=0;$i<=count($r4);$i++){
-          // $con1 = 'and ul.userid='.$userid;
-          $query5 = "SELECT * FROM lectures where lecid='".$r4[$i]."'";
-          // $query5 = "SELECT l.lecid, l.teacher_name, l.name, l.thumbnail, ul.lecid, ul.progress, ul.userid
-          // FROM user_lectures ul
-          // JOIN lectures l
-          // on ul.lecid = l.lecid
-          // where ul.lecid='".$r4[$i]."'".$con1."'";
-          $result5 = $mysqli->query($query5) or die("query error =>".$mysqli->error);
-          while($rs5 = $result5->fetch_object()){
-            $r5[]=$rs5;
-          }
-        }
-        
-        foreach($r5 as $ml){
-          $tg = $ml->lecid;
-          $query7 = "SELECT progress FROM user_lectures where lecid='".$tg."'";
-          $result7 = $mysqli->query($query7) or die("query error =>".$mysqli->error);
-          $rs7 = $result7->fetch_object();
-          ?>
-            <li class="myLec">
+
+        foreach($r4 as $ml){
+        ?>
+            <li class="myLec" data-prg="<?php echo $ml->progress; ?>" data-date="<?php echo $ml->lec_end_date; ?>">
                     <figure class="myLec_img">
                       <img src="<?php echo $ml->thumbnail; ?>" alt="<?php echo $ml->name; ?>">
                     </figure>
@@ -131,7 +108,7 @@
                       </div>
                       <div class="d-flex justify-content-between flex-nowrap">
                         <em class="content-text-3"><?php echo $ml->teacher_name; ?> 강사</em>
-                        <span class="content-text-3">수강률 <?php echo $rs7->progress; ?>%</span>
+                        <span class="content-text-3">수강률 <?php echo $ml->progress; ?>%</span>
                       </div>
                     </div>
                   </li>

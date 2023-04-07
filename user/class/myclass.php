@@ -83,7 +83,7 @@
 
         foreach($r4 as $ml){
         ?>
-            <li class="myLec" data-prg="<?php echo $ml->progress; ?>" data-date="<?php echo $ml->lec_end_date; ?>">
+            <li class="myLec" data-prg="<?php echo $ml->progress; ?>" data-date="<?php echo $ml->lec_end_date; ?>" data-sort="0">
                     <figure class="myLec_img">
                       <img src="<?php echo $ml->thumbnail; ?>" alt="<?php echo $ml->name; ?>">
                     </figure>

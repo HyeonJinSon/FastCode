@@ -7,7 +7,7 @@ ini_set( 'display_errors', '0' );
 $ucid = $_POST['ucid']; //유저쿠폰 번호 
 $cart_total = $_POST['cart_total'];
 
-//유저쿠폰 테이블에서 조회해보자
+//쿠폰과 유저쿠폰 테이블에서 조회해보자
 $query2="SELECT c.* from user_coupons uc
         join coupons c on c.cid=uc.couponid
         where c.status = 1 and uc.status = 1 and uc.use_max_date >= now() and uc.ucid={$ucid} and uc.userid='".$_SESSION['USERID']."'";

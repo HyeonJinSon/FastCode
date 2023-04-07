@@ -1,27 +1,11 @@
 <?php
-  ob_start();
+  session_start();
   include $_SERVER["DOCUMENT_ROOT"]."/inc/db.php";
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/head.php";
   $lecid = $_GET['lecid'];
-  // $userid=$_POST["userid"];
-  // $passwd=$_POST["passwd"];
-  // $passwd=hash('sha512', $passwd);
-  // $_SESSION['USERID'];
 
-  // //회원
-  // $sql_member = "SELECT * FROM members ";
-  // $result_member = $mysqli -> query($sql_member);
-  
-  // $rs_member = $result_member -> fetch_object();
-    
-  // if($rs_member) {
-  //   $_SESSION['USERID'] = $rs_member->userid;
-    $userID = $_SESSION['USERID'];
+  $userID = $_SESSION['USERID'];
 
-  // } else {
-  //   $userID = '값없음';
-  // }
-  // echo $userID;
 ?>
 
   <link rel="stylesheet" href="../css/common.css" />
@@ -221,14 +205,16 @@
           <?php if($list) { 
            ?>
             <?php foreach($list as $li) { ?>
-            <li class="d-flex">
-              <figure>
-                <img src="<?php echo $li->c_thumbnail; ?>" alt="강의 썸네일 이미지입니다.">
-                 <figcaption class="hidden">강의 썸네일 이미지입니다.</figcaption> 
-              </figure>
-              <!-- 비회원이면 로그인페이지 / 회원이 샀으면 내 강의실, 아니면 결제 -->
-              <p><?php echo $li->class_name; ?></p>
-              <span class="lec_play"><i class="fa-regular fa-circle-play"></i></span>
+            <li id="lec_list">
+              <a href="" class="d-flex link_tag">
+                <figure>
+                  <img src="<?php echo $li->c_thumbnail; ?>" alt="강의 썸네일 이미지입니다.">
+                   <figcaption class="hidden">강의 썸네일 이미지입니다.</figcaption> 
+                </figure>
+                <!-- 비회원이면 로그인페이지 / 회원이 샀으면 내 강의실, 아니면 결제 -->
+                <p><?php echo $li->class_name; ?></p>
+                <span class="lec_play"><i class="fa-regular fa-circle-play"></i></span>
+              </a>
             </li>
             <?php } } ?>
           </ol>
@@ -339,47 +325,54 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 <script>
 
-  let lectureId = <?php echo $lecid;?>;
-  // let userID = <?php //echo $userID;?>;
   // alert(lectureId); 
   // $('#register_btn').click(function() {
   //   if(userID){//로그인
-  //     alert("결제페이지로 이동합니다.");
-  //    location.href="http:/.dothome.co.kr/user/cart/cart.php";
-  //   } else {
-  //     alert("로그인이 필요합니다.");
-  //     location.href="http:/.dothome.co.kr/user/member/login.php";
-        
-  //   }
-  
-  // });
-  $('.cart_btn').click(function() {
-      cart_ins();
-    });
+    //     alert("결제페이지로 이동합니다.");
+    //    location.href="http:/.dothome.co.kr/user/cart/cart.php";
+    //   } else {
+      //     alert("로그인이 필요합니다.");
+      //     location.href="http:/.dothome.co.kr/user/member/login.php";
+      
+      //   }
+      
+      // });
+      $('.cart_btn').click(function() {
+        cart_ins();
+      });
+      
+      // let poid1 = $("input[name='poption1']:checked").val() ?? '';
+      // let poid2 = $("input[name='poption2']:checked").val() ?? '';
+      // let opts = poid1 +'||'+ poid2;
+      // let cnt = $('#cnt').val();
+      // let data = {
+      //   pid : <?php //echo $pid ?>,
+      //   opts : opts,
+      //   cnt : cnt
+      // }
+      
     function cart_ins(){
 
-      let data = {
-        lectureId : lectureId
-      }
-
+      
+      // console.log(data);
       $.ajax({
           async: false,
-          type:'get',
-          url:'cart_insert.php',
-          data: data,
-          dataType :'json',
+          type:'post',
+          url:'../cart/cart_insert.php',
+          data: <?php echo $lecid ?>,
+          dataType :'html',
           error:function(){alert('연결에러')},
           success:function(result){
             console.log(result);
-            if(result.result == 'ok'){
+            if(result){
                 alert('장바구니에 담겼습니다.');
+                location.href="../cart/cart.php";
             } else{
                 alert('실패했습니다. 다시 시도해주세요.');
             }
           }
         });
 
-    // location.href="http:/.dothome.co.kr/user/cart/cart.php";
   }
 
     //  console.log(implode(', ', $tags));
@@ -399,7 +392,13 @@
     function number_format(num){
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
     }
-
+    $('#lec_list a').click(function() {
+      // if(!userID){
+        alert("로그인이 필요합니다.");
+        // location.href="http://redseon15.dothome.co.kr/user/member/login.php";
+        return false;
+      // }
+    });
 </script>
 </body>
 </html>

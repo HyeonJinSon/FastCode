@@ -1,5 +1,5 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT']."/fastcode/inc/db.php";
+  include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
   // 4단계 - ajax데이터 php 정상 호출
   $recomCategory = $_POST['recomCategory'] != "" ? $_POST['recomCategory'] : "";
@@ -24,18 +24,22 @@
   /* 수업 난이도 완료 */
   if($checkedLevels != "") {
     if(in_array('입문', $checkedLevels)) {
+      // $sql_search .= ' WHERE 1=1';//해당 배열에 값 여부 확인! 
       $sql_search .= ' AND L.forbegin = 1';  
     }
 
     if(in_array('초급', $checkedLevels)) {
+      // $sql_search .= ' WHERE 1=1';//해당 배열에 값 여부 확인! 
       $sql_search .= ' AND L.forbasic = 1';  
     }
     
     if(in_array('중급', $checkedLevels)) {
+      // $sql_search .= ' WHERE 1=1';//해당 배열에 값 여부 확인! 
       $sql_search .= ' AND L.forinter = 1';  
     }
     
     if(in_array('상급', $checkedLevels)) {
+      // $sql_search .= ' WHERE 1=1';//해당 배열에 값 여부 확인! 
       $sql_search .= ' AND L.foradv = 1';  
     }
   }

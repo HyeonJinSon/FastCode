@@ -6,7 +6,7 @@
   $userID = $_SESSION['USERID'];
   // echo $userID;
   ?>
-
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="../css/common.css" />
   <link rel="stylesheet" href="../css/lecture_list.css" />
 
@@ -75,7 +75,7 @@
           <label><input type="checkbox" name="level" value="초급"> 초급</label>
           <label><input type="checkbox" name="level" value="중급"> 중급</label>
           <label><input type="checkbox" name="level" value="상급"> 상급</label>
-        <?php //} } ?>
+          <?php //} } ?>
         </div>
       
       </div>
@@ -83,11 +83,11 @@
         <div class="box_title d-flex">
           <p>수강 기간</p><i class="fa-solid fa-chevron-up"></i>
         </div>
-          <div class="check_wrap">
-            <label><input type="checkbox" name="period" value="무제한"> 무제한</label>
-            <label><input type="checkbox" name="date_limit" value="30일"> 30일 이내</label>
-            <label><input type="checkbox" name="date_limit" value="1개월"> 1개월 이상</label>
-          </div>
+        <div class="check_wrap">
+          <label><input type="checkbox" name="period" value="무제한"> 무제한</label>
+          <label><input type="checkbox" name="date_limit" value="30일"> 30일 이내</label>
+          <label><input type="checkbox" name="date_limit" value="1개월"> 1개월 이상</label>
+        </div>
       </div>
       <div class="price_box">
         <div class="box_title d-flex">
@@ -149,77 +149,22 @@
         </div>
     </section>
   </main>
-  <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer_top">
-          <ul class="footer_menu d-flex">
-            <li class="content-text-2"><a href="#">회사소개</a></li>
-            <li class="content-text-2"><a href="#">개인정보처리 방침</a></li>
-            <li class="content-text-2"><a href="#">서비스이용약관</a></li>
-            <li class="content-text-2"><a href="#">취소환불규정</a></li>
-            <li class="content-text-2"><a href="#">자료실</a></li>
-            <li class="content-text-2"><a href="#">고객센터</a></li>
-            <li class="content-text-2"><a href="#">사이트맵</a></li>
-          </ul>
-          <ul class="footer_sns d-flex">
-            <li>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-solid fa-blog"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer_bottom d-flex">
-          <h6 id="main-logo">
-            <a href="#"
-              ><img src="img/fastcode_logo.png" alt="Fastcode" /><span
-                >fastcode</span
-              ></a
-            >
-          </h6>
-          <div class="footer_contents d-flex">
-            <h5 class="content-title">(주) FASTCODE</h5>
-            <span class="content-text-3"
-              >대표자 김유미 | 사업자 등록 번호 123-45-67890</span
-            >
-            <span class="content-text-3"
-              >주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일:
-              yumi@fastcode.com |전화: 02-1212-1212</span
-            >
-          </div>
-          <div class="footer_copyright">
-            <span class="content-text-3"
-              >Copyright@2023 Fastcode. All Rights reserved</span
-            >
-          </div>
-        </div>
-      </div>
-    </footer>
-    <div class="top-btn">
-      <i class="fa-solid fa-arrow-up"></i>
-    </div>
+  <div class="top-btn">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
  <!-- Footer -->
- <?php
+ <!-- <?php
       include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer.php";
-    ?> 
-  <script
+    ?>  -->
+  <!-- <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
       crossorigin="anonymous"
-    ></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    ></script> -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script> -->
   <script>
   
 

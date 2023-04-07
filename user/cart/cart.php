@@ -97,7 +97,7 @@
             </div>
             <div class="discount_price d-flex justify-content-between">
               <span class="main-menu-ft">할인가격</span>
-              <span class="main-menu-ft" id="coupon_price"></span>
+              <span class="main-menu-ft" id="coupon_price">0원</span>
               <!-- 할인쿠폰의 할인될 가격 출력 -->
             </div>
             <div class="total_price">
@@ -179,7 +179,7 @@
                       $('#coupon_price').text(0);
                       return false;
                   } else if(data.result == true){
-                      $('#coupon_price').text(number_format('-'+data.coupon_price+'원'));
+                      $('#coupon_price').text(number_format(data.coupon_price+'원'));
                       $('#total_amount').text(number_format(cart_total - parseInt(data.coupon_price)+'원'));
                   }
               }

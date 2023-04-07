@@ -18,6 +18,7 @@ $('.myLec').each(function(){
 
     if($(this).hasClass('lec_disabled')){
       ++num2;
+      $(this).attr('data-sort', 1);
     }
   });
 $('#bye').attr('data-rate',num2);
@@ -25,6 +26,14 @@ $('#bye').attr('data-rate',num2);
 let num1 = $('#ing').attr('data-tg') - num2;
 $('#ing').attr('data-rate',num1);
 
+function liSort(tg, dataNm){
+  tg.html(
+    tg.find('li').sort(function(a,b){
+      return $(a).attr(dataNm) - $(b).attr(dataNm);
+    })
+  );
+}
+liSort($('.myLec_container'), 'data-sort');
 
 let span = $('.class_banner').find('div').find('span');
   span.each(function(){

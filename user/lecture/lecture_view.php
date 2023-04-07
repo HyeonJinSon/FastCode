@@ -352,8 +352,8 @@
       //   cnt : cnt
       // }
    
-    let lecid = <?php echo $lecid;?>;
-    let userid = <?php echo $userid;?>;
+    let lecid = '<?php echo $lecid;?>';
+    let userid = '<?php echo $_SESSION['USERID']; ?>';
 
     function cart_ins(){
       let data = {
@@ -367,11 +367,10 @@
           type:'post',
           url:'../cart/cart_insert.php',
           data: data,
-          dataType :'html',
+          dataType :'json',
           error:function(){alert('연결에러')},
           success:function(result){
-            console.log(result);
-            if(result){
+            if(result.result == 'ok'){
                 alert('장바구니에 담겼습니다.');
                 location.href="../cart/cart.php";
             } else{

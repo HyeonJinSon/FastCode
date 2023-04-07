@@ -4,8 +4,9 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/head.php";
   $lecid = $_GET['lecid'];
 
-  $userID = $_SESSION['USERID'];
-
+  $userid = $_SESSION['USERID'];
+  echo $userid;
+  echo $lecid;
 ?>
 
   <link rel="stylesheet" href="../css/common.css" />
@@ -350,16 +351,22 @@
       //   opts : opts,
       //   cnt : cnt
       // }
-      
-    function cart_ins(){
+   
+    let lecid = <?php echo $lecid;?>;
+    let userid = <?php echo $userid;?>;
 
+    function cart_ins(){
+      let data = {
+        lecid : lecid,
+        userid : userid
+      };
       
       // console.log(data);
       $.ajax({
           async: false,
           type:'post',
           url:'../cart/cart_insert.php',
-          data: <?php echo $lecid ?>,
+          data: data,
           dataType :'html',
           error:function(){alert('연결에러')},
           success:function(result){

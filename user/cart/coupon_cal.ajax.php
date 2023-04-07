@@ -15,7 +15,7 @@ $result2 = $mysqli->query($query2) or die("query error => ".$mysqli->error);
 $rs2 = $result2->fetch_object();
 
 if($ucid == '-1'){ //readonly 일때 (쿠폰선택 옵션을 다시 선택하면! 할인금액 0이 되게)
-    $data = array("result"=>true,"coupon_price"=>0);
+    $data = array("result"=>false);
     echo json_encode($data);    
     exit;
 }

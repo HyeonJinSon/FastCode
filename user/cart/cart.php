@@ -175,10 +175,17 @@
               dataType:'json',
               success:function(data){
                   if(data.result == false){
-                      alert(data.msg);
+                    if(data.msg){
+                        alert(data.msg);
+                        $('#coupon option:nth-child(1)').prop("selected", true);
+                      }
                       $('#coupon_price').text(0);
+                      $('#total_amount').text(number_format(cart_total+'원'));
                       return false;
                   } else if(data.result == true){
+                      if(data.msg){
+                        alert(data.msg);
+                      }
                       $('#coupon_price').text(number_format(data.coupon_price+'원'));
                       $('#total_amount').text(number_format(cart_total - parseInt(data.coupon_price)+'원'));
                   }

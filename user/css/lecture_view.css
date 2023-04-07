@@ -1,5 +1,8 @@
-section.banner {
-  padding-top: 90px;
+header {
+  top: 0;
+}
+footer {
+  margin-top: 90px;
 }
 /* Tags */
 .mini-tag {
@@ -30,9 +33,6 @@ section.banner {
   background: var(--primary-r);
   color: var(--background-w);
 }
-.container-xxl {
-  margin-bottom: 45px;
-}
 .hidden {
   /* text-indent: 100%;    
     white-space: nowrap;    
@@ -44,8 +44,9 @@ section.banner {
   height: 509px;
   background: #1d3557;
   border-radius: 0px 0px 50px 50px;
-  padding-top: 71px;
+  padding-top: 70px;
   color: #fff;
+  margin-top: 90px;
 }
 .bg > div {
   align-items: center;
@@ -186,8 +187,11 @@ section.banner {
   margin-bottom: 30px;
   align-items: center;
   /* justify-content: space-between; */
-  padding: 27px 50px 27px 40px;
+  padding: 18px 50px 27px 40px;
   position: relative;
+}
+.lecture_list li a {
+  align-items: center;
 }
 .lecture_list li:hover {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -322,4 +326,7 @@ section.banner {
 }
 .lecture_info_bar .point_info i {
   margin-right: 10px;
+}
+#lec_list .link_tag {
+  display: block;
 }

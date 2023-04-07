@@ -1,8 +1,9 @@
-section.bg {
-  margin-top: 90px;
+header {
+  top: 0;
 }
 main {
   margin-top: 60px;
+  padding-top: 90px;
 }
 .hidden {
   display: none;
@@ -184,6 +185,10 @@ input[type="checkbox"]:checked::after {
 .ui-widget-header {
   background: #2b96dc;
 }
+.price_show .ui-state-focus,
+.price_show .ui-state-active {
+  background: #2b96dc;
+}
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default,
@@ -196,17 +201,7 @@ html .ui-button.ui-state-disabled:active {
   font-weight: normal;
   color: #2b96dc;
 }
-/* .ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
-.ui-button, html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
-    border: 2px solid #2B96DC;
-    background: #ffff;
-    font-weight: normal;
-    color: #454545;
-    border-radius: 10px;
-} */
+
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
 .ui-widget-header .ui-state-hover,
@@ -218,7 +213,7 @@ html .ui-button.ui-state-disabled:active {
   border: 2px solid #2b96dc;
   background: #2b96dc;
   font-weight: normal;
-  color: red;
+  color: #2b96dc;
 }
 
 .select_box .price_box #slider-range .ui-state-default,

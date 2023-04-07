@@ -24,20 +24,6 @@
     $r4[]=$rs4;
   }
 
-  // $h = 100.00;
-  // $f = (int)$h;
-  $where = "and progress='100.00' and userid='".$userid."'";
-
-
-  $query6 = "SELECT * from user_lectures where 1=1 ".$where;
-  $result6 = $mysqli->query($query6) or die("query error =>".$mysqli->error);
-  while($rs6 = $result6->fetch_object()){
-    $r6[]=$rs6;
-  };
-  if(!$r6){
-    $r6 = null;
-  }
-  $ongoing = (int)(count($r4) - count($r6));
 
 ?>
 
@@ -60,10 +46,10 @@
         <h2><a href="myclass.php" class="title"><?php echo $username; ?> 님의 강의실</a></h2>
       </div>
       <div>
-        수강중인 강좌<span data-rate="<?php echo $ongoing; ?>">0</span>
+        수강중인 강좌<span id="ing" data-rate="" data-tg="<?php echo count($r4); ?>">0</span>
       </div>
       <div>
-        수강완료 강좌<span data-rate="<?php echo count($r6); ?>">0</span>
+        수강완료 강좌<span id="bye" data-rate="">0</span>
       </div>
       <div>
         Today 학습 시간<span data-rate="6">0</span>

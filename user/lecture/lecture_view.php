@@ -368,13 +368,13 @@
           url:'../cart/cart_insert.php',
           data: data,
           dataType :'json',
-          error:function(){alert('연결에러')},
-          success:function(result){
-            if(result.result == 'ok'){
-                alert('장바구니에 담겼습니다.');
+          // error:function(result){alert('연결에러')},
+          success:function(data){
+            if(data.result == 'ok'){
+              if(data.msg){alert(data.msg);}
                 location.href="../cart/cart.php";
             } else{
-                alert('실패했습니다. 다시 시도해주세요.');
+              if(data.msg){alert(data.msg);}
             }
           }
         });

@@ -12,22 +12,13 @@
       location.href="http://fastcode.dothome.co.kr/user/member/login.php";
       </script>';
     }
-
-    // $query = "SELECT * from cart where userid='".$userid."'";
-    // $result1 = $mysqli->query($query) or die("query error => ".$mysqli->error);
-    // $rs = $result1->fetch_object();
-
-    // if($rs->lecid){ //cart 테이블에 동일한 lecid가 있으면
-    //     echo "<script>alert('동일한 강좌가 있습니다.')</script>";
-    // }else{ //lecid가 없으면 cart에 넣어줌
-        $sql="INSERT INTO `cart`(`lecid`,`userid`,`cnt`,`regdate`)
-            VALUES('".$lecid."','".$userid."','1',now())";
-        $result=$mysqli->query($sql) or die($mysqli->error);
-    // }
+    $sql="INSERT INTO `cart`(`lecid`,`userid`,`cnt`,`regdate`)
+        VALUES('".$lecid."','".$userid."','1',now())";
+    $result=$mysqli->query($sql) or die($mysqli->error);
     if($result){
-        $data = array("result"=>"ok");
+        $data = array("result"=>"ok","msg"=>"장바구니에 담겼습니다.");
     }else{
-        $data = array("result"=>"fail");
+        $data = array("result"=>"fail","msg"=>"실패했습니다. 다시 시도해주세요.");
     }
     echo json_encode($data);
 

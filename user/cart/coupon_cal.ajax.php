@@ -14,12 +14,16 @@ $query2="SELECT c.* from user_coupons uc
 $result2 = $mysqli->query($query2) or die("query error => ".$mysqli->error);
 $rs2 = $result2->fetch_object();
 
-
+if($ucid == '-1'){ //readonly 일때 (쿠폰선택 옵션을 다시 선택하면! 할인금액 0이 되게)
+    $data = array("result"=>true,"coupon_price"=>0);
+    echo json_encode($data);    
+    exit;
+}
 if(!$rs2){//사용하려고 하는 쿠폰이 없으면
     $data = array("result"=>false, "msg"=>"사용할 수 없는 쿠폰입니다.");
     echo json_encode($data);    
     exit;
-}else{
+} else{
     if($rs2->min_price>$cart_total){//구매금액이 최소 금액 미만이면
         $data = array("result"=>false, "msg"=>"구매 금액이 최소 ".$rs2->min_price."원 이상이어야 합니다.");
         echo json_encode($data);    

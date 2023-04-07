@@ -80,7 +80,8 @@
                     $csa[]=$cs2;
                 }
               ?>
-              <option value="" readonly>쿠폰 선택</option>
+              <!-- 쿠폰선택 옵션이 선택됐을때 계산이 되지 않게 val값을 만들어준다 문자는 인식안됌.. -->
+              <option value="-1" readonly>쿠폰 선택</option>
               <?php
                 if(isset($csa)){
                   foreach ($csa as $c){ // 유저가 가지고 있는 쿠폰 출력되게
@@ -142,10 +143,10 @@
         let sum = 0;
         cart_item.each(function(){
             let dataid = $(this).attr('data-id');
-            lecidarr.push(dataid);
+            lecidarr.push(dataid); //강좌번호
 
             let id = $(this).attr('id');
-            cartidarr.push(id);
+            cartidarr.push(id); //장바구니번호
             
             let total = $(this).find('.liprice').attr('data-price'); //가격
             sum+=Number(total);
@@ -155,35 +156,35 @@
       }
 
       //쿠폰 계산
-      $('#coupon').change(function(){
-        var ucid = $("#coupon option:selected").val();//사용자 쿠폰 번호
-        var subtotal = $("#subtotal").text();//구매 합계 100,000원
-        var subtotal2 = subtotal.replace(/\,/g,"");
-        var cart_total = subtotal2.replace(/\원/g,"");
-        // console.log(cart_total);
-        var data = {
-            ucid : ucid,
-            cart_total : cart_total
-        };
-        console.log(data.cart_total);
-        $.ajax({
-            async:false,
-            type:'post',
-            url:'coupon_cal.ajax.php',
-            data:data,
-            dataType:'json',
-            success:function(data){
-                if(data.result == false){
-                    alert(data.msg);
-                    $('#coupon_price').text(0);
-                    return false;
-                } else if(data.result == true){
-                    $('#coupon_price').text(number_format('-'+data.coupon_price+'원'));
-                    $('#total_amount').text(number_format(cart_total - parseInt(data.coupon_price)+'원'));
-                }
-            }
+        $('#coupon').change(function(){
+          var ucid = $("#coupon option:selected").val();//사용자 쿠폰 번호
+          var subtotal = $("#subtotal").text();//구매 합계 100,000원
+          var subtotal2 = subtotal.replace(/\,/g,"");
+          var cart_total = subtotal2.replace(/\원/g,"");
+  
+          var data = {
+              ucid : ucid,
+              cart_total : cart_total
+          };
+          console.log(data.cart_total);
+          $.ajax({
+              async:false,
+              type:'post',
+              url:'coupon_cal.ajax.php',
+              data:data,
+              dataType:'json',
+              success:function(data){
+                  if(data.result == false){
+                      alert(data.msg);
+                      $('#coupon_price').text(0);
+                      return false;
+                  } else if(data.result == true){
+                      $('#coupon_price').text(number_format('-'+data.coupon_price+'원'));
+                      $('#total_amount').text(number_format(cart_total - parseInt(data.coupon_price)+'원'));
+                  }
+              }
+          });
         });
-      });
 
       //금액 단위
       function number_format(num) {

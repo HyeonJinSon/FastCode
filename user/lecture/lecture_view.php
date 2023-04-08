@@ -338,48 +338,41 @@
       //   }
       
       // });
-      $('.cart_btn').click(function() {
-        cart_ins();
-      });
-      
-      // let poid1 = $("input[name='poption1']:checked").val() ?? '';
-      // let poid2 = $("input[name='poption2']:checked").val() ?? '';
-      // let opts = poid1 +'||'+ poid2;
-      // let cnt = $('#cnt').val();
-      // let data = {
-      //   pid : <?php //echo $pid ?>,
-      //   opts : opts,
-      //   cnt : cnt
-      // }
-   
-    let lecid = '<?php echo $lecid;?>';
-    let userid = '<?php echo $_SESSION['USERID']; ?>';
+    $('.cart_btn').click(function() {
+      cart_ins();
+    });
 
     function cart_ins(){
+      let lecid = '<?php echo $lecid;?>';
+      let userid = '<?php echo $_SESSION['USERID']; ?>';
+
+      if(!userid){
+        alert('로그인을 해주세요.');
+        location.href="http://fastcode.dothome.co.kr/user/member/login.php";
+        return;
+      }
       let data = {
         lecid : lecid,
         userid : userid
       };
-      
-      // console.log(data);
-      $.ajax({
-          async: false,
-          type:'post',
-          url:'../cart/cart_insert.php',
-          data: data,
-          dataType :'json',
-          // error:function(result){alert('연결에러')},
-          success:function(data){
-            if(data.result == 'ok'){
-              if(data.msg){alert(data.msg);}
-                location.href="../cart/cart.php";
-            } else{
-              if(data.msg){alert(data.msg);}
-            }
-          }
-        });
 
-  }
+      $.ajax({
+        async: false,
+        type:'post',
+        url:'../cart/cart_insert.php',
+        data: data,
+        dataType :'json',
+        // error:function(result){alert('연결에러')},
+        success:function(data){
+          if(data.result == 'ok'){
+            if(data.msg){alert(data.msg);}
+              location.href="../cart/cart.php";
+          } else{
+            if(data.msg){alert(data.msg);}
+          }
+        }
+      });
+    }
 
     //  console.log(implode(', ', $tags));
    $(window).scroll(function () {

@@ -16,14 +16,42 @@
   $resultP = $mysqli->query($queryP) or die ("query error =>".$mysql->error);
   $rsP = $resultP->fetch_object();
 
+  $csql = "SELECT COUNT(*) AS cnt from user_lectures where userid='".$userid."' and progress='100.00'";
+  $cresult = $mysqli->query($csql) or die ("query error =>".$mysql->error);
+  $crs = $cresult->fetch_object();
 
-  $query4 = "SELECT ul.*, lc.* from user_lectures ul join lectures lc on ul.lecid=lc.lecid where ul.userid='".$userid."' order by ul.ulid desc";
+
+  $ucsql = "SELECT COUNT(*) AS cnt from user_lectures where userid='".$userid."'";
+  $ucresult = $mysqli->query($ucsql) or die ("query error =>".$mysql->error);
+  $ucrs = $ucresult->fetch_object();
+
+
+
+  // $dquery = "SELECT COUNT(*) AS cnt from user_lectures ul join lectures lc on ul.lecid=lc.lecid where lc.lec_end_date < date(\"Y-m-d\", strtotime(\"-5 day\", time()) and ul.userid='".$userid."'";
+  // $dresult = $mysqli->query($dquery) or die("query error =>".$mysqli->error);
+  // $drs = $dresult->fetch_object();
+
+
+
+  //해당 유저의 총 수강 시간 합계
+  $tquery = "SELECT HOUR(SEC_TO_TIME(SUM(TIME_TO_SEC(H.total_time))))AS total_hour,
+  MINUTE(SEC_TO_TIME(SUM(TIME_TO_SEC(H.total_time)))) AS total_minute,
+  SECOND(SEC_TO_TIME(SUM(TIME_TO_SEC(H.total_time)))) AS total_second,
+  H.userid
+  FROM user_lectures H
+  JOIN lectures L
+  ON H.lecid=L.lecid
+  WHERE H.userid='".$userid."'";
+  $tresult = $mysqli -> query($tquery) or die("query error =>".$mysqli->error);
+  $trs = $tresult -> fetch_object();
+
+
+  //해당 유저의 수강중 강좌 리스트 출력
+  $query4 = "SELECT ul.lecid, ul.userid, ul.total_time, lc.* from user_lectures ul join lectures lc on ul.lecid=lc.lecid where ul.userid='".$userid."' order by ul.ulid desc";
   $result4 = $mysqli->query($query4) or die("query error =>".$mysqli->error);
-  $rs4 = $result4->fetch_object();
   while($rs4 = $result4->fetch_object()){
     $r4[]=$rs4;
   }
-
 
 ?>
 
@@ -45,14 +73,20 @@
         </figure>
         <h2><a href="myclass.php" class="title"><?php echo $username; ?> 님의 강의실</a></h2>
       </div>
-      <div>
-        수강중인 강좌<span id="ing" data-rate="" data-tg="<?php echo count($r4); ?>">0</span>
-      </div>
-      <div>
-        수강완료 강좌<span id="bye" data-rate="">0</span>
-      </div>
-      <div>
-        Today 학습 시간<span data-rate="6">0</span>
+      <div class="count_container d-flex justify-content-between">
+        <div class="count">
+          수강중인 강좌<span data-rate="<?php echo $ucrs->cnt; ?>">0</span>
+        </div>
+        <div class="count">
+          수강완료 강좌<span data-rate="<?php echo $crs->cnt; ?>">0</span>
+        </div>
+        <div class="count">
+          <!-- 만료 임박 강좌<span data-rate="<?php echo $drs->cnt; ?>">0</span> -->
+          만료 임박 강좌<span data-rate="1">0</span>
+        </div>
+        <div class="count">
+          총 학습 시간<span data-rate="<?php echo $trs->total_hour; ?>">0</span>
+        </div>
       </div>
     </div>
     <div class="class_content row">
@@ -83,7 +117,7 @@
 
         foreach($r4 as $ml){
         ?>
-            <li class="myLec" data-prg="<?php echo $ml->progress; ?>" data-date="<?php echo $ml->lec_end_date; ?>" data-sort="0">
+            <li class="myLec" data-date="<?php echo $ml->lec_end_date; ?>" data-sort="0">
                     <figure class="myLec_img">
                       <img src="<?php echo $ml->thumbnail; ?>" alt="<?php echo $ml->name; ?>">
                     </figure>
@@ -94,7 +128,22 @@
                       </div>
                       <div class="d-flex justify-content-between flex-nowrap">
                         <em class="content-text-3"><?php echo $ml->teacher_name; ?> 강사</em>
-                        <span class="content-text-3">수강률 <?php echo $ml->progress; ?>%</span>
+                        <span class="content-text-3">수강률 <?php 
+                          //강좌의 총 시간 합계
+                          $tglecid = $ml->lecid;
+                          $sql_time = "SELECT SUM(TIME_TO_SEC(time)) AS c_total_time
+                          FROM lecture_class
+                          WHERE lecid=".$tglecid;
+                          // while($rs_time = $result_time -> fetch_object()) {
+                          //     $time[] = $rs_time;
+                          // };
+                          $lec_time = $rs_time -> c_total_time;
+                          $mltime = $ml -> total_time;
+                          $lec_total_time = strtotime($mltime);
+                          $target = ($lec_total_time/$lec_time)*100;
+                          $lec_progress = number_format($target, 2);
+                          echo $lec_progres;
+                        ?>%</span>
                       </div>
                     </div>
                   </li>
@@ -125,4 +174,4 @@
   <script src="../js/class.js"></script>
   <?php
   include $_SERVER["DOCUMENT_ROOT"]."/inc/user/tail.php";
-?>
+?> 

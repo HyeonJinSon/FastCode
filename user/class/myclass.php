@@ -133,16 +133,19 @@
                           $tglecid = $ml->lecid;
                           $sql_time = "SELECT SUM(TIME_TO_SEC(time)) AS c_total_time
                           FROM lecture_class
-                          WHERE lecid=".$tglecid;
-                          // while($rs_time = $result_time -> fetch_object()) {
-                          //     $time[] = $rs_time;
-                          // };
+                          WHERE lecid='".$tglecid."'";
+                          $result_time = $mysqli->query($sql_time) or die ("query error =>".$mysql->error);
+                          $rs_time = $result_time -> fetch_object();
+
                           $lec_time = $rs_time -> c_total_time;
                           $mltime = $ml -> total_time;
-                          $lec_total_time = strtotime($mltime);
+                          $mltime_explode = explode(':',$mltime);
+                          $std = mktime(0,0,0,date('n'),date('j'),date('Y'));
+                          $scd = mktime(intval($mltime_explode[0]), intval($mltime_explode[1]), intval($mltime_explode[2]));
+                          $lec_total_time = intval($scd-$std);
                           $target = ($lec_total_time/$lec_time)*100;
                           $lec_progress = number_format($target, 2);
-                          echo $lec_progres;
+                          echo $lec_progress;
                         ?>%</span>
                       </div>
                     </div>

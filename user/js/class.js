@@ -2,9 +2,9 @@
 let numCount = $('.class_banner .count');
 
 numCount.each(function(){
+  let target = $(this).find('span');
+  let targetNum = target.attr('data-rate');
   if(targetNum != 0){
-    let target = $(this).find('span');
-    let targetNum = target.attr('data-rate');
     let num = 0;
     let timer = setInterval(function(){
       ++num;

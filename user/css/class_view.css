@@ -2,8 +2,12 @@ header {
   background: #fff;
 }
 body {
-  background: #0E1A2B;
+  background: #0e1a2b;
   height: 100%;
+}
+::selection {
+    background: var(--highlight-m);
+    color: #fff;
 }
 .class_view {
   padding-top: 90px;
@@ -12,11 +16,11 @@ body {
   padding: 54px 0;
   box-sizing: border-box;
 }
-.lec_desc h2 {
+#lec_desc h2 {
   color: #fff;
   margin-bottom: 15px;
 }
-.lec_desc h3 {
+#lec_desc h3 {
   color: var(--background-g);
 }
 .lec_btn {
@@ -109,7 +113,7 @@ body {
   color: var(--highlight-c);
   font-weight: 400;
   background: #fff;
-  z-index:1;
+  z-index: 1;
 }
 #lec_review input::selection {
   background: var(--highlight-m);
@@ -164,7 +168,7 @@ body {
   border-radius: 30px;
   background: #fff;
   padding: 18px 50px;
-  background: rgba(168,218,216,.4);
+  background: rgba(168, 218, 216, 0.4);
 }
 #lec_review ul li + li {
   margin-top: 26px;
@@ -204,31 +208,38 @@ body {
 #lec_list ul li {
   gap: 62px;
   padding: 40px 0;
-  border-bottom: 3px solid rgba(224,233,239.55);
+  border-bottom: 3px solid rgba(224, 233, 239.55);
 }
 #lec_list ul li:last-of-type {
   border-bottom: none;
 }
-#lec_list ul li .lec_info_box a {
-  color: var(--highlight-s);
-  font-weight: 600;
+#lec_list ul li .lec_info_box h3 {
   padding: 5px 15px;
   border-radius: 15px;
+  transition: 0.2s;
+}
+#lec_list ul li .lec_info_box h3 a {
+  color: var(--highlight-s);
+  font-weight: 600;
   transition: 0.2s;
 }
 #lec_list ul li .lec_info_box {
   width: 100%;
 }
-#lec_list ul li.playing .lec_info_box a,
-#lec_list ul li .lec_info_box a:hover {
-  background: rgba(168,218,216.1);
+#lec_list ul li.playing .lec_info_box h3 a,
+#lec_list ul li .lec_info_box h3:hover a {
   color: var(--primary-n);
   font-weight: 700;
   transition: 0.2s;
 }
+#lec_list ul li.playing .lec_info_box h3,
+#lec_list ul li .lec_info_box h3:hover {
+  background: rgba(168, 218, 216.1);
+  transition: 0.2s;
+}
 #lec_list ul li .lec_info_box span {
   display: inline-block;
-  background: rgba(168,218,216,.5);
+  background: rgba(168, 218, 216, 0.5);
   color: var(--primary-n);
   border-radius: 15px;
   padding: 3px 15px;
@@ -239,5 +250,5 @@ body {
 #lec_list .lec_info_box .c_title p {
   margin-top: 27px;
   margin-left: 40px;
-  color: #98A4AC;
+  color: #98a4ac;
 }

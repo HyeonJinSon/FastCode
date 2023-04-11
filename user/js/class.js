@@ -1,5 +1,5 @@
 
-let numCount = $('.class_banner .count');
+let numCount = $('.count_container').find('.count');
 
 numCount.each(function(){
   let target = $(this).find('span');

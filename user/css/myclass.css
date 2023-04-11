@@ -1,18 +1,25 @@
+::selection {
+  background: var(--highlight-m);
+  color: #fff;
+}
 .class_banner {
   background: var(--primary-n);
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   padding: 145px 125px 40px 100px;
 }
-.class_banner div {
-  font-size: 18px;
+.class_banner .count_container div {
+  font-size: 16px;
   color: var(--background-g);
   font-weight: 600;
 }
-.class_banner span {
+.class_banner .count_container span {
   color: #fff;
-  font-size: 48px;
+  font-size: 40px;
   margin-left: 30px;
+}
+.class_banner .count_container {
+  gap: 50px;
 }
 .class_title {
   gap: 35px;
@@ -45,11 +52,12 @@
   padding: 6px 24px;
   background: var(--highlight-s);
   border-radius: 15px;
+  font-weight: 600;
   color: #fff;
   transition: background 0.15s;
 }
 .class_content aside h2:hover a {
-  background: var(--highlight-s);
+  background: var(--primary-r);
 }
 .class_content aside .class_nav {
   border-radius: 20px;
@@ -66,7 +74,7 @@
   transition: color 0.15s;
 }
 .class_content aside .class_nav li:hover a {
-  color: var(--highlight-c);
+  color: var(--highlight-s);
 }
 .myLec_wrapper {
   margin: 110px 0 270px;
@@ -112,7 +120,7 @@
 .myLec_go_btn {
   display: inline-block;
   padding: 17px 18px;
-  background: rgba(168,218,216,.65);
+  background: rgba(168, 218, 216, 0.65);
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -120,7 +128,7 @@
   color: var(--primary-n);
   transition: 0.3s;
 }
-.myLec:hover .myLec_info{
+.myLec:hover .myLec_info {
   background: var(--highlight-m);
 }
 .myLec:hover .myLec_go_btn {
@@ -130,20 +138,20 @@
   color: var(--highlight-c);
 }
 .lec_disabled:before {
-  content: '수강이 만료되었습니다';
+  content: "수강이 만료되었습니다";
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 22px;
   right: 0;
-  background: rgba(78,78,78,.8);
+  background: rgba(78, 78, 78, 0.8);
   color: #fff;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 700;
-  z-index: 5;
+  z-index: 31;
   border-radius: 50px;
 }
 .myLec_container {
@@ -167,13 +175,13 @@
   z-index: 1;
 }
 .lec_empty > div:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(100% + 5px);
   left: 50%;
   width: 160px;
   height: 2px;
-  background: rgba(168,218,216,.3);
+  background: rgba(168, 218, 216, 0.3);
   border-radius: 50%;
   transform: translateX(-50%) scale(0);
   transition: 0.45s;
@@ -184,4 +192,5 @@
 .lec_empty > div i {
   color: var(--highlight-s);
   font-size: 24px;
+  margin: 27px 0 54px;
 }

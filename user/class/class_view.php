@@ -11,9 +11,6 @@
     exit;
   } 
 
-
-
-
   $lecid = $_GET['lecid'];
   $c_idx = $_GET['c_idx'];
 
@@ -42,9 +39,9 @@
 ?>
 
   <div class="container text-center class_view">
-    <iframe width="1120" height="630" src="<?php echo $r1 -> class_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <div class="lec_desc">
-      <h2 class="title"><?php echo ($r1 -> c_idx) + 1; ?>강 <?php echo $r1 -> class_name; ?></h2>
+    <iframe width="1120" height="630" src="<?php echo $r1 -> class_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="iframe" datalIdx="<?php echo $lecid; ?>" data-cIdx="<?php echo $c_idx; ?>"></iframe>
+    <div id="lec_desc">
+      <h2 class="title">1강 <?php echo $r1 -> class_name; ?></h2>
       <h3 class="content-text-2"><?php echo $r1 -> teacher_name; ?> 강사</h3>
     </div>
     <div class="lec_btn d-flex justify-content-end">
@@ -57,10 +54,10 @@
           <h2 class="title">강좌 수강평</h2>
           <a href="#"><i class="fa-solid fa-plus"></i> 더 보러가기</a>
         </div>
-        <form action="review_ok.php?lecid=<?php echo $lecid; ?>" method="post">
-          <input type="text" name="lecReview" id="lecReview">
+        <form data-lecid="<?php echo $lecid; ?>">
+          <input type="text" name="lecReview" id="lecReview" required>
           <label for="lecReview">수강평을 남겨 주세요</label>
-          <button type="submit" class="review_ok"><i class="fa-solid fa-check"></i></button>
+          <button type="button" class="review_ok"><i class="fa-solid fa-check"></i></button>
         </form>
         <ul>
         <?php
@@ -98,16 +95,13 @@
         <?php
           foreach($r2 as $c){
         ?>
-            
-              <li id="lec_li" class="d-flex align-items-center">
+              <li class="lec_li d-flex align-items-center" data-src="<?php echo $c->class_url; ?>" data-name="<?php echo $c->class_name; ?>" data-idx="<?php echo $c->c_idx; ?>">
                   <figure>
-                    <a href="class_view.php?lecid=<?php echo $lecid; ?>&c_idx=<?php echo $c->c_idx; ?>"><img src="<?php echo $c->c_thumbnail; ?>" alt=""></a>
+                   <a href="#"><img src="<?php echo $c->c_thumbnail; ?>" alt="<?php echo $c->class_name; ?>"></a>
                   </figure>
                 <div class="lec_info_box d-flex align-items-center justify-content-between">
                   <div class="c_title d-flex align-items-start">
-                    <a href="class_view.php?lecid=<?php echo $lecid; ?>&c_idx=<?php echo $c->c_idx; ?>">  
-                      <h3 class="content-title"><?php echo $c->class_name; ?></h3>
-                    </a>
+                      <h3 class="content-title"><a href="#"><?php echo $c->class_name; ?></a></h3>
                     <p class="c_desc"><?php echo $c->c_desc; ?></p>
                   </div>  
                   <span class="content-text-2"><?php echo $c->time; ?></span>

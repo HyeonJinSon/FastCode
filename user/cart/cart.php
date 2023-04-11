@@ -39,7 +39,7 @@
         if(isset($rsc)){ // 장바구니에 담긴게 있으면
           foreach($rsc as $l){
         ?>
-        <li class="d-flex" id="<?php echo $l->cartid;?>" data-id="<?php echo $l->lecid;?>"> 
+        <li class="d-flex cart_plus" id="<?php echo $l->cartid;?>" data-id="<?php echo $l->lecid;?>"> 
           <img src="<?php echo $l->thumbnail; ?>" alt="" />
           <div class="cart_list_contents">
             <h3 class="content-text-1 lititle"><?php echo $l->name; ?></h3>
@@ -62,7 +62,7 @@
         <?php
             } //장바구니에 담긴게 없으면
           } else { ?>
-          <span class="main-menu-ft cart_empty">장바구니가 비었습니다.</span>
+          <li class="main-menu-ft cart_empty">장바구니가 비었습니다.</li>
         <?php } ?>
       </ul>
     </div>
@@ -81,7 +81,7 @@
             }
           ?>
           <!-- 쿠폰선택 옵션이 선택됐을때 계산이 되지 않게 val값을 만들어준다 문자는 인식안됌.. -->
-          <option value="-1" readonly>쿠폰 선택</option>
+          <option value="-1">쿠폰 선택</option>
           <?php
             if(isset($csa)){
               foreach ($csa as $c){ // 유저가 가지고 있는 쿠폰 출력되게
@@ -139,7 +139,7 @@
 
   //모든 강좌 더하기
   function cal_Sum(){
-    let cart_item = $('.cart_list li'); //장바구니 리스트 
+    let cart_item = $('.cart_list li.cart_plus'); //장바구니 리스트 
     let sum = 0;
     cart_item.each(function(){
        //강좌번호

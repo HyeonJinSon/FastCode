@@ -27,6 +27,8 @@ h2 {
   align-items: center;
   justify-content: center;
   height: 300px;
+  background: none;
+  box-shadow: none;
 }
 
 .cart_item_del {

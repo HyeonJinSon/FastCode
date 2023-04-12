@@ -1,6 +1,9 @@
 body {
     background: var(--background-g);
 }
+.hidden{
+    display: none;
+}
 .inner{
     max-width: 1420px;
     margin: 0 auto;
@@ -11,9 +14,11 @@ body {
 .modal-body{
     padding: 2rem;
 }
-
+.deco_container{
+    position: relative;
+}
 .deco {
-    position: fixed;
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -21,25 +26,8 @@ body {
     align-items: center;
     font-size: 45px;
     gap: 36px;
+    margin: 55px 174px 0 0;
 }
-/*
-@keyframes animate-svg-name {
-    0% { fill: transparent; }
-    100% { fill: rgb(0, 0, 0); }
-}
-  
-.svg-name {
-    animation: animate-svg-name 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
-}
-
-#a{ animation-delay: 0.1s; }
-#s{ animation-delay: 0.2s; }
-#t{ animation-delay: 0.3s; }
-#c{ animation-delay: 0.4s; }
-#o{ animation-delay: 0.5s; }
-#d{ animation-delay: 0.6s; }
-#e{ animation-delay: 0.7s; }
-*/
 
 @keyframes animate-svg-move {
     0% { left: -100px; top:0; }
@@ -85,7 +73,7 @@ svg{
 
 .slogan{
     align-self: flex-end;
-    padding-right: 180px;
+    padding-right: 90px;
     font-size: 45px;
     line-height: 72px;
     height: 72px;
@@ -115,36 +103,19 @@ svg{
   
 
 .signup {
-    margin: 52px 0 112px 710px;
+    margin: 52px 0 112px;
+    padding-top: 108px;
 }
-.member_btn {
-    text-align: center;
-    margin-bottom: 54px;
-}
-.member_btn a {
-    color: var(--primary-n);
-    transition: 0.3s;
-}
-.member_btn a:hover {
-    color: var(--primary-r);
-}
-.member_btn a {
-    gap: 15px;
-}
-.member_btn a i {
-    font-size: 30px;
-}
-
 .signup form {
     background: #fff;
-    padding: 54px 112px 72px;
+    padding: 54px 112px 108px;
     box-sizing: border-box;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
 .signup form h2 {
     text-align: center;
-    margin-bottom: 72px;
+    margin-bottom: 90px;
 }
 .signup .input_info {
     border-bottom: 1px solid var(--primary-n);
@@ -235,7 +206,7 @@ form button {
 }
 
 .fa-asterisk {
-    color: #ff4141;
+    color: var(--primary-r);
     font-size: 10px;
     padding-left: 10px;
 }
@@ -243,18 +214,33 @@ form button {
     line-height: 24px;
 }
 
-.login_section {
-    margin-bottom: 52px;
-}
+
 #login {
-    margin: 162px auto 0;
-}
-.login_section .login_form{
-    padding: 54px 112px 126px;
-}
-.login_section .login_form h2{
-margin-bottom: 126px;
+    margin: 126px auto 0;
 }
 
 
-
+.go_link{
+    gap: 18px;
+    padding-top: 90px;
+}
+.go_link a{
+    position: relative;
+    transition: 0.3s;
+}
+.go_link a:after{
+    content:'';
+    position: absolute;
+    height: 2px; 
+    background: var(--primary-r);
+    top:120%; left:0; right:0;
+    transition: 0.3s;
+    transform:scaleX(0);
+}
+.go_link a:hover{
+    color: var(--primary-r);
+}
+.go_link a:hover:after{
+    transform:scaleX(1);
+    height: 2px; 
+}

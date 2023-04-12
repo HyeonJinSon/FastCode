@@ -29,11 +29,6 @@
 section.banner {
     padding-top: 90px;
 }
-.banner img {
-    /* width: 540px; */
-    height: 460px;
-    object-fit: contain;
-}
 .swiper {
     width: 100%;
     /* height: 100%; */
@@ -59,6 +54,12 @@ section.banner {
     background: rgba(29, 53, 87, 0.8);
     color: #fff;
 }
+
+.banner img {
+    height: 460px;
+    object-fit: contain;
+    transform: translateY(20px);
+}
 .banner_text p {
     margin-top: 36px;
 }
@@ -71,6 +72,26 @@ section.banner {
     font-weight: 700;
     font-size: 24px;
     line-height: 54px;
+}
+.banner img,
+.banner_text{
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s 0.5s;
+}
+.banner img.active,
+.banner_text.active{
+    opacity: 1;
+    visibility: visible;
+}
+.banner img.active{
+    transform: translateY(0);
+}
+.banner_text{
+    transform: translateX(-20px);
+}
+.banner_text.active{
+    transform: translateX(0);
 }
 .banner .swiper-button-next {
     right: 145px;
@@ -285,6 +306,7 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     font-size: 36px;
     line-height: 43px;
 }
+
 .ad_fastcode #tabs {
     margin-top: 54px;
 }
@@ -325,7 +347,7 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 #tabs div.row {
     flex-direction: row-reverse;
     margin-top: 90px;
-    padding-bottom: 53px;
+    padding-bottom: 36px;
 }
 #tabs div.row .tab_thumbnail {
     position: relative;
@@ -406,6 +428,7 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     color: var(--primary-n);
     grid-column: 1/-1;
     grid-row: 4/5;
+    order: 1;
 }
 #tabs .description h3 i {
     color: var(--primary-r);
@@ -474,6 +497,24 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.7s both;
   }
   .description{
-    animation: animate-text-fill 0.3s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.05s both;
+    animation: animate-text-fill 0.5s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.05s both;
   }
 
+.class_slide .swiper-slide{
+    width: 324px !important; 
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+.swiper-button-prev{
+    left: 0 !important;
+}
+.swiper-button-next{
+    right: 0 !important;
+}
+.class_slide .swiper-slide:first-child{
+    /* margin-left: 44px; */
+}
+.class_slide .swiper-wrapper{
+    /* width: 95%; */
+    /* margin-left: 44px; */
+}

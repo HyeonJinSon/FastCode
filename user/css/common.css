@@ -186,6 +186,7 @@ header {
   width: 100%;
   background: #fff;
   transition: 0.5s;
+  top: 0;
 }
 header > div {
   height: 90px;

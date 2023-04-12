@@ -441,6 +441,9 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 .notice h2 {
     line-height: 54px;
 }
+.notice .modal-dialog h2 {
+    line-height: 1.5;
+}
 .notice .notice_list li {
     line-height: 54px;
     border-bottom: 1px solid #ccc;
@@ -468,9 +471,14 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 
 
 @keyframes animate-svg-fill {
-    0% { opacity: 0; translate: 0 30px; }
-    80% { opacity: 0.75; translate: 0 -10px;}
-    100% { opacity: 1; translate: 0 0;}
+    0% { opacity: 0; transform: translate(0, 30px); }
+    80% { opacity: 0.75; transform: translate(0, -10px);}
+    100% { opacity: 1; transform: translate(0, 0);}
+  }
+@keyframes animate-img-fill {
+    0% { opacity: 0; transform: translate(-50%, -55%); }
+    80% { opacity: 0.75; transform: translate(-50%,-49%);}
+    100% { opacity: 1; transform: translate(-50%, -50%);}
   }
 @keyframes animate-text-fill {
     0% { opacity: 0; }
@@ -494,7 +502,7 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.6s both;
   }
   .tab_thumbnail img{
-    animation: animate-svg-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.7s both;
+    animation: animate-img-fill 0.8s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.7s both;
   }
   .description{
     animation: animate-text-fill 0.5s cubic-bezier(0.6, 0.04, 0.9, 0.335) 0.05s both;

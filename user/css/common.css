@@ -338,6 +338,9 @@ header .search button {
   left: 50%;
   transform: translateX(-50%);
 }
+.member-info li .my_info .my_profile img{
+  object-fit: cover;
+}
 .member-info #logout {
   border: 0;
   background: transparent;

@@ -14,6 +14,8 @@
     
     $lecid = $_POST['lecid'];
     $userid = $_POST['userid'];
+    $endDate = $_POST['endDate'];
+    $dateover = date("Y-m-d");
 
     //cart 테이블과 user_lectures에 동일한 lecid가 있는지 조회.
     $query1 = "SELECT lecid from cart where userid='".$userid."'AND lecid='".$lecid."'";
@@ -24,11 +26,19 @@
     $result2 = $mysqli->query($query2) or die("query error => ".$mysqli->error);
     $rs2 = $result2->fetch_object();
     
+    //강의기한을 조회
+    // $query3 = "SELECT lec_end_date from lectures";
+    // $result3 = $mysqli->query($query3) or die("query error => ".$mysqli->error);
+    // $rs3 = $result3->fetch_object();
+    // print_r($rs3);
+
     if($rs1){
         $data = array("result"=>"fail","msg"=>"이미 장바구니에 담겼습니다.");
     } else if($rs2){
         $data = array("result"=>"fail","msg"=>"수강중인 강좌입니다.");
-    }else{
+    } else if($endDate < $dateover){
+        $data = array("result"=>"fail","msg"=>"수강신청이 불가능한 강의입니다.");
+    } else{
         $sql = "INSERT INTO `cart`(`lecid`,`userid`,`cnt`,`regdate`) VALUES('".$lecid."','".$userid."','1',now())";
         $result = $mysqli->query($sql) or die($mysqli->error);
         if($result){

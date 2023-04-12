@@ -20,10 +20,7 @@
     </script>';
   }
 
-  $sql = "SELECT *, c.cnt
-    from cart c
-    join lectures l on c.lecid=l.lecid where 1=1 ".$added_condition;
-
+  $sql = "SELECT * from lectures l join cart c on l.lecid=c.lecid where l.lec_end_date >= now()".$added_condition;
   $result = $mysqli->query($sql) or die("query error => ".$mysqli->error);
   while($rs = $result->fetch_object()){
     $rsc[]=$rs;

@@ -12,6 +12,7 @@
   font-size: 16px;
   color: var(--background-g);
   font-weight: 600;
+  white-space: nowrap;
 }
 .class_banner .count_container span {
   color: #fff;
@@ -29,6 +30,7 @@
 .class_title h2 a {
   color: #fff;
   transition: color 0.15s;
+  white-space: nowrap;
 }
 .class_title h2:hover a {
   color: var(--highlight-c);
@@ -137,22 +139,51 @@
 .myLec:hover .myLec_go_btn i {
   color: var(--highlight-c);
 }
-.lec_disabled:before {
-  content: "수강이 만료되었습니다";
+.impending:before,
+.impending:after,
+.finish:before,
+.finish:after {
   position: absolute;
-  top: 0;
   left: 0;
-  bottom: 22px;
   right: 0;
-  background: rgba(78, 78, 78, 0.8);
-  color: #fff;
-  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
   z-index: 31;
   border-radius: 50px;
+  pointer-events: none;
+}
+.impending:before {
+  content:'만료가 임박했어요 !';
+  top: -15px;
+  color: var(--highlight-s);
+  font-size: 16px;
+  font-weight: 700;
+}
+.impending:after {
+  content: "";
+  top: 0;
+  bottom: 22px;
+  background: rgba(168, 218, 216, 0.2);
+  border: 15px solid rgba(168, 218, 216, 0.7);
+}
+.finish:before {
+  content: "";
+  top: 0;
+  bottom: 22px;
+  background: rgba(69, 123, 157, 0.6);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.finish:after {
+  content: "수강 완료";
+  top: 0;
+  bottom: 22px;
+  background: rgba(69, 123, 157, 0.6);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
 }
 .myLec_container {
   gap: 54px 40px;

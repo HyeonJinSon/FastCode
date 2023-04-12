@@ -26,7 +26,7 @@ body {
 
 /* Color */
 :root {
-  --primary-r: #e53945;
+  --primary-r: rgb(229, 57, 69);
   --primary-n: #1d3557;
   --highlight-s: #457b9d;
   --highlight-m: #a8dad8;
@@ -37,16 +37,16 @@ body {
 }
 
 /* Logo */
-#main-logo {
+.main-logo {
   display: inline-block;
 }
-#main-logo a img {
+.main-logo a img {
   display: block;
   width: auto;
-  height: 100%;
+  /* height: 100%; */
   object-fit: contain;
 }
-#main-logo a span {
+.main-logo a span {
   display: none;
 }
 
@@ -169,6 +169,7 @@ body {
   right: 150px;
   display: none;
   z-index: 10;
+  cursor: pointer;
 }
 .top-btn:hover {
   background: rgba(229, 57, 69, 0.9);
@@ -259,11 +260,15 @@ header .search input {
   background: none;
   outline: none;
 }
-header .search i {
+header .search button {
+  display: inline-block;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  margin: 0;
 }
 
 .member-info {
@@ -402,10 +407,10 @@ footer {
 footer a {
   color: var(--background-w);
 }
-#main-logo a img {
+/* footer .main-logo a img {
   width: 201px;
   height: 45px;
-}
+} */
 footer .footer_top {
   position: relative;
   margin-bottom: 36px;

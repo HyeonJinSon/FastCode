@@ -18,6 +18,8 @@ function check_pw() {
     }
 }
 */
+
+// display comment after check ability
 function check_ability(){
     let range_input = document.getElementById("ability_range").value;
     let range_val = document.getElementById("range");
@@ -37,6 +39,7 @@ function check_ability(){
     }
 }
     
+// total check
 $("#total-agree").click(function() {
     if ($("#total-agree").prop("checked")) {
     $(".autocheck").prop("checked", true)
@@ -45,6 +48,7 @@ $("#total-agree").click(function() {
     }
 })
 
+// modal agree check
 $('#modal_use_agree').click(function(){
     $("#use_agree").prop("checked", true);
 })
@@ -55,6 +59,7 @@ $('#modal_marketing_agree').click(function(){
     $("#marketing_agree").prop("checked", true);
 })
 
+// check for blank after error and password
 function noblank (){
     if($('input') !== ''){
         $('input').removeClass('warning');
@@ -76,6 +81,7 @@ function noblank (){
     }
 }
 
+// essential check and check for redundancy
 $('#signup').click(function(){
     let username = $('#username').val();
     let userid = $('#userid').val();
@@ -83,10 +89,9 @@ $('#signup').click(function(){
     let pw2 = $("#passwd_ok").val();
     let use_agree = $('#use_agree').is(':checked');
     let personalinfo_agree = $('#personalinfo_agree').is(':checked');
-// alert(use_agree.is(':checked'));
+    // alert(use_agree.is(':checked'));
    
     // $('form').addClass('was-validated');
-
     if(username == ""){
         alert('이름을 입력해주세요.');
         $('#username').addClass('warning');
@@ -110,7 +115,6 @@ $('#signup').click(function(){
         alert('필수 이용약관에 동의해주세요.');
         $('#personalinfo_agree').addClass('warning');
     }else{
-
         var data={
             username : username,
             userid : userid
@@ -133,51 +137,65 @@ $('#signup').click(function(){
 
 });
 
-// 타이포 효과
-const $text = document.querySelector(".keyword");
 
-const letters = [
-  "빠르게",
-  "쉽게", 
-  "재밌게"
-];
-
-// 글자 입력 속도
-const speed = 150;
+// typo effect
+let $text = document.querySelector(".keyword");
+let letters = [ "빠르게", "쉽게", "재밌게" ];
+// speed text
+let speed = 150;
 let i = 0;
-
-// 타이핑 효과
-const typing = async () => {  
-  const letter = letters[i].split("");
+// typing
+let typing = async () => {  
+  let letter = letters[i].split("");
   while (letter.length) {
     await wait(speed);
     $text.innerHTML += letter.shift(); 
   }
-  
-  // 잠시 대기
+  // 잠시 대기, 지우기 함수 실행
   await wait(1500);
-  // 지우는 효과
   remove();
 }
-
-// 글자 지우는 효과
-const remove = async () => {
-  const letter = letters[i].split("");
+// remove text
+let remove = async () => {
+  let letter = letters[i].split("");
   while (letter.length) {
     await wait(speed);
     letter.pop();
     $text.innerHTML = letter.join(""); 
   }
-  
-  // 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
+  // 다음 글자, 타이핑 함수 실행
   i = !letters[i+1] ? 0 : i + 1;
   typing();
 }
-
-// 딜레이 기능 ( 마이크로초 )
+// 딜레이
 function wait(ms) {
   return new Promise(res => setTimeout(res, ms))
 }
-
-// 초기 실행
+// typo effect 실행
 setTimeout(typing, 1800);
+
+
+// .deco fixed
+let target = $('.signup.sticky');
+let targetHeight = target.height();
+let sticky = $('.deco.sticky');
+let height = targetHeight - 650;
+
+let relocateEvt = new Event('scroll');
+
+$(window).scroll(()=>{
+  let sct = $(window).scrollTop();
+  console.log(height);
+  console.log(sct);
+
+    if(sct > height ){
+        sticky.css({position:'relative', marginTop:'90vh', marginRight: '174px'});
+        $('.inner').addClass('d-flex');
+        target.css({marginLeft: '0px'});
+    }else{
+        sticky.css({position:'fixed', marginTop:'0', marginRight: '0', paddingTop: '0'});
+        $('.inner').removeClass('d-flex');
+        target.css({marginLeft: '710px'});
+    }
+});
+window.dispatchEvent(relocateEvt);

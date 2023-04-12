@@ -4,15 +4,15 @@
         <link rel="stylesheet" href="css/common.css" />
         <link rel="stylesheet" href="css/index.css" />
 <?php
-    include $_SERVER['DOCUMENT_ROOT']."/inc/user/index_header.php";
+    include $_SERVER['DOCUMENT_ROOT']."/inc/user/header_index.php";
 ?>
-        <section class="banner swiper mySwiper">
+        <section class="banner swiper bannerSwiper">
             <h2 class="hidden">main banner</h2>
             <ul class="swiper-wrapper">
                 <li class="slide1 swiper-slide">
                     <div class="container">
                         <div class="row">
-                            <div class="banner_text col-7 d-flex flex-column">
+                            <div class="banner_text active col-7 d-flex flex-column">
                                 <h3 class="order-2">
                                     HTML CSS Javascript <br />
                                     통합과정 프리패스 개강
@@ -20,7 +20,7 @@
                                 <h4 class="order-1">이젠 나도 웹퍼블리셔!</h4>
                                 <p class="content-text-1 order-3">프리패스 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner1.png" alt="" no-repeat/>
+                            <img class="col-5 active" src="img/banner1.png" alt="" no-repeat/>
                         </div>
                     </div>
                 </li>
@@ -75,19 +75,22 @@
         <section class="go_category container">
             <h2 class="hidden">카테고리별 강좌보기</h2>
             <h3 class="sub-title">어떤 강의를 찾으세요?</h3>
+            <form action="./lecture/lecture_list.php" method="POST" id="cate_search">
+                <input type="hidden" name="search_cate" value="" id="search_cate"/>
+            </form>
             <ul class="d-flex justify-content-evenly content-text-1">
-                <li><a href="" class="sprite html">HTML</a></li>
-                <li><a href="" class="sprite css">CSS</a></li>
-                <li><a href="" class="sprite javascript">Javascript</a></li>
-                <li><a href="" class="sprite react">React</a></li>
-                <li><a href="" class="sprite sql">PHP&SQL</a></li>
-                <li><a href="" class="sprite python">Python</a></li>
-                <li><a href="" class="sprite mobile">Mobile</a></li>
-                <li><a href="" class="sprite figma">Figma</a></li>
-                <li><a href="" class="sprite adobexd">AdobeXd</a></li>
-                <li><a href="" class="sprite sketch">Sketch</a></li>
-                <li><a href="" class="sprite photoshop">Photoshop</a></li>
-                <li><a href="" class="sprite illustrator">illustrator</a></li>
+                <li><a href="" data-cate="HTML" class="sprite html cate_search">HTML</a></li>
+                <li><a href="" data-cate="CSS" class="sprite css cate_search">CSS</a></li>
+                <li><a href="" data-cate="Javascript" class="sprite javascript cate_search">Javascript</a></li>
+                <li><a href="" data-cate="React" class="sprite react cate_search">React</a></li>
+                <li><a href="" data-cate="PHP&SQL" class="sprite sql cate_search">PHP&SQL</a></li>
+                <li><a href="" data-cate="Python" class="sprite python cate_search">Python</a></li>
+                <li><a href="" data-cate="Mobile" class="sprite mobile cate_search">Mobile</a></li>
+                <li><a href="" data-cate="Figma" class="sprite figma cate_search">Figma</a></li>
+                <li><a href="" data-cate="AdobeXd" class="sprite adobexd cate_search">AdobeXd</a></li>
+                <li><a href="" data-cate="Sketch" class="sprite sketch cate_search">Sketch</a></li>
+                <li><a href="" data-cate="Photoshop" class="sprite photoshop cate_search">Photoshop</a></li>
+                <li><a href="" data-cate="illustrator" class="sprite illustrator cate_search">illustrator</a></li>
             </ul>
         </section>
 
@@ -296,7 +299,7 @@
             <div class="container">
                 <div class="ad_fastcode_title text-center">
                     <span>왜 </span>
-                    <div id="main-logo">
+                    <div class="main-logo">
                         <a href="#" class="no_link">
                             <img src="img/fastcode_logo.png" alt="Fastcode" />
                             <span>fastcode</span>
@@ -316,7 +319,7 @@
                             <a href="#tabs-3"><i class="fa-solid fa-music"></i>재밌게 배우는 코딩</a>
                         </li>
                     </ul>
-                    <div id="tabs-1" class="row">
+                    <div id="tabs-1" class="row tab-content">
                         <div class="description text-end col-6">
                             <h3>빠르게 배우는 코딩 <i class="fa-solid fa-rocket"></i></h3>
                             <h4>fast learning</h4>
@@ -340,7 +343,7 @@
 
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab1.png" alt="" no-repeat/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
                                 <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
@@ -349,7 +352,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div id="tabs-2" class="row">
+                    <div id="tabs-2" class="row tab-content">
                         <div class="description text-end col-6">
                             <h3>쉽게 배우는 코딩 <i class="fa-regular fa-lightbulb"></i></h3>
                             <h4>easy learning</h4>
@@ -373,7 +376,7 @@
 
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab2.png" alt="" no-repeat/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
                                 <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
@@ -382,7 +385,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div id="tabs-3" class="row">
+                    <div id="tabs-3" class="row tab-content">
                         <div class="description text-end col-6">
                             <h3>재밌게 배우는 코딩 <i class="fa-solid fa-music"></i></h3>
                             <h4>funny learning</h4>
@@ -405,7 +408,7 @@
                         </div>
                         <div class="tab_thumbnail col-6">
                             <img src="img/ad_fastcode_tab3.png" alt="" no-repeat/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="487" viewBox="0 0 596 487" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
                                 <circle cx="555.5" cy="37.5" r="37.5" fill="#457B9D" class="svg-elem-3"/>
@@ -475,7 +478,7 @@
         </section>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer_main.php";
+    include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer_index.php";
 ?>        
         <script src="js/common.js"></script>
         <script src="js/index.js"></script>

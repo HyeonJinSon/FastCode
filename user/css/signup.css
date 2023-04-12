@@ -244,3 +244,7 @@ form button {
     transform:scaleX(1);
     height: 2px; 
 }
+
+.modal-dialog .modal-header h2{
+    margin-bottom: 0;
+}

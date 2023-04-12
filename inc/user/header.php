@@ -79,7 +79,17 @@
                                     $rs = $result -> fetch_object();
                                     ?>
                                     <a href="" class="d-flex">
-                                        <img class="profile_img" src="<?php echo $rs -> profile_img;?>" alt="" cover-fit />
+                                    <?php
+                                            if($rs -> profile_img){
+                                        ?>
+                                        <img class="profile_img" src="../<?php echo $rs -> profile_img;?>" alt="" cover-fit />
+                                        <?php
+                                            }else{
+                                        ?>
+                                        <img class="profile_img" src="../img/noprofile.png" alt="" cover-fit />
+                                        <?php
+                                            }
+                                        ?>
                                         <span><?php echo $rs -> username;?>님</span>
                                         <i class="fa-solid fa-angle-right ms-auto"></i>
                                     </a>

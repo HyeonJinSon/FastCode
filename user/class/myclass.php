@@ -12,25 +12,39 @@
     </script>";
   };
 
+  //클래스 배너 프로필 이미지 출력
   $queryP = "SELECT profile_img from members where userid='".$userid."'";
   $resultP = $mysqli->query($queryP) or die ("query error =>".$mysql->error);
   $rsP = $resultP->fetch_object();
 
-  $csql = "SELECT COUNT(*) AS cnt from user_lectures where userid='".$userid."' and progress='100.00'";
+
+  //해당 유저의 수강 완료 강좌
+  $csql = "SELECT lecid from user_lectures where userid='".$userid."' and progress='100.00'";
   $cresult = $mysqli->query($csql) or die ("query error =>".$mysql->error);
-  $crs = $cresult->fetch_object();
+  // $cr = $cresult->fetch_object();
+  while($cr = $cresult->fetch_object()){
+    $crarr[]=$cr->lecid;
+  }
+  $ccsql = "SELECT COUNT(*) AS cnt from user_lectures where userid='".$userid."' and progress='100.00'";
+  $ccresult = $mysqli->query($ccsql) or die ("query error =>".$mysql->error);
+  $ccr = $ccresult->fetch_object();
 
-
+  //해당 유저의 수강중 강좌 총 수
   $ucsql = "SELECT COUNT(*) AS cnt from user_lectures where userid='".$userid."'";
   $ucresult = $mysqli->query($ucsql) or die ("query error =>".$mysql->error);
   $ucrs = $ucresult->fetch_object();
 
 
+  //수강 만료 임박 강좌 
+  $dquery = "SELECT ul.lecid from user_lectures ul join lectures lc on ul.lecid=lc.lecid where DATEDIFF(lc.lec_end_date, now()) < 5 and ul.userid='".$userid."'";
+  $dresult = $mysqli->query($dquery) or die("query error =>".$mysqli->error);
+  while($dr = $dresult->fetch_object()){
+    $drarr[]=$dr->lecid;
+  }
 
-  // $dquery = "SELECT COUNT(*) AS cnt from user_lectures ul join lectures lc on ul.lecid=lc.lecid where lc.lec_end_date < date(\"Y-m-d\", strtotime(\"-5 day\", time()) and ul.userid='".$userid."'";
-  // $dresult = $mysqli->query($dquery) or die("query error =>".$mysqli->error);
-  // $drs = $dresult->fetch_object();
-
+  $ddquery = "SELECT COUNT(*) AS cnt from user_lectures ul join lectures lc on ul.lecid=lc.lecid where DATEDIFF(lc.lec_end_date, now()) < 5 and ul.userid='".$userid."'";
+  $ddresult = $mysqli->query($ddquery) or die("query error =>".$mysqli->error);
+  $ddr = $ddresult->fetch_object();
 
 
   //해당 유저의 총 수강 시간 합계
@@ -69,7 +83,7 @@
     <div class="class_banner d-flex justify-content-between align-items-end">
       <div class="class_title d-flex align-items-center">
         <figure class="class_profile">
-          <img src="../<?php echo $rsP->profile_img; ?>" alt="<?php echo $username; ?>님의 프로필 이미지">
+          <img src="../<?php if($rsP->profile_img != null){echo $rsP->profile_img;} else {echo 'img/noprofile.png';} ?>" alt="<?php echo $username; ?>님의 프로필 이미지">
         </figure>
         <h2><a href="myclass.php" class="title"><?php echo $username; ?> 님의 강의실</a></h2>
       </div>
@@ -78,11 +92,11 @@
           수강중인 강좌<span data-rate="<?php echo $ucrs->cnt; ?>">0</span>
         </div>
         <div class="count">
-          수강완료 강좌<span data-rate="<?php echo $crs->cnt; ?>">0</span>
+          수강완료 강좌<span data-rate="<?php echo $ccr->cnt; ?>">0</span>
         </div>
         <div class="count">
-          <!-- 만료 임박 강좌<span data-rate="<?php echo $drs->cnt; ?>">0</span> -->
-          만료 임박 강좌<span data-rate="1">0</span>
+          만료 임박 강좌<span data-rate="<?php echo $ddr->cnt; ?>">0</span>
+          <!-- 만료 임박 강좌<span id="bye" data-rate="1">0</span> -->
         </div>
         <div class="count">
           총 학습 시간<span data-rate="<?php echo $trs->total_hour; ?>">0</span>
@@ -116,8 +130,23 @@
         if($r4 != null){
 
         foreach($r4 as $ml){
+          $num = 1;
+          $class = '';
+
+          $key1 = in_array($ml->lecid, $crarr);
+          $key2 = in_array($ml->lecid, $drarr);
+    
+          if($key2){
+            $class = 'impending';
+            $num = 2;
+          } else if($key1){
+            $class = 'finish';
+            $num = 0;
+          }
+
+
         ?>
-            <li class="myLec" data-date="<?php echo $ml->lec_end_date; ?>" data-sort="0">
+            <li class="myLec <?php echo $class; ?>" data-id="<?php echo $ml->lecid; ?>"  data-sort="<?php echo $num; ?>">
                     <figure class="myLec_img">
                       <img src="<?php echo $ml->thumbnail; ?>" alt="<?php echo $ml->name; ?>">
                     </figure>
@@ -145,7 +174,14 @@
                           $lec_total_time = intval($scd-$std);
                           $target = ($lec_total_time/$lec_time)*100;
                           $lec_progress = number_format($target, 2);
+                          if($lec_progress > 99.00){
+                            $lec_progress = 100.00;
+                          }
                           echo $lec_progress;
+
+                          $prgquery = "UPDATE user_lectures set progress='".$lec_progress."' where lecid='".$tglecid."'";
+                          $prgresult= $mysqli -> query($prgquery) or die("query error =>".$mysqli->error);
+
                         ?>%</span>
                       </div>
                     </div>

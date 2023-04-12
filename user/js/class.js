@@ -12,18 +12,14 @@ numCount.each(function(){
       if(num == targetNum){
         clearInterval(timer);
       }
-    },120);
+    },160);
   }
 });
 
-
-if($('.myLec').hasClass('lec_disabled')){
-      $(this).attr('data-sort', 1);
-}
 function liSort(tg, dataNm){
   tg.html(
     tg.find('li').sort(function(a,b){
-      return $(a).attr(dataNm) - $(b).attr(dataNm);
+      return $(b).attr(dataNm) - $(a).attr(dataNm);
     })
   );
 }

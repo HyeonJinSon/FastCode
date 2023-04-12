@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                 <div class="footer_bottom d-flex">
-                    <h6 id="main-logo">
+                    <h6 class="main-logo">
                         <a href="../index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h6>
                     <div class="footer_contents d-flex">

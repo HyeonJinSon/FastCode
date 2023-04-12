@@ -357,6 +357,7 @@
   function cart_ins(){
     let lecid = '<?php echo $lecid;?>';
     let userid = '<?php echo $_SESSION['USERID']; ?>';
+    let endDate = '<?php echo $le->lec_end_date ?>';
 
     if(!userid){
       alert('로그인을 해주세요.');
@@ -365,7 +366,8 @@
     }
     let data = {
       lecid : lecid,
-      userid : userid
+      userid : userid,
+      endDate : endDate
     };
     
     $.ajax({

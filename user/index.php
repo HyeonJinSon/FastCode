@@ -441,11 +441,11 @@
                             <span class="col-3 text-center"><?php echo $br -> date; ?><i class="fa-solid fa-angle-right"></i></span>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="noticeModal_<?php echo $br -> idx; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="noticeModal_<?php echo $br -> idx; ?>" tabindex="-1" aria-labelledby="exampleModalLabel_<?php echo $br -> idx; ?>" aria-hidden="true">
                               <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $br -> title; ?></h1>
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel_<?php echo $br -> idx; ?>"><?php echo $br -> title; ?></h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body content-text-3">
@@ -463,7 +463,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><a href="#" class="no_link">게시물 보러가기</a></button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">게시물 보러가기</button>
                                   </div>
                                 </div>
                               </div>
@@ -480,7 +480,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer_index.php";
 ?>        
-        <script src="js/common.js"></script>
         <script src="js/index.js"></script>
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/user/tail.php";

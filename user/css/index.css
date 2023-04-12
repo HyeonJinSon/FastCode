@@ -505,16 +505,9 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
     padding-left: 30px !important;
     padding-right: 30px !important;
 }
-.swiper-button-prev{
+.class_slide .swiper-button-prev{
     left: 0 !important;
 }
-.swiper-button-next{
+.class_slide .swiper-button-next{
     right: 0 !important;
-}
-.class_slide .swiper-slide:first-child{
-    /* margin-left: 44px; */
-}
-.class_slide .swiper-wrapper{
-    /* width: 95%; */
-    /* margin-left: 44px; */
 }

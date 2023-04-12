@@ -10,6 +10,7 @@
 ?>
         <div class="inner d-flex">
             <section class="deco_container">
+                <h2 class="hidden">fastcode</h2>
                 <div class="deco">
                     <svg width="536" height="108" viewBox="0 0 536 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path id="f" d="M101.099 41.6364H72.4926L68.148 53.226H94.6664L90.1485 65.2763H63.6301L53.6541 91.8859H37.7012L61.0566 29.5879H105.616L101.099 41.6364Z" fill="black" class="svg-name"></path>

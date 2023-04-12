@@ -4,8 +4,11 @@
 
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/signup.css" />
-        <?php
+<?php
         include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
+        if($_SESSION['USERID']){
+            echo '<script>location.href = "http://fastcode.dothome.co.kr/user/index.php";</script>';
+        }
 ?>
         <div class="inner d-flex">
             <section class="deco_container">

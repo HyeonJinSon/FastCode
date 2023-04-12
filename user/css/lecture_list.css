@@ -4,6 +4,7 @@ header {
 main {
   margin-top: 60px;
   padding-top: 90px;
+  min-height: 1300px;
 }
 .hidden {
   display: none;
@@ -65,6 +66,7 @@ input[type="checkbox"]:checked::after {
   display: flex;
   font-size: 18px;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 .check_wrap .price_show label {
   flex-direction: column;
@@ -109,25 +111,34 @@ input[type="checkbox"]:checked::after {
 }
 .lecture_list .course_recom {
   width: 137px;
-  height: 44px;
-  background: #e0e9ef;
+  height: 146px;
+  background: #fff;
+  border: 3px solid #e0e9ef;
   border-radius: 10px;
-  border: none;
   transition: 0.4s;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
 }
 
 .lecture_list .course_recom:hover,
 .lecture_list .course_recom.active {
-  background: #2b96dc;
   font-weight: bold;
+  border: 5px solid #2b96dc;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .lecture_list .recommend {
   display: flex;
   justify-content: space-between;
 }
+.lecture_list .course_recom img {
+  /* width: 70px; */
+  height: 70px;
+}
 .lecture_wrap {
   margin: 20px 0;
-  /* display: flex; */
 }
 .lecture_wrap ul {
   display: flex;
@@ -228,11 +239,29 @@ html .ui-button.ui-state-disabled:active {
   color: #2b96dc;
   border-radius: 10px;
 }
-/* .ui-slider-handle, .ui-corner-all, .ul-state-default, .ui-state-focus,
-.ui-state-active, .ui-state-hover {
-    border: 2px solid red;
-    background: red;
-    font-weight: normal;
-    color: red;
+#slider-range .ui-slider-range.ui-corner-all.ui-widget-header {
+  width: 100%;
 }
-/* */
+#slider-range .ui-slider-handle.ui-corner-all.ui-state-default {
+  left: 100%;
+}
+#slider-range,
+#slider-range > div {
+  width: 100%;
+}
+.lecture_empty {
+  font-size: 24px;
+  margin: 50px 0 0 350px;
+}
+.lecture_empty p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  color: #808080;
+}
+.lecture_empty p i {
+  color: #2b96dc;
+  font-size: 100px;
+  margin-bottom: 20px;
+}

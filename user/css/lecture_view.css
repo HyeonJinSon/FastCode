@@ -187,8 +187,9 @@ footer {
   margin-bottom: 30px;
   align-items: center;
   /* justify-content: space-between; */
-  padding: 18px 50px 27px 40px;
+  padding: 26px 50px 27px 40px;
   position: relative;
+  display: flex;
 }
 .lecture_list li a {
   align-items: center;
@@ -200,8 +201,8 @@ footer {
     border-radius: 10px;
 } */
 .lecture_list li p {
-  font-size: 24px;
-  margin-left: 40px;
+  font-size: 18px;
+  margin-left: 25px;
   cursor: pointer;
 }
 .lecture_list li span {
@@ -230,7 +231,7 @@ footer {
 }
 .lecture_info .review_list {
   width: 100%;
-  height: 370px;
+  /* height: 370px; */
   background: #e0e9ef;
   border-radius: 20px;
   padding: 55px 52px;
@@ -264,10 +265,10 @@ footer {
   flex-direction: column;
   display: inline-block;
   position: sticky;
-  top: 40px;
+  top: 100px;
 }
 .lecture_info_bar h4 {
-  margin: 20px 0;
+  margin: 20px 4px;
 }
 .lecture_info_bar img {
   width: 290px;
@@ -329,4 +330,7 @@ footer {
 }
 #lec_list .link_tag {
   display: block;
+}
+.lecture_info .lec_content {
+  font-size: 21px;
 }

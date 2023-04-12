@@ -12,6 +12,7 @@
 ?>
         <div class="inner d-flex">
             <section class="deco_container">
+                <h2 class="hidden">fastcode</h2>
                 <div class="deco sticky">
                     <svg width="536" height="108" viewBox="0 0 536 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path id="f" d="M101.099 41.6364H72.4926L68.148 53.226H94.6664L90.1485 65.2763H63.6301L53.6541 91.8859H37.7012L61.0566 29.5879H105.616L101.099 41.6364Z" fill="black" class="svg-name"></path>
@@ -124,11 +125,11 @@
                             </button>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="use_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="use_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                               <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">[필수] 패스트코드 이용 약관에 동의</h1>
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel1">[필수] 패스트코드 이용 약관에 동의</h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body content-text-3">
@@ -159,11 +160,11 @@
                             </button>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="personalinfo_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="personalinfo_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                               <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">[필수] 개인정보 수집 및 이용에 동의</h1>
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel2">[필수] 개인정보 수집 및 이용에 동의</h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body content-text-3">
@@ -192,11 +193,11 @@
                             </button>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="marketing_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="marketing_agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
                               <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</h1>
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel3">[선택] 마케팅 정보 수신 및 선택적 개인정보 제공</h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body content-text-3">

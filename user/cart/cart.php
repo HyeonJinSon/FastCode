@@ -20,6 +20,10 @@
     </script>';
   }
 
+  // lec_end_date가 오늘 날짜 보다 전이면 카트에서 삭제
+  $sql2 = "DELETE c.* from cart c join lectures l on l.lecid=c.lecid where l.lec_end_date < now()".$added_condition;
+  $result2 = $mysqli->query($sql2) or die("query error => ".$mysqli->error);
+
   $sql = "SELECT * from lectures l join cart c on l.lecid=c.lecid where l.lec_end_date >= now()".$added_condition;
   $result = $mysqli->query($sql) or die("query error => ".$mysqli->error);
   while($rs = $result->fetch_object()){

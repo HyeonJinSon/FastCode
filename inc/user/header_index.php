@@ -4,12 +4,12 @@
             <div class="header">
                 <div class="container d-flex justify-content-between align-items-center">
                     <h1 class="main-logo">
-                        <a href="../index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                        <a href="index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
                     </h1>
                     <nav class="main-menu-ft">
                         <ul class="d-flex">
                             <li><a href="">about us</a></li>
-                            <li><a href="../lecture/lecture_list.php">강의</a></li>
+                            <li><a href="lecture/lecture_list.php">강의</a></li>
                             <li>
                                 <a href="">커뮤니티</a>
                                 <ul class="sub-menu-ft">
@@ -37,8 +37,8 @@
                             </li>
                         </ul>
                     </nav>
-                    <form action="" class="search">
-                        <input type="text" placeholder="검색어를 입력하세요" />
+                    <form action="lecture/lecture_list.php" method="POST" class="search">
+                        <input type="text" name="search_keyword" placeholder="검색어를 입력하세요" />
                         <button> <i class="fa-solid fa-magnifying-glass"></i> </button>
                     </form>
                     <ul class="member-info d-flex sub-menu-ft">
@@ -47,7 +47,7 @@
                             $userid = $_SESSION['USERID'];
                     ?>
                         <li>
-                            <a href="../cart/cart.php">
+                            <a href="cart/cart.php">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <?php
                                     //로그인한 유저의 cart 테이블 조회해서 담긴 개수 확인
@@ -63,7 +63,6 @@
                             </a>
                             <span class="tip">장바구니</span>
                         </li>
-
                         <li>
                             <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             <span class="tip">로그아웃</span>
@@ -79,7 +78,17 @@
                                     $rs = $result -> fetch_object();
                                     ?>
                                     <a href="" class="d-flex">
+                                    <?php
+                                            if($rs -> profile_img){
+                                        ?>
                                         <img class="profile_img" src="<?php echo $rs -> profile_img;?>" alt="" cover-fit />
+                                        <?php
+                                            }else{
+                                        ?>
+                                        <img class="profile_img" src="img/noprofile.png" alt="" cover-fit />
+                                        <?php
+                                            }
+                                        ?>
                                         <span><?php echo $rs -> username;?>님</span>
                                         <i class="fa-solid fa-angle-right ms-auto"></i>
                                     </a>
@@ -90,7 +99,7 @@
                                     <a href=""><i class="fa-solid fa-chart-pie"></i><span>대시보드</span></a>
                                 </li>
                                 <li>
-                                    <a href="../class/myclass.php"><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
+                                    <a href="class/myclass.php"><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
                                 </li>
                                 <li>
                                     <a href=""><i class="fa-solid fa-clipboard"></i><span>강의노트</span></a>
@@ -109,11 +118,11 @@
                         } else{
                     ?>
                     <li>
-                        <a href="../member/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                        <a href="member/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                         <span class="tip">로그인</span>
                     </li>
                     <li>
-                        <a href="../member/signup.php"><i class="fa-solid fa-user-plus"></i></a>
+                        <a href="member/signup.php"><i class="fa-solid fa-user-plus"></i></a>
                         <span class="tip">회원가입</span>
                     </li>
                     <?php

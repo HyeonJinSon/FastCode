@@ -65,7 +65,7 @@
                         </li>
 
                         <li>
-                            <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                            <button type="submit" id="logout" onclick="location.replace('../member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             <span class="tip">로그아웃</span>
                         </li>
                         <li>

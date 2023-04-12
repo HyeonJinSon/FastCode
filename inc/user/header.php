@@ -37,7 +37,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <form action="" class="search">
+                    <form action="../lecture/lecture_list.php" class="search">
                         <input type="text" placeholder="검색어를 입력하세요" />
                         <button> <i class="fa-solid fa-magnifying-glass"></i> </button>
                     </form>
@@ -65,7 +65,7 @@
                         </li>
 
                         <li>
-                            <button type="submit" id="logout" onclick="location.replace('../member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                            <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             <span class="tip">로그아웃</span>
                         </li>
                         <li>

@@ -121,7 +121,7 @@
             <div id="slider-range"></div>
             <p>
               <label for="amount1">최소금액<input type="text" id="amount1" value="" readonly></label>
-              <span>~</span>
+              <span class="price_space">~</span>
               <label for="amount2">최대금액<input type="text" id="amount2" value="" readonly></label>
             </p>
           </div>

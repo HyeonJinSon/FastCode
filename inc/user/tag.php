@@ -1,6 +1,6 @@
 <?php
     $post_time = $lr->reg_date;
-    $week = date("Y-m-d", strtotime($time_now."+7 days"));
+    $week = date("Y-m-d", strtotime($time_now."-7 days"));
     if($post_time <= $week){
         $icon_new = '<span class="mini-tag new-tag">new</span>';
     } else{
@@ -8,10 +8,10 @@
     }
 
     $sale_cnt = $lr->sale_cnt;
-    if($sale_cnt > 100){
-        $icon_hot = '<span class="mini-tag hit-tag">hit</span>';
+    if($sale_cnt >= 10){
+        $icon_hit = '<span class="mini-tag hit-tag">hit</span>';
     }else{
-        $icon_hot ='';
+        $icon_hit ='';
     }
     $recom = $lr->recom;
     if($recom == 1){
@@ -45,4 +45,4 @@
         $icon_adv ='';
     }
 ?>
-<?php echo $icon_new; ?><?php echo $icon_hit; ?><?php echo $icon_recom; ?><?php echo $icon_begin; ?><?php echo $icon_inter; ?><?php echo $icon_adv; ?><?php echo $icon_hit; ?>
+<?php echo $icon_new; ?><?php echo $icon_hit; ?><?php echo $icon_recom; ?><?php echo $icon_begin; ?><?php echo $icon_basic; ?><?php echo $icon_inter; ?><?php echo $icon_adv; ?>

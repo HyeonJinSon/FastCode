@@ -45,6 +45,24 @@ ORDER BY orderNumber ASC";
   $data[] = $rs->data;   
   }
 
+//Chart2
+  $sql_total = "SELECT C.name, COUNT(C.name) AS 'cnt',
+                CASE WHEN C.name = '프론트엔드' THEN 1
+                WHEN C.name = '백엔드' THEN 2
+                WHEN C.name = 'UX/UI' THEN 3
+                WHEN C.name = '일반 디자인' THEN 4
+                WHEN C.name = '기타' THEN 5
+                ELSE 100 END AS 'orderNumber'
+                FROM lectures L
+                INNER JOIN user_lectures UL ON UL.lecid = L.lecid
+                INNER JOIN category C ON C.code = L.cate_mid
+                GROUP BY C.name
+                ORDER BY orderNumber ASC";
+
+  $result_total = $mysqli -> query($sql_total);
+  while($rs_total = $result_total ->fetch_object()) {
+    $totalCnt[] = $rs_total->cnt;
+  }
 
 // 신규강의
   $sql2 = "SELECT * 
@@ -138,16 +156,9 @@ ORDER BY orderNumber ASC";
 
 <script>
   let bookmark = String(<?php echo json_encode($book_mark);?>);
-  // console.log('$_SESSION[ADBOOK] : ' + bookmark);
-
-  //달력 caleandar.js 
-  // https://github.com/jackducasse/caleandar
   let element = caleandar(document.querySelector('#calendar'));
-  // caleandar(element, events, settings);
-  // 이벤트 넣을때 사용하면 될.. 함수?
-
-
   let jsonArray = <?php echo json_encode($data_json);?>;
+  let totalCnt = <?php echo json_encode($totalCnt);?>;
   let labelsArray = new Array();
   let dataArray = new Array();
 
@@ -230,7 +241,7 @@ ORDER BY orderNumber ASC";
       labels: labelsArray,
       datasets: [
         {
-          data: [228, 284, 196, 327, 161],
+          data: totalCnt,
           backgroundColor: [
             "#FFDD67",
             "#A8DADB",
@@ -254,7 +265,7 @@ ORDER BY orderNumber ASC";
             ticks: {
               beginAtZero: true,
               min: 0,
-              stepSize: 100, //증가수
+              //stepSize: 100, 증가수
               fontColor: "#161616",
               fontSize: 20
             }

@@ -201,7 +201,8 @@
     levelsArray[i] = jsonArray[i].labels;
     i++;
   }
-
+  
+  let searchKeyword = '';
   let recomCategory = '';
   let checkedCate = [];
   let checkedLevels = []; 

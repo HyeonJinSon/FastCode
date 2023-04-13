@@ -1,7 +1,7 @@
 <?php
     $post_time = $lr->reg_date;
-    $week = date("Y-m-d", strtotime($time_now."-7 days"));
-    if($post_time <= $week){
+    $week = date("Y-m-d", strtotime($time_now."-14 days"));
+    if($post_time >= $week){
         $icon_new = '<span class="mini-tag new-tag">new</span>';
     } else{
         $icon_new='';

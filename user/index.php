@@ -262,7 +262,7 @@
             <div class="class best swiper lectureSwiper">
                 <h3 class="sub-title">Best Seller 대표 강좌</h3>
                 <?php
-                    $hitlec_sql = "SELECT * from lectures where sale_status='판매중' and sale_cnt>=10 order by sale_cnt limit 0,8";
+                    $hitlec_sql = "SELECT * from lectures where sale_status='판매중' and sale_cnt>=10 order by sale_cnt desc limit 0,8";
                     $hitlec_result = $mysqli->query($hitlec_sql) or die("query error => ".$mysqli->error);
                     while($hl_rs = $hitlec_result -> fetch_object()){
                         $hlrs[]=$hl_rs;

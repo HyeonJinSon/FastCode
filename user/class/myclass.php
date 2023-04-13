@@ -139,7 +139,9 @@
           if($key2){
             $class = 'impending';
             $num = 2;
-          } else if($key1){
+          }
+          
+          if($key1){
             $class = 'finish';
             $num = 0;
           }

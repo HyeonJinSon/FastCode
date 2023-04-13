@@ -342,8 +342,8 @@
         checkedPeriod: checkedPeriod,
         checkedPrice: checkedPrice,
         rangePrice: rangePrice,
-        lectureCount : lectureCount
-
+        lectureCount : lectureCount,
+        searchKeyword: searchKeyword
       };
       $.ajax({
 

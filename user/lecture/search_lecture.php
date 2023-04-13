@@ -2,6 +2,7 @@
   include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
 
   // 4단계 - ajax데이터 php 정상 호출
+  $searchKeyword = $_POST['searchKeyword'] != "" ? $_POST['searchKeyword'] : "";
   $lectureCount = $_POST['lectureCount'] != "" ? $_POST['lectureCount'] : "";
   $recomCategory = $_POST['recomCategory'] != "" ? $_POST['recomCategory'] : "";
   $checkedCate = isset($_POST['checkedCate']) ? $_POST['checkedCate'] : "";

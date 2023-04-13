@@ -86,8 +86,8 @@ input[type="checkbox"]:checked::after {
   display: flex;
   gap: 10px;
 }
-.price_box .price_show span {
-  /* margin: 35px 6px 0 6px; */
+.price_box .price_show .price_space {
+  margin: 35px 0 0 2px;
 }
 .price_box .price_show input {
   width: 114px;
@@ -115,7 +115,7 @@ input[type="checkbox"]:checked::after {
   background: #fff;
   border: 3px solid #e0e9ef;
   border-radius: 10px;
-  transition: 0.4s;
+  transition: 0.2s;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -125,8 +125,9 @@ input[type="checkbox"]:checked::after {
 
 .lecture_list .course_recom:hover,
 .lecture_list .course_recom.active {
-  font-weight: bold;
-  border: 5px solid #2b96dc;
+  /* font-weight: bold; */
+  color: #2b96dc;
+  border: 4px solid #2b96dc;
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .lecture_list .recommend {
@@ -174,6 +175,10 @@ input[type="checkbox"]:checked::after {
 .lecture_wrap .lecture_info {
   justify-content: space-between;
   font-size: 18px;
+  font-weight: bold;
+}
+.lecture_wrap .lecture_info p {
+  color: #1d3557;
 }
 .lecture_wrap .info_wrap {
   padding: 18px 15px 14px;

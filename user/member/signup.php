@@ -7,7 +7,7 @@
 <?php
         include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
         if($_SESSION['USERID']){
-            echo '<script>location.href = "http://fastcode.dothome.co.kr/user/index.php";</script>';
+            echo '<script>location.href = "http://fastcode.dothome.co.kr/user/index.php";  </script>';
         }
 ?>
         <div class="inner d-flex">
@@ -230,6 +230,7 @@
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/inc/user/footer.php";
 ?>
+        <script src="../js/login.js"></script>
         <script src="../js/signup.js"></script>
 
 <?php

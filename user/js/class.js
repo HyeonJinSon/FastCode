@@ -12,7 +12,7 @@ numCount.each(function(){
       if(num == targetNum){
         clearInterval(timer);
       }
-    },160);
+    },130);
   }
 });
 

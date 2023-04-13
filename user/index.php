@@ -196,7 +196,7 @@
             <div class="class new swiper lectureSwiper">
                 <h3 class="sub-title">따끈따끈 신규 강좌</h3>
                 <?php
-                    $newlec_sql = "SELECT * from lectures where sale_status='판매중' order by lecid desc limit 0,8";
+                    $newlec_sql = "SELECT * from lectures where sale_status='판매중' order by reg_date desc limit 0,8";
                     $newlec_result = $mysqli->query($newlec_sql) or die("query error => ".$mysqli->error);
                     while($nl_rs = $newlec_result -> fetch_object()){
                         $nlrs[]=$nl_rs;

@@ -61,11 +61,16 @@ h2 {
 .cart_list li .cart_list_contents h3 {
   margin-bottom: 18px;
 }
+.cart_list li .cart_list_contents span.liprice {
+  width: 100px;
+  display: inline-block;
+  text-align-last: left;
+}
 .cart_list li .cart_list_contents span:last-child {
   display: inline-block;
   text-align: center;
   width: 220px;
-  margin-left: 175px;
+  margin-left: 155px;
 }
 .cart_cal {
   padding: 36px 40px;

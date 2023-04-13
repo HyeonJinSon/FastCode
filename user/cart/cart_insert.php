@@ -25,12 +25,6 @@
     $query2 = "SELECT lecid from user_lectures where userid='".$userid."' AND lecid='".$lecid."'";
     $result2 = $mysqli->query($query2) or die("query error => ".$mysqli->error);
     $rs2 = $result2->fetch_object();
-    
-    //강의기한을 조회
-    // $query3 = "SELECT lec_end_date from lectures";
-    // $result3 = $mysqli->query($query3) or die("query error => ".$mysqli->error);
-    // $rs3 = $result3->fetch_object();
-    // print_r($rs3);
 
     if($rs1){
         $data = array("result"=>"fail","msg"=>"이미 장바구니에 담겼습니다.");

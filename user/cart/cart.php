@@ -20,9 +20,10 @@
     </script>';
   }
 
-  // lec_end_date가 오늘 날짜 보다 전이면 카트에서 삭제
-  $sql2 = "DELETE c.* from cart c join lectures l on l.lecid=c.lecid where l.lec_end_date < now()".$added_condition;
-  $result2 = $mysqli->query($sql2) or die("query error => ".$mysqli->error);
+
+  // if($result2){
+  //   echo '<script>location.reload();</script>';
+  // }
 
   $sql = "SELECT * from lectures l join cart c on l.lecid=c.lecid where l.lec_end_date >= now()".$added_condition;
   $result = $mysqli->query($sql) or die("query error => ".$mysqli->error);
@@ -39,6 +40,9 @@
         <?php
         if(isset($rsc)){ // 장바구니에 담긴게 있으면
           foreach($rsc as $l){
+          // lec_end_date가 오늘 날짜 보다 전이면 카트에서 삭제
+          $sql2 = "DELETE c.* from cart c join lectures l on l.lecid=c.lecid where l.lec_end_date < now()".$added_condition;
+          $result2 = $mysqli->query($sql2) or die("query error => ".$mysqli->error);
         ?>
         <li class="d-flex cart_plus" id="<?php echo $l->cartid;?>" data-id="<?php echo $l->lecid;?>"> 
           <img src="<?php echo $l->thumbnail; ?>" alt="" />
@@ -51,8 +55,7 @@
                 if($l->lec_date == '무제한'){ 
                   echo $l->lec_date;
                 } else {
-                  //아니면 start date와 end date를
-                  //2023-04-01 - 2023-04-30 이런식으로 출력
+                  //아니면 start date와 end date를 2023-04-01 - 2023-04-30 이런식으로 출력
                   echo $l->lec_start_date.' - '.$l->lec_end_date;
                 }
               ?>
@@ -225,6 +228,7 @@
         success:function(result){              
           if(result.result == true){
             $('#'+cid).remove(); //삭제되고
+            alert('강좌가 삭제되었습니다.');
             location.reload();
             //cal_Sum(); //다시 계산
           }                

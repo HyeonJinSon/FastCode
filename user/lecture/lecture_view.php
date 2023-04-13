@@ -112,7 +112,7 @@
     <div class="container-xxl d-flex">
      <?php if($lecture) { ?>
         <?php foreach($lecture as $le) { ?>
-        <img src="../../<?php echo $le->thumbnail; ?>" alt="">
+        <img src="../../<?php echo $le->thumbnail; ?>" alt="강좌 메인 썸네일이미지입니다.">
         <div class="lecture_title_wrap">
           <div class="lecture_title">
             <h3 class="main-title"><?php echo $le->name; ?></h3>

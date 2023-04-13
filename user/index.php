@@ -20,7 +20,7 @@
                                 <h4 class="order-1">이젠 나도 웹퍼블리셔!</h4>
                                 <p class="content-text-1 order-3">프리패스 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5 active" src="img/banner1.png" alt="" no-repeat/>
+                            <img class="col-5 active" src="img/banner1.png" alt="" />
                         </div>
                     </div>
                 </li>
@@ -35,7 +35,7 @@
                                 <h4 class="order-1">예쁘기만한 디자인 시대는 끝!</h4>
                                 <p class="content-text-1 order-3">프리패스 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner2.png" alt="" no-repeat/>
+                            <img class="col-5" src="img/banner2.png" alt="" />
                         </div>
                     </div>
                 </li>
@@ -47,7 +47,7 @@
                                 <h4 class="order-1">함께 해서 더 즐겁고 더 창의적으로!</h4>
                                 <p class="content-text-1 order-3">대회참가 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner3.png" alt="" no-repeat/>
+                            <img class="col-5" src="img/banner3.png" alt="" />
                         </div>
                     </div>
                 </li>
@@ -62,7 +62,7 @@
                                 <h4 class="order-1">기능까지 갖춘 웹페이지 제작</h4>
                                 <p class="content-text-1 order-3">강좌 신청 : 2023.03.24 - 2023.04.24</p>
                             </div>
-                            <img class="col-5" src="img/banner4.png" alt="" no-repeat />
+                            <img class="col-5" src="img/banner4.png" alt=""  />
                         </div>
                     </div>
                 </li>
@@ -128,7 +128,7 @@
                     ?>
                         <li class="swiper-slide">
                             <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -173,7 +173,7 @@
                     ?>
                         <li class="swiper-slide">
                             <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -209,7 +209,7 @@
                     ?>
                         <li class="swiper-slide">
                             <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -242,7 +242,7 @@
                     ?>
                         <li class="swiper-slide">
                             <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  no-repeat />
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."   />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -275,7 +275,7 @@
                     ?>
                         <li class="swiper-slide">
                             <a href="lecture/lecture_view.php?lecid=<?php echo $lr->lecid;?>">
-                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다." no-repeat />
+                                <img src="<?php echo $lr -> thumbnail; ?>" alt="<?php echo $lr -> name; ?> 대표 이미지입니다."  />
                                 <h4 class="content-text-1"><?php echo $lr -> name; ?></h4>
                                 <?php include $_SERVER['DOCUMENT_ROOT']."/inc/user/tag.php"; ?>
                             </a>
@@ -342,7 +342,7 @@
                         </div>
 
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab1.png" alt="" no-repeat/>
+                            <img src="img/ad_fastcode_tab1.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -375,7 +375,7 @@
                         </div>
 
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab2.png" alt="" no-repeat/>
+                            <img src="img/ad_fastcode_tab2.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -407,7 +407,7 @@
                             <a href="#" class="more content-text-2 no_link">자세히 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                         <div class="tab_thumbnail col-6">
-                            <img src="img/ad_fastcode_tab3.png" alt="" no-repeat/>
+                            <img src="img/ad_fastcode_tab3.png" alt="" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="596" height="540" viewBox="0 0 596 487" fill="none">
                                 <circle cx="160" cy="68" r="50" fill="#1D3557" class="svg-elem-1"/>
                                 <circle cx="80" cy="118" r="80" fill="#457B9D" class="svg-elem-2"/>
@@ -454,7 +454,7 @@
                                     <?php
                                         if($br -> is_img ==1){
                                     ?>
-                                        <img src="../admin/board/board_files/<?= $br -> file; ?>" no-repeat 0 0 center >
+                                        <img src="../admin/board/board_files/<?= $br -> file; ?>"  0 0 center >
                                     <?php
                                         }
                                     ?>

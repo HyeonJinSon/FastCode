@@ -75,9 +75,9 @@
         <section class="go_category container">
             <h2 class="hidden">카테고리별 강좌보기</h2>
             <h3 class="sub-title">어떤 강의를 찾으세요?</h3>
-            <form action="./lecture/lecture_list.php" method="POST" id="cate_search">
+            <!-- <form action="./lecture/lecture_list.php" method="POST" id="cate_search">
                 <input type="hidden" name="search_cate" value="" id="search_cate"/>
-            </form>
+            </form> -->
             <ul class="d-flex justify-content-evenly content-text-1">
                 <li><a href="" data-cate="HTML" class="sprite html cate_search">HTML</a></li>
                 <li><a href="" data-cate="CSS" class="sprite css cate_search">CSS</a></li>
@@ -262,7 +262,7 @@
             <div class="class best swiper lectureSwiper">
                 <h3 class="sub-title">Best Seller 대표 강좌</h3>
                 <?php
-                    $hitlec_sql = "SELECT * from lectures where sale_status='판매중' and sale_cnt>10 order by sale_cnt limit 0,8";
+                    $hitlec_sql = "SELECT * from lectures where sale_status='판매중' and sale_cnt>=10 order by sale_cnt limit 0,8";
                     $hitlec_result = $mysqli->query($hitlec_sql) or die("query error => ".$mysqli->error);
                     while($hl_rs = $hitlec_result -> fetch_object()){
                         $hlrs[]=$hl_rs;

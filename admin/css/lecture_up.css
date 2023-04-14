@@ -109,7 +109,7 @@ textarea::placeholder {
     height: 25px;
 }
 .lec_option {
-    margin-top: -70px;
+    margin-top: 16px;
     align-items: center;
     white-space: nowrap;
 }
@@ -136,4 +136,7 @@ main .up_btn_container {
 }
 .lec_video_up {
     flex-wrap: nowrap;
+}
+.lec_upload_title {
+    margin-right: 20px;
 }

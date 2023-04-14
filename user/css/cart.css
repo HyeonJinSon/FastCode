@@ -6,6 +6,7 @@ h2 {
   text-align: center;
 }
 .cart_area {
+  position: relative;
   justify-content: center;
   gap: 88px;
   margin-bottom: 90px;
@@ -71,6 +72,12 @@ h2 {
   text-align: center;
   width: 220px;
   margin-left: 155px;
+}
+.cart_area .checkout_area {
+  display: inline-block;
+  position: sticky;
+  height: 450px;
+  top: 145px;
 }
 .cart_cal {
   padding: 36px 40px;

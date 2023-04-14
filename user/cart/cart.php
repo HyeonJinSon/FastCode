@@ -70,48 +70,50 @@
         <?php } ?>
       </ul>
     </div>
-    <form method="post">
-      <div class="cart_cal">
-        <h3 class="title">쿠폰</h3>
-        <select name="coupon" id="coupon">
-          <?php
-            //사용 가능한 쿠폰을 확인
-            $q2 = "SELECT ucid,coupon_name from user_coupons uc
-            join coupons c on c.cid=uc.couponid
-            where c.status = 1 and uc.status = 1 and uc.use_max_date >= now() and uc.userid='".$_SESSION['USERID']."'";
-            $r2 = $mysqli->query($q2) or die("query error => ".$mysqli->error);
-            while($cs2 = $r2->fetch_object()){
-                $csa[]=$cs2;
-            }
-          ?>
-          <!-- 쿠폰선택 옵션이 선택됐을때 계산이 되지 않게 val값을 만들어준다 문자는 인식안됌.. -->
-          <option value="-1">쿠폰 선택</option>
-          <?php
-            if(isset($csa)){
-              foreach ($csa as $c){ // 유저가 가지고 있는 쿠폰 출력되게
-          ?>
-            <option value="<?php echo $c->ucid;?>"><?php echo $c->coupon_name;?></option>
-          <?php } } ?>
-        </select>
-        <!-- <input type="hidden" name="cart_total" id="cart_total" value=""> -->
-        <div class="price d-flex justify-content-between">
-          <span class="main-menu-ft">가격</span>
-          <span class="main-menu-ft" id="subtotal"></span>
-          <!-- 총 더한 가격 -->
+    <div class="checkout_area">
+      <form method="post">
+        <div class="cart_cal">
+          <h3 class="title">쿠폰</h3>
+          <select name="coupon" id="coupon">
+            <?php
+              //사용 가능한 쿠폰을 확인
+              $q2 = "SELECT ucid,coupon_name from user_coupons uc
+              join coupons c on c.cid=uc.couponid
+              where c.status = 1 and uc.status = 1 and uc.use_max_date >= now() and uc.userid='".$_SESSION['USERID']."'";
+              $r2 = $mysqli->query($q2) or die("query error => ".$mysqli->error);
+              while($cs2 = $r2->fetch_object()){
+                  $csa[]=$cs2;
+              }
+            ?>
+            <!-- 쿠폰선택 옵션이 선택됐을때 계산이 되지 않게 val값을 만들어준다 문자는 인식안됌.. -->
+            <option value="-1">쿠폰 선택</option>
+            <?php
+              if(isset($csa)){
+                foreach ($csa as $c){ // 유저가 가지고 있는 쿠폰 출력되게
+            ?>
+              <option value="<?php echo $c->ucid;?>"><?php echo $c->coupon_name;?></option>
+            <?php } } ?>
+          </select>
+          <!-- <input type="hidden" name="cart_total" id="cart_total" value=""> -->
+          <div class="price d-flex justify-content-between">
+            <span class="main-menu-ft">가격</span>
+            <span class="main-menu-ft" id="subtotal"></span>
+            <!-- 총 더한 가격 -->
+          </div>
+          <div class="discount_price d-flex justify-content-between">
+            <span class="main-menu-ft">할인가격</span>
+            <span class="main-menu-ft" id="coupon_price">0원</span>
+            <!-- 할인쿠폰의 할인될 가격 출력 -->
+          </div>
+          <div class="total_price">
+            <h3 class="title">총 가격</h3>
+            <span class="title" id="total_amount"></span>
+            <!-- 총가격 - 할인가격 으로 계산된 가격 -->
+          </div>
+          <button type="button" class="y-btn big-btn btn-sky" onclick="checkout_ok()">결제하기</button>
         </div>
-        <div class="discount_price d-flex justify-content-between">
-          <span class="main-menu-ft">할인가격</span>
-          <span class="main-menu-ft" id="coupon_price">0원</span>
-          <!-- 할인쿠폰의 할인될 가격 출력 -->
-        </div>
-        <div class="total_price">
-          <h3 class="title">총 가격</h3>
-          <span class="title" id="total_amount"></span>
-          <!-- 총가격 - 할인가격 으로 계산된 가격 -->
-        </div>
-        <button type="button" class="y-btn big-btn btn-sky" onclick="checkout_ok()">결제하기</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
   <!-- 삭제 팝업 -->
   <div class="background">

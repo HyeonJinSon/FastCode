@@ -29,11 +29,11 @@
         </div>
         <main>
           <h2 class="page-title">강좌 등록</h2>
-          <form action="lecture_ok.php" onsubmit="return save();" method="post" class="row" enctype="multipart/form-data">
+          <form action="lecture_ok.php" onsubmit="return save();" method="post" class="d-flex flex-column" enctype="multipart/form-data">
             <input type="hidden" name="file_table_id" id="file_table_id" value="">
             <h3>카테고리</h3>
             <div class="row justify-content-between">
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate1" id="cate1" class="col form-select" aria-label="Default select example">
                   <option selected>대분류 선택</option>
                   <!-- {category1} -->
@@ -46,14 +46,14 @@
                     ?>
                 </select>
               </div>
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate2" id="cate2" class="col form-select">
                   <option selected>중분류 선택</option>
                     <!-- {category2} category2.php -->
                     <!-- <option value="프론트">프론트</option> -->
                 </select>
               </div>
-              <div class="col-md-4 row">
+              <div class="col-md-4 d-flex">
                 <select name="cate3" id="cate3" class="col form-select">
                   <option selected>소분류 선택</option>
                     <!-- {category3} category3.php -->
@@ -66,11 +66,11 @@
               <input type="text" name="name" id="name" placeholder="강좌명을 입력하세요" class="col-md-12 form-control">
             </div>
             <div class="row justify-content-between">
-                <div class="col-md-4 row">
+                <div class="col-md-4 d-flex flex-column">
                     <h3>가격</h3>
                     <input type="number" name="price" id="price" placeholder="가격을 입력하세요" class="col form-control">
                 </div>
-                <div class="col-md-4 row">
+                <div class="col-md-4 d-flex flex-column">
                     <h3>판매상태</h3>
                     <select name="sale_status" id="sale_status" class="col form-select">
                         <option selected>옵션을 선택해주세요</option>
@@ -79,9 +79,9 @@
                         <option value="판매중지">판매중지</option>
                     </select>
                 </div>
-                <div class="col-md-4 row">
+                <div class="col-md-4 d-flex flex-column">
                     <h3>강좌옵션</h3>
-                    <div class="col row justify-content-between lec_option">
+                    <div class="d-flex lec_option">
                         <input type="checkbox" name="recom" id="recom" value="1" class="col">
                         <label for="recom" class="col">추천</label>
                         <input type="checkbox" name="forbegin" id="forbegin" value="1" class="col">
@@ -95,8 +95,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-between g35">
-                <div class="col-md-4 row">
+            <div class="row justify-content-between g30">
+                <div class="col-md-4 d-flex flex-column">
                     <h3>수강기한</h3>
                     <select name="lec_date" id="lec_date" class="col lec_date form-select">
                         <option selected>옵션을 선택해주세요</option>
@@ -104,27 +104,27 @@
                         <option value="무제한">무제한</option>
                     </select>
                 </div>
-                <div class="col-md-4 row">
+                <div class="col-md-4 d-flex flex-column">
                     <h4 class="hidden">시작일</h4>
                     <input type="date" name="lec_start_date" id="datepicker_start" class="col">
                 </div>
-                <div class="col-md-4 row">
+                <div class="col-md-4 d-flex flex-column">
                     <h4 class="hidden">종료일</h4>
                     <input type="date" name="lec_end_date" id="datepicker_end" class="col">
                 </div>
             </div>
-            <div class="row">
+            <div class="d-flex flex-column">
                 <h3>강좌설명</h3>
                 <textarea name="content" id="content" placeholder="강좌설명을 입력하세요" class="col-md-12"></textarea>
             </div>
-            <div class="row">
+            <div class="d-flex flex-column">
               <h3>썸네일 이미지</h3>
               <div class="thumbnail_container">
                 <label for="lec_thumbnail" class="lec_thumbnail_btn">파일 선택</label>
                 <input type="file" name="thumbnail" id="lec_thumbnail" class="col-md-12 form-control form-control-lg">
               </div>
             </div>
-            <div class="row">
+            <div class="d-flex flex-column">
               <h3>이미지 추가 업로드</h3>
               <div id="drop" class="box">
                   <p>
@@ -136,8 +136,8 @@
               </div>
             </div>
             <div class="d-flex flex-column">
-              <div class="row">
-                <h3 class="col-auto">강의 영상 업로드</h3>
+              <div class="d-flex">
+                <h3 class="col-auto lec_upload_title">강의 영상 업로드</h3>
                 <span class="lec_upload col-auto"><i class="fa-solid fa-square-plus" onclick="classplus()"></i></span>
               </div>
               <div id="classplus">
@@ -147,7 +147,7 @@
                 </div>
               </div>
             </div>
-            <div class="row up_btn_container">
+            <div class="d-flex up_btn_container">
               <button class="y-btn big-btn btn-navy">등록 완료</button>
               <a href="lecture_list.php" class="y-btn big-btn btn-sky">등록 취소</a>
             </div>

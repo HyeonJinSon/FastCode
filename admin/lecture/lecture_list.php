@@ -129,7 +129,7 @@
                 </select>
               </div>
             </div>
-            <div class="row justify-content-between align-items-start">
+            <div class="d-flex justify-content-between align-items-start">
               <!-- lec_option_change.php -->
               <div class="d-flex justify-content-between lec_option align-items-center col-md-4">
                 <input type="checkbox" name="recom" id="recom" value="1" class="col" <?php if($recom){echo "checked";}?>>
@@ -146,7 +146,7 @@
               <!-- <label for="search_keyword"><i class="fa-solid fa-magnifying-glass"></i></label> -->
               <input type="text" class="col-md-6" name="search_keyword" id="search_keyword" value="<?php echo $search_keyword;?>">
               <!--  placeholder="&#xF002;"  style="font-family:Pretendard, FontAwesome" -->
-              <button type="submit" id="search" class="col-md-1 y-btn mid-btn btn-sky">검색하기</button>
+              <button type="submit" id="search" class="col-md-2 y-btn mid-btn btn-sky">검색하기</button>
             </div>
           </form>
 
@@ -159,7 +159,7 @@
               ?>
               <input type="hidden" name="lecid[]" value="<?php echo $r->lecid; ?>">
               <!-- <?php echo $r->lecid; ?> -->
-              <li class="d-flex align-items-center">
+              <li class="d-flex">
                 <figure class="col-md-2">
                   <!-- <img src="https://placehold.co/198x135" alt=""> -->
                   <img src="<?php echo $r->thumbnail;?>" alt="" class="thumbnail_img_preview">
@@ -205,7 +205,7 @@
                   <p>판매가격 : <span><?php echo number_format($r->price);?>원</span></p>
                 </div>
                 <div class="lec_option_box col-md-4">
-                  <p class="row">
+                  <p class="d-flex">
                     <select name="status[<?php echo $r->lecid;?>]" id="status" class="form-select col-auto">
                       <option value="판매중" <?php if($r->sale_status=='판매중'){echo "selected";}?>>판매중</option>
                       <option value="판매대기" <?php if($r->sale_status=='판매대기'){echo "selected";}?>>판매대기</option>
@@ -213,7 +213,7 @@
                     </select>
                     <a href="lecture_view.php?lecid=<?php echo $r->lecid; ?>" class="y-btn mid-btn btn-navy col-auto">보기</a>
                   </p>
-                  <div class="row lec_option justify-content-between align-items-center">
+                  <div class="d-flex lec_option justify-content-between align-items-center">
                     <input type="checkbox" name="recom[<?php echo $r->lecid;?>]" id="recom_<?php echo $r->lecid;?>" value="1" <?php if($r->recom){echo "checked";}?> class="col">
                     <label for="recom_<?php echo $r->lecid;?>" class="col">추천</label>
                     <input type="checkbox" name="forbegin[<?php echo $r->lecid;?>]" id="forbegin_<?php echo $r->lecid;?>" value="1" <?php if($r->forbegin){echo "checked";}?> class="col">
@@ -238,7 +238,7 @@
               <button class="y-btn mid-btn btn-navy">변경내용 저장</button>
             </p>
           </form>
-          <div class="lec_pagination row">
+          <div class="lec_pagination d-flex">
             <ul class="row col justify-content-center">
             <?php
             if($block_num > 1){
@@ -261,12 +261,6 @@
               }
             }
             ?>
-              <!-- <li class="col-auto"><a href=""><i class="fa-solid fa-chevron-left"></i></a></li>
-              <li class="col-auto"><a href="" class="active">1</a></li>
-              <li class="col-auto"><a href="">2</a></li>
-              <li class="col-auto"><a href="">3</a></li>
-              <li class="col-auto"><a href=""><i class="fa-solid fa-chevron-right"></i></a></li> -->
-            
             </ul>
           </div>
         </main>
@@ -330,7 +324,8 @@
       $('#bookmark1').attr("checked", false);
     }
   }
-    
+
+
 $('#bookmark1').click(function() {
     let checked = $(this).is(":checked");
 
@@ -358,6 +353,7 @@ $('#bookmark1').click(function() {
     let data = {
       bookmark: bookmark
     }
+
 
     $.ajax({
       type: 'POST',

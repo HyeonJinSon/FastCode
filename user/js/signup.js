@@ -89,9 +89,7 @@ $('#signup').click(function(){
     let pw2 = $("#passwd_ok").val();
     let use_agree = $('#use_agree').is(':checked');
     let personalinfo_agree = $('#personalinfo_agree').is(':checked');
-    // alert(use_agree.is(':checked'));
    
-    // $('form').addClass('was-validated');
     if(username == ""){
         alert('이름을 입력해주세요.');
         $('#username').addClass('warning');
@@ -146,9 +144,9 @@ let height = targetHeight - 650;
 let relocateEvt = new Event('scroll');
 
 $(window).scroll(()=>{
-  let sct = $(window).scrollTop();
-  console.log(height);
-  console.log(sct);
+    let sct = $(window).scrollTop();
+    console.log(height);
+    console.log(sct);
 
     if(sct > height ){
         sticky.css({position:'relative', marginTop:'90vh', marginRight: '174px'});

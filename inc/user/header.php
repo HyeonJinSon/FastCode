@@ -37,8 +37,8 @@
                             </li>
                         </ul>
                     </nav>
-                    <form action="../lecture/lecture_list.php" class="search">
-                        <input type="text" placeholder="검색어를 입력하세요" />
+                    <form action="../lecture/lecture_list.php" method="POST" class="search">
+                        <input type="text" name="search_keyword" placeholder="검색어를 입력하세요" />
                         <button> <i class="fa-solid fa-magnifying-glass"></i> </button>
                     </form>
                     <ul class="member-info d-flex sub-menu-ft">
@@ -63,9 +63,8 @@
                             </a>
                             <span class="tip">장바구니</span>
                         </li>
-
                         <li>
-                            <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                            <button type="submit" id="logout" onclick="location.replace('../member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             <span class="tip">로그아웃</span>
                         </li>
                         <li>
@@ -89,7 +88,7 @@
                                         <img class="profile_img" src="../img/noprofile.png" alt="" cover-fit />
                                         <?php
                                             }
-                                        ?>
+                                        ?>                                        
                                         <span><?php echo $rs -> username;?>님</span>
                                         <i class="fa-solid fa-angle-right ms-auto"></i>
                                     </a>

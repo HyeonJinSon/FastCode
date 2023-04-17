@@ -14,11 +14,6 @@ $use_agree=$_POST["use_agree"];
 $personalinfo_agree=$_POST["personalinfo_agree"];
 $marketing_agree=$_POST["marketing_agree"] ?? 0;
 
-// $profile_orgin_img=$_FILES["profile_img"]['name'];
-// $tmpfile_path = $_FILES['file']['tmp_name'];
-
-
-
     //썸네일 이미지
     if($_FILES['profile_img']['name']){
         if($_FILES['profile_img']['size']>10240000){
@@ -37,14 +32,9 @@ $marketing_agree=$_POST["marketing_agree"] ?? 0;
             exit;
         }
     
-
-    // $upload_path = "./member_profile/".$profile_orgin_img;
-    // move_uploaded_file($tmpfile_path, $upload_path);
-    // $profile_img = $upload_path;
-
         $save_dir = "./member_profile/";
         $filename = $_FILES['profile_img']['name'];
-        $ext = pathinfo($filename,PATHINFO_EXTENSION); //확장자
+        $ext = pathinfo($filename,PATHINFO_EXTENSION);
         $newfilename = iconv_substr($userid,0,5).date("ymdHis").substr(rand(),0,6);
         $profile_img = $newfilename.'.'.$ext ;
         if(move_uploaded_file($_FILES['profile_img']['tmp_name'], $save_dir.$profile_img)){
@@ -71,7 +61,7 @@ try {
     //쿠폰
     user_coupon($userid, 167, '회원가입 축하 쿠폰');
 
-    $mysqli->commit();//디비에 커밋한다.
+    $mysqli->commit();
 
     echo "<script>alert('회원가입 성공!, 10,000원 쿠폰을 발행해 드렸습니다.');
     location.href='../index.php';</script>";
@@ -81,8 +71,6 @@ try {
     echo "<script>alert('회원가입에 실패했습니다');history.back();</script>";
     exit;
 }
-
-
 
 
 ?>

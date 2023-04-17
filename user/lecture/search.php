@@ -1,8 +1,10 @@
 <?php
+  // session_start();
   include $_SERVER['DOCUMENT_ROOT']."/inc/db.php";
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/head.php";
 
   $userID = $_SESSION['USERID'];
+  // echo $userID;
 ?>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="../css/common.css" />
@@ -11,41 +13,51 @@
 <?php
   include $_SERVER['DOCUMENT_ROOT']."/inc/user/header.php";
 
+  $cateSearch = $_POST["search_cate"];
   $searchKeyword = $_POST['search_keyword'];
-  if(isset($searchKeyword)){
-    $sql_and .= " AND A.name LIKE '%".$searchKeyword."%'";
+
+  if(isset($cateSearch)){
+    $sql_code = "SELECT * from category where name = '".$cateSearch."'";
+    $result = $mysqli -> query($sql_code) or die("query error =>".$mysqli-->error);
+    $rs = $result -> fetch_object();
+    $cateSearch = $rs -> code;
+    $sql_and .= " and L.cate_sm = '".$cateSearch."'";
   }else{
     $sql_and .="";
   }
+  if(isset($searchKeyword)){
+    $sql_and .= " and L.name like '%".$searchKeyword."%'";
+  }else{
+    $sql_and .="";
+ }
 
-  $sql_cate = "SELECT X.*
-                 FROM (
-                         SELECT A.*
-                               , ROW_NUMBER() OVER(ORDER BY A.lecid DESC) AS rownum
-                         FROM (
-                                 SELECT L.lecid, L.name, L.thumbnail, L.recom
-                                       , L.forbegin, L.forbasic, L.forinter, L.foradv
-                                       , L.lec_date, L.lec_end_date, L.cate_big, C.big_name, L.cate_mid, C.mid_name, L.cate_sm, C.sm_name
-                                       , TIMESTAMPDIFF(DAY, now(), L.lec_end_date) AS date_calc
-                                       , CASE WHEN L.price = 0 THEN '무료'
-                                              ELSE CONCAT(FORMAT(L.price, 0), '원')
-                                         END AS price
-                                       , L.price AS priceComp
-                                 FROM lectures L
-                                 INNER JOIN category_sh C ON L.cate_big = C.big_code AND L.cate_mid = C.mid_code AND L.cate_sm = C.sm_code
-                                 WHERE L.sale_status != '판매대기'
-                             ) A
-                         WHERE 1=1
-                         ".$sql_and."
-                 ) X
-                 WHERE X.rownum BETWEEN 1 AND 9";
-
+  $sql_cate = "SELECT A.lecid, A.name, A.thumbnail, A.recom, A.forbegin, 
+                      A.forbasic, A.forinter, A.foradv, A.lec_date, A.lec_end_date, 
+                      A.mid_name, A.sm_name, A.date_calc, A.rownum,
+               CASE WHEN price = 0 THEN '무료'
+                  ELSE CONCAT(FORMAT(price, 0), '원')
+               END price
+               FROM (
+                      SELECT L.*, C.big_name, C.mid_name, C.sm_name,
+                             TIMESTAMPDIFF(DAY, now(), L.lec_end_date) AS date_calc, 
+                   		      ROW_NUMBER() OVER(ORDER BY L.lecid DESC) AS rownum
+                      FROM lectures L
+                      JOIN category_sh C 
+                      ON L.cate_big = C.big_code 
+                      AND L.cate_mid = C.mid_code 
+                      AND L.cate_sm = C.sm_code
+                      WHERE L.sale_status != '판매대기'
+                      ".$sql_and."
+               ) A
+               WHERE 1=1
+               AND A.rownum BETWEEN 1 AND 9";
   $result_cate = $mysqli -> query($sql_cate);
 
   while($rs_cate = $result_cate ->fetch_object()) {
     $lecture_list[] = $rs_cate;
+    // $labels[] = $rs_cate->mid_name; 그룹화해야함
   }
-  
+
   $sql_minMaxPrice = "SELECT MIN(PRICE) AS min, MAX(PRICE) AS max FROM lectures";
   $result_minMaxPrice = $mysqli -> query($sql_minMaxPrice);
 
@@ -54,24 +66,18 @@
   }
   
 
-  $sql_labels = "SELECT C.mid_name AS 'labels',
-        CASE WHEN C.mid_name = '프론트엔드' THEN 1
-        WHEN C.mid_name = '백엔드' THEN 2
-        WHEN C.mid_name = 'UX/UI' THEN 3
-        WHEN C.mid_name = '일반디자인' THEN 4
-        WHEN C.mid_name = '기타' THEN 5
-        ELSE 100
-        END AS 'orderNumber'
-        FROM lectures L
-        JOIN category_sh C 
-        ON L.cate_mid = C.mid_code
-        GROUP by C.mid_name
-        ORDER BY orderNumber ASC";
-  $result_labels = $mysqli -> query($sql_labels);
+  //카테고리분류
+  $sql = "SELECT D.name AS 'labels'
+  FROM lectures L
+  JOIN category D ON L.cate_mid = D.code
+  GROUP by D.name ";
+  $result = $mysqli -> query($sql);
 
-  while($rs_labels = $result_labels ->fetch_object()) {
-    $labels[] = $rs_labels->labels; 
+  while($rs = $result ->fetch_object()) {
+    $labels[] = $rs->labels; 
   }
+
+  
 ?>
 
   <main class="container-xxl d-flex">
@@ -85,6 +91,10 @@
           <div class="check_wrap">
             <?php foreach($labels as $label) { ?>
             <label><input type="checkbox" name="category" value="<?php echo $label; ?>"><?php echo $label; ?></label>
+            <!-- <label><input type="checkbox" name="category" value="백엔드"> 백엔드</label>
+            <label><input type="checkbox" name="category" value="UX / UI"> UX / UI</label>
+            <label><input type="checkbox" name="category" value="일반디자인"> 일반디자인</label>
+            <label><input type="checkbox" name="category" value="기타"> 기타</label> -->
             <?php } ?>
           </div>
         </form>
@@ -94,16 +104,21 @@
           <p>수업 난이도</p><i class="fa-solid fa-chevron-up"></i>
         </div>
         <div class="check_wrap">
+          <?php 
+              // if(isset($lecture_list)){
+              //   foreach($lecture_list as $level){
+          ?>
           <label><input type="checkbox" name="level" value="입문"> 입문</label>
           <label><input type="checkbox" name="level" value="초급"> 초급</label>
           <label><input type="checkbox" name="level" value="중급"> 중급</label>
           <label><input type="checkbox" name="level" value="상급"> 상급</label>
+          <?php //} } ?>
         </div>
       
       </div>
       <div class="period_box">
         <div class="box_title d-flex">
-          <p>수강 기간</p><i class="fa-solid fa-chevron-up"></i>
+          <p>수강 기간(/)</p><i class="fa-solid fa-chevron-up"></i>
         </div>
         <div class="check_wrap">
           <label><input type="checkbox" name="period" data-period="time" value="무제한"> 무제한</label>
@@ -121,7 +136,7 @@
             <div id="slider-range"></div>
             <p>
               <label for="amount1">최소금액<input type="text" id="amount1" value="" readonly></label>
-              <span class="price_space">~</span>
+              <span>~</span>
               <label for="amount2">최대금액<input type="text" id="amount2" value="" readonly></label>
             </p>
           </div>
@@ -132,6 +147,7 @@
         <h2 class="hidden">Lecture List</h2>
         <div class="recommend">
           <button class="course_recom" id="recom" name="recommond" value="추천강좌"><img src="../img/recommend1.png" alt="">추천강좌</button>
+
           <button class="course_recom" value="Javascript" name="soCategory"><img src="../img/javascript_icon1.png" alt="">Javascript</button>
           <button class="course_recom" value="HTML" name="soCategory"><img src="../img/html1.png" alt="">HTML</button>
           <button class="course_recom" value="Figma" name="soCategory"><img src="../img/figma_icon1.png" alt="">Figma</button>
@@ -201,7 +217,7 @@
     levelsArray[i] = jsonArray[i].labels;
     i++;
   }
-  let searchKeyword = '';
+
   let recomCategory = '';
   let checkedCate = [];
   let checkedLevels = []; 
@@ -305,6 +321,8 @@
       // 3단계 - ajax 호출
       getLecture();
     });
+
+
     let footerScroll = $('footer').outerHeight(); // footer 크기
     let windowHeight = window.innerHeight;        // 현재 내 화면 크기
     let fullHeight = document.body.scrollHeight;  // 문서 전체 크기
@@ -314,6 +332,7 @@
     let lectureCount = listCount;
     let scrollIndex = 2;
 
+if(listCount >= 9){
     $(window).scroll(function() {
       myScrollLocation = $(window).scrollTop();
       
@@ -321,11 +340,16 @@
         lectureCount = 6 * scrollIndex + 3;
         scrollIndex++;
         eventScroll += (fullHeight - footerScroll) - windowHeight - 10;
- 
+
+        // console.log(fullHeight);
+        console.log(eventScroll);        
+        // console.log(scrollIndex);
+        // console.log(lectureCount);
+
         getLecture();
       }
-    });
- ['php', 'html', 'css']
+    })};
+
     // 3단계 - ajax 호출
     //강좌 조회
     function getLecture() {
@@ -342,10 +366,10 @@
         checkedPeriod: checkedPeriod,
         checkedPrice: checkedPrice,
         rangePrice: rangePrice,
-        lectureCount : lectureCount,
-        searchKeyword: searchKeyword
+        lectureCount : lectureCount
 
       };
+      // console.log(rangePrice);
       $.ajax({
 
         url:'search_lecture.php',
@@ -397,7 +421,26 @@
     }
 
   });
+
+
+
+
+
   </script>
+  <script>
+   $(window).scroll(function () {
+		if ($(this).scrollTop() > 250) {
+			$('.top-btn').fadeIn(100);
+		} else {
+			$('.top-btn').fadeOut(400);
+		}
+	});
+
+	$('.top-btn').click(function (e) {
+		e.preventDefault();
+		$('html, body').animate({ scrollTop: 0 ,behavior:'smooth'}, 300);
+	});
+</script>
 <?php
   include $_SERVER["DOCUMENT_ROOT"]."/inc/user/tail.php";
 ?>

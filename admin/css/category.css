@@ -55,16 +55,17 @@ dialog {
   background-color: rgba(0,0,0,.7);
 } */
 dialog .modal-header h2 {
+  margin-left: -12px;
   margin-bottom: 50px;
 }
 dialog .modal-body {
   flex-direction: column;
   gap: 27px;
   margin-bottom: 54px;
+  width: 607px;
 }
 dialog .modal-body > input,
 dialog .modal-body > select {
-  width: 607px;
   height: 54px;
   color: var(--primary-n);
   font-size: 18px;

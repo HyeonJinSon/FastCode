@@ -118,7 +118,7 @@
                           ?> 
                 </div>
                 <div class="sub_titles">
-                    <p>최소금액 : <span><?= $r -> min_price;?>원 이상</span></p>
+                    <p>최소금액 : <span><?= number_format($r -> min_price);?>원 이상</span></p>
                     <p>할인율 : <span><?= $r -> coupon_ratio;?>%</span></p>
                 </div>
             </div>

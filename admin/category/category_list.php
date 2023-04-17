@@ -42,6 +42,7 @@
               </tr>
             </thead>
             <tbody>
+              <!-- 각 cate1, 2, 3의 name이 td 내용으로 출력 -->
               <?php while($row = $result->fetch_assoc()) { ?>
               <tr class="cate_list">
                 <td class="cate1"></td>

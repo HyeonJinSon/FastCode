@@ -331,7 +331,8 @@ section h3 {
   height: 80% !important;
   position: relative;
   top: 10%;
-  right: 9%;
+  right: 5%;
+
 }
 .chart-div .legend-div {
   position: absolute;
@@ -379,8 +380,4 @@ section h3 {
   color: #aaa;
   background: var(--background-w);
   font-size: 20px;
-}
-#DoughnutChart {
-  width: 250px;
-  height: 250px;
 }

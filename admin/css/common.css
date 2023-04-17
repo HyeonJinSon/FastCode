@@ -26,7 +26,6 @@ body {
   --primary-n: #1d3557;
   --highlight-s: #457b9d;
   --highlight-m: #a8dad8;
-  --highlight-c:  #3E88F1;
   --background-g: #e0e9ef;
   --background-w: #fff;
   --typography: #161616;
@@ -97,23 +96,22 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.gnb-body .admin-profile .profile-menu li:last-child{
+.gnb-body .admin-profile .profile-menu li:last-child {
   position: relative;
 }
-.gnb-body .admin-profile .profile-menu li:last-child::after{
+.gnb-body .admin-profile .profile-menu li:last-child::after {
   position: absolute;
   top: -18px;
   right: -18px;
-  content: '1';
+  content: "1";
   display: block;
   font-size: 24px;
   line-height: 36px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color:var(--background-w);
+  color: var(--background-w);
   background: var(--primary-r);
-  
 }
 
 .simplebar-track.simplebar-horizontal {
@@ -192,7 +190,9 @@ body {
 .accordion-collapse {
   padding-left: 27px;
 }
-.sub-menu-ft:active, .sub-menu-ft:focus, .sub-menu-ft:hover {
+.sub-menu-ft:active,
+.sub-menu-ft:focus,
+.sub-menu-ft:hover {
   color: var(--primary-r);
 }
 
@@ -362,7 +362,7 @@ body {
 }
 
 /* Bookmark */
-.bookmark{
+.bookmark {
   position: absolute;
   right: 0;
 }

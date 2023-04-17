@@ -1,8 +1,8 @@
 main h2 + a {
-  margin: 54px 0 27px;
+    margin: 54px 0 27px;
 }
 .content-body {
-  height: auto;
+    height: auto;
 }
 main h2.page-title {
     margin: 81px 0 78px -12px;
@@ -10,127 +10,127 @@ main h2.page-title {
 .form-control,
 .form-select,
 #search_keyword {
-  padding: 15px 25px;
-  border: 1px solid var(--primary-n);
-  border-radius: 5px;
-  height: 54px;
-  margin-bottom: 30px;
+    padding: 15px 25px;
+    border: 1px solid var(--primary-n);
+    border-radius: 5px;
+    height: 54px;
+    margin-bottom: 30px;
 }
 select:focus,
 .form-select:focus,
 #search_keyword:focus,
 .form-control:focus {
     outline: none;
-    border: 6px solid rgba(62,136,241,.5);
+    border: 6px solid rgba(62, 136, 241, 0.5);
     padding: 10px 23px;
     box-sizing: border-box;
 }
 #search_keyword::placeholder {
     color: var(--primary-n);
-  font-size: 18px;
-  font-weight: 700;
+    font-size: 18px;
+    font-weight: 700;
 }
 main form + form > button {
-  text-align: right;
+    text-align: right;
 }
 main #lec_list .lec_info_title {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 main #lec_list h3 {
-  display: inline;
+    display: inline;
 }
 #sort_container .lec_option {
-  height: 50px;
+    height: 50px;
 }
 .lec_option input {
-  width: 25px;
-  height: 25px;
+    width: 25px;
+    height: 25px;
 }
 .lec_option {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 #lec_list figure {
-  padding: 0;
-  width: 198px;
-  height: 135px;
-  border-radius: 10px;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
+    padding: 0;
+    width: 198px;
+    height: 135px;
+    border-radius: 10px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 #lec_list figure image {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 #lec_list .lec_info_box,
 #lec_list .lec_option_box {
-  padding: 13px 0 13px 25px;
+    padding: 13px 0 13px 25px;
 }
 #lec_list .lec_info_title h3 {
-  margin-right: 30px;
-  line-height: 32px;
+    margin-right: 30px;
+    line-height: 32px;
 }
 #lec_list .lec_info_title a {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 #lec_list {
-  margin-top: 80px;
+    margin-top: 80px;
 }
 #lec_list li {
-  background: #FFFFFF;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  padding: 53px 40px;
-  margin-bottom: 27px;
+    background: #ffffff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 53px 40px;
+    margin-bottom: 27px;
 }
 #lec_list .lec_option_box {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 #lec_list .lec_option_box select {
-  width: 165px;
-  font-size: 18px;
-  padding: 8px 16px 10px;
+    width: 165px;
+    font-size: 18px;
+    padding: 8px 16px 10px;
 }
 #lec_list .lec_option_box p {
-  gap: 38px;
-  justify-content: flex-end;
+    gap: 38px;
+    justify-content: flex-end;
 }
 #lec_list .lec_info_box p {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24px;
-  margin-top: 6px;
-  display: block;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 6px;
+    display: block;
 }
 #lec_list_container > p {
-  margin-top: 60px;
-  text-align: right;
+    margin-top: 60px;
+    text-align: right;
 }
 .lec_pagination {
-  margin-top: 80px;
+    margin-top: 80px;
 }
 .lec_pagination a {
-  color: var(--primary-n);
-  display: inline-block;
-  border-radius: 50%;
-  background: none;
-  font-size: 18px;
-  font-weight: 700;
-  width: 27px;
-  height: 27px;
-  text-align: center;
-  line-height: 27px;
+    color: var(--primary-n);
+    display: inline-block;
+    border-radius: 50%;
+    background: none;
+    font-size: 18px;
+    font-weight: 700;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    line-height: 27px;
 }
 .lec_pagination a.active {
-  color: var(--background-g);
-  background: var(--primary-n);
+    color: var(--background-g);
+    background: var(--primary-n);
 }
 #lec_list .lec_info_box i {
-  margin: 0 10px;
+    margin: 0 10px;
 }
 
-#lec_list .thumbnail_img_preview{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+#lec_list .thumbnail_img_preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

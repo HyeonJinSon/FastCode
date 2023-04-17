@@ -3,7 +3,7 @@
   visibility: hidden;
 }
 main h2.page-title {
-  margin: 81px 0 0 -12px;
+  margin-top: 81px;
 }
 .lec_view_title_container,
 .lec_view_desc,

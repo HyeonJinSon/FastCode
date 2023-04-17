@@ -1,34 +1,34 @@
 @import url(common.css);
-body{
+body {
   /* position: relative; */
   background: var(--background-g);
   padding-top: 151px;
 }
-main{
+main {
   text-align: center;
 }
-main h2{
+main h2 {
   text-transform: uppercase;
   margin: 36px 0 75px;
 }
-main .field{
+main .field {
   position: relative;
   width: 706px;
   margin: 0 auto;
 }
-main label{
+main label {
   display: none;
 }
-main .field i{
+main .field i {
   position: absolute;
-  color: #95BDD6;
+  color: #95bdd6;
   font-size: 30px;
   top: 0;
   left: 30px;
   bottom: 0;
   line-height: 81px;
 }
-main .field input{
+main .field input {
   width: 100%;
   height: 81px;
   border: none;
@@ -37,41 +37,41 @@ main .field input{
   padding-left: 90px;
   box-sizing: border-box;
 }
-main .field input::placeholder{
+main .field input::placeholder {
   text-transform: uppercase;
   font-size: 28px;
   line-height: 81px;
   color: #b6b6b6;
-  vertical-align:baseline;
+  vertical-align: baseline;
 }
-main .field input[type="text"]{
+main .field input[type="text"] {
   margin-bottom: 27px;
 }
-main .field input[type="password"]{
+main .field input[type="password"] {
   margin-bottom: 80px;
 }
-main .field input:focus{
+main .field input:focus {
   outline: none;
-  border: 4px solid #3E88F1;
+  border: 4px solid #3e88f1;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
 main .field input {
-    padding-top:10px;
+  padding-top: 10px;
 }
 /* 배경 하단 */
-.bg-top{
+.bg-top {
   position: absolute;
   width: 100vw;
   height: 150px;
   bottom: 0;
 }
-.bg-bottom{
+.bg-bottom {
   position: absolute;
   width: 100vw;
   height: 150px;
   bottom: 0;
 }
-.fa-sailboat{
+.fa-sailboat {
   position: fixed;
   left: 204.37px;
   bottom: 58px;
@@ -81,19 +81,19 @@ main .field input {
 }
 
 @keyframes wave {
-  0%{
+  0% {
     transform: rotate(0);
   }
-  25%{
+  25% {
     transform: rotate(5.11deg);
   }
-  50%{
+  50% {
     transform: rotate(0);
   }
-  75%{
+  75% {
     transform: rotate(-5.11deg);
   }
-  100%{
+  100% {
     transform: rotate(0);
   }
 }

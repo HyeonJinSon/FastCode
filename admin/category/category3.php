@@ -4,7 +4,7 @@
     ini_set('display_errors','1');
 
     $cate2 = $_POST['cate2'];
-    $html = "<option value=\"\">소분류</option>";
+    $html = "<option value=\"\">소분류 선택</option>";
     $query = "SELECT * from category where step=3 and pcode='{$cate2}'";
 
     $result = $mysqli -> query($query) or die("query error =>".$mysqli->error);

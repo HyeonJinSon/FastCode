@@ -212,12 +212,15 @@ let bookmark = String(<?php echo json_encode($book_mark);?>);
     } else {
       if(bookmark == '8') {
         bookmark = '0';
+      } else if(bookmark.length == 1) {
+        bookmark = bookmark.replace('8' , '');
       } else {
         bookmark = bookmark.replace(',8' , '');
       }  
     }
+    
     let data = {
-      bookmark: bookmark
+        bookmark: bookmark
     }
     $.ajax({
       type: 'POST',

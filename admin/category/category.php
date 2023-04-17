@@ -32,7 +32,7 @@
             </div>
           </div>
           <main>
-            <h2 class="page-title pd-81">카테고리 등록</h2>
+            <h2 class="page-title">카테고리 등록</h2>
             <div class="category_wrapper">
               <form action="" class="row justify-content-between align-items-center text-center">
                 <div class="select_container col row col-md-4">
@@ -87,7 +87,7 @@
                   <input type="text" name="code1" id="code1" placeholder="코드 입력" />
                 </div>
                 <div class="modal-footer row justify-content-between">
-                  <button type="button" class="mid-btn btn-navy"  onclick="category_save(1)">추가하기</button>
+                  <button type="button" class="y-btn  mid-btn btn-navy"  onclick="category_save(1)">추가하기</button>
                   <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                   <input type="text" name="code2" id="code2" placeholder="코드 입력" />
                 </div>
                 <div class="modal-footer row justify-content-between">
-                  <button type="button" class="mid-btn btn-navy"  onclick="category_save(2)">추가하기</button>
+                  <button type="button" class="y-btn  mid-btn btn-navy"  onclick="category_save(2)">추가하기</button>
                   <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                   <input type="text" name="code3" id="code3" placeholder="코드 입력" />
                 </div>
                 <div class="modal-footer row justify-content-between">
-                  <button type="button" class="mid-btn btn-navy" onclick="category_save(3)">추가하기</button>
+                  <button type="button" class="y-btn mid-btn btn-navy" onclick="category_save(3)">추가하기</button>
                   <button type="button" class="modal_close y-btn mid-btn btn-sky">취소하기</button>
                 </div>
               </div>

@@ -74,8 +74,8 @@
     $mysqli->autocommit(FALSE);
     try{
 
-        $sql = "INSERT into lectures (name, cate, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_big, cate_mid, cate_sm) 
-        VALUES ('$name','".$cate."','".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."','".$recom."','".$forbegin."','".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_big."','".$cate_mid."','".$cate_sm."')";
+        $sql = "INSERT into lectures (name, cate, teacher_name, content, thumbnail, price, sale_status, sale_cnt, recom, forbegin, forbasic, forinter, foradv, userid, reg_date, lec_date, lec_start_date, lec_end_date, cate_big, cate_mid, cate_sm) 
+        VALUES ('$name','".$cate."', '김동주', ".$content."','".$thumbnail."','".$price."','".$sale_status."','".$sale_cnt."','".$recom."','".$forbegin."','".$forbasic."','".$forinter."','".$foradv."','".$_SESSION['AUID']."',now(),'".$lec_date."','".$lec_start_date."','".$lec_end_date."','".$cate_big."','".$cate_mid."','".$cate_sm."')";
 
         $rs = $mysqli -> query($sql) or die($mysqli -> error);
         $lecid = $mysqli -> insert_id;

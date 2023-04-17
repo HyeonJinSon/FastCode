@@ -1,0 +1,232 @@
+
+<html lang="ko">
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/class_view.css" />
+</head>
+<body>
+    <header class="">
+        <div class="header">
+            <div class="container d-flex justify-content-between align-items-center">
+                <h1 id="main-logo">
+                    <a href="../index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+                </h1>
+                <nav class="main-menu-ft">
+                    <ul class="d-flex">
+                        <li><a href="">about us</a></li>
+                        <li><a href="../lecture/lecture_list.php">강의</a></li>
+                        <li>
+                            <a href="">커뮤니티</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">질문/답변</a></li>
+                                <li><a href="">스터디</a></li>
+                                <li><a href="">자유게시판</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">이벤트</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">할인</a></li>
+                                <li><a href="">프리패스</a></li>
+                                <li><a href="">특강</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">고객지원</a>
+                            <ul class="sub-menu-ft">
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">문의하기</a></li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="">이용가이드</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <form action="" class="search"><input type="text" placeholder="검색어를 입력하세요" /><i class="fa-solid fa-magnifying-glass"></i></form>
+                <ul class="member-info d-flex sub-menu-ft">
+                    <li>
+                        <a href="../cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span class="tip">장바구니</span>
+                    </li>
+                    <li>
+                        <button type="submit" id="logout" onclick="location.replace('member/logout.php');"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <span class="tip">로그아웃</span>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa-solid fa-user"></i></a>
+                        <span class="hidden">나의 정보</span>
+                        <ul class="my_info text-start content-text-2">
+                            <li class="my_profile">
+                                <a href="" class="d-flex">
+                                    <img class="profile_img" src="<?php echo $rs -> profile_img;?>" alt="" />
+                                    <span></span>
+                                    <i class="fa-solid fa-angle-right ms-auto"></i>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-chart-pie"></i><span>대시보드</span></a>
+                            </li>
+                            <li>
+                                <a href="../class/myclass.php"><i class="fa-solid fa-play"></i><span>나의 강의실</span></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-clipboard"></i><span>강의노트</span></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-comments"></i><span>나의 커뮤니티</span></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-solid fa-ticket"></i><span>쿠폰함</span></a>
+                            </li>
+                            <li class="alarm">
+                                <a href="" class="d-flex align-items-center"><i class="fa-solid fa-bell"></i><span>알림</span></a>
+                            </li>
+            </ul>
+
+        </div>
+    </header>
+<div class="container text-center class_view">
+  <iframe
+    width="1120"
+    height="630"
+    src="<?php echo $r1 -> class_url; ?>"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    id="iframe"
+    datalIdx="<?php echo $lecid; ?>"
+    data-cIdx="<?php echo $c_idx; ?>"
+  ></iframe>
+  <div id="lec_desc">
+    <h2 class="title">
+
+    </h2>
+    <h3 class="content-text-2">
+ 강사
+    </h3>
+  </div>
+  <div class="lec_btn d-flex justify-content-end">
+    <a href="#" class="y-btn small-btn">수강평 보기</a>
+    <a href="myclass.php" class="y-btn small-btn">강의실</a>
+  </div>
+  <div id="lec_container">
+    <div id="lec_review">
+      <div class="review_title">
+        <h2 class="title">강좌 수강평</h2>
+        <a href="#"><i class="fa-solid fa-plus"></i> 더 보러가기</a>
+      </div>
+      <form data-lecid="<?php echo $lecid; ?>">
+        <input type="text" name="lecReview" id="lecReview" required />
+        <label for="lecReview">수강평을 남겨 주세요</label>
+        <button type="button" class="review_ok">
+          <i class="fa-solid fa-check"></i>
+        </button>
+      </form>
+      <ul>
+
+        <li class="d-flex align-items-center justify-content-between">
+          <p class="content-text-2"></p>
+          <span class="content-text-3"></span>
+        </li>
+
+      </ul>
+    </div>
+    <div id="lec_list">
+      <h2 class="title">
+
+      </h2>
+
+      <ul>
+
+        <li
+          class="lec_li d-flex align-items-center"
+          data-src="<?php echo $c->class_url; ?>"
+          data-name="<?php echo $c->class_name; ?>"
+          data-idx="<?php echo $c->c_idx; ?>"
+        >
+          <figure>
+            <a href="#"
+              ><img
+                src="<?php echo $c->c_thumbnail; ?>"
+                alt="<?php echo $c->class_name; ?>"
+            /></a>
+          </figure>
+          <div
+            class="lec_info_box d-flex align-items-center justify-content-between"
+          >
+            <div class="c_title d-flex align-items-start">
+              <h3 class="content-title">
+                <a href="#"></a>
+              </h3>
+              <p class="c_desc"></p>
+            </div>
+            <span class="content-text-2"></span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="top-btn">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+      <div class="footer_top d-flex">
+          <ul class="footer_menu d-flex">
+              <li class="content-text-2"><a href="#">회사소개</a></li>
+              <li class="content-text-2"><a href="#">개인정보처리 방침</a></li>
+              <li class="content-text-2"><a href="#">서비스이용약관</a></li>
+              <li class="content-text-2"><a href="#">취소환불규정</a></li>
+              <li class="content-text-2"><a href="#">자료실</a></li>
+              <li class="content-text-2"><a href="#">고객센터</a></li>
+              <li class="content-text-2"><a href="#">사이트맵</a></li>
+          </ul>
+          <ul class="footer_sns d-flex">
+              <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa-solid fa-blog"></i></a>
+              </li>
+          </ul>
+      </div>
+      <div class="footer_bottom d-flex">
+          <h6 id="main-logo">
+              <a href="../index.php"><img src="http://fastcode.dothome.co.kr/user/img/fastcode_logo.png" alt="Fastcode" /><span>fastcode</span></a>
+          </h6>
+          <div class="footer_contents d-flex">
+              <h5 class="content-title">(주) FASTCODE</h5>
+              <span class="content-text-3">대표자 김유미 | 사업자 등록 번호 123-45-67890</span>
+              <span class="content-text-3">주소: 서울 특별시 종로구 수표로 96 국일관드림팰리스 | 이메일: yumi@fastcode.com | 전화: 02-1212-1212</span>
+          </div>
+          <div class="footer_copyright"><span class="content-text-3">Copyright@2023 Fastcode. All Rights reserved</span></div>
+      </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous"
+></script>
+<script src="../js/common.js"></script>
+<script src="../js/class_view.js"></script>
+</body>
+</html>

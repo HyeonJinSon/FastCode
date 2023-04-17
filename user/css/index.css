@@ -515,9 +515,9 @@ section.banner .swiper-pagination .swiper-pagination-bullet-active {
 }
 .class_slide .swiper-button-prev{
     left: 0 !important;
-    top: 45% !important;
+    top: 44% !important;
 }
 .class_slide .swiper-button-next{
     right: 0 !important;
-    top: 45% !important;
+    top: 44% !important;
 }

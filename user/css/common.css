@@ -130,6 +130,7 @@ body {
   border: 3px solid var(--primary-r);
   color: var(--background-w);
   transition: 0.3s;
+  border-radius: 5px;
 }
 .btn-navy:hover {
   background: var(--background-w);
